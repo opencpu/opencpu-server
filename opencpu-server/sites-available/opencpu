@@ -1,0 +1,14 @@
+############# OpenCPU Site Config ##########################
+
+<IfModule mod_R.c>
+
+	#Disable this for development
+	REvalOnStartup ".libPaths('/usr/lib/opencpu/library');"
+	MaxRequestsPerChild 200
+
+	<Location /ocpu>
+		SetHandler r-handler
+		RHandler ocpu:::rapachehandler
+	</Location>
+
+</IfModule>

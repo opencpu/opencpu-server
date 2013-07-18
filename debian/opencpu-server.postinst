@@ -1,0 +1,69 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+  configure)
+    :
+	# Adding OpenCPU User.
+	if grep -s -q "^opencpu:" /etc/passwd; then
+	  echo "User opencpu already exists"
+	else
+	  echo "Adding user opencpu..."
+	  useradd opencpu --system -U -d/tmp -c"OpenCPU R Server"
+	fi	
+	
+	# Adding OpenCPU Admin.
+	if grep -s -q "^opencpu-admin:" /etc/passwd; then
+	  echo "User opencpu-admin already exists"
+	else
+	  echo "Adding user opencpu-admin..."
+	  useradd opencpu-admin --system -U -d/tmp -c"OpenCPU Admin"
+	fi		
+	
+	#copy the config file	
+	if [ ! -e /etc/opencpu/server.conf ]
+	then
+	    cp -f /usr/lib/opencpu/library/ocpu/config/defaults.conf /etc/opencpu/server.conf
+	fi	
+	
+	#chmod shell scripts
+	chmod +x /usr/lib/opencpu/scripts/*.sh
+	
+	#force reload the cron job in /etc/init.d. Should be necessary but never harms:
+	reload cron
+	
+	#create log file
+	touch /var/log/opencpu/access.log
+	touch /var/log/opencpu/error.log
+	
+	#take ownership of some files
+	chown -Rf opencpu /var/log/opencpu
+	chgrp -Rf opencpu /var/log/opencpu	
+	chown -Rf opencpu /etc/opencpu
+	chgrp -Rf opencpu /etc/opencpu	
+	chown -Rf opencpu /usr/lib/opencpu/
+	chgrp -Rf opencpu /usr/lib/opencpu/
+	chown -Rf opencpu /usr/local/lib/opencpu/
+	chgrp -Rf opencpu /usr/local/lib/opencpu/	
+	
+	#init service
+	chmod 755 /etc/init.d/opencpu-server
+	update-rc.d opencpu-server defaults
+	service opencpu-server start
+	
+	#try to display host ip address
+	echo "Installation done. Point your browser to http://[server-ip]/R"
+	/usr/lib/opencpu/scripts/showip.sh	
+    ;;
+  abort-upgrade | abort-remove | abort-deconfigure)
+    :
+    ;;
+  *) echo "$0: didn't understand being called with \`$1'" 1>&2
+     exit 1;;
+esac
+
+#DEBHELPER#
+
+exit 0
+

@@ -1,0 +1,82 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          opencpu_cache
+# Required-Start:    $local_fs $remote_fs $network $syslog $named
+# Required-Stop:     $local_fs $remote_fs $network $syslog $named
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# X-Interactive:     true
+# Short-Description: Start/stop OpenCPU Caching Service.
+### END INIT INFO
+
+# Carry out specific functions when asked to by the system
+case "$1" in
+  start)
+
+    iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+    iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+    iptables -A INPUT -p tcp --dport 8006 -j ACCEPT
+    iptables -A INPUT -p tcp --dport 8007 -j ACCEPT
+    iptables -A PREROUTING -t nat -p tcp --dport 80 -j REDIRECT --to-port 8006 
+    iptables -A PREROUTING -t nat -p tcp --dport 443 -j REDIRECT --to-port 8007  
+    iptables -A OUTPUT -t nat -o lo -p tcp --dport 80 -j REDIRECT --to-ports 8006
+    iptables -A OUTPUT -t nat -o lo -p tcp --dport 443 -j REDIRECT --to-ports 8007 
+
+	if [ -f /etc/apache2/sites-available/opencpu-highports ];
+	then
+		a2ensite opencpu-highports
+		service apache2 restart
+	fi    
+	
+	/usr/lib/opencpu/scripts/nginx_ensite opencpu
+	service nginx restart
+	
+	echo "OK"
+	;;
+  stop)
+    echo "Disabling caching server..."
+    
+	if [ -f /etc/apache2/sites-available/opencpu-highports ];
+	then    
+	    a2dissite opencpu-highports
+	    service apache2 restart
+	fi
+
+    /usr/lib/opencpu/scripts/nginx_dissite opencpu
+    service nginx restart
+    
+    echo "Flushing cache..."
+    rm -Rf /tmp/opencpu-cache
+    
+    echo "Cleaning up iptables..."
+	iptables -D INPUT -p tcp --dport 80 -j ACCEPT
+	iptables -D INPUT -p tcp --dport 443 -j ACCEPT
+	iptables -D INPUT -p tcp --dport 8006 -j ACCEPT
+	iptables -D INPUT -p tcp --dport 8007 -j ACCEPT
+	iptables -D PREROUTING -t nat -p tcp --dport 80 -j REDIRECT --to-port 8006 
+	iptables -D PREROUTING -t nat -p tcp --dport 443 -j REDIRECT --to-port 8007  
+	iptables -D OUTPUT -t nat -o lo -p tcp --dport 80 -j REDIRECT --to-ports 8006
+	iptables -D OUTPUT -t nat -o lo -p tcp --dport 443 -j REDIRECT --to-ports 8007    
+    
+    echo "OK"  
+    ;;
+  restart)
+	$0 stop
+	$0 start    
+	;;
+  wipe)
+    iptables -F
+    iptables -X
+    iptables -t nat -F
+    iptables -t nat -X
+    iptables -t mangle -F
+    iptables -t mangle -X
+    iptables -P INPUT ACCEPT
+    iptables -P FORWARD ACCEPT
+    iptables -P OUTPUT ACCEPT
+    ;;      
+  *)
+    echo "Usage: service opencpu-cache {start|stop|restart}"
+    exit 1
+    ;;
+esac

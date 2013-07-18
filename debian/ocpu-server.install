@@ -1,0 +1,4 @@
+opencpu-server/sites-available/* /etc/apache2/sites-available/
+opencpu-server/init.d/* /etc/init.d/
+opencpu-server/cron.d/* /etc/cron.d/
+opencpu-server/scripts/* /usr/lib/opencpu/scripts/

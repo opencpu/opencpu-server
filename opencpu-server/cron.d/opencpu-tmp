@@ -1,0 +1,3 @@
+*/10 * * * * opencpu /usr/lib/opencpu/scripts/cleantmp.sh
+
+

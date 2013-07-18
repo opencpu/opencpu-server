@@ -1,0 +1,6 @@
+opencpu-cache/init.d/* /etc/init.d/
+opencpu-cache/scripts/* /usr/lib/opencpu/scripts/
+opencpu-cache/nginx/opencpu /etc/nginx/sites-available/
+opencpu-cache/nginx/opencpu-locations.conf /etc/nginx/opencpu/
+opencpu-cache/nginx/opencpu-pages.conf /etc/nginx/opencpu/
+opencpu-cache/nginx/opencpu.conf /etc/nginx/conf.d/

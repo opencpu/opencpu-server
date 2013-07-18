@@ -1,0 +1,32 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+  configure)
+    :
+    #remove the default site that is incompatible with Apache
+    rm -f /etc/nginx/sites-enabled/default
+    
+    #add opencpu-cache startup script
+	chmod 755 /etc/init.d/opencpu-cache
+	update-rc.d opencpu-cache defaults
+	
+	#nginx scripts
+	chmod +x /usr/lib/opencpu/scripts/nginx_ensite
+	chmod +x /usr/lib/opencpu/scripts/nginx_dissite
+	
+	#start the service
+	service opencpu-cache start
+    ;;
+  abort-upgrade | abort-remove | abort-deconfigure)
+    :
+    ;;
+  *) echo "$0: didn't understand being called with \`$1'" 1>&2
+     exit 1;;
+esac
+
+#DEBHELPER#
+
+exit 0
+

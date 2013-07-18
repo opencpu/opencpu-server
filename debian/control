@@ -1,0 +1,31 @@
+Source: opencpu 
+Section: gnu-r
+Priority: optional
+Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>
+Build-Depends: r-base (>= 3.0), r-base-dev (>= 3.0), xvfb, xauth, xfonts-base, debhelper (>> 4.1.0), apache2-prefork-dev, libcurl4-openssl-dev
+Standards-Version: 3.9.3
+
+Package: opencpu-server
+Architecture: all
+Depends: libapache2-mod-r-base (>= 1.2.4), opencpu-lib, apache2-mpm-prefork, apparmor-utils, ssl-cert
+Description: The OpenCPU REST api for R. See www.opencpu.org for more information.
+
+Package: opencpu-cache
+Architecture: all
+Depends: ssl-cert, nginx
+Description: Cache server and load balancer for opencpu.
+
+Package: opencpu-lib
+Architecture: any
+Depends: r-base-dev (>= 3.0), r-base-core (>= 3.0)
+Description: Package containing the platform specific R package buids.
+
+Package: opencpu-tex
+Architecture: all
+Depends: pandoc, texinfo, texlive-base, texlive-latex-base, texlive-generic-recommended, texinfo-doc-nonfree, texlive-latex-recommended, texlive-latex-extra, texlive-fonts-extra, texlive-fonts-recommended
+Description: Meta package with tex and pandoc dependencies.
+
+Package: opencpu-full
+Architecture: all
+Depends: opencpu-server, opencpu-cache, opencpu-tex 
+Description: This is a meta package for opencpu. Installs both the API server and caching server.

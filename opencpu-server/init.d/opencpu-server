@@ -1,0 +1,38 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          opencpu_server
+# Required-Start:    $local_fs $remote_fs $network $syslog $named apache2 apparmor
+# Required-Stop:     $local_fs $remote_fs $network $syslog $named apache2 apparmor
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# X-Interactive:     true
+# Short-Description: Start/stop OpenCPU server.
+### END INIT INFO
+
+# Carry out specific functions when asked to by the system
+case "$1" in
+  start)
+    rm -f /tmp/repos_http*.rds
+    /usr/lib/opencpu/scripts/killorphans.sh
+	a2ensite opencpu > /dev/null
+	service apache2 start > /dev/null #just in case its not running
+	service apache2 reload
+	echo "opencpu enabled"
+    ;;
+  stop)
+    kill $(pgrep killorphans.sh)
+	a2dissite opencpu > /dev/null
+	service apache2 restart
+	echo "opencpu disabled"
+    ;;
+  restart | force-reload)
+	$0 stop
+	$0 start
+	;;
+  *)
+    echo "Usage: sudo service opencpu-server {start|stop|restart}"
+    exit 1
+    ;;
+esac
+
+exit 0

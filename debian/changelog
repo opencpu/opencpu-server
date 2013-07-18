@@ -1,0 +1,6 @@
+opencpu (0.8.0-raring0) raring; urgency=low
+
+  * Debian package with OpenCPU software.
+
+ -- Jeroen Ooms <jeroen@opencpu.org>  Thu, 18 Jul 2013 18:00:00 -0800
+ 

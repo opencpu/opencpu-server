@@ -1,0 +1,23 @@
+#! /bin/sh
+
+set -e
+
+service opencpu-server stop || true
+
+case "$1" in
+        remove)
+			rm -Rf /usr/local/lib/opencpu/cran-library/*
+			rm -Rf /usr/local/lib/opencpu/bioc-library/*
+			rm -Rf /var/log/opencpu/*			
+        	;;
+        deconfigure|failed-upgrade|upgrade)
+        	;;
+        *)
+                echo "prerm called with unknown argument \`$1'" >&2
+                exit 1
+        ;;
+esac
+
+#DEBHELPER#
+
+exit 0
