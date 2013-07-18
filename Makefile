@@ -1,5 +1,5 @@
 all:
-	## Packages are build to the build the packages to the opencpu-admin-library
-	## we do this because Rcpp hardcodes the path to the .so file
+	## Builds the library with R packages.
+	## Note that we do not build Rcpp, we use r-cran-rcpp instead.
 	Rscript ./opencpu-lib/buildpackages.R
 
