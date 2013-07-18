@@ -1,5 +1,5 @@
 #Remove local and home libraries.
-assign(".lib.loc", c("/usr/lib/R/site-library", "/usr/lib/R/library"), envir=environment(.libPaths));
+assign(".lib.loc", c("/usr/lib/R/library"), envir=environment(.libPaths));
 
 #We link to Rcpp from r-cran-rcpp
 library(Rcpp, lib.loc="/usr/lib/R/site-library")
