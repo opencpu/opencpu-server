@@ -47,6 +47,7 @@ case "$1" in
 	reload cron
 	
 	#try to enable ssl site
+	a2enmod ssl > /dev/null 2>1 || true
 	a2ensite default-ssl > /dev/null 2>1 || true
 	
 	echo "initiating opencpu-server init script."

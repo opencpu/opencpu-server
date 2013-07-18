@@ -22,27 +22,15 @@ case "$1" in
     iptables -A OUTPUT -t nat -o lo -p tcp --dport 80 -j REDIRECT --to-ports 8006
     iptables -A OUTPUT -t nat -o lo -p tcp --dport 443 -j REDIRECT --to-ports 8007 
 
-	if [ -f /etc/apache2/sites-available/opencpu-highports ];
-	then
-		a2ensite opencpu-highports > /dev/null
-		service apache2 reload > /dev/null
-	fi    
-	
-	/usr/lib/opencpu/scripts/nginx_ensite opencpu
-	service nginx restart
+	/usr/lib/opencpu/scripts/nginx_ensite opencpu > /var/log/opencpu/opencpu-cache.log
+	service nginx reload
 	
 	echo "OK"
 	;;
   stop)
     echo "Disabling caching server..."
-    
-	if [ -f /etc/apache2/sites-available/opencpu-highports ];
-	then    
-	    a2dissite opencpu-highports > /dev/null
-	    service apache2 reload > /dev/null
-	fi
 
-    /usr/lib/opencpu/scripts/nginx_dissite opencpu
+    /usr/lib/opencpu/scripts/nginx_dissite opencpu > /var/log/opencpu/opencpu-cache.log
     service nginx restart
     
     echo "Flushing cache..."
