@@ -13,14 +13,12 @@
 case "$1" in
   start)
     rm -f /tmp/repos_http*.rds
-    /usr/lib/opencpu/scripts/killorphans.sh
 	a2ensite opencpu > /dev/null
 	service apache2 start > /dev/null #just in case its not running
 	service apache2 reload
 	echo "opencpu enabled"
     ;;
   stop)
-    kill $(pgrep killorphans.sh)
 	a2dissite opencpu > /dev/null
 	service apache2 restart
 	echo "opencpu disabled"

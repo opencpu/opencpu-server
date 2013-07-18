@@ -27,33 +27,32 @@ case "$1" in
 	    cp -f /usr/lib/opencpu/library/ocpu/config/defaults.conf /etc/opencpu/server.conf
 	fi	
 	
-	#chmod shell scripts
-	chmod +x /usr/lib/opencpu/scripts/*.sh
-	
-	#force reload the cron job in /etc/init.d. Should be necessary but never harms:
-	reload cron
-	
-	#create log file
+	echo "creating log files."
 	touch /var/log/opencpu/access.log
 	touch /var/log/opencpu/error.log
 	
-	#take ownership of some files
+	echo "taking ownership of system directories."
 	chown -Rf opencpu /var/log/opencpu
 	chgrp -Rf opencpu /var/log/opencpu	
 	chown -Rf opencpu /etc/opencpu
 	chgrp -Rf opencpu /etc/opencpu	
 	chown -Rf opencpu /usr/lib/opencpu/
 	chgrp -Rf opencpu /usr/lib/opencpu/
-	chown -Rf opencpu /usr/local/lib/opencpu/
-	chgrp -Rf opencpu /usr/local/lib/opencpu/	
+
+	echo "making scripts executable."
+	chmod +x /usr/lib/opencpu/scripts/*.sh
 	
-	#init service
+	#force reload the cron job in /etc/init.d. Should be necessary but never harms:
+	echo "reloading cron.d"
+	reload cron
+	
+	echo "initiating opencpu-server init script."
 	chmod 755 /etc/init.d/opencpu-server
 	update-rc.d opencpu-server defaults
 	service opencpu-server start
 	
 	#try to display host ip address
-	echo "Installation done. Point your browser to http://[server-ip]/R"
+	echo "Installation done."
 	/usr/lib/opencpu/scripts/showip.sh	
     ;;
   abort-upgrade | abort-remove | abort-deconfigure)

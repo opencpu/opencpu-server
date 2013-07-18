@@ -24,8 +24,8 @@ case "$1" in
 
 	if [ -f /etc/apache2/sites-available/opencpu-highports ];
 	then
-		a2ensite opencpu-highports
-		service apache2 restart
+		a2ensite opencpu-highports > /dev/null
+		service apache2 reload > /dev/null
 	fi    
 	
 	/usr/lib/opencpu/scripts/nginx_ensite opencpu
@@ -38,8 +38,8 @@ case "$1" in
     
 	if [ -f /etc/apache2/sites-available/opencpu-highports ];
 	then    
-	    a2dissite opencpu-highports
-	    service apache2 restart
+	    a2dissite opencpu-highports > /dev/null
+	    service apache2 reload > /dev/null
 	fi
 
     /usr/lib/opencpu/scripts/nginx_dissite opencpu
@@ -60,9 +60,9 @@ case "$1" in
     
     echo "OK"  
     ;;
-  restart)
+  restart | force-reload)
 	$0 stop
-	$0 start    
+	$0 start
 	;;
   wipe)
     iptables -F
