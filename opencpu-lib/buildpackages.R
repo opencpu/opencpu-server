@@ -14,4 +14,4 @@ library(tools);
 write_PACKAGES(sourcedir)
 
 #install
-install.packages(c("ocpu", "RAppArmor"), dependencies=TRUE, type="source", lib=destdir, contriburl=paste("file://", sourcedir, sep=""));
+install.packages(c("ocpu", "RAppArmor"), dependencies=TRUE, type="source", lib=destdir, contriburl=paste0("file://", sourcedir));

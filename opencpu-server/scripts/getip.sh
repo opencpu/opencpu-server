@@ -8,7 +8,7 @@ fi
 
 if [ "$IPADDR" = "" ]
 then
-	IPADDR=`curl --connect-timeout 1 --max-time 2 http://www.jsonip.com 2> /dev/null | egrep -o "[0-9\.]*"`
+	IPADDR=`curl --connect-timeout 1 --max-time 2 http://www.jsonip.com 2> /dev/null | egrep -o "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}"`
 fi
 
 if [ "$IPADDR" = "" ]
