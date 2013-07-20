@@ -1,7 +1,8 @@
-#Remove local and home libraries.
+#Remove local and home libraries to make sure we only depends on base and recommended packages.
 assign(".lib.loc", c("/usr/lib/R/library"), envir=environment(.libPaths));
 
-#We link to Rcpp from r-cran-rcpp
+#Load Rcpp (to compile httpuv)
+#Note that httpuv will not be used by rApache. However it is needed to test-load the package after installation.
 library(Rcpp, lib.loc="/usr/lib/R/site-library")
 
 #this dir contains the source packages

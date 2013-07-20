@@ -1,0 +1,46 @@
+profile ocpu-main {
+	#include <abstractions/base>
+	#include <abstractions/nameservice>
+
+	capability kill,
+	capability net_bind_service,
+	capability sys_tty_config,
+
+	@{HOME}/ r,
+	@{HOME}/R/ r,
+	@{HOME}/R/{i686,x86_64}-pc-linux-gnu-library/ r,	
+	@{HOME}/R/{i686,x86_64}-pc-linux-gnu-library/** mrix,
+	@{HOME}/R/share/** mrix,	
+
+	@{PROC}/[0-9]*/attr/current r,	
+
+	/bin/* rix,
+	/dev/tty r,	
+	/etc/R/ r,
+	/etc/R/* r,
+	/etc/fonts/** mr,
+	/etc/resolv.conf r,
+	/etc/xml/* r,
+	/usr/bin/* rix,
+	/usr/include/** r,       
+	/usr/lib/gcc/** rix,		
+	/usr/lib/R/bin/* rix,
+	/usr/lib{,32,64}/** mr,
+	/usr/lib{,32,64}/R/bin/exec/R rix,
+	/usr/local/lib/R/** mr,
+	/usr/local/lib/R/site-library/** mrwix,
+	/usr/local/share/** mr,
+	/usr/share/** mr,
+	/usr/share/ca-certificates/** r,
+	
+	/tmp/ocpu-www-data/ r,
+	/tmp/ocpu-www-data/cran_library/ r,
+	/tmp/ocpu-www-data/cran_library/** mrwix,
+	/tmp/ocpu-www-data/bioc_library/ r,
+	/tmp/ocpu-www-data/bioc_library/** mrwix,
+	/tmp/ocpu-www-data/gist_library/ r,
+	/tmp/ocpu-www-data/gist_library/** mrwix,
+	/tmp/ocpu-www-data/github_library/ r,
+	/tmp/ocpu-www-data/github_library/** mrwix,	
+	/tmp/ocpu-www-data/ocpu_temp/ocpu_tmp*/** mrwix,				
+}

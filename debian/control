@@ -2,12 +2,12 @@ Source: opencpu
 Section: gnu-r
 Priority: optional
 Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>
-Build-Depends: r-base-core (>= 3.0), r-base-dev (>= 3.0), r-cran-rcpp (>= 0.10.3), apache2-prefork-dev, libapparmor-dev, libcurl4-openssl-dev, language-pack-en, xvfb, xauth, xfonts-base, debhelper (>> 4.1.0)
+Build-Depends: r-base-core (>= 3.0), r-base-dev (>= 3.0), apache2-prefork-dev, libapparmor-dev, r-cran-rcpp (>= 0.10.2), libcurl4-openssl-dev, xvfb, xauth, xfonts-base, debhelper (>> 4.1.0)
 Standards-Version: 3.9.4
 
 Package: opencpu-server
 Architecture: all
-Depends: libapache2-mod-r-base (>= 1.2.4), opencpu-lib, apache2-mpm-prefork, apparmor-utils, ssl-cert, language-pack-en
+Depends: libapache2-mod-r-base (>= 1.2.4), opencpu-lib, apache2-mpm-prefork, apparmor-utils, ssl-cert
 Description: The OpenCPU REST api for R. See www.opencpu.org for more information.
 
 Package: opencpu-cache
@@ -17,7 +17,7 @@ Description: Cache server and load balancer for opencpu.
 
 Package: opencpu-lib
 Architecture: any
-Depends: r-base-dev (>= 3.0), r-base-core (>= 3.0), r-cran-rcpp (>= 0.10.3), libc6
+Depends: r-base-dev (>= 3.0), r-base (>= 3.0), r-cran-rcpp, libc6
 Description: Package containing the platform specific R package buids.
 
 Package: opencpu-tex
