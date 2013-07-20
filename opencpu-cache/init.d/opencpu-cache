@@ -12,6 +12,8 @@
 # Carry out specific functions when asked to by the system
 case "$1" in
   start)
+  	#just in case nginx isnt started yet
+	service nginx start > /var/log/opencpu/opencpu-cache.log
 
     iptables -A INPUT -p tcp --dport 80 -j ACCEPT
     iptables -A INPUT -p tcp --dport 443 -j ACCEPT

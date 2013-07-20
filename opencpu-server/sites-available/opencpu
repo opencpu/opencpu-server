@@ -5,7 +5,7 @@
 <IfModule mod_R.c>
 
 	#Disable this for development
-	REvalOnStartup ".libPaths('/usr/lib/opencpu/library');"
+	REvalOnStartup ".libPaths('/usr/lib/opencpu/library'); try(.Call(parallel:::C_mc_interactive, FALSE));"
 	MaxRequestsPerChild 200
 	
 	<Location /ocpu>
