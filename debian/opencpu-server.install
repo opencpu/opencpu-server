@@ -3,3 +3,4 @@ opencpu-server/init.d/* /etc/init.d/
 opencpu-server/cron.d/* /etc/cron.d/
 opencpu-server/apparmor.d/* /etc/apparmor.d/
 opencpu-server/scripts/* /usr/lib/opencpu/scripts/
+opencpu-server/server.conf.d/* /etc/opencpu/server.conf.d/

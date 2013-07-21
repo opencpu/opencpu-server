@@ -34,7 +34,6 @@ case "$1" in
 	  #remove dirs with custom content
 	  rm -Rf /etc/opencpu
 	  rm -Rf /usr/lib/opencpu 
-	  rm -Rf /usr/local/lib/opencpu 
 	  rm -Rf /var/log/opencpu  
     ;;    
   disappear | upgrade | failed-upgrade | abort-upgrade)

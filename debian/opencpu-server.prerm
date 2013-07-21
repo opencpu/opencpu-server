@@ -6,8 +6,6 @@ service opencpu-server stop || true
 
 case "$1" in
         remove)
-			rm -Rf /usr/local/lib/opencpu/cran-library/*
-			rm -Rf /usr/local/lib/opencpu/bioc-library/*
 			rm -Rf /var/log/opencpu/*			
         	;;
         deconfigure|failed-upgrade|upgrade)

@@ -3,5 +3,3 @@ etc/opencpu/server.conf.d
 var/log/opencpu
 usr/lib/opencpu
 usr/local/lib/opencpu
-usr/local/lib/opencpu/cran-library
-usr/local/lib/opencpu/bioc-library
