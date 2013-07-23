@@ -13,9 +13,11 @@ profile ocpu-main {
 	@{HOME}/R/share/** mrix,	
 
 	@{PROC}/[0-9]*/attr/current r,	
+	@{PROC}/[0-9]*/loginuid r,	
 
 	/bin/* rix,
-	/dev/tty r,	
+	/dev/tty rw,	
+	/etc/opencpu/** r,
 	/etc/R/ r,
 	/etc/R/* r,
 	/etc/fonts/** mr,
@@ -23,7 +25,8 @@ profile ocpu-main {
 	/etc/xml/* r,
 	/usr/bin/* rix,
 	/usr/include/** r,       
-	/usr/lib/gcc/** rix,		
+	/usr/lib/gcc/** rix,
+	/usr/lib/opencpu/** rmix,		
 	/usr/lib/R/bin/* rix,
 	/usr/lib{,32,64}/** mr,
 	/usr/lib{,32,64}/R/bin/exec/R rix,
@@ -32,15 +35,23 @@ profile ocpu-main {
 	/usr/local/share/** mr,
 	/usr/share/** mr,
 	/usr/share/ca-certificates/** r,
+	/var/cache/fontconfig/** r,
+	/var/www/ r,
 	
-	/tmp/ocpu-www-data/ r,
-	/tmp/ocpu-www-data/cran_library/ r,
-	/tmp/ocpu-www-data/cran_library/** mrwix,
-	/tmp/ocpu-www-data/bioc_library/ r,
-	/tmp/ocpu-www-data/bioc_library/** mrwix,
-	/tmp/ocpu-www-data/gist_library/ r,
-	/tmp/ocpu-www-data/gist_library/** mrwix,
-	/tmp/ocpu-www-data/github_library/ r,
-	/tmp/ocpu-www-data/github_library/** mrwix,	
-	/tmp/ocpu-www-data/ocpu_temp/ocpu_tmp*/** mrwix,				
+	## R CMD INSTALL ignores current session and always uses /tmp
+	/{tmp,mnt}/** mrwix,	
+	
+	## To build packages we need to execute ./configure and load them
+	/{tmp,mnt}/ocpu-temp/** mrwix,
+	
+	/{tmp,mnt}/ocpu-www-data/ r,
+	/{tmp,mnt}/ocpu-www-data/cran_library/ r,
+	/{tmp,mnt}/ocpu-www-data/cran_library/** mrwix,
+	/{tmp,mnt}/ocpu-www-data/bioc_library/ r,
+	/{tmp,mnt}/ocpu-www-data/bioc_library/** mrwix,
+	/{tmp,mnt}/ocpu-www-data/gist_library/ r,
+	/{tmp,mnt}/ocpu-www-data/gist_library/** mrwix,
+	/{tmp,mnt}/ocpu-www-data/github_library/ r,
+	/{tmp,mnt}/ocpu-www-data/github_library/** mrwix,	
+	/{tmp,mnt}/ocpu-www-data/ocpu_temp/** mrwix,				
 }

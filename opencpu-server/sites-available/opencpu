@@ -4,14 +4,15 @@
 
 <IfModule mod_R.c>
 
-	#Disable this for development
-	REvalOnStartup ".libPaths('/usr/lib/opencpu/library'); try(.Call(parallel:::C_mc_interactive, FALSE));"
+	RSourceOnStartup "/usr/lib/opencpu/rapache/onstartup.R"
 	MaxRequestsPerChild 200
 	
 	<Location /ocpu>
 		SetHandler r-handler
 		RHandler ocpu:::rapachehandler
 	</Location>
+	
+	Alias /favicon.ico /usr/lib/opencpu/rapache/favicon.ico
 
 </IfModule>
 

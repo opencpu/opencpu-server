@@ -50,6 +50,9 @@ case "$1" in
 	a2enmod ssl > /dev/null 2>1 || true
 	a2ensite default-ssl > /dev/null 2>1 || true
 	
+	#reload apparmor
+	service apparmor reload 2> /dev/null
+	
 	echo "initiating opencpu-server init script."
 	chmod 755 /etc/init.d/opencpu-server
 	update-rc.d opencpu-server defaults
