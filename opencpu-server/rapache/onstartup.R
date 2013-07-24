@@ -10,7 +10,10 @@ unixtools::set.tempdir("/tmp/ocpu-temp");
 options(configure.vars = paste0("TMPDIR=", tempdir()));
 options(rapache=TRUE);
 
-#HW limits. Better to set later on in eval.secure.
+#Load RAppArmor while it is in .libPaths.
+getNamespace("RAppArmor")
+
+#Better defer HW limits to later on (eval.secure).
 #RAppArmor::rlimit_as(1024^3, verbose=TRUE);
 #RAppArmor::rlimit_nproc(50, verbose=TRUE);
 #RAppArmor::aa_change_profile("ocpu-main");
