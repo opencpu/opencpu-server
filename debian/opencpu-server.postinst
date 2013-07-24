@@ -47,11 +47,11 @@ case "$1" in
 	reload cron
 	
 	#try to enable ssl site
-	a2enmod ssl > /dev/null 2>1 || true
-	a2ensite default-ssl > /dev/null 2>1 || true
+	a2enmod ssl 2>&1 >/dev/null | grep -i  'error' || true
+	a2ensite default-ssl 2>&1 >/dev/null | grep -i  'error' || true
 	
 	#reload apparmor
-	service apparmor reload 2> /dev/null
+	service apparmor reload 2>&1 >/dev/null | grep -i  'error' || true
 	
 	echo "initiating opencpu-server init script."
 	chmod 755 /etc/init.d/opencpu-server
@@ -60,7 +60,7 @@ case "$1" in
 	
 	#try to display host ip address
 	echo "Installation done."
-	/usr/lib/opencpu/scripts/showip.sh	
+	/usr/lib/opencpu/scripts/showip.sh || true
     ;;
   abort-upgrade | abort-remove | abort-deconfigure)
     :

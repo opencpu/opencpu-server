@@ -13,14 +13,14 @@
 case "$1" in
   start)
     rm -f /tmp/repos_http*.rds
-	a2ensite opencpu > /dev/null
-	service apache2 start > /dev/null #just in case its not running
+	a2ensite opencpu 2>&1 >/dev/null | grep -i  'error' || true
+	service apache2 start 2>&1 >/dev/null | grep -i  'error' || true
 	service apache2 reload
 	echo "opencpu enabled"
     ;;
   stop)
-	a2dissite opencpu > /dev/null
-	service apache2 restart
+	a2dissite opencpu 2>&1 >/dev/null | grep -i  'error' || true
+	service apache2 restart 2>&1 >/dev/null | grep -i  'error' || true
 	echo "opencpu disabled"
     ;;
   restart | force-reload)

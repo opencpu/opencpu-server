@@ -1,0 +1,7 @@
+## Part of debian opencpu-server package.
+## Author: Jeroen Ooms
+
+#include <tunables/global>
+profile opencpu-exec {
+	#include <opencpu.d/base>
+}

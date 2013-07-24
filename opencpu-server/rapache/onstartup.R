@@ -10,7 +10,7 @@ unixtools::set.tempdir("/tmp/ocpu-temp");
 options(configure.vars = paste0("TMPDIR=", tempdir()));
 options(rapache=TRUE);
 
-#Set some hw limits
-RAppArmor::rlimit_as(1024^3, verbose=TRUE);
-RAppArmor::rlimit_nproc(50, verbose=TRUE);
-RAppArmor::aa_change_profile("ocpu-main");
+#HW limits. Better to set later on in eval.secure.
+#RAppArmor::rlimit_as(1024^3, verbose=TRUE);
+#RAppArmor::rlimit_nproc(50, verbose=TRUE);
+#RAppArmor::aa_change_profile("ocpu-main");

@@ -10,7 +10,7 @@ case "$1" in
       # Removing OpenCPU User.
       if grep -s -q "^opencpu:" /etc/passwd; then
         echo "Removing user opencpu..."
-        userdel opencpu
+        userdel opencpu 2>&1 >/dev/null | grep -i  'error' || true
       else
         echo "User opencpu already removed."
       fi	
@@ -18,23 +18,23 @@ case "$1" in
       # Removing OpenCPU Admin User.
       if grep -s -q "^opencpu-admin:" /etc/passwd; then
         echo "Removing user opencpu-admin..."
-        userdel opencpu-admin
+        userdel opencpu-admin 2>&1 >/dev/null | grep -i  'error' || true
       else
         echo "User opencpu-admin already removed."
       fi	            
 
 	  #force reload the cron job in /etc/init.d. Should be necessary but never harms:
-	  reload cron	  
+	  reload cron || true  
 	  
 	  #restart Apache.
-      service apache2 restart
+      service apache2 restart 2>&1 >/dev/null | grep -i  'error' || true
     ;;
   purge)
     :
 	  #remove dirs with custom content
-	  rm -Rf /etc/opencpu
-	  rm -Rf /usr/lib/opencpu 
-	  rm -Rf /var/log/opencpu  
+	  rm -Rf /etc/opencpu || true
+	  rm -Rf /usr/lib/opencpu || true
+	  rm -Rf /var/log/opencpu  || true
     ;;    
   disappear | upgrade | failed-upgrade | abort-upgrade)
     :

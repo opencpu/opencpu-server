@@ -6,7 +6,7 @@ service opencpu-server stop || true
 
 case "$1" in
         remove)
-			rm -Rf /var/log/opencpu/*			
+			rm -Rf /var/log/opencpu/* || true		
         	;;
         deconfigure|failed-upgrade|upgrade)
         	;;
