@@ -4,6 +4,9 @@ capability net_bind_service,
 @{PROC}/[0-9]*/attr/current w,	
 @{PROC}/[0-9]*/loginuid r,	
 
+## The github secret
+/etc/opencpu/secret.conf r,
+
 ## To build packages we need to execute ./configure and load them
 ## R CMD INSTALL ignores TMPDIR and always uses /tmp
 /{tmp,mnt}/** kmrwix,	
