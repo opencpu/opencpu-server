@@ -11,7 +11,7 @@
 
 # Carry out specific functions when asked to by the system
 case "$1" in
-  start)
+  start | restart)
     rm -f /tmp/repos_http*.rds
 	a2ensite opencpu 2>&1 >/dev/null | grep -i  'error' || true
 	service apache2 restart || true
@@ -22,7 +22,7 @@ case "$1" in
 	service apache2 restart 2>&1 >/dev/null | grep -i  'error' || true
 	echo "opencpu disabled"
     ;;
-  restart | force-reload)
+  force-reload)
 	$0 stop
 	$0 start
 	;;

@@ -7,7 +7,12 @@ try(.Call(parallel:::C_mc_interactive, FALSE));
 #override temp directory
 dir.create("/tmp/ocpu-temp", showWarnings = FALSE, recursive = TRUE, mode = "0777");
 unixtools::set.tempdir("/tmp/ocpu-temp");
+
+#These are needed for install packages
+Sys.setenv(TMPDIR = "/tmp/ocpu-temp")
 options(configure.vars = paste0("TMPDIR=", tempdir()));
+
+#we use this later
 options(rapache=TRUE);
 
 #Load RAppArmor while it is in .libPaths.
