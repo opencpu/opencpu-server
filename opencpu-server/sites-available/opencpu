@@ -9,7 +9,7 @@
 	
 	<Location /ocpu>
 		SetHandler r-handler
-		RHandler ocpu:::rapachehandler
+		RHandler opencpu:::rapachehandler
 	</Location>
 	
 	Alias /favicon.ico /usr/lib/opencpu/rapache/favicon.ico

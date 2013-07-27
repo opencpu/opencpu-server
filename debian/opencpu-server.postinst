@@ -24,7 +24,7 @@ case "$1" in
 	#copy the config file	
 	if [ ! -e /etc/opencpu/server.conf ]
 	then
-	    cp -f /usr/lib/opencpu/library/ocpu/config/defaults.conf /etc/opencpu/server.conf
+	    cp -f /usr/lib/opencpu/library/opencpu/config/defaults.conf /etc/opencpu/server.conf
 	fi	
 	
 	echo "creating log files."
