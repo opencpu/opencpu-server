@@ -5,6 +5,7 @@
 profile opencpu-main {
 	#include <opencpu.d/base>
 	#include <opencpu.d/server>	
+	#include <opencpu.d/custom>	
 	
 	change_profile -> opencpu-exec,			
 }

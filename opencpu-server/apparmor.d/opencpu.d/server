@@ -1,19 +1,23 @@
 capability kill,
 capability net_bind_service,
 
-@{PROC}/[0-9]*/attr/current w,	
-@{PROC}/[0-9]*/loginuid r,	
+@{PROC}/[0-9]*/attr/current w,
+@{PROC}/[0-9]*/loginuid r,
 
 ## The github secret
 /etc/opencpu/secret.conf r,
 
-## To build packages we need to execute ./configure and load them
-## R CMD INSTALL ignores TMPDIR and always uses /tmp
-/{tmp,mnt}/** kmrwix,	
+## Before, R CMD INSTALL would ignore tempdir() and use /tmp anyway, but this is fixed now.
+## /{tmp,mnt}/** kmrwix,
 
 ## These are repo libraries
+/{tmp,mnt}/ocpu-www-data/** w,
 /{tmp,mnt}/ocpu-www-data/cran_library/** w,
 /{tmp,mnt}/ocpu-www-data/bioc_library/** w,
 /{tmp,mnt}/ocpu-www-data/gist_library/** w,
-/{tmp,mnt}/ocpu-www-data/github_library/** w,	
-/{tmp,mnt}/ocpu-www-data/tmp_library/** w,	
+/{tmp,mnt}/ocpu-www-data/github_library/** w,
+/{tmp,mnt}/ocpu-www-data/tmp_library/** w,
+
+## Needed to --test-load installed packages
+/{tmp,mnt}/ocpu-temp/ rw,
+/{tmp,mnt}/ocpu-temp/** rwkmix,

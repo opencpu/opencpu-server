@@ -2,7 +2,7 @@
 
 set -e
 
-service opencpu-server stop || true
+service opencpu stop || true
 
 case "$1" in
         remove)

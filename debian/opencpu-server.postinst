@@ -43,7 +43,7 @@ case "$1" in
 	chmod +x /usr/lib/opencpu/scripts/*.sh
 	
 	#force reload the cron job in /etc/init.d. Should be necessary but never harms:
-	echo "reloading cron.d"
+	echo "reloading cron"
 	reload cron
 	
 	#try to enable ssl site
@@ -51,12 +51,13 @@ case "$1" in
 	a2ensite default-ssl 2>&1 >/dev/null | grep -i  'error' || true
 	
 	#reload apparmor
+	echo "reloading apparmor"
 	service apparmor reload 2>&1 >/dev/null | grep -i  'error' || true
 	
-	echo "initiating opencpu-server init script."
-	chmod 755 /etc/init.d/opencpu-server
-	update-rc.d opencpu-server defaults
-	service opencpu-server start
+	echo "installing opencpu init script."
+	chmod 755 /etc/init.d/opencpu
+	update-rc.d opencpu defaults
+	service opencpu start
 	
 	#try to display host ip address
 	echo "Installation done."

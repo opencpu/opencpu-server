@@ -4,4 +4,5 @@
 #include <tunables/global>
 profile opencpu-exec {
 	#include <opencpu.d/base>
+	#include <opencpu.d/custom>
 }

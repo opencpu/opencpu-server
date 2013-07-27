@@ -13,7 +13,7 @@
 case "$1" in
   start)
   	#just in case nginx isnt started yet
-	service nginx start > /var/log/opencpu/opencpu-cache.log
+	service nginx start 2>&1 >/dev/null | grep -i  'error' || true
 
     iptables -A INPUT -p tcp --dport 80 -j ACCEPT
     iptables -A INPUT -p tcp --dport 443 -j ACCEPT
@@ -32,7 +32,7 @@ case "$1" in
   stop)
     echo "Disabling caching server..."
 
-    /usr/lib/opencpu/scripts/nginx_dissite opencpu > /var/log/opencpu/opencpu-cache.log
+    /usr/lib/opencpu/scripts/nginx_dissite opencpu 2>&1 >/dev/null | grep -i  'error' || true
     service nginx restart
     
     echo "Flushing cache..."

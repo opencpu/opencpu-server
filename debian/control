@@ -25,7 +25,12 @@ Architecture: all
 Depends: pandoc, texinfo, texlive-base, texlive-latex-base, texlive-generic-recommended, texinfo-doc-nonfree, texlive-latex-recommended, texlive-latex-extra, texlive-fonts-extra, texlive-fonts-recommended
 Description: Meta package with tex and pandoc dependencies.
 
+Package: opencpu
+Architecture: all
+Depends: opencpu-server, opencpu-cache
+Description: Meta package for opencpu. Installs both the API and caching server.
+
 Package: opencpu-full
 Architecture: all
 Depends: opencpu-server, opencpu-cache, opencpu-tex 
-Description: Meta package for opencpu. Installs both the API and caching server.
+Description: Meta package for opencpu. Installs lots of latex stuff as well.
