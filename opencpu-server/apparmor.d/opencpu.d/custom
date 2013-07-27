@@ -1,0 +1,4 @@
+## This file is to add custom apparmor policy rules.
+## You can add rules if your favorite packages need special privileges.
+
+/some/custom/special/dir rw,
