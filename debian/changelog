@@ -1,4 +1,4 @@
-opencpu (0.8.0-raring28) raring; urgency=low
+opencpu (0.8.0-raring32) raring; urgency=low
 
   * Debian package with OpenCPU software.
 
