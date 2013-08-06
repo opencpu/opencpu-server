@@ -7,6 +7,9 @@ capability net_bind_service,
 ## The github secret
 /etc/opencpu/secret.conf r,
 
+## List users on the system
+/home/ r,
+
 ## Before, R CMD INSTALL would ignore tempdir() and use /tmp anyway, but this is fixed now.
 ## /{tmp,mnt}/** kmrwix,
 
