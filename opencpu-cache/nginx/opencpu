@@ -1,12 +1,14 @@
 server {
 	listen 8006; 
-	include /etc/nginx/opencpu/opencpu-locations.conf;	
+  port_in_redirect off;	
+	include /etc/nginx/opencpu/opencpu-local.conf;	
+	include /etc/nginx/opencpu/opencpu-ocpu.conf;	
 }
 		
 # HTTPS server
 server {
 	listen 8007;
-	#server_name localhost;
+  port_in_redirect off; 	
 	
 	ssl on;
 	ssl_certificate /etc/ssl/certs/ssl-cert-snakeoil.pem;
@@ -18,5 +20,6 @@ server {
 	ssl_ciphers ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv3:+EXP;
 	ssl_prefer_server_ciphers on;
 	
-	include /etc/nginx/opencpu/opencpu-locations.conf;
+  include /etc/nginx/opencpu/opencpu-local.conf;  
+  include /etc/nginx/opencpu/opencpu-ocpu.conf;
 }
