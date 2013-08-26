@@ -21,11 +21,11 @@ case "$1" in
 	  useradd opencpu-admin --system -U -d/tmp -c"OpenCPU Admin"
 	fi		
 	
-	#copy the config file	
-	if [ ! -e /etc/opencpu/server.conf ]
-	then
-	    cp -f /usr/lib/opencpu/library/opencpu/config/defaults.conf /etc/opencpu/server.conf
-	fi	
+	### config file is now copied by opencpu-server.install 
+	#if [ ! -e /etc/opencpu/server.conf ]
+	#then
+	#    cp -f /usr/lib/opencpu/library/opencpu/config/defaults.conf /etc/opencpu/server.conf
+	#fi	
 	
 	echo "creating log files."
 	touch /var/log/opencpu/access.log

@@ -35,7 +35,7 @@ capability sys_tty_config,
 /usr/local/lib/R/** mrix,
 /usr/local/share/** mr,
 /usr/share/** mrix,
-/var/cache/fontconfig/ r,
+/var/cache/fontconfig/ rw,
 /var/cache/fontconfig/** r,
 /var/lib/tex*/** mrix,
 	
