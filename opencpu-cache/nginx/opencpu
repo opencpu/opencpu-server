@@ -1,6 +1,7 @@
 server {
 	listen 8006; 
-  port_in_redirect off;	
+	port_in_redirect off;
+	client_max_body_size 500m;	
 	include /etc/nginx/opencpu/opencpu-local.conf;	
 	include /etc/nginx/opencpu/opencpu-ocpu.conf;	
 }
@@ -8,7 +9,8 @@ server {
 # HTTPS server
 server {
 	listen 8007;
-  port_in_redirect off; 	
+	port_in_redirect off;
+	client_max_body_size 500m; 	
 	
 	ssl on;
 	ssl_certificate /etc/ssl/certs/ssl-cert-snakeoil.pem;
