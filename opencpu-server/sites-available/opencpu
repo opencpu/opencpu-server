@@ -21,7 +21,6 @@
 ## Note: connect from external host, change 'Allow From' line. #
 ################################################################
 
-NameVirtualHost *:8004
 Listen 8004
 <VirtualHost *:8004>
 
