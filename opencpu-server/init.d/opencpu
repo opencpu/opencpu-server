@@ -15,19 +15,29 @@ case "$1" in
     rm -f /tmp/repos_http*.rds || true	
     rm -Rf /tmp/opencpu-cache || true	  
 	a2ensite opencpu 2>&1 >/dev/null | grep -i  'error' || true
-	service apache2 restart || true
+	service apache2 restart 2>&1 >/dev/null || true
 	
 	if [ -f /etc/init.d/opencpu-cache ];
 	then
 		service nginx restart || true
 	fi
+
+	#In Apache 2.4 we need to make sure mpm_prefork is enabled
+	if command -v a2query >/dev/null 2>&1; then
+		if ! a2query -q -m mpm_prefork; then
+			echo "WARNING! Module mpm_prefork is not enabled! OpenCPU needs this MPM!"
+			echo "To enable this module: sudo a2enmod mpm_prefork"
+		fi
+	fi	
 		
-	echo "opencpu enabled"
+	#try to display host ip address
+	echo "OpenCPU Cloud Server Enabled."
+	/usr/lib/opencpu/scripts/showip.sh || true
     ;;
   stop)
 	a2dissite opencpu 2>&1 >/dev/null | grep -i  'error' || true
 	service apache2 restart 2>&1 >/dev/null | grep -i  'error' || true
-	echo "opencpu disabled"
+	echo "OpenCPU Cloud Server Disabled."
     ;;
   force-reload)
 	$0 stop

@@ -20,7 +20,7 @@ case "$1" in
 	  echo "Adding user opencpu-admin..."
 	  useradd opencpu-admin --system -U -d/tmp -c"OpenCPU Admin"
 	fi		
-	
+
 	### config file is now copied by opencpu-server.install 
 	#if [ ! -e /etc/opencpu/server.conf ]
 	#then
@@ -46,6 +46,20 @@ case "$1" in
 	echo "reloading cron"
 	reload cron
 	
+	#In Apache 2.4 we need to make sure mpm_prefork is enabled
+	if command -v a2query >/dev/null 2>&1; then
+		if a2query -q -m mpm_event; then
+			a2dismod mpm_event || true
+		fi
+		if a2query -q -m mpm_worker; then
+			a2dismod mpm_worker || true
+		fi
+		if a2query -q -m mpm_itk; then
+			a2dismod mpm_itk || true
+		fi
+		a2enmod mpm_prefork || true
+	fi
+
 	#try to enable ssl site
 	a2enmod ssl 2>&1 >/dev/null | grep -i  'error' || true
 	a2ensite default-ssl 2>&1 >/dev/null | grep -i  'error' || true
@@ -59,9 +73,8 @@ case "$1" in
 	update-rc.d opencpu defaults
 	service opencpu start
 	
-	#try to display host ip address
+	#done
 	echo "Installation done."
-	/usr/lib/opencpu/scripts/showip.sh || true
     ;;
   abort-upgrade | abort-remove | abort-deconfigure)
     :
