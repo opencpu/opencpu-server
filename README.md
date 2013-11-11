@@ -1,25 +1,28 @@
 OpenCPU Cloud Server
 --------------------
 
-Install on Ubuntu (12.04 and up):
+This repository contains the sources for the opencpu cloud server. It currently only builds on Ubuntu 12.04 and up. It builds the following packages:
 
-    sudo add-apt-repository ppa:opencpu/opencpu-0.8
-    sudo apt-get update
-    sudo apt-get install opencpu
+ * `opencpu-server` - rApache based opencpu cloud server
+ * `opencpu-cache` - nginx based reverse proxy with caching
+ * `opencpu` - meta package which installs both opencpu-server and opencpu-cache
+ * `opencpu-tex`- meta package which installs a lot of latex stuff thats nice to have on an opencpu server.
 
-OpenCPU server will run at http://localhost/ocpu by default.
-    
-To stop/start/restart server:
+###Dependencies
 
-    sudo service opencpu restart
-    
-To stop/start/restart caching-server:
+All of the dependencies are defined in the [control file](https://github.com/jeroenooms/opencpu-deb/blob/master/debian/control). They include:
 
-    sudo service opencpu-cache stop
-    
-To configure the server, edit the file
+ * `r-base-dev`
+ * `libapparmor-dev`
+ * `apache2`
+ * `libapache2-mod-r-base`
  
-    /etc/opencpu/server.conf
+Note that the last one (rApache) does not ship with Ubuntu. You can get it at http://rapache.net/.
 
-And afterwards restart the server. 
+###Building
+
+To build the binary packages:
+
+    debuild -us -uc
     
+That's it :) If all goes well the .deb packages are ready to be installed :)    
