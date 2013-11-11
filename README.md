@@ -23,6 +23,7 @@ Note that the last one (rApache) does not ship with Ubuntu. You can get it at ht
 
 To build the binary packages:
 
+    cd opencpu-deb
     debuild -us -uc
     
 That's it :) If all goes well the .deb packages are ready to be installed :)    
