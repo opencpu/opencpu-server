@@ -10,6 +10,7 @@ options(rapache=TRUE);
 #Load RAppArmor while it is in .libPaths.
 getNamespace("RAppArmor")
 getNamespace("unixtools")
+getNamespace("sendmailR")
 
 #Better defer overriding tempdir to later
 #dir.create("/tmp/ocpu-temp", showWarnings = FALSE, recursive = TRUE, mode = "0777");

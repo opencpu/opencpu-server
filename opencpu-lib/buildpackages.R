@@ -15,4 +15,4 @@ library(tools);
 write_PACKAGES(sourcedir)
 
 #install
-install.packages(c("opencpu", "RAppArmor", "unixtools"), dependencies=TRUE, type="source", lib=destdir, contriburl=paste0("file://", sourcedir));
+install.packages(c("opencpu", "RAppArmor", "unixtools", "sendmailR"), dependencies=TRUE, type="source", lib=destdir, contriburl=paste0("file://", sourcedir));
