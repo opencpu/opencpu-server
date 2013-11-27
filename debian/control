@@ -32,5 +32,5 @@ Description: Meta package for opencpu. Installs both the API and caching server.
 
 Package: opencpu-full
 Architecture: all
-Depends: opencpu-server, opencpu-cache, opencpu-tex 
+Depends: opencpu-server, opencpu-cache, opencpu-tex, mail-transport-agent
 Description: Meta package for opencpu. Installs lots of latex stuff as well.
