@@ -15,6 +15,7 @@ capability sys_tty_config,
 
 /bin/* rix,
 /dev/tty rw,	
+/etc/mailcap r,
 /etc/opencpu/server.conf r,
 /etc/opencpu/server.conf.d/ r,
 /etc/opencpu/server.conf.d/* r,
