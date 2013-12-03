@@ -13,6 +13,9 @@ capability net_bind_service,
 ## Before, R CMD INSTALL would ignore tempdir() and use /tmp anyway, but this is fixed now.
 ## /{tmp,mnt}/** kmrwix,
 
+# Workaround for g++ ignoring TMPDIR
+/{tmp,mnt}/* rw,
+
 ## These are repo libraries
 /{tmp,mnt}/ocpu-www-data/** w,
 /{tmp,mnt}/ocpu-www-data/cran_library/** w,
