@@ -1,2 +1,4 @@
 Files in /etc/opencpu/server.conf.d/ with a filename that ends in ".conf" will automatically be loaded by opencpu-server.
 These settings will override settings in /etc/opencpu/server.conf
+
+Note about ec2.conf: in order to use /mnt as the tmp dir, you need to: sudo chmod 777 /mnt
