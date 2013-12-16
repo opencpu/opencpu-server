@@ -14,6 +14,11 @@
 	
 	Alias /favicon.ico /usr/lib/opencpu/rapache/favicon.ico
 
+	#this is needed for favicon in apache 2.4
+ 	<Directory /usr/lib/opencpu/rapache>
+		Require all granted
+	</Directory>
+
 </IfModule>
 
 ################################################################
