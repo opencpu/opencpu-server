@@ -1,6 +1,9 @@
 #Disable this for development
 .libPaths('/usr/lib/opencpu/library');
 
+#default locale in apache is "C"
+Sys.setlocale(category='LC_ALL', 'en_US.UTF-8');
+
 #try to disable interactivity
 try(.Call(parallel:::C_mc_interactive, FALSE));
 
@@ -11,12 +14,3 @@ options(rapache=TRUE);
 getNamespace("RAppArmor")
 getNamespace("unixtools")
 getNamespace("sendmailR")
-
-#Better defer overriding tempdir to later
-#dir.create("/tmp/ocpu-temp", showWarnings = FALSE, recursive = TRUE, mode = "0777");
-#unixtools::set.tempdir("/tmp/ocpu-temp");
-
-#Better defer HW limits to later on (eval.secure).
-#RAppArmor::rlimit_as(1024^3, verbose=TRUE);
-#RAppArmor::rlimit_nproc(50, verbose=TRUE);
-#RAppArmor::aa_change_profile("ocpu-main");
