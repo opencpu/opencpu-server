@@ -41,6 +41,9 @@ case "$1" in
 
 	echo "making scripts executable."
 	chmod +x /usr/lib/opencpu/scripts/*.sh
+
+	#remove cron files from older versions
+	rm -f /etc/cron.d/opencpu-* || true
 	
 	#force reload the cron job in /etc/init.d. Should be necessary but never harms:
 	echo "reloading cron"
