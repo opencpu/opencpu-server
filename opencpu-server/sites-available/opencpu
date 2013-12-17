@@ -14,11 +14,14 @@
 	
 	Alias /favicon.ico /usr/lib/opencpu/rapache/favicon.ico
 
-	<IfVersion >= 2.4>
- 		<Directory /usr/lib/opencpu/rapache>
-			Require all granted
-		</Directory>
-	</IfVersion>
+	# Ubuntu 13.10 and up ship with Apache 2.4
+	<IfModule mod_version.c>
+		<IfVersion >= 2.4>
+ 			<Directory /usr/lib/opencpu/rapache>
+				Require all granted
+			</Directory>
+		</IfVersion>
+	</IfModule>
 
 </IfModule>
 
