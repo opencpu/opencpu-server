@@ -4,4 +4,5 @@ opencpu-cache/nginx/opencpu /etc/nginx/sites-available/
 opencpu-cache/nginx/opencpu-ocpu.conf /etc/nginx/opencpu/
 opencpu-cache/nginx/opencpu-local.conf /etc/nginx/opencpu/
 opencpu-cache/nginx/opencpu-pages.conf /etc/nginx/opencpu/
+opencpu-cache/nginx/rstudio.conf /etc/nginx/opencpu/
 opencpu-cache/nginx/opencpu.conf /etc/nginx/conf.d/
