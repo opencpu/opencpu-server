@@ -14,5 +14,5 @@ stopifnot(dir.create(destdir))
 library(tools);
 write_PACKAGES(sourcedir)
 
-#install
-install.packages(c("opencpu", "RAppArmor", "unixtools", "sendmailR"), dependencies=TRUE, type="source", lib=destdir, contriburl=paste0("file://", sourcedir));
+#Because of dependencies=TRUE, suggested packages sendmailR, RAppArmor and RProtoBuf are also installed.
+install.packages(c("opencpu", "unixtools"), dependencies=TRUE, type="source", lib=destdir, contriburl=paste0("file://", sourcedir));
