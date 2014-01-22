@@ -1,5 +1,6 @@
 server {
-	listen 8006; 
+	listen 8006;
+	server_name opencpu.org *.opencpu.org;
 	port_in_redirect off;
 	client_max_body_size 500m;	
 	include /etc/nginx/opencpu/opencpu-local.conf;	
@@ -9,6 +10,7 @@ server {
 # HTTPS server
 server {
 	listen 8007;
+	server_name opencpu.org *.opencpu.org;
 	port_in_redirect off;
 	client_max_body_size 500m; 	
 	
@@ -22,6 +24,7 @@ server {
 	ssl_ciphers ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv3:+EXP;
 	ssl_prefer_server_ciphers on;
 	
-  include /etc/nginx/opencpu/opencpu-local.conf;  
-  include /etc/nginx/opencpu/opencpu-ocpu.conf;
+	include /etc/nginx/opencpu/opencpu-local.conf;  
+	include /etc/nginx/opencpu/opencpu-ocpu.conf;
 }
+
