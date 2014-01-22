@@ -3,46 +3,73 @@ proxy_set_header X-forwarded-for $proxy_add_x_forwarded_for;
 
 # Instead of defaulting to opencpu.org, reject requests with invalid $host
 server {
-    listen 8006 default_server;
-    server_name "";
-    return 444;
+	listen 8006 default_server;
+	server_name "";
+	return 444;
 }
 
 server {
-    listen 8007 default_server;
-    server_name "";
-    return 444;
-    ssl on;
-    ssl_certificate /etc/ssl/certs/ssl-cert-snakeoil.pem;
-    ssl_certificate_key /etc/ssl/private/ssl-cert-snakeoil.key;
+	listen 8007 default_server;
+	server_name "";
+	return 444;
+	ssl on;
+	ssl_certificate /etc/ssl/certs/ssl-cert-snakeoil.pem;
+	ssl_certificate_key /etc/ssl/private/ssl-cert-snakeoil.key;
 }
 
 # CRAN library
 server {
-    listen  8006;
-    server_name cran.ocpu.io;
+	listen 8006;
+	server_name cran.ocpu.io;
+	port_in_redirect off;
+	client_max_body_size 200m;
 
-    location / {
-        proxy_pass http://ocpu/ocpu/cran/;
-    }
+	location / {
+		proxy_pass http://ocpu/ocpu/cran/;
+	}
+
+	location /tmp/ {
+		proxy_pass http://ocpu/ocpu/tmp/;
+	}
+
+	 proxy_redirect /ocpu/cran/ /;
+	 proxy_redirect /ocpu/tmp/ /tmp/;
 }
 
 # BioConductor library
 server {
-    listen  8006;
-    server_name bioc.ocpu.io;
+	listen 8006;
+	server_name bioc.ocpu.io;
+	port_in_redirect off;
+	client_max_body_size 200m;
 
-    location / {
-        proxy_pass http://ocpu/ocpu/bioc/;
-    }
+	location / {
+		proxy_pass http://ocpu/ocpu/bioc/;
+	}
+
+	location /tmp/ {
+		proxy_pass http://ocpu/ocpu/tmp/;
+	}
+
+	proxy_redirect /ocpu/bioc/ /;
+	proxy_redirect /ocpu/tmp/ /tmp/;
 }
 
 # Github libraries
 server {
-    listen  8006;
-    server_name ~^(?<subdomain>.+)\.ocpu\.io$;
+	listen 8006;
+	server_name ~^(?<subdomain>.+)\.ocpu\.io$;
+	port_in_redirect off;
+	client_max_body_size 200m;
 
-    location / {
-        proxy_pass http://ocpu/ocpu/github/$subdomain$request_uri/;
-    }
+	location / {
+		proxy_pass http://ocpu/ocpu/github/$subdomain$request_uri;
+	}
+
+	location /tmp/ {
+		proxy_pass http://ocpu/ocpu/tmp/;
+	}
+
+	proxy_redirect /ocpu/github/$subdomain/ /;
+	proxy_redirect /ocpu/tmp/ /tmp/;
 }
