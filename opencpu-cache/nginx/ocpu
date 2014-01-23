@@ -17,41 +17,30 @@ server {
 	ssl_certificate_key /etc/ssl/private/ssl-cert-snakeoil.key;
 }
 
+map $http_host $ocpu_repo {
+	cran.ocpu.io http://ocpu/ocpu/cran/;
+	bioc.ocpu.io http://ocpu/ocpu/bioc/;
+	lib.ocpu.io http://ocpu/ocpu/library/;
+}
+
 # CRAN library
 server {
 	listen 8006;
-	server_name cran.ocpu.io;
+	server_name cran.ocpu.io bioc.ocpu.io lib.ocpu.io;
 	port_in_redirect off;
 	client_max_body_size 200m;
 
 	location / {
-		proxy_pass http://ocpu/ocpu/cran/;
+		proxy_pass $ocpu_repo$request_uri;
 	}
 
 	location /tmp/ {
 		proxy_pass http://ocpu/ocpu/tmp/;
 	}
 
-	 proxy_redirect /ocpu/cran/ /;
-	 proxy_redirect /ocpu/tmp/ /tmp/;
-}
-
-# BioConductor library
-server {
-	listen 8006;
-	server_name bioc.ocpu.io;
-	port_in_redirect off;
-	client_max_body_size 200m;
-
-	location / {
-		proxy_pass http://ocpu/ocpu/bioc/;
-	}
-
-	location /tmp/ {
-		proxy_pass http://ocpu/ocpu/tmp/;
-	}
-
+	proxy_redirect /ocpu/cran/ /;
 	proxy_redirect /ocpu/bioc/ /;
+	proxy_redirect /ocpu/library/ /;
 	proxy_redirect /ocpu/tmp/ /tmp/;
 }
 
