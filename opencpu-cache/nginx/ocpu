@@ -20,14 +20,19 @@ server {
 map $http_host $ocpu_repo {
 	cran.ocpu.io http://ocpu/ocpu/cran/;
 	bioc.ocpu.io http://ocpu/ocpu/bioc/;
-	lib.ocpu.io http://ocpu/ocpu/library/;
-	library.ocpu.io http://ocpu/ocpu/library/;
+	demo.ocpu.io http://ocpu/ocpu/library/;
+	tmp.ocpu.io http://ocpu/ocpu/tmp/;
+}
+
+map $request_method $is_get {
+	default: "";
+	GET "true";
 }
 
 # CRAN library
 server {
 	listen 8006;
-	server_name cran.ocpu.io bioc.ocpu.io lib.ocpu.io library.ocpu.io;
+	server_name cran.ocpu.io bioc.ocpu.io demo.ocpu.io tmp.ocpu.io;
 	port_in_redirect off;
 	client_max_body_size 200m;
 
