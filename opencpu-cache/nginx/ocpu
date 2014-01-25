@@ -22,6 +22,7 @@ map $http_host $ocpu_repo {
 	bioc.ocpu.io http://ocpu/ocpu/bioc/;
 	demo.ocpu.io http://ocpu/ocpu/library/;
 	tmp.ocpu.io http://ocpu/ocpu/tmp/;
+	test.ocpu.io http://ocpu/ocpu/test/;
 }
 
 map $request_method $is_get {
@@ -32,7 +33,7 @@ map $request_method $is_get {
 # CRAN library
 server {
 	listen 8006;
-	server_name cran.ocpu.io bioc.ocpu.io demo.ocpu.io tmp.ocpu.io;
+	server_name cran.ocpu.io bioc.ocpu.io demo.ocpu.io tmp.ocpu.io test.ocpu.io;
 	port_in_redirect off;
 	client_max_body_size 200m;
 
@@ -40,14 +41,15 @@ server {
 		proxy_pass $ocpu_repo$request_uri;
 	}
 
-	location /tmp/ {
-		proxy_pass http://ocpu/ocpu/tmp/;
-	}
+	#location /tmp/ {
+	#	proxy_pass http://ocpu/ocpu/tmp/;
+	#}
 
-	proxy_redirect /ocpu/cran/ /;
-	proxy_redirect /ocpu/bioc/ /;
-	proxy_redirect /ocpu/library/ /;
-	proxy_redirect /ocpu/tmp/ /tmp/;
+	proxy_redirect /ocpu/cran/ $scheme://cran.ocpu.io/;
+	proxy_redirect /ocpu/bioc/ $scheme://bioc.ocpu.io/;
+	proxy_redirect /ocpu/library/ $scheme://demo.ocpu.io/;
+	proxy_redirect /ocpu/tmp/ $scheme://tmp.ocpu.io/;
+	proxy_redirect /ocpu/test/ $scheme://test.ocpu.io/;
 }
 
 # Github libraries
@@ -61,10 +63,10 @@ server {
 		proxy_pass http://ocpu/ocpu/github/$subdomain$request_uri;
 	}
 
-	location /tmp/ {
-		proxy_pass http://ocpu/ocpu/tmp/;
-	}
+	#location /tmp/ {
+	#	proxy_pass http://ocpu/ocpu/tmp/;
+	#}
 
 	proxy_redirect /ocpu/github/$subdomain/ /;
-	proxy_redirect /ocpu/tmp/ /tmp/;
+	proxy_redirect /ocpu/tmp/ $scheme://tmp.ocpu.io/;
 }
