@@ -1,3 +1,13 @@
+map $request_method $not_post {
+	default 1;
+	POST 0;
+}
+
+map $http_cache_control $bypass_cache {
+	default $not_post;
+	"" 0;
+}
+
 server {
 	listen 8006; 
 	server_name opencpu.org *.opencpu.org;
