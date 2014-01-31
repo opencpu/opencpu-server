@@ -7,7 +7,7 @@ Standards-Version: 3.9.4
 
 Package: opencpu-server
 Architecture: all
-Depends: libapache2-mod-r-base (>= 1.2.5), opencpu-lib (= ${source:Version}), apache2-mpm-prefork, apparmor-utils, ssl-cert, language-pack-en-base
+Depends: libapache2-mod-r-base (>= 1.2.5), opencpu-lib (= ${source:Version}), apache2-mpm-prefork, apparmor-utils, ssl-cert, language-pack-en-base, libprotobuf-dev
 Description: The OpenCPU REST api for R. See www.opencpu.org for more information.
 
 Package: opencpu-cache
