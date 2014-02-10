@@ -1,0 +1,61 @@
+# Instead of defaulting to opencpu.org, reject requests with invalid $host
+server {
+	listen 8006 default_server;
+	server_name "";
+	return 444;
+}
+
+server {
+	listen 8007 default_server;
+	server_name "";
+	return 444;
+	ssl on;
+	ssl_certificate /etc/ssl/certs/ssl-cert-snakeoil.pem;
+	ssl_certificate_key /etc/ssl/private/ssl-cert-snakeoil.key;
+}
+
+map $http_host $ocpu_repo {
+	cran.ocpu.io http://ocpu/ocpu/cran/;
+	bioc.ocpu.io http://ocpu/ocpu/bioc/;
+	demo.ocpu.io http://ocpu/ocpu/library/;
+	tmp.ocpu.io http://ocpu/ocpu/tmp/;
+	test.ocpu.io http://ocpu/ocpu/test/;
+}
+
+# cran/bioc library
+server {
+	listen 8006;
+	include /usr/lib/opencpu/ocpu/ocpu-cran.conf;
+}
+
+server {
+	listen 8007;
+	include /usr/lib/opencpu/ocpu/ocpu-cran.conf;
+
+	ssl on;
+	ssl_certificate /etc/ssl/certs/ocpu.crt;
+	ssl_certificate_key /etc/ssl/private/jeroen2014.key;
+	ssl_session_timeout 5m;
+	ssl_protocols SSLv3 TLSv1;
+	ssl_ciphers ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv3:+EXP;
+	ssl_prefer_server_ciphers on;
+}
+
+# Github libraries
+server {
+	listen 8006;
+	include /usr/lib/opencpu/ocpu/ocpu-github.conf;
+}
+
+server {
+	listen 8007;
+	include /usr/lib/opencpu/ocpu/ocpu-github.conf;
+
+	ssl on;
+	ssl_certificate /etc/ssl/certs/ocpu.crt;
+	ssl_certificate_key /etc/ssl/private/jeroen2014.key;
+	ssl_session_timeout 5m;
+	ssl_protocols SSLv3 TLSv1;
+	ssl_ciphers ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv3:+EXP;
+	ssl_prefer_server_ciphers on;
+}
