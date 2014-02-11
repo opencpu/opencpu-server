@@ -33,7 +33,7 @@ server {
 	include /usr/lib/opencpu/ocpu/ocpu-cran.conf;
 
 	ssl on;
-	ssl_certificate /etc/ssl/certs/ocpu.crt;
+	ssl_certificate /etc/ssl/certs/ocpu.pem;
 	ssl_certificate_key /etc/ssl/private/jeroen2014.key;
 	ssl_session_timeout 5m;
 	ssl_protocols SSLv3 TLSv1;
@@ -52,7 +52,7 @@ server {
 	include /usr/lib/opencpu/ocpu/ocpu-github.conf;
 
 	ssl on;
-	ssl_certificate /etc/ssl/certs/ocpu.crt;
+	ssl_certificate /etc/ssl/certs/ocpu.pem;
 	ssl_certificate_key /etc/ssl/private/jeroen2014.key;
 	ssl_session_timeout 5m;
 	ssl_protocols SSLv3 TLSv1;
