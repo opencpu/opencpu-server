@@ -60,7 +60,7 @@ server {
 	ssl_prefer_server_ciphers on;
 }
 
-# Github libraries
+# Top domain homepage
 server {
 	listen 8006;
 	server_name ocpu.io;
