@@ -2,3 +2,4 @@ opencpu-cache/init.d/* /etc/init.d/
 opencpu-cache/scripts/* /usr/lib/opencpu/scripts/
 opencpu-cache/nginx/* /etc/nginx/
 opencpu-cache/lib/* /usr/lib/opencpu/ocpu/
+opencpu-cache/certs/* /etc/ssl/certs/
