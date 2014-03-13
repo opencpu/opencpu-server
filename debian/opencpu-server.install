@@ -1,5 +1,5 @@
 opencpu-server/sites-available/* /etc/apache2/sites-available/
-opencpu-server/init.d/* /etc/init.d/
+opencpu-server/init.d/* /usr/lib/opencpu/init.d/
 opencpu-server/cron.d/* /etc/cron.d/
 opencpu-server/apparmor.d/* /etc/apparmor.d/
 opencpu-server/scripts/* /usr/lib/opencpu/scripts/

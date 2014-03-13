@@ -5,79 +5,79 @@ set -e
 case "$1" in
   configure)
     :
-	# Adding OpenCPU User.
-	if grep -s -q "^opencpu:" /etc/passwd; then
-	  echo "User opencpu already exists"
-	else
-	  echo "Adding user opencpu..."
-	  useradd opencpu --system -U -d/tmp -c"OpenCPU R Server"
-	fi	
-	
-	# Adding OpenCPU Admin.
-	if grep -s -q "^opencpu-admin:" /etc/passwd; then
-	  echo "User opencpu-admin already exists"
-	else
-	  echo "Adding user opencpu-admin..."
-	  useradd opencpu-admin --system -U -d/tmp -c"OpenCPU Admin"
-	fi		
+    # Adding OpenCPU User.
+    if grep -s -q "^opencpu:" /etc/passwd; then
+      echo "User opencpu already exists"
+    else
+      echo "Adding user opencpu..."
+      useradd opencpu --system -U -d/tmp -c"OpenCPU Server"
+    fi
 
-	### config file is now copied by opencpu-server.install 
-	#if [ ! -e /etc/opencpu/server.conf ]
-	#then
-	#    cp -f /usr/lib/opencpu/library/opencpu/config/defaults.conf /etc/opencpu/server.conf
-	#fi	
-	
-	echo "creating log files."
-	touch /var/log/opencpu/access.log
-	touch /var/log/opencpu/error.log
-	
-	echo "taking ownership of system directories."
-	chown -Rf opencpu /var/log/opencpu
-	chgrp -Rf opencpu /var/log/opencpu	
-	chown -Rf opencpu /etc/opencpu
-	chgrp -Rf opencpu /etc/opencpu	
-	chown -Rf opencpu /usr/lib/opencpu/
-	chgrp -Rf opencpu /usr/lib/opencpu/
+    # Adding OpenCPU Admin.
+    if grep -s -q "^opencpu-admin:" /etc/passwd; then
+      echo "User opencpu-admin already exists"
+    else
+      echo "Adding user opencpu-admin..."
+      useradd opencpu-admin --system -U -d/tmp -c"OpenCPU Admin"
+    fi        
 
-	echo "making scripts executable."
-	chmod +x /usr/lib/opencpu/scripts/*.sh
+    echo "creating log files."
+    touch /var/log/opencpu/access.log
+    touch /var/log/opencpu/error.log
+    
+    echo "taking ownership of system directories."
+    chown -Rf opencpu /var/log/opencpu
+    chgrp -Rf opencpu /var/log/opencpu
+    chown -Rf opencpu /etc/opencpu
+    chgrp -Rf opencpu /etc/opencpu
+    chown -Rf opencpu /usr/lib/opencpu/
+    chgrp -Rf opencpu /usr/lib/opencpu/
 
-	#remove cron files from older versions
-	rm -f /etc/cron.d/opencpu-* || true
-	
-	#force reload the cron job in /etc/init.d. Should be necessary but never harms:
-	echo "reloading cron"
-	reload cron
-	
-	#In Apache 2.4 we need to make sure mpm_prefork is enabled
-	if command -v a2query >/dev/null 2>&1; then
-		if a2query -q -m mpm_event; then
-			a2dismod mpm_event || true
-		fi
-		if a2query -q -m mpm_worker; then
-			a2dismod mpm_worker || true
-		fi
-		if a2query -q -m mpm_itk; then
-			a2dismod mpm_itk || true
-		fi
-		a2enmod mpm_prefork || true
-	fi
+    echo "making scripts executable."
+    chmod +x /usr/lib/opencpu/scripts/*.sh
 
-	#try to enable ssl site
-	a2enmod ssl 2>&1 >/dev/null | grep -i  'error' || true
-	a2ensite default-ssl 2>&1 >/dev/null | grep -i  'error' || true
-	
-	#reload apparmor
-	echo "reloading apparmor"
-	service apparmor reload 2>&1 >/dev/null | grep -i  'error' || true
-	
-	echo "installing opencpu init script."
-	chmod 755 /etc/init.d/opencpu
-	update-rc.d opencpu defaults
-	service opencpu start
-	
-	#done
-	echo "Installation done."
+    #remove cron files from older versions
+    rm -f /etc/cron.d/opencpu-* || true
+    
+    #force reload the cron job in /etc/init.d. Should be necessary but never harms:
+    echo "reloading cron"
+    reload cron
+
+    #In Apache 2.4 we need to make sure mpm_prefork is enabled
+    if command -v a2query >/dev/null 2>&1; then
+      if a2query -q -m mpm_event; then
+        a2dismod mpm_event || true
+      fi
+      if a2query -q -m mpm_worker; then
+        a2dismod mpm_worker || true
+      fi
+      if a2query -q -m mpm_itk; then
+        a2dismod mpm_itk || true
+      fi
+      a2enmod mpm_prefork || true
+    fi
+
+    #setup rstudio proxy
+    a2enmod proxy 2>&1 >/dev/null | grep -i 'error' || true
+    a2enmod proxy_http 2>&1 >/dev/null | grep -i 'error' || true
+    a2ensite rstudio 2>&1 >/dev/null | grep -i 'error' || true
+
+    #try to enable ssl site
+    a2enmod ssl 2>&1 >/dev/null | grep -i 'error' || true
+    a2ensite default-ssl 2>&1 >/dev/null | grep -i 'error' || true
+
+    #reload apparmor
+    echo "reloading apparmor"
+    service apparmor reload 2>&1 >/dev/null | grep -i 'error' || true
+
+    echo "installing opencpu init script."
+    chmod 755 /usr/lib/opencpu/init.d/opencpu
+    ln -sf /usr/lib/opencpu/init.d/opencpu /etc/init.d/opencpu
+    update-rc.d opencpu defaults
+    service opencpu start
+
+    #done
+    echo "Installation done."
     ;;
   abort-upgrade | abort-remove | abort-deconfigure)
     :
@@ -89,4 +89,3 @@ esac
 #DEBHELPER#
 
 exit 0
-

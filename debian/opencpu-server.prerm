@@ -5,15 +5,15 @@ set -e
 service opencpu stop || true
 
 case "$1" in
-        remove)
-			rm -Rf /var/log/opencpu/* || true		
-        	;;
-        deconfigure|failed-upgrade|upgrade)
-        	;;
-        *)
-                echo "prerm called with unknown argument \`$1'" >&2
-                exit 1
-        ;;
+  remove)
+    rm -Rf /var/log/opencpu/* || true
+  ;;
+  deconfigure|failed-upgrade|upgrade)
+  ;;
+  *)
+  echo "prerm called with unknown argument \`$1'" >&2
+  exit 1
+  ;;
 esac
 
 #DEBHELPER#

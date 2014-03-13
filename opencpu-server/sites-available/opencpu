@@ -36,8 +36,8 @@ Listen 8004
 	DocumentRoot /var/www
 	
 	<Location />
-	        Deny from all
-	        Allow from 127.0.0.1
+		Deny from all
+		Allow from 127.0.0.1
 	</Location>
 	
 	ErrorLog /var/log/opencpu/apache_error.log

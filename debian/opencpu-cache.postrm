@@ -5,6 +5,7 @@ set -e
 case "$1" in
   remove | abort-install)
     :
+      rm -f /etc/init.d/opencpu-cache
       update-rc.d -f opencpu-cache remove
     ;;
   purge | disappear | upgrade | failed-upgrade | abort-upgrade)
