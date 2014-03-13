@@ -8,12 +8,12 @@ Standards-Version: 3.9.4
 Package: opencpu-server
 Architecture: all
 Depends: libapache2-mod-r-base (>= 1.2.5), opencpu-lib (= ${source:Version}), apache2-mpm-prefork, apparmor-utils, ssl-cert, language-pack-en-base, libprotobuf-dev
-Description: The OpenCPU REST api for R. See www.opencpu.org for more information.
+Description: The OpenCPU cloud server based on rApache.
 
 Package: opencpu-cache
 Architecture: all
 Depends: ssl-cert, nginx
-Description: Cache server and load balancer for opencpu.
+Description: The OpenCPU cache server and load balancer based on nginx.
 
 Package: opencpu-lib
 Architecture: any
@@ -27,10 +27,10 @@ Description: Meta package with tex and pandoc dependencies.
 
 Package: opencpu
 Architecture: all
-Depends: opencpu-server, opencpu-cache
-Description: Meta package for opencpu. Installs both the API and caching server.
+Depends: opencpu-server, opencpu-cache, rstudio-server
+Description: Meta package for OpenCPU. Installs API, nginx and RStudio server.
 
 Package: opencpu-full
 Architecture: all
-Depends: opencpu-server, opencpu-cache, opencpu-tex, mail-transport-agent
-Description: Meta package for opencpu. Installs lots of latex stuff as well.
+Depends: opencpu, git, opencpu-tex, mail-transport-agent
+Description: Meta package for OpenCPU. Installs opencpu, git, latex, rstudio-server, etc.
