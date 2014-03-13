@@ -37,7 +37,9 @@ Listen 8004
 
 	<IfModule mod_version.c>
 		<IfVersion >= 2.4>
-			Require ip 127.0.0.1
+			<Location />
+				Require ip 127.0.0.1
+			</Location>
 		</IfVersion>
 	</IfModule>	
 	
