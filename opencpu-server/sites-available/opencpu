@@ -17,7 +17,7 @@
 	# Ubuntu 13.10 and up ship with Apache 2.4
 	<IfModule mod_version.c>
 		<IfVersion >= 2.4>
- 			<Directory /usr/lib/opencpu/rapache>
+			<Directory /usr/lib/opencpu/rapache>
 				Require all granted
 			</Directory>
 		</IfVersion>
@@ -27,18 +27,19 @@
 
 ################################################################
 ## OpenCPU NGINX proxy port                                    # 
-## Note: connect from external host, change 'Allow From' line. #
+## Note: connect from external host, change 'Require ip' line. #
 ################################################################
 
 Listen 8004
 <VirtualHost *:8004>
 
 	DocumentRoot /var/www
-	
-	<Location />
-		Deny from all
-		Allow from 127.0.0.1
-	</Location>
+
+	<IfModule mod_version.c>
+		<IfVersion >= 2.4>
+			Require ip 127.0.0.1
+		</IfVersion>
+	</IfModule>	
 	
 	ErrorLog /var/log/opencpu/apache_error.log
 	LogLevel info
