@@ -27,7 +27,7 @@ Description: Meta package with tex and pandoc dependencies.
 
 Package: opencpu
 Architecture: all
-Depends: opencpu-server, opencpu-cache
+Depends: opencpu-server (= ${source:Version}), opencpu-cache (= ${source:Version})
 Description: Meta package for OpenCPU. Installs both API (rApache) and caching (nginx) server.
 
 Package: opencpu-full
