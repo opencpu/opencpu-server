@@ -27,10 +27,10 @@ Description: Meta package with tex and pandoc dependencies.
 
 Package: opencpu
 Architecture: all
-Depends: opencpu-server, opencpu-cache, rstudio-server
-Description: Meta package for OpenCPU. Installs API, nginx and RStudio server.
+Depends: opencpu-server, opencpu-cache
+Description: Meta package for OpenCPU. Installs both API (rApache) and caching (nginx) server.
 
 Package: opencpu-full
 Architecture: all
-Depends: opencpu, git, opencpu-tex, mail-transport-agent
+Depends: opencpu, rstudio-server, git, opencpu-tex, mail-transport-agent
 Description: Meta package for OpenCPU. Installs opencpu, git, latex, rstudio-server, etc.
