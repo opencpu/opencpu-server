@@ -1,5 +1,6 @@
 # This is the main OpenCPU server.
 # If no other sites are loaded for this port, this will be the default_server.
+# When enabled, opencpu-cache preroutes port 80 to 8006 and 443 to 8007
 
 server {
 	listen 8006; 
@@ -9,12 +10,9 @@ server {
 	port_in_redirect off;
 
 	# OpenCPU API
-	location /ocpu {
-		proxy_pass  http://ocpu/ocpu;
-		include /etc/nginx/opencpu.d/cache.conf;
-	}
+	include /etc/nginx/opencpu.d/ocpu.conf;
 
-	# Extra sites which can be disabled
+	# Optional sites (can be disabled)
 	include /etc/nginx/opencpu.d/default.conf;
 	include /etc/nginx/opencpu.d/rstudio.conf;
 }
@@ -25,7 +23,7 @@ server {
 	server_name public.opencpu.org;
 
 	# For iptables prerouting
-	port_in_redirect off;
+	port_in_redirect off;	
 	
 	# Enable HTTPS
 	ssl on;
@@ -39,12 +37,9 @@ server {
 	ssl_certificate_key /etc/ssl/private/ssl-cert-snakeoil.key;
 
 	# OpenCPU API
-	location /ocpu {
-		proxy_pass  http://ocpu/ocpu;
-		include /etc/nginx/opencpu.d/cache.conf;
-	}
+	include /etc/nginx/opencpu.d/ocpu.conf;
 
-	# Extra sites which can be disabled
+	# Optional sites (can be disabled)
 	include /etc/nginx/opencpu.d/default.conf;
 	include /etc/nginx/opencpu.d/rstudio.conf;
 }
