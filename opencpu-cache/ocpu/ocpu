@@ -1,9 +1,9 @@
 map $http_host $ocpu_repo {
-	cran.ocpu.io http://ocpu/ocpu/cran/;
-	bioc.ocpu.io http://ocpu/ocpu/bioc/;
-	demo.ocpu.io http://ocpu/ocpu/library/;
-	tmp.ocpu.io http://ocpu/ocpu/tmp/;
-	test.ocpu.io http://ocpu/ocpu/test/;
+	cran.ocpu.io cran;
+	bioc.ocpu.io bioc;
+	demo.ocpu.io library;
+	tmp.ocpu.io tmp;
+	test.ocpu.io test;
 }
 
 # cran/bioc library
