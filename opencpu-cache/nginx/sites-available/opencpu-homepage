@@ -50,13 +50,15 @@ server {
 server {
 	listen 8006 default_server;
 	server_name "";
-	return 444 "Invalid vhost :(";
+	return 444 "Invalid opencpu vhost: $host\n";
+	default_type "text/plain";
 }
 
 server {
 	listen 8007 default_server;
 	server_name "";
-	return 444 "Invalid vhost :(";
+	return 444 "Invalid opencpu vhost: $host\n";
+	default_type "text/plain";
 	ssl on;
 	ssl_certificate /etc/ssl/certs/opencpu.pem;
 	ssl_certificate_key /etc/ssl/private/jeroen2014.key;
