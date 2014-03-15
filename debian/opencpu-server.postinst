@@ -6,20 +6,8 @@ case "$1" in
   configure)
     :
     # Adding OpenCPU User.
-    if grep -s -q "^opencpu:" /etc/passwd; then
-      echo "User opencpu already exists"
-    else
-      echo "Adding user opencpu..."
-      useradd opencpu --system -U -d/tmp -c"OpenCPU Server"
-    fi
-
-    # Adding OpenCPU Admin.
-    if grep -s -q "^opencpu-admin:" /etc/passwd; then
-      echo "User opencpu-admin already exists"
-    else
-      echo "Adding user opencpu-admin..."
-      useradd opencpu-admin --system -U -d/tmp -c"OpenCPU Admin"
-    fi        
+    echo "Adding user opencpu..."
+    useradd opencpu --system -U -d/tmp -c"OpenCPU Server" || true   
 
     echo "creating log files."
     touch /var/log/opencpu/access.log

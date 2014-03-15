@@ -9,20 +9,8 @@ case "$1" in
       update-rc.d -f opencpu remove
 
       # Removing OpenCPU User.
-      if grep -s -q "^opencpu:" /etc/passwd; then
-        echo "Removing user opencpu..."
-        userdel opencpu 2>&1 >/dev/null | grep -i  'error' || true
-      else
-        echo "User opencpu already removed."
-      fi
-      
-      # Removing OpenCPU Admin User.
-      if grep -s -q "^opencpu-admin:" /etc/passwd; then
-        echo "Removing user opencpu-admin..."
-        userdel opencpu-admin 2>&1 >/dev/null | grep -i  'error' || true
-      else
-        echo "User opencpu-admin already removed."
-      fi
+      echo "Removing user opencpu..."
+      userdel opencpu 2>&1 >/dev/null | grep -i  'error' || true
 
       #force reload the cron job in /etc/init.d. Should be necessary but never harms:
       reload cron || true  

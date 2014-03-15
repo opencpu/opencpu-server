@@ -14,14 +14,10 @@
 	
 	Alias /favicon.ico /usr/lib/opencpu/rapache/favicon.ico
 
-	# Ubuntu 13.10 and up ship with Apache 2.4
-	<IfModule mod_version.c>
-		<IfVersion >= 2.4>
-			<Directory /usr/lib/opencpu/rapache>
-				Require all granted
-			</Directory>
-		</IfVersion>
-	</IfModule>
+	# This assumes Apache 2.4
+	<Directory /usr/lib/opencpu/rapache>
+		Require all granted
+	</Directory>
 
 </IfModule>
 
@@ -35,16 +31,13 @@ Listen 8004
 
 	DocumentRoot /var/www
 
-	<IfModule mod_version.c>
-		<IfVersion >= 2.4>
-			<Location />
-				Require ip 127.0.0.1
-			</Location>
-		</IfVersion>
-	</IfModule>	
+	# This assumes Apache 2.4
+	<Location />
+		Require ip 127.0.0.1
+	</Location>
 	
+	LogLevel info	
 	ErrorLog /var/log/opencpu/apache_error.log
-	LogLevel info
 	CustomLog /var/log/opencpu/apache_access.log combined
 	
 </VirtualHost>
