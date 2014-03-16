@@ -5,7 +5,9 @@ Setup OpenCPU demo server
 
 1. sudo apt-get install opencpu-server 
 2. modify apache2 'Require ip' in /etc/apache2/sites-enabled/opencpu
-3. [optional] sudo apt-get install rstudio-server opencpu-tex pandoc postfix
+3. create/modify /etc/opencpu/secret.conf
+4. sudo service opencpu restart
+5. [optional] sudo apt-get install rstudio-server opencpu-tex pandoc postfix
 
 ## Nginx server
 
