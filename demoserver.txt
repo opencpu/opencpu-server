@@ -2,9 +2,10 @@ to install the demo server:
 
 1. apt-get install opencpu rstudio-server
 2. copy jeroen2014.key to /etc/ssl/private
-3. cp /usr/lib/opencpu/ocpu.io/ocpu-io /etc/nginx/sites-available/
-4. modify certificate and key in /etc/nginx/sites-enabled/opencpu
-
+3. chmod 400 /etc/ssl/private/jeroen2014.ssl
+4. cp /usr/lib/opencpu/ocpu.io/ocpu-io /etc/nginx/sites-available/
+5. modify certificate and key in /etc/nginx/sites-enabled/opencpu
+6. sudo:
 /usr/lib/opencpu/scripts/nginx_ensite opencpu-homepage
 /usr/lib/opencpu/scripts/nginx_ensite ocpu-io
 service opencpu-cache restart

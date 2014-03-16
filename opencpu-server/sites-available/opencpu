@@ -29,7 +29,7 @@
 Listen 8004
 <VirtualHost *:8004>
 
-	DocumentRoot /var/www
+	DocumentRoot /var/www/html
 
 	# This assumes Apache 2.4
 	<Location />
