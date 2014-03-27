@@ -7,14 +7,16 @@
 language: c
 
 before_install:
+  - sudo add-apt-repository ppa:opencpu/rapache
+  - sudo apt-get update
+  - sudo apt-get install devscripts equivs gdebi-core
   - sudo mk-build-deps -i
-  - debuild -us -uc
 install:
-  - ./travis-tool.sh install_deps
-script: ./travis-tool.sh run_tests
+  - debuild -us -uc
+  - (cd ..; sudo gdebi --n opencpu-lib_*.deb; sudo gdebi --n opencpu-server_*.deb; sudo gdebi --n opencpu-server_*.deb)
+script: sudo service opencpu restart
 
 after_failure:
-  - ./travis-tool.sh dump_logs
 
 notifications:
   email:
