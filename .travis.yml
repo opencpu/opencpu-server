@@ -1,4 +1,5 @@
 # Jeroens opencpu CI deb builder
+# Builds and installs the opencpu cloud server
 
 language: c
 
