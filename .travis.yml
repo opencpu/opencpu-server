@@ -8,7 +8,7 @@ before_install:
   - sudo apt-get install devscripts equivs gdebi-core
   - sudo mk-build-deps -i
 install:
-  - debuild -us -uc
+  - debuild -us -uc --no-tgz-check
   - (cd ..; sudo gdebi --n opencpu-lib_*.deb; sudo gdebi --n opencpu-server_*.deb; sudo gdebi --n opencpu-server_*.deb)
 script: sudo service opencpu restart
 
