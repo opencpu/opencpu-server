@@ -3,3 +3,4 @@ etc/opencpu/server.conf.d
 var/log/opencpu
 usr/lib/opencpu
 usr/local/lib/opencpu
+var/www/html

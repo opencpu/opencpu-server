@@ -13,6 +13,9 @@ server {
 	listen 8007;
 	server_name www.opencpu.org;
 	
+	# For iptables prerouting
+	port_in_redirect off;	
+	
 	ssl on;
 	ssl_certificate /etc/ssl/certs/opencpu.pem;
 	ssl_certificate_key /etc/ssl/private/jeroen2014.key;
