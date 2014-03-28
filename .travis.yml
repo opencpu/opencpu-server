@@ -6,7 +6,8 @@ language: c
 before_install:
   - sudo add-apt-repository -y ppa:opencpu/rapache
   - sudo add-apt-repository -y ppa:marutter/c2d4u
-  - sudo add-apt-repository -y ppa:marutter/rrutter  
+  - sudo add-apt-repository -y ppa:marutter/rrutter
+  - sudo add-apt-repository -y ppa:patrickdk/apache24
   - sudo apt-get update
   - sudo apt-get install devscripts equivs gdebi-core
   - sudo mk-build-deps -i
