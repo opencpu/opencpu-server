@@ -1,5 +1,5 @@
 # Jeroens opencpu CI deb builder
-# Builds and installs the opencpu cloud server
+# Currently doesn't work because Travis is on Ubuntu 12.04 and we need Apache 2.4
 
 language: c
 
