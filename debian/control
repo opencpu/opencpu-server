@@ -7,7 +7,7 @@ Standards-Version: 3.9.4
 
 Package: opencpu-server
 Architecture: all
-Depends: libapache2-mod-r-base (>= 1.2.5), opencpu-lib (= ${source:Version}), apache2-mpm-prefork (>= 2.4), apparmor-utils, ssl-cert, language-pack-en-base, libprotobuf-dev
+Depends: libapache2-mod-r-base (>= 1.2.5), opencpu-lib (= ${source:Version}), apache2-mpm-prefork (>= 2.4), apparmor-utils, ssl-cert, language-pack-en-base
 Description: The OpenCPU cloud server based on rApache.
 
 Package: opencpu-cache
@@ -17,7 +17,7 @@ Description: The OpenCPU cache server and load balancer based on nginx.
 
 Package: opencpu-lib
 Architecture: any
-Depends: r-base-dev (>= 3.0), r-base (>= 3.0), r-cran-rcpp (>= 0.11), libc6, libcurl3
+Depends: r-base-dev (>= 3.0), r-base (>= 3.0), r-cran-rcpp (>= 0.11), libc6, libcurl3, libprotobuf7
 Description: Package containing the platform specific R package buids.
 
 Package: opencpu-tex
