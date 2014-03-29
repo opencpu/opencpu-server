@@ -17,6 +17,10 @@ case "$1" in
     chmod +x /usr/lib/opencpu/scripts/nginx_ensite
     chmod +x /usr/lib/opencpu/scripts/nginx_dissite
 
+    #HTTPS certificates
+    ln -sf /usr/lib/opencpu/certs/ocpu.pem /etc/ssl/certs/ocpu.pem
+    ln -sf /usr/lib/opencpu/certs/opencpu.pem /etc/ssl/certs/opencpu.pem         
+
     #start the service
     service opencpu-cache start
     ;;
