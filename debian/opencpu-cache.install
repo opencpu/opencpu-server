@@ -3,3 +3,4 @@ opencpu-cache/certs/* /usr/lib/opencpu/certs/
 opencpu-cache/init.d/* /usr/lib/opencpu/init.d/
 opencpu-cache/scripts/* /usr/lib/opencpu/scripts/
 opencpu-cache/ocpu.io/* /usr/lib/opencpu/ocpu.io/
+opencpu-cache/rstudio-errors/* /usr/lib/opencpu/rstudio-errors/
