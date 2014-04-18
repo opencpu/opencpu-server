@@ -14,3 +14,9 @@ options(rapache=TRUE);
 getNamespace("RAppArmor")
 getNamespace("unixtools")
 getNamespace("sendmailR")
+
+#warm up graphics device
+options(bitmapType = "cairo");
+svg("/dev/null", width=11.69, height=8.27)
+plot(1:10)
+dev.off()
