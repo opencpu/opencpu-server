@@ -7,5 +7,6 @@ profile opencpu-main {
 	#include <opencpu.d/server>	
 	#include <opencpu.d/custom>	
 	
-	change_profile -> opencpu-exec,			
+	change_profile -> opencpu-exec,
+	signal w peer=opencpu-exec,	
 }

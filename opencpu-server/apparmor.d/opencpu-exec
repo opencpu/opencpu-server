@@ -5,4 +5,6 @@
 profile opencpu-exec {
 	#include <opencpu.d/base>
 	#include <opencpu.d/custom>
+	
+	signal r peer=opencpu-main,
 }
