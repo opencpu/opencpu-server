@@ -17,7 +17,8 @@ Setup OpenCPU demo server
 4. cp /usr/lib/opencpu/ocpu.io/ocpu-io /etc/nginx/sites-available/
 5. modify SSL certificate and key in /etc/nginx/sites-enabled/opencpu
 6. modify nginx back-end server ip address in /etc/nginx/conf.d/opencpu.conf
-7. sudo:
+7. modify rstudio back-end server in /etc/nginx/opencpu.d/rstudio.conf
+8. sudo:
   /usr/lib/opencpu/scripts/nginx_ensite opencpu-homepage
   /usr/lib/opencpu/scripts/nginx_ensite ocpu-io
   service opencpu-cache restart
