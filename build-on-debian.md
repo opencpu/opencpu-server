@@ -10,7 +10,8 @@ All instructions below must be executed with `sudo` or as `root` user.
 	sudo -i
 
 	#Install apparmor
-	sudo apt-get install apparmor-utils
+	apt-get update
+	apt-get install apparmor-utils
 
 	## Edit /etc/default/grub to set:
 	GRUB_CMDLINE_LINUX=" security=apparmor"
