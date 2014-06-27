@@ -81,6 +81,11 @@ All instructions below must be executed with `sudo` or as `root` user.
 	dpkg -i opencpu-lib*.deb
 	dpkg -i opencpu-server*.deb
 
+	#edit /etc/apparmor.d/opencpu-exec and comment out the line that starts with "signal"
+	#edit /etc/apparmor.d/opencpu-main and comment out the line that starts with "signal"
+	service apparmor restart
+	service opencpu restart
+
 	#if you also want the cache server
 	apt-get install nginx
 	dpkg -i opencpu-cache*.deb
