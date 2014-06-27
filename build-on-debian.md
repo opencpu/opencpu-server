@@ -1,13 +1,13 @@
-# Build OpenCPU cloud server on Debian
+# Buil ddeOpenCPU cloud server on Debian
 
-> Tested only with Debian 7.0 Wheezy. Many dependencies of OpenCPU are outdated on Debian. This is why Ubuntu is preferred. To build on Debian we must backport some dependencies.
+> Tested only with Debian 7.0 Wheezy. Many dependencies of OpenCPU are outdated on Debian. This is why Ubuntu is the preferred OS to run OpenCPU. To build on Debian we must backport some dependencies, in particular R, Apache2.4
 
 All instructions below must be executed with `sudo` or as `root` user.
 
 ## Install and enable AppArmor
 
 	#become root
-	sudo -i 
+	sudo -i
 
 	#Install apparmor
 	sudo apt-get install apparmor-utils
@@ -22,7 +22,25 @@ All instructions below must be executed with `sudo` or as `root` user.
 	#Test that apparmor works
 	aa-status
 
+## Install backport of Apache 2.4
+	
+	#Make sure apache is not installed
+	apt-get purge apache2-*
+	apt-get autoremove --purge
+
+	#Add repo with Apache 2.4
+	echo "deb http://www.d7031.de/debian wheezy-experimental main" > /etc/apt/sources.list.d/apache-backport.list
+	adv --keyserver subkeys.pgp.net --recv-key 9EB5E8A3DF17D0B3
+	apt-get update
+
+	#Install/upgrade
+	apt-get dist-update
+	apt-get install apache2
+
 ## Build and install rApache (mod_R)
+
+	#become root
+	sudo -i
 
 	#Need R at least 3.0, see http://cran.us.r-project.org/bin/linux/debian/
 	apt-key adv --keyserver subkeys.pgp.net --recv-key 381BA480
@@ -33,7 +51,7 @@ All instructions below must be executed with `sudo` or as `root` user.
 	apt-get upgrade
 
 	#install rapache(mod_R) build dependencies
-	apt-get install git make devscripts apache2-prefork-dev apache2-mpm-prefork libapreq2-dev r-base-core r-base-dev
+	apt-get install git make devscripts apache2-dev apache2-mpm-prefork libapreq2-dev r-base-core r-base-dev
 
 	#build rapache (libapache2-mod-r-base)
 	git clone https://github.com/jeffreyhorner/rapache.git
@@ -46,6 +64,9 @@ All instructions below must be executed with `sudo` or as `root` user.
 	service apache2 restart
 
 ## Build and install OpenCPU
+
+	#become root
+	sudo -i
 
 	#install opencpu build dependencies
 	apt-get install r-base libapparmor-dev r-cran-rcpp libcurl4-openssl-dev xvfb xauth xfonts-base
