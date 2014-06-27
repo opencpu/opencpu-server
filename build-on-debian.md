@@ -1,7 +1,6 @@
 # Build OpenCPU cloud server on Debian
-# Tested only with Debian 7.0 Wheezy
 
-# Notes: Most depe
+> Tested only with Debian 7.0 Wheezy. Many dependencies of OpenCPU are outdated on Debian. This is why Ubuntu is preferred. To build on Debian we must backport some dependencies.
 
 All instructions below must be executed with `sudo` or as `root` user.
 
