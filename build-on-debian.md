@@ -26,12 +26,13 @@ All instructions below must be executed with `sudo` or as `root` user.
 ## Install backport of Apache 2.4
 	
 	#Make sure apache is not installed
+	sudo -i
 	apt-get purge apache2-*
 	apt-get autoremove --purge
 
 	#Add repo with Apache 2.4
 	echo "deb http://www.d7031.de/debian wheezy-experimental main" > /etc/apt/sources.list.d/apache-backport.list
-	adv --keyserver subkeys.pgp.net --recv-key 9EB5E8A3DF17D0B3
+	apt-key adv --keyserver subkeys.pgp.net --recv-key 9EB5E8A3DF17D0B3
 	apt-get update
 
 	#Install/upgrade
