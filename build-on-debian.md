@@ -36,7 +36,7 @@ All instructions below must be executed with `sudo` or as `root` user.
 	apt-get update
 
 	#Install/upgrade
-	apt-get dist-update
+	apt-get dist-upgrade
 	apt-get install apache2
 
 ## Build and install rApache (mod_R)
