@@ -1,6 +1,6 @@
 # Buil ddeOpenCPU cloud server on Debian
 
-> Tested only with Debian 7.0 Wheezy. Many dependencies of OpenCPU are outdated on Debian. This is why Ubuntu is the preferred OS to run OpenCPU. To build on Debian we must backport some dependencies, in particular R, Apache2.4
+> Tested only with Debian 7.0 Wheezy. Many dependencies of OpenCPU are outdated on Debian. This is why Ubuntu is the preferred OS to run OpenCPU. To build on Debian we need to get backports of R and Apache2.4 from other repositories.
 
 All instructions below must be executed with `sudo` or as `root` user.
 
@@ -80,4 +80,7 @@ All instructions below must be executed with `sudo` or as `root` user.
 	cd ..
 	dpkg -i opencpu-lib*.deb
 	dpkg -i opencpu-server*.deb
+
+	#if you also want the cache server
+	apt-get install nginx
 	dpkg -i opencpu-cache*.deb
