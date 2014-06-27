@@ -29,7 +29,7 @@ case "$1" in
     
     #force reload the cron job in /etc/init.d. Should be necessary but never harms:
     echo "reloading cron"
-    reload cron
+    reload cron || true
 
     #In Apache 2.4 we need to make sure mpm_prefork is enabled
     if command -v a2query >/dev/null 2>&1; then
