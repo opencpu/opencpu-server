@@ -1,4 +1,4 @@
-opencpu (1.4.3.99-trusty1) trusty; urgency=low
+opencpu (1.4.3.99-trusty2) trusty; urgency=low
 
   * Debian package with OpenCPU software. See www.opencpu.org
 
