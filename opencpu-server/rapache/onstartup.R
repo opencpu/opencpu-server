@@ -15,6 +15,14 @@ getNamespace("RAppArmor")
 getNamespace("unixtools")
 getNamespace("sendmailR")
 
+#Check if AppArmor is working
+if(is(try(RAppArmor::eval.secure(1+1, profile="opencpu-main"), silent=TRUE), "try-error")){
+	warning("AppArmor not available! Running OpenCPU without security profile!")
+	options(apparmor=FALSE)
+} else {
+	options(apparmor=TRUE)
+}
+
 #warm up graphics device
 options(bitmapType = "cairo");
 svg("/dev/null", width=11.69, height=8.27)
