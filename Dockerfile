@@ -1,7 +1,8 @@
 # Docker file to run OpenCPU cloud server
 # Note that AppArmor security might not work within Docker.
 #
-# To install: docker run -d -p 80:8006 -p 443:8007 0d8f0c794f1b{image}
+# To build: docker build .
+# To run: docker run -d -p 80:8006 -p 443:8007 {image}
 #
 
 # Pull base image.
