@@ -15,18 +15,11 @@ getNamespace("RAppArmor")
 getNamespace("unixtools")
 getNamespace("sendmailR")
 
-#Check if AppArmor is working
+#Check if AppArmor is available
 if(RAppArmor::aa_is_enabled() && identical("unconfined", try(RAppArmor::aa_getcon()$con))){
-  #All seems good
   options(apparmor=TRUE)
 } else {
-  #Might be preconfined. Test manually if profile works.
-  if(identical(try(RAppArmor::eval.secure(21+1, profile="opencpu-main"), silent=TRUE), 22)){
-    #Seems OK
-    options(apparmor=TRUE)
-  } else {
-    cat("AppArmor not available! Running OpenCPU without security profile!\n")
-  }
+  cat("AppArmor not available! Running OpenCPU without security profile!\n")
 }
 
 #warm up graphics device
