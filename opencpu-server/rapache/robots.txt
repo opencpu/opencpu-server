@@ -1,0 +1,3 @@
+# Search engine crawling disabled by default:
+User-agent: *
+Disallow: /ocpu/
