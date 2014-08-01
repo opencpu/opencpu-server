@@ -3,6 +3,7 @@
 
 #default locale in apache is "C"
 Sys.setlocale(category='LC_ALL', 'en_US.UTF-8');
+Sys.setenv(LANG="C.UTF-8")
 
 #try to disable interactivity
 try(.Call(parallel:::C_mc_interactive, FALSE));
