@@ -3,7 +3,7 @@
 # When enabled, opencpu-cache preroutes port 80 to 8006 and 443 to 8007
 
 server {
-	listen 8006; 
+	listen 8006;
 	server_name public.opencpu.org;
 
 	# For iptables prerouting
@@ -23,8 +23,8 @@ server {
 	server_name public.opencpu.org;
 
 	# For iptables prerouting
-	port_in_redirect off;	
-	
+	port_in_redirect off;
+
 	# Enable HTTPS
 	ssl on;
 	ssl_session_timeout 5m;

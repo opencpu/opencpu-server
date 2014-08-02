@@ -9,7 +9,7 @@ then
 else
 	echo ""
 	echo "  Hostname guess:"
-	echo "  http://$IPADDR/ocpu"	
+	echo "  http://$IPADDR/ocpu"
 	echo "  https://$IPADDR/ocpu"
 	echo ""
 fi

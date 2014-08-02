@@ -7,12 +7,12 @@ case "$1" in
     :
     # Adding OpenCPU User.
     echo "Adding user opencpu..."
-    useradd opencpu --system -U -d/tmp -c"OpenCPU Server" || true   
+    useradd opencpu --system -U -d/tmp -c"OpenCPU Server" || true
 
     echo "creating log files."
     touch /var/log/opencpu/access.log
     touch /var/log/opencpu/error.log
-    
+
     echo "taking ownership of system directories."
     chown -Rf opencpu /var/log/opencpu
     chgrp -Rf opencpu /var/log/opencpu
@@ -26,7 +26,7 @@ case "$1" in
 
     #remove cron files from older versions
     rm -f /etc/cron.d/opencpu-* || true
-    
+
     #force reload the cron job in /etc/init.d. Should be necessary but never harms:
     echo "reloading cron"
     reload cron || true

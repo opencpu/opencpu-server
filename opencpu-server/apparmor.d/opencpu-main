@@ -4,9 +4,9 @@
 #include <tunables/global>
 profile opencpu-main {
 	#include <opencpu.d/base>
-	#include <opencpu.d/server>	
-	#include <opencpu.d/custom>	
-	
+	#include <opencpu.d/server>
+	#include <opencpu.d/custom>
+
 	change_profile -> opencpu-exec,
-	signal w peer=opencpu-exec,	
+	signal w peer=opencpu-exec,
 }

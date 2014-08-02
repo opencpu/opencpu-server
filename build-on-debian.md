@@ -25,7 +25,7 @@ All instructions below must be executed with `sudo` or as `root` user.
 	aa-status
 
 ## Install backport of Apache 2.4
-	
+
 	# Make sure apache 2.2 is removed
 	sudo -i
 	apt-get purge apache2-*

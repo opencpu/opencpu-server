@@ -13,7 +13,7 @@ case "$1" in
       userdel opencpu 2>&1 >/dev/null | grep -i  'error' || true
 
       #force reload the cron job in /etc/init.d. Should be necessary but never harms:
-      reload cron || true  
+      reload cron || true
 
       #restart Apache.
       service apache2 restart 2>&1 >/dev/null | grep -i  'error' || true
@@ -24,7 +24,7 @@ case "$1" in
     rm -Rf /etc/opencpu || true
     rm -Rf /usr/lib/opencpu || true
     rm -Rf /var/log/opencpu  || true
-    ;;    
+    ;;
   disappear | upgrade | failed-upgrade | abort-upgrade)
     :
     ;;

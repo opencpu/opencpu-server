@@ -19,14 +19,14 @@ case "$1" in
     iptables -A INPUT -p tcp --dport 443 -j ACCEPT
     iptables -A INPUT -p tcp --dport 8006 -j ACCEPT
     iptables -A INPUT -p tcp --dport 8007 -j ACCEPT
-    iptables -A PREROUTING -t nat -p tcp --dport 80 -j REDIRECT --to-port 8006 
-    iptables -A PREROUTING -t nat -p tcp --dport 443 -j REDIRECT --to-port 8007  
+    iptables -A PREROUTING -t nat -p tcp --dport 80 -j REDIRECT --to-port 8006
+    iptables -A PREROUTING -t nat -p tcp --dport 443 -j REDIRECT --to-port 8007
     iptables -A OUTPUT -t nat -o lo -p tcp --dport 80 -j REDIRECT --to-ports 8006
-    iptables -A OUTPUT -t nat -o lo -p tcp --dport 443 -j REDIRECT --to-ports 8007 
+    iptables -A OUTPUT -t nat -o lo -p tcp --dport 443 -j REDIRECT --to-ports 8007
 
 	/usr/lib/opencpu/scripts/nginx_ensite opencpu 2>&1 >/dev/null | grep -i  'error' || true
 	service nginx reload || true
-	
+
 	echo "OK"
 	;;
   stop)
@@ -34,21 +34,21 @@ case "$1" in
 
     /usr/lib/opencpu/scripts/nginx_dissite opencpu 2>&1 >/dev/null | grep -i  'error' || true
     service nginx restart || true
-    
+
     echo "Flushing cache..."
     rm -Rf /tmp/opencpu-cache
-    
+
     echo "Cleaning up iptables..."
 	iptables -D INPUT -p tcp --dport 80 -j ACCEPT
 	iptables -D INPUT -p tcp --dport 443 -j ACCEPT
 	iptables -D INPUT -p tcp --dport 8006 -j ACCEPT
 	iptables -D INPUT -p tcp --dport 8007 -j ACCEPT
-	iptables -D PREROUTING -t nat -p tcp --dport 80 -j REDIRECT --to-port 8006 
-	iptables -D PREROUTING -t nat -p tcp --dport 443 -j REDIRECT --to-port 8007  
+	iptables -D PREROUTING -t nat -p tcp --dport 80 -j REDIRECT --to-port 8006
+	iptables -D PREROUTING -t nat -p tcp --dport 443 -j REDIRECT --to-port 8007
 	iptables -D OUTPUT -t nat -o lo -p tcp --dport 80 -j REDIRECT --to-ports 8006
-	iptables -D OUTPUT -t nat -o lo -p tcp --dport 443 -j REDIRECT --to-ports 8007    
-    
-    echo "OK"  
+	iptables -D OUTPUT -t nat -o lo -p tcp --dport 443 -j REDIRECT --to-ports 8007
+
+    echo "OK"
     ;;
   restart | force-reload)
 	$0 stop
@@ -64,7 +64,7 @@ case "$1" in
     iptables -P INPUT ACCEPT
     iptables -P FORWARD ACCEPT
     iptables -P OUTPUT ACCEPT
-    ;;      
+    ;;
   *)
     echo "Usage: service opencpu-cache {start|stop|restart}"
     exit 1

@@ -12,11 +12,11 @@
 # Carry out specific functions when asked to by the system
 case "$1" in
   start | restart)
-    rm -f /tmp/repos_http*.rds || true	
-    rm -Rf /tmp/opencpu-cache || true	  
+    rm -f /tmp/repos_http*.rds || true
+    rm -Rf /tmp/opencpu-cache || true
 	a2ensite opencpu 2>&1 >/dev/null | grep -i  'error' || true
 	service apache2 restart 2>&1 >/dev/null || true
-	
+
 	if [ -f /etc/init.d/opencpu-cache ];
 	then
 		service nginx restart || true
@@ -28,8 +28,8 @@ case "$1" in
 			echo "WARNING! Module mpm_prefork is not enabled! OpenCPU needs this MPM!"
 			echo "To enable this module: sudo a2enmod mpm_prefork"
 		fi
-	fi	
-		
+	fi
+
 	#try to display host ip address
 	echo "OpenCPU Cloud Server Enabled."
 	/usr/lib/opencpu/scripts/showip.sh || true

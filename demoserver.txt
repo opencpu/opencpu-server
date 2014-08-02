@@ -3,7 +3,7 @@ Setup OpenCPU demo server
 
 ## rApache server
 
-1. sudo apt-get install opencpu-server 
+1. sudo apt-get install opencpu-server
 2. modify apache2 'Require ip' in /etc/apache2/sites-enabled/opencpu
 3. create/modify /etc/opencpu/secret.conf
 4. sudo service opencpu restart

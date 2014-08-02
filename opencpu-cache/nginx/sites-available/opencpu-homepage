@@ -3,7 +3,7 @@
 
 # Redirect homepage to https
 server {
-	listen 8006; 
+	listen 8006;
 	server_name www.opencpu.org;
 	rewrite ^ https://www.opencpu.org$request_uri permanent;
 }
@@ -12,14 +12,14 @@ server {
 server {
 	listen 8007;
 	server_name www.opencpu.org;
-	
+
 	# For iptables prerouting
-	port_in_redirect off;	
-	
+	port_in_redirect off;
+
 	ssl on;
 	ssl_certificate /etc/ssl/certs/opencpu.pem;
 	ssl_certificate_key /etc/ssl/private/jeroen2014.key;
-	
+
 	location / {
 		proxy_pass http://jeroenooms.github.io/opencpu-pages/;
 		proxy_cache opencpu;
@@ -35,7 +35,7 @@ server {
 
 # Some legacy redirects:
 server {
-	listen 8006; 
+	listen 8006;
 	server_name opencpu.org blog.opencpu.org;
 	rewrite ^ https://www.opencpu.org permanent;
 }

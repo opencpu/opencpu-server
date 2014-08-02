@@ -16,7 +16,7 @@ All of the dependencies are defined in the [control file](https://github.com/jer
  * `libapparmor-dev`
  * `apache2`
  * `libapache2-mod-r-base`
- 
+
 Note that the last one (rApache) does not ship with Ubuntu. You can get it at http://rapache.net/.
 
 ###Building
@@ -25,5 +25,5 @@ To build the binary packages:
 
     cd opencpu-deb
     debuild -us -uc
-    
-That's it :) If all goes well the .deb packages are ready to be installed :)    
+
+That's it :) If all goes well the .deb packages are ready to be installed :)
