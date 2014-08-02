@@ -53,19 +53,19 @@ capability sys_tty_config,
 /var/lib/tex*/** mrix,
 /var/www/.odbc.ini r,
 
-/{tmp,mnt}/ocpu-www-data/ r,
-/{tmp,mnt}/ocpu-www-data/cran_library/ r,
-/{tmp,mnt}/ocpu-www-data/cran_library/** kmrix,
-/{tmp,mnt}/ocpu-www-data/bioc_library/ r,
-/{tmp,mnt}/ocpu-www-data/bioc_library/** kmrix,
-/{tmp,mnt}/ocpu-www-data/gist_library/ r,
-/{tmp,mnt}/ocpu-www-data/gist_library/** kmrix,
-/{tmp,mnt}/ocpu-www-data/github_library/ r,
-/{tmp,mnt}/ocpu-www-data/github_library/** kmrix,
+/{tmp,mnt,tmpfs}/ocpu-www-data/ r,
+/{tmp,mnt,tmpfs}/ocpu-www-data/cran_library/ r,
+/{tmp,mnt,tmpfs}/ocpu-www-data/cran_library/** kmrix,
+/{tmp,mnt,tmpfs}/ocpu-www-data/bioc_library/ r,
+/{tmp,mnt,tmpfs}/ocpu-www-data/bioc_library/** kmrix,
+/{tmp,mnt,tmpfs}/ocpu-www-data/gist_library/ r,
+/{tmp,mnt,tmpfs}/ocpu-www-data/gist_library/** kmrix,
+/{tmp,mnt,tmpfs}/ocpu-www-data/github_library/ r,
+/{tmp,mnt,tmpfs}/ocpu-www-data/github_library/** kmrix,
 
 ## Does not allow listing of the tmp lib.
-/{tmp,mnt}/ocpu-www-data/tmp_library/** kmrix,
+/{tmp,mnt,tmpfs}/ocpu-www-data/tmp_library/** kmrix,
 
 ## This is the only dir that is writable
 ## No ix or m permission here!
-/{tmp,mnt}/ocpu-temp/** rw,
+/{tmp,mnt,tmpfs}/ocpu-temp/** rw,
