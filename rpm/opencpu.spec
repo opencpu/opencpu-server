@@ -73,6 +73,7 @@ chmod +x /usr/lib/opencpu/scripts/*.sh
 touch /var/log/opencpu/access.log
 touch /var/log/opencpu/error.log
 setsebool -P httpd_setrlimit=1 httpd_can_network_connect_db=1 httpd_can_network_connect=1 httpd_can_connect_ftp=1 httpd_can_sendmail=1 || true
+semanage port -a -t http_port_t -p tcp 8004 || true
 
 %postun server
 userdel opencpu || true
@@ -82,12 +83,12 @@ rm -Rf /usr/lib/opencpu
 rm -Rf /var/log/opencpu
 
 %files lib
-%dir /usr/lib/opencpu/library
+/usr/lib/opencpu/library
 
 %files server
-%dir /etc/opencpu
-%dir /usr/lib/opencpu/scripts
-%dir /usr/lib/opencpu/rapache
+/etc/opencpu
+/usr/lib/opencpu/scripts
+/usr/lib/opencpu/rapache
+/etc/cron.d
+/etc/httpd/conf.d
 %dir /var/log/opencpu
-%dir /etc/cron.d
-%dir /etc/httpd/conf.d/
