@@ -1,4 +1,5 @@
 #Remove local and home libraries to make sure we only depends on base and recommended packages.
+#Note: This is still not safe in rpm because base and cran packages are in the same dir.
 baselib <- grep("^/usr/lib(64)?/R/library", .libPaths(), value=TRUE)
 assign(".lib.loc", baselib, envir=environment(.libPaths));
 
