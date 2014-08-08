@@ -27,7 +27,7 @@ Requires: R-devel >= 3.0.2
 Requires: make
 Requires: wget
 Requires: unzip
-Requires: libcurl
+Requires: libcurl-devel
 Requires: protobuf
 
 %description lib
