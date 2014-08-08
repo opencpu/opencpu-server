@@ -21,7 +21,7 @@ if(is.na(Sys.getenv("NO_APPARMOR", NA))){
 	message("Building with AppArmor support")
 } else {
 	message("Building without AppArmor support")
-	options(configure.vars="NO_APPARMOR=1"))
+	options(configure.vars="NO_APPARMOR=1")
 }
 
 #Because of dependencies=TRUE, suggested packages sendmailR, RAppArmor and RProtoBuf are also installed.
