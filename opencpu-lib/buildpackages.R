@@ -17,7 +17,7 @@ library(tools);
 write_PACKAGES(sourcedir)
 
 #For Fedora/Redhat
-if(is.na(Sys.getenv("NO_APPARMOR", NA)){
+if(is.na(Sys.getenv("NO_APPARMOR", NA))){
 	message("Building with AppArmor support")
 } else {
 	message("Building without AppArmor support")

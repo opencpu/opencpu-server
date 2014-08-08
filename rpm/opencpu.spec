@@ -50,11 +50,11 @@ The OpenCPU cloud server builds on R and Apache2 (httpd) to expose the OpenCPU H
 %build
 NO_APPARMOR=1 make
 
-%install lib
+%install
+# For opencpu-lib:
 mkdir -p  %{buildroot}/usr/lib/opencpu/library
 cp -Rf opencpu-lib/build/* %{buildroot}/usr/lib/opencpu/library/
-
-%install server
+# For opencpu-server:
 mkdir -p %{buildroot}/etc/opencpu/server.conf.d
 mkdir -p %{buildroot}/usr/lib/opencpu/scripts
 mkdir -p %{buildroot}/usr/lib/opencpu/rapache
@@ -80,11 +80,12 @@ rm -Rf /usr/lib/opencpu
 rm -Rf /var/log/opencpu
 
 %files lib
-%dir /usr/lib/opencpu
+%dir /usr/lib/opencpu/library
 
 %files server
 %dir /etc/opencpu
-%dir /usr/lib/opencpu
+%dir /usr/lib/opencpu/scripts
+%dir /usr/lib/opencpu/rapache
 %dir /var/log/opencpu
 %dir /etc/cron.d
 %dir /etc/httpd/conf.d/
