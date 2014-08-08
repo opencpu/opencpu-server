@@ -1,5 +1,6 @@
 #Remove local and home libraries to make sure we only depends on base and recommended packages.
-assign(".lib.loc", c("/usr/lib/R/library"), envir=environment(.libPaths));
+baselib <- grep("^/usr/lib(64)?/R/library", .libPaths(), value=TRUE)
+assign(".lib.loc", baselib, envir=environment(.libPaths));
 
 #Load Rcpp (to compile httpuv)
 #Note that httpuv will not be used by rApache. However it is needed to test-load the package after installation.
