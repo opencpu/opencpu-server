@@ -72,15 +72,20 @@ cp -Rf server.conf %{buildroot}/etc/opencpu/
 chmod +x /usr/lib/opencpu/scripts/*.sh
 touch /var/log/opencpu/access.log
 touch /var/log/opencpu/error.log
-setsebool -P httpd_setrlimit=1 httpd_can_network_connect_db=1 httpd_can_network_connect=1 httpd_can_connect_ftp=1 httpd_can_sendmail=1 || true
-semanage port -a -t http_port_t -p tcp 8004 || true
+#1 means first install
+if [ "$1" = 1 ] ; then
+  setsebool -P httpd_setrlimit=1 httpd_can_network_connect_db=1 httpd_can_network_connect=1 httpd_can_connect_ftp=1 httpd_can_sendmail=1 || true
+  semanage port -a -t http_port_t -p tcp 8004 || true
+fi
 
 %postun server
-userdel opencpu || true
+#0 means uninstall
+if [ "$1" = 0 ] ; then
+  rm -Rf /etc/opencpu
+  rm -Rf /var/log/opencpu
+  semanage port -d -t http_port_t -p tcp 8004 || true
+fi
 apachectl restart || true
-rm -Rf /etc/opencpu
-rm -Rf /var/log/opencpu
-semanage port -d -t http_port_t -p tcp 8004 || true
 
 %files lib
 /usr/lib/opencpu/library
