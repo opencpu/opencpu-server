@@ -81,6 +81,7 @@ apachectl restart || true
 rm -Rf /etc/opencpu
 rm -Rf /usr/lib/opencpu
 rm -Rf /var/log/opencpu
+semanage port -d -t http_port_t -p tcp 8004 || true
 
 %files lib
 /usr/lib/opencpu/library
