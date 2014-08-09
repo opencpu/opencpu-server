@@ -29,7 +29,7 @@ tryCatch({
     options(apparmor = TRUE)
     cat("AppArmor available! Running OpenCPU with full security.\n")
   } else {
-    cat("AppArmor not available in kernel! Running OpenCPU without security profile but with rlimits.\n")
+    cat("AppArmor not available. Running OpenCPU without security profile but with rlimits.\n")
   }
 }, error = function(e){
   options(no_rapparmor = TRUE)
