@@ -16,7 +16,7 @@ Sys.setenv(LANG = Sys.getlocale("LC_CTYPE"))
 try(.Call(parallel:::C_mc_interactive, FALSE))
 
 #We use this later
-options(rapache=TRUE)
+options(rapache = TRUE)
 
 #Load suggested packages while they are in .libPaths()
 getNamespace("unixtools")
@@ -26,14 +26,14 @@ getNamespace("sendmailR")
 tryCatch({
   getNamespace("RAppArmor")
   if(RAppArmor::aa_is_enabled() && identical("unconfined", try(RAppArmor::aa_getcon()$con))){
-    options(apparmor=TRUE)
+    options(apparmor = TRUE)
     cat("AppArmor available! Running OpenCPU with full security.\n")
   } else {
-    cat("AppArmor not available! Running OpenCPU without security profile!\n")
+    cat("AppArmor not available in kernel! Running OpenCPU without security profile but with rlimits.\n")
   }
 }, error = function(e){
-  options(no_rapparmor=TRUE)
-  cat("RAppArmor not installed. Running OpenCPU without security!\n")
+  options(no_rapparmor = TRUE)
+  cat("RAppArmor not installed. Running OpenCPU without any form of security.\n")
 });
 
 #Warm up graphics device
