@@ -15,7 +15,6 @@ BuildRequires: make
 BuildRequires: texlive-preprint
 BuildRequires: texlive-appendix
 BuildRequires: texlive-upquote
-Requires: opencpu-server
 
 %description
 The OpenCPU system exposes an HTTP API for embedded scientific computing with R. This provides reliable and scalable foundations for integrating R based analysis and visualization modules into pipelines, web applications or big data infrastructures. The OpenCPU server can run either as a single-user development server within the interactive R session, or as a high performance multi-user cloud server that builds on Linux, Nginx and rApache.

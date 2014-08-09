@@ -1,29 +1,42 @@
-#Disable this for development
-.libPaths('/usr/lib/opencpu/library');
+#Comment out to for development
+.libPaths('/usr/lib/opencpu/library')
 
-#default locale in apache is "C"
-Sys.setlocale(category='LC_ALL', 'en_US.UTF-8');
-Sys.setenv(LANG="en_US.UTF-8")
+#Default locale in apache is "C"
+if(grepl("UTF-?8", Sys.getlocale("LC_CTYPE"))){
+  cat("Current locale is:", Sys.getlocale("LC_CTYPE"), "\n")
+} else {
+  Sys.setlocale(category = "LC_ALL", "en_US.UTF-8")
+  cat("Setting locale to en_US.UTF-8\n")
+}
 
-#try to disable interactivity
-try(.Call(parallel:::C_mc_interactive, FALSE));
+#Set environment variables
+Sys.setenv(LANG = Sys.getlocale("LC_CTYPE"))
 
-#we use this later
-options(rapache=TRUE);
+#Try to disable interactivity
+try(.Call(parallel:::C_mc_interactive, FALSE))
 
-#Load RAppArmor while it is in .libPaths.
-getNamespace("RAppArmor")
+#We use this later
+options(rapache=TRUE)
+
+#Load suggested packages while they are in .libPaths()
 getNamespace("unixtools")
 getNamespace("sendmailR")
 
 #Check if AppArmor is available
-if(RAppArmor::aa_is_enabled() && identical("unconfined", try(RAppArmor::aa_getcon()$con))){
-  options(apparmor=TRUE)
-} else {
-  cat("AppArmor not available! Running OpenCPU without security profile!\n")
-}
+tryCatch({
+  getNamespace("RAppArmor")
+  if(RAppArmor::aa_is_enabled() && identical("unconfined", try(RAppArmor::aa_getcon()$con))){
+    options(apparmor=TRUE)
+    cat("AppArmor available! Running OpenCPU with full security.\n")
+  } else {
+    cat("AppArmor not available! Running OpenCPU without security profile!\n")
+  }
+}, error = function(e){
+  options(no_rapparmor=TRUE)
+  cat("RAppArmor not installed. Running OpenCPU without security!\n")
+});
 
-#warm up graphics device
+#Warm up graphics device
 options(bitmapType = "cairo");
 svg("/dev/null", width=11.69, height=8.27)
 plot(1:10)
