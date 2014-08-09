@@ -12,9 +12,6 @@ BuildRequires: glibc-devel
 BuildRequires: libcurl-devel
 BuildRequires: protobuf-devel
 BuildRequires: make
-BuildRequires: texlive-preprint
-BuildRequires: texlive-appendix
-BuildRequires: texlive-upquote
 
 %description
 The OpenCPU system exposes an HTTP API for embedded scientific computing with R. This provides reliable and scalable foundations for integrating R based analysis and visualization modules into pipelines, web applications or big data infrastructures. The OpenCPU server can run either as a single-user development server within the interactive R session, or as a high performance multi-user cloud server that builds on Linux, Nginx and rApache.
@@ -39,6 +36,7 @@ Requires: opencpu-lib
 Requires: rapache
 Requires: mod_ssl
 Requires: MTA
+Requires: /usr/sbin/semanage
 
 %description server
 The OpenCPU cloud server builds on R and Apache2 (httpd) to expose the OpenCPU HTTP API.
