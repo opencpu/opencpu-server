@@ -71,7 +71,7 @@ touch /var/log/opencpu/access.log
 touch /var/log/opencpu/error.log
 #1 means first install
 if [ "$1" = 1 ] ; then
-  setsebool -P httpd_setrlimit=1 httpd_can_network_connect_db=1 httpd_can_network_connect=1 httpd_can_connect_ftp=1 httpd_can_sendmail=1 || true
+  setsebool -P httpd_setrlimit=1 httpd_can_network_connect_db=1 httpd_can_network_connect=1 httpd_can_sendmail=1 || true
   semanage port -a -t http_port_t -p tcp 8004 || true
 fi
 apachectl restart || true
