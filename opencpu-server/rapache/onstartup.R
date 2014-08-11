@@ -1,3 +1,12 @@
+#Read site env and options
+if(file.exists("/etc/R/Renviron.site")){
+  readRenviron("/etc/R/Renviron.site")
+}
+
+if(file.exists("/etc/R/Rprofile.site")){
+  source("/etc/R/Rprofile.site")
+}
+
 #Comment out to for development
 .libPaths('/usr/lib/opencpu/library')
 
@@ -27,13 +36,13 @@ tryCatch({
   getNamespace("RAppArmor")
   if(RAppArmor::aa_is_enabled() && identical("unconfined", try(RAppArmor::aa_getcon()$con))){
     options(apparmor = TRUE)
-    cat("AppArmor available! Running OpenCPU with full security.\n")
+    cat("AppArmor available! Running OpenCPU with security profile and rlimits.\n")
   } else {
     cat("AppArmor not available. Running OpenCPU without security profile but with rlimits.\n")
   }
 }, error = function(e){
   options(no_rapparmor = TRUE)
-  cat("RAppArmor not installed. Running OpenCPU without any form of security.\n")
+  cat("RAppArmor not installed. Running OpenCPU without security profile or rlimits.\n")
 });
 
 #Warm up graphics device
