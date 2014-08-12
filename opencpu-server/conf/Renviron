@@ -1,0 +1,5 @@
+## This file can be used to set environment variables for OpenCPU
+## See help(Startup) for documentation Renviron and Renviron.site
+## Note that this file is read *after* R is initialized
+# Example:
+# FOO=BAR
