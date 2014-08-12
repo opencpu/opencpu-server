@@ -45,7 +45,7 @@ The OpenCPU cloud server builds on R and Apache2 (httpd) to expose the OpenCPU H
 %setup
 
 %build
-NO_APPARMOR=1 make
+NO_APPARMOR=1 make library
 
 %install
 # For opencpu-lib:
@@ -95,5 +95,4 @@ apachectl restart || true
 /etc/cron.d
 /etc/httpd/conf.d
 %dir /var/log/opencpu
-%config(noreplace) /etc/opencpu/server.conf
-%config(noreplace) /etc/opencpu/secret.conf
+%config(noreplace) /etc/opencpu/*

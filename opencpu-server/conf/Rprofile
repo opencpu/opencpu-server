@@ -1,6 +1,5 @@
 ## Rprofile for OpenCPU cloud server.
-## This file is sourced after /etc/R/Rprofile.site
-
-# ## Example of Rprofile
+## Example of Rprofile
+#
 # options(width=65, digits=5)
 # options(show.signif.stars=FALSE)
