@@ -1,11 +1,6 @@
-#Read site env and options
-if(file.exists("/etc/R/Renviron.site")){
-  readRenviron("/etc/R/Renviron.site")
-}
-
-if(file.exists("/etc/R/Rprofile.site")){
-  source("/etc/R/Rprofile.site")
-}
+#Read opencpu specific variables and options
+if(file.exists("/etc/opencpu/Renviron")) readRenviron("/etc/opencpu/Renviron")
+if(file.exists("/etc/opencpu/Rprofile")) source("/etc/opencpu/Rprofile")
 
 #Comment out to for development
 .libPaths('/usr/lib/opencpu/library')
@@ -43,10 +38,10 @@ tryCatch({
 }, error = function(e){
   options(no_rapparmor = TRUE)
   cat("RAppArmor not installed. Running OpenCPU without security profile or rlimits.\n")
-});
+})
 
 #Warm up graphics device
-options(bitmapType = "cairo");
-svg("/dev/null", width=11.69, height=8.27)
+options(bitmapType = "cairo")
+svg("/dev/null", width = 11.69, height = 8.27)
 plot(1:10)
 dev.off()
