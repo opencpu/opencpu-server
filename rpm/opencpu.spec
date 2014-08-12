@@ -25,6 +25,7 @@ Requires: wget
 Requires: unzip
 Requires: libcurl-devel
 Requires: protobuf
+Autoreq: no
 
 %description lib
 This RPM package contains a frozen library of platform specific builds of R packages required by the OpenCPU system.
@@ -89,7 +90,6 @@ apachectl restart || true
 /usr/lib/opencpu/library
 
 %files server
-/etc/opencpu
 /usr/lib/opencpu/scripts
 /usr/lib/opencpu/rapache
 /etc/cron.d
