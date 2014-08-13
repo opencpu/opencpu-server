@@ -1,6 +1,6 @@
 # OpenCPU rpm package
 
-Instructions for building OpenCPU as an rpm package.
+*Instructions for building OpenCPU as an rpm package.*
 
 **warning**: Because Redhat systems do not support AppArmor, OpenCPU runs without the advanced security policies on these platforms. This is fine for internal use, but it is not recommended to expose your Fedora/EL OpenCPU server to the web without further configuring SELinux for your application.
 
