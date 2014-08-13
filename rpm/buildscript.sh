@@ -46,7 +46,11 @@ rpmbuild -ba ~/rpmbuild/SPECS/opencpu.spec
 
 # Install
 sudo yum install mod_ssl /usr/sbin/semanage
-cd ~/rpmbuild/RPMS/*/
+cd ~/rpmbuild/RPMS/x86_64/
 sudo rpm -i rapache-*.rpm
 sudo rpm -i opencpu-lib-*.rpm
-sudo rpm -i opencpu-server-*.rpm
+sudo rpm -i opencpu-server-*.rpm #takes a while!
+
+# Test
+curl http://localhost/ocpu/library/
+
