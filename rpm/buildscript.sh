@@ -1,14 +1,14 @@
-# First step only required on REDHAT/CENTOS:
+# Enable EPEL repository. Only required on REDHAT/CENTOS:
 sudo su -c 'rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm'
 
-# Get system up to date
+# Update system
 sudo yum update -y
 sudo yum upgrade -y
 
-# rpm build dependencies
+# rpm dependencies
 sudo yum install -y rpm-build
 
-# rApache build dependencies
+# rApache dependencies
 sudo yum install -y make wget httpd-devel libapreq2-devel R-devel
 
 # opencpu dependencies
@@ -39,3 +39,10 @@ mv -f opencpu.spec ~/rpmbuild/SPECS/
 
 # Build OpenCPU
 rpmbuild -ba ~/rpmbuild/SPECS/opencpu.spec
+
+# Install
+sudo yum install mod_ssl /usr/sbin/semanage
+cd ~/rpmbuild/RPMS/*/
+sudo rpm -i rapache-*.rpm
+sudo rpm -i opencpu-lib-*.rpm
+sudo rpm -i opencpu-server-*.rpm
