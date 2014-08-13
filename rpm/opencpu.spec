@@ -1,7 +1,7 @@
 Name: opencpu
 Version: 1.4.4
 Release: rpm0
-Source: opencpu-server-%{version}.tar.gz
+Source: %{name}-%{version}.tar.gz
 License: Apache2
 Summary: The OpenCPU system for embedded scientific computing and reproducible research.
 Group: Applications/Internet
