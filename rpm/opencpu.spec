@@ -12,6 +12,7 @@ BuildRequires: glibc-devel
 BuildRequires: libcurl-devel
 BuildRequires: protobuf-devel
 BuildRequires: make
+Requires: opencpu-server
 
 %description
 The OpenCPU system exposes an HTTP API for embedded scientific computing with R. This provides reliable and scalable foundations for integrating R based analysis and visualization modules into pipelines, web applications or big data infrastructures. The OpenCPU server can run either as a single-user development server within the interactive R session, or as a high performance multi-user cloud server that builds on Linux, Nginx and rApache.
@@ -85,6 +86,8 @@ if [ "$1" = 0 ] ; then
   semanage port -d -t http_port_t -p tcp 8004 || true
 fi
 apachectl restart || true
+
+%files
 
 %files lib
 /usr/lib/opencpu/library
