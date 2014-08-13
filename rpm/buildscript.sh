@@ -30,16 +30,10 @@ mv -f rapache.spec ~/rpmbuild/SPECS/
 rpmbuild -ba ~/rpmbuild/SPECS/rapache.spec
 
 # Download (and rename) opencpu source archive
-wget https://github.com/jeroenooms/opencpu-server/archive/v1.4.4.tar.gz
-tar xzf v1.4.4.tar.gz
-rm v1.4.4.tar.gz
-mv opencpu-server-1.4.4 opencpu-1.4.4
-tar pczf opencpu-1.4.4.tar.gz opencpu-1.4.4
-
-# Move to build dirs
-mv -f opencpu-1.4.4.tar.gz ~/rpmbuild/SOURCES/
-mv -f opencpu-1.4.4/rpm/opencpu.spec ~/rpmbuild/SPECS/
-rm -Rf opencpu-1.4.4
+wget https://github.com/jeroenooms/opencpu-server/archive/v1.4.4.tar.gz -O opencpu-server-1.4.4.tar.gz
+tar xzvf opencpu-server-1.4.4.tar.gz opencpu-server-1.4.4/rpm/opencpu.spec --strip-components 2
+mv -f opencpu-server-1.4.4.tar.gz ~/rpmbuild/SOURCES/
+mv -f opencpu.spec ~/rpmbuild/SPECS/
 
 # Build OpenCPU
 rpmbuild -ba ~/rpmbuild/SPECS/opencpu.spec
