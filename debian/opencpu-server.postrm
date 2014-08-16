@@ -12,9 +12,6 @@ case "$1" in
       echo "Removing user opencpu..."
       userdel opencpu 2>&1 >/dev/null | grep -i  'error' || true
 
-      #force reload the cron job in /etc/init.d. Should be necessary but never harms:
-      reload cron || true
-
       #restart Apache.
       service apache2 restart 2>&1 >/dev/null | grep -i  'error' || true
     ;;

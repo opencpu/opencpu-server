@@ -27,10 +27,6 @@ case "$1" in
     #remove cron files from older versions
     rm -f /etc/cron.d/opencpu-* || true
 
-    #force reload the cron job in /etc/init.d. Should be necessary but never harms:
-    echo "reloading cron"
-    reload cron || true
-
     #In Apache 2.4 we need to make sure mpm_prefork is enabled
     if command -v a2query >/dev/null 2>&1; then
       if a2query -q -m mpm_event; then
@@ -43,6 +39,13 @@ case "$1" in
         a2dismod mpm_itk || true
       fi
       a2enmod mpm_prefork || true
+    fi
+
+    #Apache 2.2 does not understand .conf files
+    if [[ $(/usr/sbin/apache2 -v) =~ "Apache/2.2" ]]
+    then
+      ls -sf /etc/apache2/sites-available/opencpu.conf /etc/apache2/sites-available/opencpu
+      ls -sf /etc/apache2/sites-available/rstudio.conf /etc/apache2/sites-available/rstudio
     fi
 
     #setup rstudio proxy
