@@ -24,8 +24,6 @@ Requires: R-base >= 3.0.2
 Requires: make
 Requires: wget
 Requires: unzip
-Requires: libcurl
-## Requires: libprotobuf
 
 %description lib
 This RPM package contains a frozen library of platform specific builds of R packages required by the OpenCPU system.
@@ -36,7 +34,8 @@ Group: Applications/Internet
 Requires: rapache
 Requires: opencpu-lib
 Requires: mod_ssl
-Requires: MTA
+Requires: smtp_daemon
+Requires: curl
 
 %description server
 The OpenCPU cloud server builds on R and Apache2 (httpd) to expose the OpenCPU HTTP API.
