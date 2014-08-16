@@ -8,6 +8,10 @@ case "$1" in
       rm -f /etc/init.d/opencpu
       update-rc.d -f opencpu remove
 
+      #Apache 2.2 symlinks
+      rm -f /etc/apache2/sites-available/opencpu
+      rm -f /etc/apache2/sites-available/rstudio
+
       # Removing OpenCPU User.
       echo "Removing user opencpu..."
       userdel opencpu 2>&1 >/dev/null | grep -i  'error' || true
