@@ -51,7 +51,7 @@ All instructions below must be executed with `sudo` or as `root` user.
 	apt-get update
 
 	# Install rapache build dependencies
-	apt-get install git make devscripts apache2-dev apache2-mpm-prefork libapreq2-dev r-base-core r-base-dev
+	apt-get install git make devscripts apache2-prefork-dev apache2-mpm-prefork libapreq2-dev r-base-core r-base-dev
 
 	# Build rapache (libapache2-mod-r-base)
 	git clone https://github.com/jeffreyhorner/rapache.git
