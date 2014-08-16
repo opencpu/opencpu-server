@@ -4,9 +4,9 @@
 
 **warning**: Because Redhat systems do not support AppArmor, OpenCPU runs without the advanced security policies on these platforms. Instead, it runs in the standard SElinux `httpd_modules_t` context. This is fine for internal use, but it is not recommended to expose your Fedora/EL OpenCPU server to the web without further configuring SELinux for your application.
 
-## Binary packages (Fedora only)
+## Binary packages for Fedora, Suse
 
-Ready-to-go rpm packages of opencpu are available for recent versions of Fedora [here](http://software.opensuse.org/download.html?project=home:jeroenooms:opencpu-1.4&package=opencpu).
+Ready-to-go opencpu-server rpm packages for recent versions of Fedora, OpenSuse and Suse Enterprise are available [here](http://software.opensuse.org/download.html?project=home:jeroenooms:opencpu-1.4&package=opencpu).
 
 ## Building from source
 
