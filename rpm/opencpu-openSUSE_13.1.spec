@@ -7,11 +7,11 @@ Summary: The OpenCPU system for embedded scientific computing and reproducible r
 Group: Applications/Internet
 Buildroot: %{_tmppath}/%{name}-buildroot
 URL: http://www.opencpu.org
-BuildRequires: apache2-devel
 BuildRequires: R-base-devel >= 3.0.2
 BuildRequires: libcurl-devel
 BuildRequires: make
-## BuildRequires: libprotobuf-devel
+## BuildRequires: libprotobuf-devel #not availble on SLE11
+BuildRequires: gcc-c++
 Requires: opencpu-server
 
 %description
@@ -47,6 +47,8 @@ The OpenCPU cloud server builds on R and Apache2 (httpd) to expose the OpenCPU H
 %build
 ## FIXME: Rcpp has issues with the build service. Disabling for now.
 rm -f opencpu-lib/Rcpp_*
+rm -f opencpu-lib/RProtoBuf_*
+## AppArmor profiles don't work on Suse for now.
 NO_APPARMOR=1 make library
 
 %install
