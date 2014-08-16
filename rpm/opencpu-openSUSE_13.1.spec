@@ -74,10 +74,10 @@ touch %{buildroot}/usr/lib/opencpu/emptyfile
 chmod +x /usr/lib/opencpu/scripts/*.sh
 touch /var/log/opencpu/access.log
 touch /var/log/opencpu/error.log
-systemctl restart apache2.service  || true
+service apache2 restart || true
 
 %postun server
-systemctl restart apache2.service || true
+service apache2 restart || true
 
 %files
 %defattr(644,wwwrun,www,755)
