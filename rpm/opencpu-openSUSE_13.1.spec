@@ -43,11 +43,9 @@ The OpenCPU cloud server builds on R and Apache2 (httpd) to expose the OpenCPU H
 %setup -n opencpu-server-%{version}
 
 %build
-## FIXME: Rcpp has issues with the build service. Disabling for now.
-rm -f opencpu-lib/Rcpp_*
-rm -f opencpu-lib/RProtoBuf_*
+## FIXME: Rcpp has issues with the build service.
 ## AppArmor profiles don't work on Suse for now.
-NO_APPARMOR=1 make library
+NO_APPARMOR=1 make
 
 %install
 # For opencpu-lib:
