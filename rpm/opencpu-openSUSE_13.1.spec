@@ -79,13 +79,14 @@ systemctl restart apache2.service  || true
 systemctl restart apache2.service || true
 
 %files
-%defattr(644,wwwrun,www,755)
 
 %files lib
+%defattr(644,wwwrun,www,755)
 %dir /usr/lib/opencpu
 /usr/lib/opencpu/library
 
 %files server
+%defattr(644,wwwrun,www,755)
 /usr/lib/opencpu/scripts
 /usr/lib/opencpu/rapache
 /etc/cron.d
