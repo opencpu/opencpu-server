@@ -60,6 +60,7 @@ mkdir -p %{buildroot}/etc/opencpu
 mkdir -p %{buildroot}/var/log/opencpu
 cp -Rf opencpu-server/sites-available/* %{buildroot}/etc/apache2/conf.d/
 sed -i s/www-data/wwwrun/g opencpu-server/cron.d/opencpu
+sed -i s/www-data/wwwrun/g opencpu-server/scripts/cleanocpu.sh
 cp -Rf opencpu-server/cron.d/* %{buildroot}/etc/cron.d/
 cp -Rf opencpu-server/scripts/* %{buildroot}/usr/lib/opencpu/scripts/
 cp -Rf opencpu-server/rapache/* %{buildroot}/usr/lib/opencpu/rapache/
