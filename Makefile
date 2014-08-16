@@ -1,6 +1,8 @@
-all: norcpp library
+all: norcpp
 
-norcpp:
+norcpp: delrcpp library
+
+delrcpp:
 	# Force use of r-cran-rcpp instead
 	rm ./opencpu-lib/Rcpp_*.tar.gz
 
