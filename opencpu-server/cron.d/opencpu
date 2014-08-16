@@ -1,4 +1,1 @@
 */10 * * * * www-data /usr/lib/opencpu/scripts/cleanocpu.sh
-0 2 * * * www-data Rscript /usr/lib/opencpu/scripts/updatecran.R
-0 2 * * * www-data Rscript /usr/lib/opencpu/scripts/updategithub.R
-0 2 * * 0 www-data Rscript /usr/lib/opencpu/scripts/updatebioc.R
