@@ -10,8 +10,8 @@ URL: http://www.opencpu.org
 BuildRequires: apache2-devel
 BuildRequires: R-base-devel >= 3.0.2
 BuildRequires: libcurl-devel
-BuildRequires: libprotobuf-devel
 BuildRequires: make
+## BuildRequires: libprotobuf-devel
 Requires: opencpu-server
 
 %description
