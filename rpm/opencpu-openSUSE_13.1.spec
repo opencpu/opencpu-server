@@ -63,11 +63,14 @@ mkdir -p %{buildroot}/usr/lib/opencpu/rapache
 mkdir -p %{buildroot}/etc/opencpu
 mkdir -p %{buildroot}/var/log/opencpu
 cp -Rf opencpu-server/sites-available/* %{buildroot}/etc/apache2/conf.d/
+sed -i s/www-data/wwwrun/g opencpu-server/cron.d/opencpu
 cp -Rf opencpu-server/cron.d/* %{buildroot}/etc/cron.d/
 cp -Rf opencpu-server/scripts/* %{buildroot}/usr/lib/opencpu/scripts/
 cp -Rf opencpu-server/rapache/* %{buildroot}/usr/lib/opencpu/rapache/
 cp -Rf opencpu-server/conf/* %{buildroot}/etc/opencpu/
 cp -Rf server.conf %{buildroot}/etc/opencpu/
+#hack for no-empty-package-allowed in SLE11
+touch %{buildroot}/usr/lib/opencpu/emptyfile
 
 %post server
 chmod +x /usr/lib/opencpu/scripts/*.sh
@@ -79,6 +82,8 @@ systemctl restart apache2.service  || true
 systemctl restart apache2.service || true
 
 %files
+%defattr(644,wwwrun,www,755)
+/usr/lib/opencpu/emptyfile
 
 %files lib
 %defattr(644,wwwrun,www,755)
@@ -89,7 +94,7 @@ systemctl restart apache2.service || true
 %defattr(644,wwwrun,www,755)
 /usr/lib/opencpu/scripts
 /usr/lib/opencpu/rapache
-/etc/cron.d
+/etc/cron.d/opencpu
 /etc/apache2/conf.d
 %dir /var/log/opencpu
 %dir /etc/apache2
