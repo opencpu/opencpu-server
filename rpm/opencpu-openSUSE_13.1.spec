@@ -33,7 +33,6 @@ Summary: The OpenCPU API server.
 Group: Applications/Internet
 Requires: rapache
 Requires: opencpu-lib
-Requires: mod_ssl
 Requires: smtp_daemon
 Requires: curl
 
