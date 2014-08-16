@@ -42,8 +42,8 @@ case "$1" in
     fi
 
     #Apache 2.2 does not understand .conf files
-    if [[ $(/usr/sbin/apache2 -v) =~ "Apache/2.2" ]]
-    then
+    ## ISAP22=$(apache2 -v | grep "Apache/2.2")
+    if [ "$ISAP22" ]; then
       ls -sf /etc/apache2/sites-available/opencpu.conf /etc/apache2/sites-available/opencpu
       ls -sf /etc/apache2/sites-available/rstudio.conf /etc/apache2/sites-available/rstudio
     fi
