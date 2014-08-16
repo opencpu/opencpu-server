@@ -14,7 +14,7 @@ Steps to build rpm packages on Fedora, CentOS or RHEL are in this script: [build
 
 ## Debugging SELinux
 
-If you get mysterious permission denied errors, the problem is most likely SELinux. See also this [blog post](https://www.opencpu.org/posts/opencpu-fedora-centos/). [SELinux for mere mortals](http://www.redhat.com/resourcelibrary/videos/selinux-for-mere-mortals) gives a nice introduction. To customize security policies for your needs, start by inspecting messages in `/var/log/messages` and `/var/log/audit/audit.log`. To get more verbose and readable logging, install the setroubleshoot packages:
+If you get mysterious permission denied errors on Fedora or CentOS, the problem is most likely SELinux. See also this [blog post](https://www.opencpu.org/posts/opencpu-fedora-centos/). [SELinux for mere mortals](http://www.redhat.com/resourcelibrary/videos/selinux-for-mere-mortals) gives a nice introduction. To customize security policies for your needs, start by inspecting messages in `/var/log/messages` and `/var/log/audit/audit.log`. To get more verbose and readable logging, install the setroubleshoot packages:
 
     yum install setroubleshoot setroubleshoot-server
 
