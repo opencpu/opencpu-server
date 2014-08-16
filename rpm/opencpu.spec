@@ -54,6 +54,8 @@ NO_APPARMOR=1 make library
 mkdir -p  %{buildroot}/usr/lib/opencpu/library
 cp -Rf opencpu-lib/build/* %{buildroot}/usr/lib/opencpu/library/
 # For opencpu-server:
+sed -i s/www-data/apache/g opencpu-server/cron.d/opencpu
+sed -i s/www-data/apache/g opencpu-server/scripts/cleanocpu.sh
 mkdir -p %{buildroot}/etc/httpd/conf.d
 mkdir -p %{buildroot}/etc/cron.d
 mkdir -p %{buildroot}/usr/lib/opencpu/scripts

@@ -52,6 +52,8 @@ NO_APPARMOR=1 make
 mkdir -p  %{buildroot}/usr/lib/opencpu/library
 cp -Rf opencpu-lib/build/* %{buildroot}/usr/lib/opencpu/library/
 # For opencpu-server:
+sed -i s/www-data/wwwrun/g opencpu-server/cron.d/opencpu
+sed -i s/www-data/wwwrun/g opencpu-server/scripts/cleanocpu.sh
 mkdir -p %{buildroot}/etc/apache2/conf.d
 mkdir -p %{buildroot}/etc/cron.d
 mkdir -p %{buildroot}/usr/lib/opencpu/scripts
@@ -59,8 +61,6 @@ mkdir -p %{buildroot}/usr/lib/opencpu/rapache
 mkdir -p %{buildroot}/etc/opencpu
 mkdir -p %{buildroot}/var/log/opencpu
 cp -Rf opencpu-server/sites-available/* %{buildroot}/etc/apache2/conf.d/
-sed -i s/www-data/wwwrun/g opencpu-server/cron.d/opencpu
-sed -i s/www-data/wwwrun/g opencpu-server/scripts/cleanocpu.sh
 cp -Rf opencpu-server/cron.d/* %{buildroot}/etc/cron.d/
 cp -Rf opencpu-server/scripts/* %{buildroot}/usr/lib/opencpu/scripts/
 cp -Rf opencpu-server/rapache/* %{buildroot}/usr/lib/opencpu/rapache/
