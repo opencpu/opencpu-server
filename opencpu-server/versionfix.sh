@@ -1,5 +1,5 @@
 # Fixes for older debian/ubuntu systems.
-APPARMOR_VERSION=$(dpkg -l | awk '$2 ~ /libapparmor\d?$/ { print $3 }')
+APPARMOR_VERSION=$(dpkg -l | awk '$2 ~ /libapparmor-dev/ { print $3 }')
 APACHE_VERSION=$(dpkg -l | awk '$2 ~ /apache2(-prefork)?-dev/ { print $3 }')
 
 #Apache 2.2 does not want .conf file extension
