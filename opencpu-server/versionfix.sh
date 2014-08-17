@@ -8,6 +8,7 @@ if dpkg --compare-versions $APACHE_VERSION lt 2.4; then
 	echo "Patching sites-available for Apache 2.2"
 	mv sites-available/opencpu.conf sites-available/opencpu
 	mv sites-available/rstudio.conf sites-available/rstudio
+	sed -i '/Require local/d' sites-available/opencpu
 fi
 
 #Old AppArmor versions do not support signal rules
