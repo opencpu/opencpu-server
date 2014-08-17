@@ -27,6 +27,7 @@ Install build dependencies:
 
 Build rApache (`libapache2-mod-r-base`)
 
+	#run NOT as root
 	cd ~
 	wget https://github.com/jeffreyhorner/rapache/archive/v1.2.6.tar.gz
 	tar xzf v1.2.6.tar.gz
@@ -35,6 +36,7 @@ Build rApache (`libapache2-mod-r-base`)
 
 Build OpenCPU Cloud Server (`opencpu-server` and `opencpu-cache`)
 
+	#run NOT as root
 	cd ~
 	wget https://github.com/jeroenooms/opencpu-server/archive/v1.4.4.tar.gz
 	tar xzf v1.4.4.tar.gz
