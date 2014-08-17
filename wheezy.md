@@ -57,6 +57,8 @@ The `opencpu-cache` package is a reverse proxy for caching and load balancing wi
 When installed, it automatically preroutes all incomming traffic on ports 80 and 443 through nginx.
 Only install this when you expect serious traffic.
 
+Note that it is possible to install `opencpu-cache` on another server than `opencpu-server` if you update the nginx back-end config accordingly.
+
 	# Dependencies
 	sudo apt-get install nginx
 
@@ -66,24 +68,21 @@ Only install this when you expect serious traffic.
 
 ## Enable AppArmor support (optional)
 
-To enable advanced security policies, we need to enable AppArmor in the kernel.
+OpenCPU uses AppArmor to enforce advanced security policies. AppArmor support is installed by default on Ubuntu, but in Debian we first need to enable it in the kernel. To do so, edit `/etc/default/grub` and add `security=apparmor` to the `GRUB_CMDLINE_LINUX` line. For example it would read:
 
-	# Install apparmor
-	sudo apt-get install apparmor-utils
-
-Edit `/etc/default/grub` and add `security=apparmor` to the `GRUB_CMDLINE_LINUX` line. For example it would read:
-
-	GRUB_CMDLINE_LINUX=" security=apparmor"
+	GRUB_CMDLINE_LINUX="security=apparmor"
 
 Update the grub config and reboot:
 
 	sudo update-grub
 	sudo reboot
 
-After rebooting, test if AppArmor works:
+After rebooting, install the apparmor packages and verify that it is enabled:
 
+	sudo apt-get install apparmor-utils
 	sudo aa-status
 
-When enabled, `opencpu-server` automatically uses apparmor. To confirm, check:
+Restart OpenCPU and check the log files to confirm that apparmor works:
 
+	sudo service opencpu restart
     sudo tail /var/log/apache2/error.log -n30
