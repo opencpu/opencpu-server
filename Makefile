@@ -1,5 +1,5 @@
 #Default is no rcpp
-all: legacyfix norcpp
+all: versionfix norcpp
 
 #Delete rcpp and build library
 norcpp: delrcpp library
