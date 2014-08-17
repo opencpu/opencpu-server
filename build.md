@@ -50,7 +50,7 @@ Build OpenCPU Cloud Server (`opencpu-server` and `opencpu-cache`). Run this **no
 	cd opencpu-server-1.4.4
 	debuild -us -uc
 
-## Installing OpenCPU API server
+## Installing OpenCPU server
 
 To install the cloud server, simply install the `deb` packages in the following order:
 
