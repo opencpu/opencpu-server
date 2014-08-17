@@ -1,7 +1,7 @@
 OpenCPU Cloud Server
 --------------------
 
-This repository contains the sources for the opencpu cloud server. It consists of the following packages:
+This repository contains the sources for the opencpu server (aka cloud server). It consists of the following packages:
 
  * `opencpu-server` - rApache based opencpu cloud server
  * `opencpu-cache` - nginx based reverse proxy with caching (debian/ubuntu only)
@@ -9,7 +9,7 @@ This repository contains the sources for the opencpu cloud server. It consists o
 
 ## Server manual
 
-The OpenCPU [server manual](http://jeroenooms.github.com/opencpu-manual/opencpu-server.pdf) is the primary reference for installing and managing the opencpu cloud server.
+The OpenCPU [server manual](http://jeroenooms.github.com/opencpu-manual/opencpu-server.pdf) is the primary reference for installing and managing the opencpu server.
 
 ## Prebuilt binaries
 
