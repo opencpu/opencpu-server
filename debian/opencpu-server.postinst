@@ -41,13 +41,6 @@ case "$1" in
       a2enmod mpm_prefork || true
     fi
 
-    #Apache 2.2 does not understand .conf files
-    ## ISAP22=$(apache2 -v | grep "Apache/2.2")
-    if [ "$ISAP22" ]; then
-      ls -sf /etc/apache2/sites-available/opencpu.conf /etc/apache2/sites-available/opencpu
-      ls -sf /etc/apache2/sites-available/rstudio.conf /etc/apache2/sites-available/rstudio
-    fi
-
     #setup rstudio proxy
     a2enmod proxy 2>&1 >/dev/null | grep -i 'error' || true
     a2enmod proxy_http 2>&1 >/dev/null | grep -i 'error' || true
