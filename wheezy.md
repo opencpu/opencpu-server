@@ -41,17 +41,20 @@ Build OpenCPU Cloud Server (`opencpu-server` and `opencpu-cache`)
 	cd opencpu-server-1.4.4
 	debuild -us -uc
 
-## Installing packages
+## Installing OpenCPU API server
 
-Install `opencpu-server` package (possibly on another machine)
+To install the cloud server, simply install the `deb` packages in the following order:
 
-	# Install package builds
 	cd ~
 	sudo dpkg -i libapache2-mod-r-base_*.deb
 	sudo dpkg -i opencpu-lib_*.deb
 	sudo dpkg -i opencpu-server_*.deb
 
-Install `opencpu-cache` package (optional)
+## Installing OpenCPU caching server (optional)
+
+The `opencpu-cache` package is a reverse proxy for caching and load balancing with OpenCPU.
+When installed, it automatically preroutes all incomming traffic on ports 80 and 443 through nginx.
+Only install this when you expect serious traffic.
 
 	# Dependencies
 	sudo apt-get install nginx
