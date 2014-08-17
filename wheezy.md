@@ -1,4 +1,4 @@
-# Building OpenCPU on Debian
+# Building and installing OpenCPU on Debian
 
 The instructions below explain how to build OpenCPU on Debian Wheezy.
 Note that `r-base` included with Debian is too old, so we use the CRAN
