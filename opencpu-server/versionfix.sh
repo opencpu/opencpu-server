@@ -1,6 +1,6 @@
 # Fixes for older debian/ubuntu systems.
-APPARMOR_VERSION=$(dpkg -l | awk '$2=="apparmor" { print $3 }')
-APACHE_VERSION=$(dpkg -l | awk '$2=="apache2" { print $3 }')
+APPARMOR_VERSION=$(dpkg -l | awk '$2=="libapparmor-dev" { print $3 }')
+APACHE_VERSION=$(dpkg -l | awk '$2 ~ /apache2(-prefork)?-dev/ { print $3 }')
 
 #Apache 2.2 does not want .conf file extension
 if dpkg --compare-versions $APACHE_VERSION lt 2.4; then
