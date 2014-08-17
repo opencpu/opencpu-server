@@ -1,12 +1,16 @@
-# Building and installing OpenCPU on Debian
+# Building OpenCPU on Debian/Ubuntu
 
-The instructions below explain how to build OpenCPU on Debian Wheezy.
-Note that `r-base` included with Debian is too old, so we use the CRAN
-repository to get a more recent version.
+*How to build OpenCPU on Debian 7 (Wheezy) and Ubuntu 12.04 or higher.*
 
-## Building packages
+## Installing R 3.0+
 
-Install build dependencies:
+Because `r-base` packages included with Debian/Ubuntu are often too old, we first need to add a repository with a recent version of R.
+
+On **Ubuntu** we can use Michael Rutter's [launchpad](https://launchpad.net/~marutter/+archive/ubuntu/rrutter?field.series_filter=trusty):
+
+	sudo add-apt-repository -y ppa:marutter/rrutter
+
+On **Debian Wheezy* we use CRAN:
 
 	# Become root
 	sudo -i
@@ -15,15 +19,19 @@ Install build dependencies:
 	apt-key adv --keyserver keyserver.ubuntu.com --recv-key 381BA480
 	echo "deb http://cran.r-project.org/bin/linux/debian wheezy-cran3/" > /etc/apt/sources.list.d/cran.list
 
+	# Quit root
+	exit
+
+## Building OpenCPU packages
+
+First install dependencies required for building OpenCPU:
+
 	# Update system
-	apt-get update
-	apt-get upgrade
+	sudo apt-get update
+	sudo apt-get upgrade
 
 	# Install build dependencies
-	apt-get install wget make devscripts apache2-prefork-dev apache2-mpm-prefork libapreq2-dev r-base r-base-dev libapparmor-dev libcurl4-openssl-dev xvfb xauth xfonts-base curl
-
-	# Stop being root
-	exit
+	sudo apt-get install wget make devscripts apache2-prefork-dev apache2-mpm-prefork libapreq2-dev r-base r-base-dev libapparmor-dev libcurl4-openssl-dev xvfb xauth xfonts-base curl
 
 Build rApache (`libapache2-mod-r-base`). Run this **not** as root.
 
@@ -53,9 +61,7 @@ To install the cloud server, simply install the `deb` packages in the following 
 
 ## Installing OpenCPU caching server (optional)
 
-The `opencpu-cache` package is a reverse proxy for caching and load balancing with OpenCPU.
-When installed, it automatically preroutes all incomming traffic on ports 80 and 443 through nginx.
-Only install this when you expect serious traffic.
+The `opencpu-cache` package is a reverse proxy for caching and load balancing with OpenCPU. When installed, it automatically preroutes all incomming traffic on ports 80 and 443 through nginx. Only install this when you expect serious traffic.
 
 Note that it is possible to install `opencpu-cache` on another server than `opencpu-server` if you update the nginx back-end config accordingly.
 
@@ -66,7 +72,7 @@ Note that it is possible to install `opencpu-cache` on another server than `open
 	cd ~
 	sudo dpkg -i opencpu-cache_*.deb
 
-## Enable AppArmor support (optional)
+## Enable AppArmor support (optional, **debian only**)
 
 OpenCPU uses AppArmor to enforce advanced security policies. AppArmor support is installed by default on Ubuntu, but in Debian we first need to enable it in the kernel. To do so, edit `/etc/default/grub` and add `security=apparmor` to the `GRUB_CMDLINE_LINUX` line. For example it would read:
 
