@@ -10,7 +10,7 @@ if dpkg --compare-versions $APACHE_VERSION lt 2.4; then
 fi
 
 #Old AppArmor versions do not support signal rules
-if dpkg --compare-versions $APPARMOR_VERSION lt 2.8.95; then
+if dpkg --compare-versions $APPARMOR_VERSION lt 2.8.94; then
 	echo "Patching profiles for older for AppArmor"
 	sed -i '/^\s*signal .*/d' apparmor.d/opencpu-exec
 	sed -i '/^\s*signal .*/d' apparmor.d/opencpu-main
