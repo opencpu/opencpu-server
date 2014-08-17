@@ -21,7 +21,7 @@ Currently, prebuilt binaries are available for recent versions of:
 
 ## Building from source
 
-OpenCPU can be build on all major Linux distributions. However not that only on Ubuntu it comes standard with security policies enabled. On other distributions you need to
+OpenCPU can be build on all major Linux distributions. However only on Ubuntu it comes standard with security policies enabled.
 
  - `deb` package (Debian, Ubuntu): see [wheezy.md](wheezy.md)
  - `rpm` package (Fedora, CentOS, SUSE): see [rpm/readme.md](rpm/readme.md)
