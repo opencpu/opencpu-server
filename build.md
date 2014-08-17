@@ -7,6 +7,7 @@
 Because `r-base` packages included with Debian/Ubuntu are often too old, we first need to add a repository with a recent version of R. On **Ubuntu** we can use Michael Rutter's [launchpad](https://launchpad.net/~marutter/+archive/ubuntu/rrutter?field.series_filter=trusty) repository:
 
 	sudo add-apt-repository -y ppa:marutter/rrutter
+	sudo apt-get update
 
 Alternatively, on Debian **Wheezy** we get packages from CRAN:
 
@@ -16,6 +17,7 @@ Alternatively, on Debian **Wheezy** we get packages from CRAN:
 	# Add Wheezy CRAN repo for R 3.0+
 	apt-key adv --keyserver keyserver.ubuntu.com --recv-key 381BA480
 	echo "deb http://cran.r-project.org/bin/linux/debian wheezy-cran3/" > /etc/apt/sources.list.d/cran.list
+	sudo apt-get update
 
 	# Quit root
 	exit
@@ -61,14 +63,14 @@ To install the cloud server, simply install the `deb` packages in the following 
 
 The `opencpu-cache` package is a reverse proxy for caching and load balancing with OpenCPU. When installed, it automatically preroutes all incomming traffic on ports 80 and 443 through nginx. Only install this when you expect serious traffic.
 
-Note that it is possible to install `opencpu-cache` on another server than `opencpu-server` if you update the nginx back-end config accordingly.
-
 	# Dependencies
 	sudo apt-get install nginx
 
 	# Package builds
 	cd ~
 	sudo dpkg -i opencpu-cache_*.deb
+
+Note that it is possible to install `opencpu-cache` on another server than `opencpu-server` if you update the nginx back-end config accordingly.
 
 ## Enable AppArmor support (optional, **debian only**)
 
