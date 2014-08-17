@@ -4,13 +4,11 @@
 
 ## Installing R 3.0+
 
-Because `r-base` packages included with Debian/Ubuntu are often too old, we first need to add a repository with a recent version of R.
-
-On **Ubuntu** we can use Michael Rutter's [launchpad](https://launchpad.net/~marutter/+archive/ubuntu/rrutter?field.series_filter=trusty):
+Because `r-base` packages included with Debian/Ubuntu are often too old, we first need to add a repository with a recent version of R. On **Ubuntu** we can use Michael Rutter's [launchpad](https://launchpad.net/~marutter/+archive/ubuntu/rrutter?field.series_filter=trusty) repository:
 
 	sudo add-apt-repository -y ppa:marutter/rrutter
 
-On **Debian Wheezy* we use CRAN:
+Alternatively, on Debian **Wheezy** we get packages from CRAN:
 
 	# Become root
 	sudo -i
