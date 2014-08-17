@@ -25,7 +25,7 @@ Install build dependencies:
 	# Stop being root
 	exit
 
-Build rApache (`libapache2-mod-r-base`)
+Build rApache (`libapache2-mod-r-base`). Run this **not** as root.
 
 	#run NOT as root
 	cd ~
@@ -34,9 +34,8 @@ Build rApache (`libapache2-mod-r-base`)
 	cd rapache-1.2.6
 	debuild -us -uc
 
-Build OpenCPU Cloud Server (`opencpu-server` and `opencpu-cache`)
+Build OpenCPU Cloud Server (`opencpu-server` and `opencpu-cache`). Run this **not* as root.
 
-	#run NOT as root
 	cd ~
 	wget https://github.com/jeroenooms/opencpu-server/archive/v1.4.4.tar.gz
 	tar xzf v1.4.4.tar.gz
