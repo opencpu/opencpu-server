@@ -20,8 +20,7 @@ Install build dependencies:
 	apt-get upgrade
 
 	# Install build dependencies
-	apt-get install wget make devscripts apache2-prefork-dev libapreq2-dev r-base-dev
-	apt-get install libapparmor-dev r-cran-rcpp libcurl4-openssl-dev xvfb xauth xfonts-base curl
+	apt-get install wget make devscripts apache2-prefork-dev apache2-mpm-prefork libapreq2-dev r-base r-base-dev libapparmor-dev libcurl4-openssl-dev xvfb xauth xfonts-base curl
 
 	# Stop being root
 	exit
@@ -30,7 +29,7 @@ Build rApache (`libapache2-mod-r-base`)
 
 	cd ~
 	wget https://github.com/jeffreyhorner/rapache/archive/v1.2.6.tar.gz
-	tar xzvf v1.2.6.tar.gz
+	tar xzf v1.2.6.tar.gz
 	cd rapache-1.2.6
 	debuild -us -uc
 
@@ -38,16 +37,13 @@ Build OpenCPU Cloud Server (`opencpu-server` and `opencpu-cache`)
 
 	cd ~
 	wget https://github.com/jeroenooms/opencpu-server/archive/v1.4.4.tar.gz
-	tar xzvf v1.4.4.tar.gz
+	tar xzf v1.4.4.tar.gz
 	cd opencpu-server-1.4.4
 	debuild -us -uc
 
 ## Installing packages
 
 Install `opencpu-server` package (possibly on another machine)
-
-	# Install run dependencies
-	sudo apt-get install apache2 r-cran-rcpp
 
 	# Install package builds
 	cd ~
