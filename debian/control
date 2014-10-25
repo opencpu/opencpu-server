@@ -2,7 +2,7 @@ Source: opencpu
 Section: gnu-r
 Priority: optional
 Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>
-Build-Depends: r-base-core (>= 3.1), r-base-dev (>= 3.1), apache2-prefork-dev, libapparmor-dev, libcurl4-openssl-dev, xvfb, xauth, xfonts-base, debhelper (>> 4.1.0), pkg-config
+Build-Depends: r-base-core (>= 3.1), r-base-dev (>= 3.1), apache2-prefork-dev, libapparmor-dev, libcurl4-openssl-dev, libssl-dev, xvfb, xauth, xfonts-base, debhelper (>> 4.1.0), pkg-config
 Standards-Version: 3.9.4
 
 Package: opencpu-server
@@ -10,6 +10,7 @@ Architecture: all
 Depends: libapache2-mod-r-base (>= 1.2.5), opencpu-lib (= ${source:Version}), apache2-mpm-prefork, ssl-cert
 Recommends: mail-transport-agent, language-pack-en-base, apparmor, apparmor-utils
 Description: The OpenCPU cloud server based on rApache.
+Provides: opencpu
 
 Package: opencpu-cache
 Architecture: all
@@ -18,7 +19,7 @@ Description: The OpenCPU cache server and load balancer based on nginx.
 
 Package: opencpu-lib
 Architecture: any
-Depends: r-base-dev (>= 3.1), r-base (>= 3.1), libc6, libcurl3
+Depends: r-base-dev (>= 3.1), r-base (>= 3.1), libc6, libcurl3, libssl-dev
 Recommends: r-cran-rcpp (>= 0.11.2), r-cran-rprotobuf, libprotobuf7 | libprotobuf8
 Description: Package containing the platform specific R package buids.
 
@@ -26,11 +27,6 @@ Package: opencpu-tex
 Architecture: all
 Recommends: pandoc, texinfo, texlive-base, texlive-latex-base, texlive-generic-recommended, texinfo-doc-nonfree, texlive-latex-recommended, texlive-latex-extra, texlive-fonts-extra, texlive-fonts-recommended
 Description: Meta package with tex and pandoc dependencies.
-
-Package: opencpu
-Architecture: all
-Depends: opencpu-server (= ${source:Version}), opencpu-cache (= ${source:Version})
-Description: Meta package for OpenCPU. Installs both API (rApache) and caching (nginx) server.
 
 Package: opencpu-full
 Architecture: all
