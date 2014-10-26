@@ -45,3 +45,7 @@ options(bitmapType = "cairo")
 svg("/dev/null", width = 11.69, height = 8.27)
 plot(1:10)
 dev.off()
+
+#Warm up RNG, JSON
+invisible(openssl::rand_bytes(1000))
+invisible(jsonlite::toJSON(iris))
