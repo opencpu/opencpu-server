@@ -1,5 +1,7 @@
 #include <abstractions/base>
 #include <abstractions/nameservice>
+#include <abstractions/mysql>
+#include <abstractions/openssl>
 
 capability sys_tty_config,
 
@@ -26,7 +28,6 @@ capability sys_tty_config,
 /etc/opencpu/server.conf.d/ r,
 /etc/opencpu/server.conf.d/* r,
 /etc/ssl/certs/* r,
-/etc/ssl/openssl.cnf r,
 /etc/R/ r,
 /etc/R/* r,
 /etc/fonts/** mr,

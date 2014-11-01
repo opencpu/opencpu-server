@@ -11,6 +11,7 @@ Depends: libapache2-mod-r-base (>= 1.2.5), opencpu-lib (= ${source:Version}), ap
 Recommends: mail-transport-agent, language-pack-en-base, apparmor, apparmor-utils
 Description: The OpenCPU cloud server based on rApache.
 Provides: opencpu
+Replaces: opencpu
 
 Package: opencpu-cache
 Architecture: all
