@@ -1,5 +1,5 @@
 Name: opencpu
-Version: 1.4.4
+Version: 1.4.5
 Release: rpm0
 Source: opencpu-server-%{version}.tar.gz
 License: Apache2
@@ -11,6 +11,7 @@ BuildRequires: R-devel >= 3.0.2
 BuildRequires: glibc-devel
 BuildRequires: libcurl-devel
 BuildRequires: protobuf-devel
+BuildRequires: openssl-devel
 BuildRequires: make
 Requires: opencpu-server
 

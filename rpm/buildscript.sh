@@ -6,7 +6,7 @@ sudo yum update -y
 sudo yum upgrade -y
 
 # rpm dependencies
-sudo yum install -y rpm-build make wget httpd-devel libapreq2-devel R-devel libcurl-devel protobuf-devel
+sudo yum install -y rpm-build make wget httpd-devel libapreq2-devel R-devel libcurl-devel protobuf-devel openssl-devel
 
 # setup dirs
 mkdir -p ~/rpmbuild/SOURCES
@@ -22,9 +22,9 @@ mv -f rapache.spec ~/rpmbuild/SPECS/
 rpmbuild -ba ~/rpmbuild/SPECS/rapache.spec
 
 # Get opencpu sources
-wget https://github.com/jeroenooms/opencpu-server/archive/v1.4.4.tar.gz -O opencpu-server-1.4.4.tar.gz
-tar xzvf opencpu-server-1.4.4.tar.gz opencpu-server-1.4.4/rpm/opencpu.spec --strip-components 2
-mv -f opencpu-server-1.4.4.tar.gz ~/rpmbuild/SOURCES/
+wget https://github.com/jeroenooms/opencpu-server/archive/v1.4.5.tar.gz -O opencpu-server-1.4.5.tar.gz
+tar xzvf opencpu-server-1.4.5.tar.gz opencpu-server-1.4.5/rpm/opencpu.spec --strip-components 2
+mv -f opencpu-server-1.4.5.tar.gz ~/rpmbuild/SOURCES/
 mv -f opencpu.spec ~/rpmbuild/SPECS/
 
 # Build OpenCPU
