@@ -28,4 +28,4 @@ OpenCPU can be build on all major Linux distributions. However only on Ubuntu it
 
 ## Issues and questions
 
-Please post problems or suggestions on the [issues page](https://github.com/jeroenooms/opencpu/issues). For questions see the [FAQ and mailing list](https://www.opencpu.org/faq.html).
+Please post problems or suggestions on the [issues page](https://github.com/jeroenooms/opencpu/issues). For questions see the [FAQ and mailing list](https://www.opencpu.org/help.html).
