@@ -5,7 +5,7 @@ This repository contains the sources for the opencpu server (aka cloud server). 
 
  * `opencpu-server` - rApache based opencpu API server
  * `opencpu-cache` - nginx based reverse proxy with caching (debian/ubuntu only)
- * `opencpu` - meta package which installs both opencpu-server and opencpu-cache
+ * `opencpu` - Alias for `opencpu-server` (as of 1.4.5)
 
 ## Server manual
 
