@@ -45,9 +45,9 @@ Build rApache (`libapache2-mod-r-base`). Run this **not** as root.
 Build OpenCPU Cloud Server (`opencpu-server` and `opencpu-cache`). Run this **not** as root.
 
 	cd ~
-	wget https://github.com/jeroenooms/opencpu-server/archive/v1.4.5.tar.gz
-	tar xzf v1.4.5.tar.gz
-	cd opencpu-server-1.4.5
+	wget https://github.com/jeroenooms/opencpu-server/archive/v1.4.6.tar.gz
+	tar xzf v1.4.6.tar.gz
+	cd opencpu-server-1.4.6
 	debuild -us -uc
 
 ## Installing OpenCPU server

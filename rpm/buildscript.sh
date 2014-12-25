@@ -1,5 +1,9 @@
 # Enable EPEL repository. Only required on REDHAT/CENTOS, not on Fedora.
+# For EL6:
 sudo su -c 'rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm'
+
+# For EL7:
+sudo su -c 'rpm -Uvh http://download.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-2.noarch.rpm'
 
 # Update system
 sudo yum update -y
@@ -22,8 +26,8 @@ mv -f rapache.spec ~/rpmbuild/SPECS/
 rpmbuild -ba ~/rpmbuild/SPECS/rapache.spec
 
 # Get opencpu sources
-wget https://github.com/jeroenooms/opencpu-server/archive/v1.4.5.tar.gz -O opencpu-server-1.4.5.tar.gz
-tar xzvf opencpu-server-1.4.5.tar.gz opencpu-server-1.4.5/rpm/opencpu.spec --strip-components 2
+wget https://github.com/jeroenooms/opencpu-server/archive/v1.4.6.tar.gz -O opencpu-server-1.4.6.tar.gz
+tar xzvf opencpu-server-1.4.5.tar.gz opencpu-server-1.4.6/rpm/opencpu.spec --strip-components 2
 mv -f opencpu-server-1.4.5.tar.gz ~/rpmbuild/SOURCES/
 mv -f opencpu.spec ~/rpmbuild/SPECS/
 
