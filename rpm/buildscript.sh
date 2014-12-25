@@ -27,8 +27,8 @@ rpmbuild -ba ~/rpmbuild/SPECS/rapache.spec
 
 # Get opencpu sources
 wget https://github.com/jeroenooms/opencpu-server/archive/v1.4.6.tar.gz -O opencpu-server-1.4.6.tar.gz
-tar xzvf opencpu-server-1.4.5.tar.gz opencpu-server-1.4.6/rpm/opencpu.spec --strip-components 2
-mv -f opencpu-server-1.4.5.tar.gz ~/rpmbuild/SOURCES/
+tar xzvf opencpu-server-1.4.6.tar.gz opencpu-server-1.4.6/rpm/opencpu.spec --strip-components 2
+mv -f opencpu-server-1.4.6.tar.gz ~/rpmbuild/SOURCES/
 mv -f opencpu.spec ~/rpmbuild/SPECS/
 
 # Build OpenCPU
