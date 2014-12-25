@@ -9,7 +9,7 @@ Because `r-base` packages included with Debian/Ubuntu are often too old, we firs
 	sudo add-apt-repository -y ppa:marutter/rrutter
 	sudo apt-get update
 
-Alternatively, on Debian **Wheezy** we get packages from CRAN:
+Alternatively, on Debian **Wheezy** we get packages from CRAN (Debian **Jessy** already has R 3.1, skip this step):
 
 	# Become root
 	sudo -i
