@@ -31,7 +31,7 @@ First install dependencies required for building OpenCPU:
 	sudo apt-get dist-upgrade -y
 
 	# Install build dependencies
-	sudo apt-get install -y wget make devscripts apache2-prefork-dev apache2-mpm-prefork libapreq2-dev r-base r-base-dev libapparmor-dev libcurl4-openssl-dev xvfb xauth xfonts-base curl libssl-dev pkg-config
+	sudo apt-get install -y wget make devscripts apache2-prefork-dev apache2-mpm-prefork libapreq2-dev r-base r-base-dev libapparmor-dev libcurl4-openssl-dev libprotobuf-dev libprotoc-dev xvfb xauth xfonts-base curl libssl-dev pkg-config
 
 Build rApache (`libapache2-mod-r-base`). Run this **not** as root (use a regular user).
 
