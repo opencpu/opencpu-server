@@ -33,7 +33,7 @@ mv -f opencpu.spec ~/rpmbuild/SPECS/
 rpmbuild -ba ~/rpmbuild/SPECS/opencpu.spec
 
 # Install OpenCPU
-sudo yum install mod_ssl /usr/sbin/semanage
+sudo yum install MTA mod_ssl /usr/sbin/semanage
 cd ~/rpmbuild/RPMS/x86_64/
 sudo rpm -i rapache-*.rpm
 sudo rpm -i opencpu-lib-*.rpm
