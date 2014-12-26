@@ -9,7 +9,7 @@ Because `r-base` packages included with Debian/Ubuntu are often too old, we firs
 	sudo add-apt-repository -y ppa:marutter/rrutter
 	sudo apt-get update
 
-Alternatively, on Debian **Wheezy** we get packages from CRAN (Debian **Jessy** already has R 3.1, skip this step):
+Alternatively, on Debian **Wheezy** we get packages from CRAN:
 
 	# Become root
 	sudo -i
@@ -28,10 +28,10 @@ First install dependencies required for building OpenCPU:
 
 	# Update system
 	sudo apt-get update
-	sudo apt-get upgrade
+	sudo apt-get dist-upgrade
 
 	# Install build dependencies
-	sudo apt-get install wget make devscripts apache2-prefork-dev apache2-mpm-prefork libapreq2-dev r-base r-base-dev libapparmor-dev libcurl4-openssl-dev xvfb xauth xfonts-base curl
+	sudo apt-get install -y wget make devscripts apache2-prefork-dev apache2-mpm-prefork libapreq2-dev r-base r-base-dev libapparmor-dev libcurl4-openssl-dev xvfb xauth xfonts-base curl libssl-dev pkg-config
 
 Build rApache (`libapache2-mod-r-base`). Run this **not** as root.
 
