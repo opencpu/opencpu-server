@@ -1,0 +1,10 @@
+[Unit]
+Description=OpenCPU Caching Server
+
+[Service]
+ExecStartPre=/etc/init.d/opencpu-cache start
+ExecStart=/usr/bin/tail -f /var/log/nginx/error.log
+ExecStop=/etc/init.d/opencpu-cache stop
+
+[Install]
+WantedBy=multi-user.target
