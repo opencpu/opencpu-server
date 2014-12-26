@@ -1,5 +1,8 @@
-#Default is no rcpp
-all: versionfix norcpp
+# To force using r-cran-rcpp
+# all: versionfix norcpp
+
+#Default is to build included Rcpp
+all: versionfix library
 
 #Delete rcpp and build library
 norcpp: delrcpp library
