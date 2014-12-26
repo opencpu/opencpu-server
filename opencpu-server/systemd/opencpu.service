@@ -1,0 +1,10 @@
+[Unit]
+Description=OpenCPU Server
+
+[Service]
+ExecStartPre=/etc/init.d/opencpu start
+ExecStart=/usr/bin/tail -f /var/log/opencpu/error.log
+ExecStop=/etc/init.d/opencpu stop
+
+[Install]
+WantedBy=multi-user.target
