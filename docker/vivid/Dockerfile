@@ -18,9 +18,9 @@ RUN \
 
 RUN \
   cd ~ && \
-  wget https://github.com/jeroenooms/opencpu-server/archive/v1.4.6.tar.gz && \
-  tar xzf v1.4.6.tar.gz && \
-  cd opencpu-server-1.4.6 && \
+  wget https://github.com/jeroenooms/opencpu-server/archive/master.tar.gz && \
+  tar xzf master.tar.gz && \
+  cd opencpu-server-master && \
   dpkg-buildpackage
 
 USER root
