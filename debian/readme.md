@@ -16,7 +16,7 @@ Alternatively, on Debian **Wheezy** we get packages from CRAN:
 
 	# Add Wheezy CRAN repo for R 3.0+
 	apt-key adv --keyserver keyserver.ubuntu.com --recv-key 381BA480
-	echo "deb http://cran.r-project.org/bin/linux/debian wheezy-cran3/" > /etc/apt/sources.list.d/cran.list
+	echo "deb http://cran.rstudio.com/bin/linux/debian wheezy-cran3/" > /etc/apt/sources.list.d/cran.list
 	apt-get update
 
 	# Quit root
