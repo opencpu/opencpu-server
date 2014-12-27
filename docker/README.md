@@ -1,7 +1,7 @@
 OpenCPU on Docker
 =================
 
-This directory contains dockerfiles based on various platforms. Containers are automatically published at https://hub.docker.com/u/opencpu/.
+This directory contains dockerfiles based on various platforms. Containers are automatically published at [dockerhub](https://hub.docker.com/u/opencpu/).
 
 
 How to use
