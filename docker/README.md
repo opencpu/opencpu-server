@@ -13,22 +13,22 @@ Docker version 1.0 or higher is required on the host. The containers expose 3 po
     http://localhost:8004/ocpu/
     https://localhost/ocpu/
 
-The examples below assume that we use the [opencpu/base(https://registry.hub.docker.com/u/opencpu/base/) container. To run as the server as an executable
+The examples below assume that we use the [opencpu/base](https://registry.hub.docker.com/u/opencpu/base/) container. To start as the server as an executable
 
     docker run -t -p 80:80 -p 8004:8004 opencpu/base
 
-Alternatively, to run in background as a daemon:
+Alternatively, to start in background as a daemon:
 
     docker run -t -d -p 80:80 -p 8004:8004 opencpu/base
 
-Alternatively, to run with an interactive shell:
+Alternatively, to start with an interactive shell:
 
     docker run -t -i -p 80:80 -p 8004:8004 opencpu/base sh -c 'service opencpu restart && /bin/bash'
 
 OpenCPU and RStudio
 -------------------
 
-The [opencpu/rstudio]() container runs an installation with both `opencpu` and `rstudio-server`. For example:
+The [opencpu/rstudio](https://registry.hub.docker.com/u/opencpu/rstudio/) container runs an installation with both `opencpu` and `rstudio-server`. For example:
 
     docker run -t -p 80:80 -p 8004:8004 opencpu/rstudio
 
