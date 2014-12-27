@@ -15,16 +15,31 @@ Docker version 1.0 or higher is required on the host. The containers expose 3 po
 
 The examples below assume that we use the [opencpu/base(https://registry.hub.docker.com/u/opencpu/base/) container. To run as the server as an executable
 
-    docker run -t -p 80:80 -p 443:443 -p 8004:8004 opencpu/base
+    docker run -t -p 80:80 -p 8004:8004 opencpu/base
 
 Alternatively, to run in background as a daemon:
 
-    docker run -t -d -p 80:80 -p 443:443 -p 8004:8004 opencpu/base
+    docker run -t -d -p 80:80 -p 8004:8004 opencpu/base
 
 Alternatively, to run with an interactive shell:
 
-    docker run -t -i -p 80:80 -p 443:443 -p 8004:8004 opencpu/base sh -c 'service opencpu restart && /bin/bash'
+    docker run -t -i -p 80:80 -p 8004:8004 opencpu/base sh -c 'service opencpu restart && /bin/bash'
 
+OpenCPU and RStudio
+-------------------
+
+The [opencpu/rstudio]() container runs an installation with both `opencpu` and `rstudio-server`. For example:
+
+    docker run -t -p 80:80 -p 8004:8004 opencpu/rstudio
+
+Apache is automatically setup to proxy the `/rstudio/` path to the rstudio server:
+
+    http://localhost/ocpu/
+    http://localhost/rstudio/
+    http://localhost:8004/ocpu/
+    http://localhost:8004/rstudio/
+
+It seems like rstudio server currelty needs a restart (`rstudio-server restart`) after initiating the container.
 
 Portmapping
 -----------
