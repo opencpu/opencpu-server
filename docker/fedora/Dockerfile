@@ -49,7 +49,7 @@ RUN \
 
 RUN \
   yum remove -y httpd-devel libapreq2-devel protobuf-devel openssl-devel && \
-  deluser builder --remove-home
+  userdel -r builder
 
 # Apache ports
 EXPOSE 80
