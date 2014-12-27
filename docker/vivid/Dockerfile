@@ -42,7 +42,7 @@ RUN \
   dpkg -i opencpu-server_*.deb
 
 RUN \
-  apt-get install libssl0.9.8 && \
+  apt-get install libssl0.9.8 psmisc && \
   VER=$(curl --insecure https://s3.amazonaws.com/rstudio-server/current.ver) && \
   wget -q http://download2.rstudio.org/rstudio-server-${VER}-amd64.deb && \
   dpkg -i rstudio-server-${VER}-amd64.deb && \

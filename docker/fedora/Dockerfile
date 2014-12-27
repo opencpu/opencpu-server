@@ -48,7 +48,7 @@ RUN \
   rpm -i opencpu-server-*.rpm
 
 RUN \
-  yum install -y openssl-libs && \
+  yum install -y openssl-libs psmisc && \
   VER=$(curl --insecure https://s3.amazonaws.com/rstudio-server/current.ver) && \
   wget -q http://download2.rstudio.org/rstudio-server-${VER}-x86_64.rpm && \
   rpm -i rstudio-server-${VER}-x86_64.rpm && \
