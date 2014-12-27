@@ -45,6 +45,15 @@ RUN \
   dpkg -i opencpu-server_*.deb
 
 RUN \
+  apt-get install libssl0.9.8 && \
+  VER=$(curl --insecure https://s3.amazonaws.com/rstudio-server/current.ver) && \
+  wget -q http://download2.rstudio.org/rstudio-server-${VER}-amd64.deb && \
+  dpkg -i rstudio-server-${VER}-amd64.deb && \
+  rm rstudio-server-*-amd64.deb && \
+  ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc /usr/local/bin && \
+  ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc-citeproc /usr/local/bin
+
+RUN \
   apt-get purge -y devscripts apache2-prefork-dev libapreq2-dev libapparmor-dev libprotobuf-dev libprotoc-dev xvfb xauth pkg-config && \
   apt-get autoremove --purge -y && \
   deluser builder --remove-home

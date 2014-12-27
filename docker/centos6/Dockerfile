@@ -55,6 +55,15 @@ RUN \
   yum remove -y httpd-devel libapreq2-devel protobuf-devel openssl-devel && \
   userdel -r builder
 
+RUN \
+  yum install openssl098e && \
+  VER=$(curl --insecure https://s3.amazonaws.com/rstudio-server/current.ver) && \
+  wget -q http://download2.rstudio.org/rstudio-server-${VER}-x86_64.rpm && \
+  rpm -i rstudio-server-${VER}-x86_64.rpm && \
+  rm rstudio-server-*.rpm && \
+  ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc /usr/local/bin && \
+  ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc-citeproc /usr/local/bin
+
 # Apache ports
 EXPOSE 80
 EXPOSE 443
