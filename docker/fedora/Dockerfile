@@ -1,12 +1,3 @@
-# OpenCPU cloud server requires docker version 1.0 or higher!
-# Instructions: https://github.com/jeroenooms/opencpu-server/tree/master/rpm
-# Port 80 and 8004 use HTTP, port 443 is for HTTPS.
-#
-# Run as executable: docker run -t -p 80:80 -p 443:443 -p 8004:8004 opencpu/fedora
-# Run in background: docker run -t -d -p 80:80 -p 443:443 -p 8004:8004 opencpu/fedora
-# Run with shell: docker run -t -i -p 80:80 -p 443:443 -p 8004:8004 opencpu/fedora sh -c 'service opencpu restart && /bin/bash'
-
-# Pull base image.
 FROM fedora:latest
 
 # Install.
@@ -48,15 +39,6 @@ RUN \
   rpm -i opencpu-server-*.rpm
 
 RUN \
-  yum install -y openssl-libs psmisc && \
-  VER=$(curl --insecure https://s3.amazonaws.com/rstudio-server/current.ver) && \
-  wget -q http://download2.rstudio.org/rstudio-server-${VER}-x86_64.rpm && \
-  rpm -i rstudio-server-${VER}-x86_64.rpm && \
-  rm rstudio-server-*.rpm && \
-  ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc /usr/local/bin && \
-  ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc-citeproc /usr/local/bin
-
-RUN \
   yum remove -y httpd-devel libapreq2-devel protobuf-devel openssl-devel && \
   userdel -r builder
 
@@ -66,4 +48,4 @@ EXPOSE 443
 EXPOSE 8004
 
 # Define default command.
-CMD service opencpu restart && tail -F /var/log/opencpu/apache_access.log
+CMD service httpd restart && tail -F /var/log/opencpu/apache_access.log

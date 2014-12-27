@@ -1,4 +1,3 @@
-# Start with the rstudio image providing 'base R' as well as RStudio based on Debian testing
 FROM r-base:latest
 
 # Install.

@@ -1,13 +1,4 @@
-# OpenCPU cloud server requires docker version 1.0 or higher!
-# Instructions: https://github.com/jeroenooms/opencpu-server/tree/master/debian
-# Note that AppArmor is not available inside Docker.
-# Port 80 and 8004 use HTTP, port 443 is for HTTPS.
-#
-# Run as executable: docker run -t -p 80:80 -p 443:443 -p 8004:8004 opencpu/wheezy
-# Run in background: docker run -t -d -p 80:80 -p 443:443 -p 8004:8004 opencpu/wheezy
-# Run with shell: docker run -t -i -p 80:80 -p 443:443 -p 8004:8004 opencpu/wheezy sh -c 'service opencpu restart && /bin/bash'
-
-# Pull base image.
+# Use builds from launchpad
 FROM ubuntu:14.04
 
 # Install.
