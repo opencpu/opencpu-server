@@ -12,6 +12,7 @@ BuildRequires: glibc-devel
 BuildRequires: libcurl-devel
 BuildRequires: protobuf-devel
 BuildRequires: openssl-devel
+BuildRequires: libxml2-devel
 BuildRequires: make
 Requires: opencpu-server
 
@@ -27,6 +28,7 @@ Requires: wget
 Requires: unzip
 Requires: libcurl-devel
 Requires: protobuf
+Requires: libxml2
 Autoreq: no
 
 %description lib

@@ -11,6 +11,7 @@ BuildRequires: R-base-devel >= 3.0.2
 BuildRequires: libcurl-devel
 BuildRequires: make
 BuildRequires: openssl-devel
+BuildRequires: libxml2-devel
 ## BuildRequires: libprotobuf-devel #not availble on SLE11
 BuildRequires: gcc-c++
 Requires: opencpu-server
@@ -25,6 +26,7 @@ Requires: R-base >= 3.0.2
 Requires: make
 Requires: wget
 Requires: unzip
+Requires: libxml2
 
 %description lib
 This RPM package contains a frozen library of platform specific builds of R packages required by the OpenCPU system.
