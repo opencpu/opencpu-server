@@ -1,5 +1,5 @@
 Name: opencpu
-Version: 1.4.6
+Version: 1.5.0
 Release: rpm0
 Source: opencpu-server-%{version}.tar.gz
 License: Apache2
