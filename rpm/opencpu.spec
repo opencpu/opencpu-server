@@ -13,6 +13,7 @@ BuildRequires: libcurl-devel
 BuildRequires: protobuf-devel
 BuildRequires: openssl-devel
 BuildRequires: libxml2-devel
+BuildRequires: libicu-devel
 BuildRequires: make
 Requires: opencpu-server
 

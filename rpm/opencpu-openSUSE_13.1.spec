@@ -12,6 +12,7 @@ BuildRequires: libcurl-devel
 BuildRequires: make
 BuildRequires: openssl-devel
 BuildRequires: libxml2-devel
+BuildRequires: libicu-devel
 ## BuildRequires: libprotobuf-devel #not availble on SLE11
 BuildRequires: gcc-c++
 Requires: opencpu-server
