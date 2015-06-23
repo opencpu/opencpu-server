@@ -14,6 +14,7 @@ BuildRequires: protobuf-devel
 BuildRequires: openssl-devel
 BuildRequires: libxml2-devel
 BuildRequires: libicu-devel
+BuildRequires: pkgconfig
 BuildRequires: make
 Requires: opencpu-server
 
