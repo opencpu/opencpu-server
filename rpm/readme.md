@@ -6,7 +6,7 @@
 
 ## Binary packages for Fedora, Suse
 
-Ready-to-go opencpu-server rpm packages for recent versions of Fedora and SUSE systems are available [here](http://software.opensuse.org/download.html?project=home:jeroenooms:opencpu-1.4&package=opencpu).
+Ready-to-go opencpu-server rpm packages for recent versions of Fedora and SUSE systems are available [here](http://software.opensuse.org/download.html?project=home:jeroenooms:opencpu-1.5&package=opencpu).
 
 ## Building from source
 
