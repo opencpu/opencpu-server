@@ -20,7 +20,7 @@ Unlike ubuntu, the default configuration in redhat systems denies read access to
 
 Or to do it for other users:
 
-	sudo chmod +rw /home/username 
+	sudo chmod +rx /home/username 
 
 Note that if you have SELinux enabled, you might need some additional config here as well to make user libaries readable to httpd.
 
