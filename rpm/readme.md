@@ -12,6 +12,18 @@ Ready-to-go opencpu-server rpm packages for recent versions of Fedora and SUSE s
 
 Steps to build rpm packages on Fedora, CentOS or RHEL are in this script: [buildscript.sh](buildscript.sh).
 
+## The user api
+
+Unlike ubuntu, the default configuration in redhat systems denies read access to the home directory of other users. Therefore, to make your home directory visible via the `/ocpu/user` api you need to set:
+
+	chmod +rx ~
+
+Or to do it for other users:
+
+	sudo chmod +rw /home/username 
+
+Note that if you have SELinux enabled, you might need some additional config here as well to make user libaries readable to httpd.
+
 ## Debugging SELinux
 
 If you get mysterious permission denied errors on Fedora or CentOS, the problem is most likely SELinux (see [blog post](https://www.opencpu.org/posts/opencpu-fedora-centos/)). The introduction video [SELinux for mere mortals](http://www.redhat.com/resourcelibrary/videos/selinux-for-mere-mortals) is a nice primer on SELinux.
