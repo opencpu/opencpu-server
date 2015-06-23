@@ -12,7 +12,7 @@ Ready-to-go opencpu-server rpm packages for recent versions of Fedora and SUSE s
 
 Steps to build rpm packages on Fedora, CentOS or RHEL are in this script: [buildscript.sh](buildscript.sh).
 
-## The user api
+## The ocpu user API
 
 Unlike ubuntu, the default configuration in redhat systems denies read access to the home directory of other users. Therefore, to make your home directory visible via the `/ocpu/user` api you need to set:
 
