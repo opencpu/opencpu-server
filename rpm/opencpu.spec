@@ -44,6 +44,9 @@ Requires: rapache
 Requires: mod_ssl
 Requires: MTA
 Requires: /usr/sbin/semanage
+Requires: /usr/sbin/semodule
+Requires: /usr/bin/checkmodule
+Requires: /usr/bin/semodule_package
 
 %description server
 The OpenCPU cloud server builds on R and Apache2 (httpd) to expose the OpenCPU HTTP API.
@@ -65,12 +68,14 @@ mkdir -p %{buildroot}/etc/httpd/conf.d
 mkdir -p %{buildroot}/etc/cron.d
 mkdir -p %{buildroot}/usr/lib/opencpu/scripts
 mkdir -p %{buildroot}/usr/lib/opencpu/rapache
+mkdir -p %{buildroot}/usr/lib/opencpu/selinux
 mkdir -p %{buildroot}/etc/opencpu
 mkdir -p %{buildroot}/var/log/opencpu
 cp -Rf opencpu-server/sites-available/* %{buildroot}/etc/httpd/conf.d/
 cp -Rf opencpu-server/cron.d/* %{buildroot}/etc/cron.d/
 cp -Rf opencpu-server/scripts/* %{buildroot}/usr/lib/opencpu/scripts/
 cp -Rf opencpu-server/rapache/* %{buildroot}/usr/lib/opencpu/rapache/
+cp -Rf opencpu-server/selinux/* %{buildroot}/usr/lib/opencpu/selinux/
 cp -Rf opencpu-server/conf/* %{buildroot}/etc/opencpu/
 cp -Rf server.conf %{buildroot}/etc/opencpu/
 
@@ -82,6 +87,9 @@ touch /var/log/opencpu/error.log
 if [ "$1" = 1 ] ; then
   setsebool -P httpd_setrlimit=1 httpd_can_network_connect_db=1 httpd_can_network_connect=1 httpd_can_sendmail=1 httpd_read_user_content=1 || true
   semanage port -a -t http_port_t -p tcp 8004 || true
+  checkmodule -M -m -o opencpu.mod /usr/lib/opencpu/selinux/opencpu.te || true
+  semodule_package -o opencpu.pp -m opencpu.mod
+  semodule -i opencpu.pp
 fi
 apachectl restart || true
 
@@ -91,6 +99,7 @@ if [ "$1" = 0 ] ; then
   rm -Rf /etc/opencpu
   rm -Rf /var/log/opencpu
   semanage port -d -t http_port_t -p tcp 8004 || true
+  semodule -r opencpu || true
 fi
 apachectl restart || true
 
@@ -102,6 +111,7 @@ apachectl restart || true
 %files server
 /usr/lib/opencpu/scripts
 /usr/lib/opencpu/rapache
+/usr/lib/opencpu/selinux
 /etc/cron.d
 /etc/httpd/conf.d
 %dir /var/log/opencpu

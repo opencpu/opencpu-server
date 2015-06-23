@@ -1,0 +1,10 @@
+module opencpu 1.0;
+
+require {
+    type httpd_t;
+    type user_home_t;
+    class file execute;
+}
+
+#============= httpd_t ==============
+allow httpd_t user_home_t:file execute;
