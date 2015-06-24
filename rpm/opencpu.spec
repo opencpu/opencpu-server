@@ -45,6 +45,7 @@ Requires: mod_ssl
 Requires: MTA
 Requires: /usr/sbin/semanage
 Requires: /usr/sbin/semodule
+Requires: /usr/sbin/sestatus
 Requires: /usr/bin/checkmodule
 Requires: /usr/bin/semodule_package
 
@@ -83,8 +84,9 @@ cp -Rf server.conf %{buildroot}/etc/opencpu/
 chmod +x /usr/lib/opencpu/scripts/*.sh
 touch /var/log/opencpu/access.log
 touch /var/log/opencpu/error.log
+SELINUX_ENABLED=$(sestatus | grep "SELinux.status.*enabled")
 #1 means first install
-if [ "$1" = 1 ] ; then
+if [ "$1" = 1 ] && [ "$SELINUX_ENABLED" ]; then
   setsebool -P httpd_setrlimit=1 httpd_can_network_connect_db=1 httpd_can_network_connect=1 httpd_can_sendmail=1 httpd_read_user_content=1 || true
   semanage port -a -t http_port_t -p tcp 8004 || true
   checkmodule -M -m -o opencpu.mod /usr/lib/opencpu/selinux/opencpu.te || true
