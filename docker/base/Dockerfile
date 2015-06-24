@@ -5,7 +5,7 @@ RUN \
   useradd -ms /bin/bash builder && \
   apt-get update && \
   apt-get -y dist-upgrade && \
-  apt-get install -y wget make devscripts apache2-prefork-dev apache2-mpm-prefork libapreq2-dev r-base r-base-dev libapparmor-dev libcurl4-openssl-dev libprotobuf-dev libprotoc-dev xvfb xauth xfonts-base curl libssl-dev pkg-config
+  apt-get install -y wget make devscripts apache2-prefork-dev apache2-mpm-prefork libapreq2-dev r-base r-base-dev libapparmor-dev libcurl4-openssl-dev libprotobuf-dev libprotoc-dev xvfb xauth xfonts-base curl libssl-dev libicu-devel pkg-config
 
 USER builder
 
@@ -18,9 +18,9 @@ RUN \
 
 RUN \
   cd ~ && \
-  wget https://github.com/jeroenooms/opencpu-server/archive/v1.4.6.tar.gz && \
-  tar xzf v1.4.6.tar.gz && \
-  cd opencpu-server-1.4.6 && \
+  wget https://github.com/jeroenooms/opencpu-server/archive/v1.5.0.tar.gz && \
+  tar xzf v1.5.0.tar.gz && \
+  cd opencpu-server-1.5.0 && \
   dpkg-buildpackage
 
 USER root

@@ -9,7 +9,7 @@ RUN \
   useradd -ms /bin/bash builder && \
   yum update -y && \
   yum upgrade -y && \
-  yum install -y rpm-build make wget tar httpd-devel libapreq2-devel R-devel libcurl-devel protobuf-devel openssl-devel
+  yum install -y rpm-build make wget tar httpd-devel libapreq2-devel R-devel libcurl-devel protobuf-devel openssl-devel libxml2-devel
 
 USER builder
 
@@ -27,9 +27,9 @@ RUN \
 
 RUN \
   cd ~ && \
-  wget https://github.com/jeroenooms/opencpu-server/archive/v1.4.6.tar.gz -O opencpu-server-1.4.6.tar.gz  && \
-  tar xzvf opencpu-server-1.4.6.tar.gz opencpu-server-1.4.6/rpm/opencpu.spec --strip-components 2 && \
-  mv -f opencpu-server-1.4.6.tar.gz ~/rpmbuild/SOURCES/ && \
+  wget https://github.com/jeroenooms/opencpu-server/archive/v1.5.0.tar.gz -O opencpu-server-1.5.0.tar.gz  && \
+  tar xzvf opencpu-server-1.5.0.tar.gz opencpu-server-1.5.0/rpm/opencpu.spec --strip-components 2 && \
+  mv -f opencpu-server-1.5.0.tar.gz ~/rpmbuild/SOURCES/ && \
   mv -f opencpu.spec ~/rpmbuild/SPECS/ && \
   rpmbuild -ba ~/rpmbuild/SPECS/opencpu.spec
 

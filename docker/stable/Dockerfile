@@ -6,7 +6,7 @@ RUN \
   apt-get update && \
   apt-get -y dist-upgrade && \
   apt-get install -y software-properties-common && \
-  add-apt-repository -y ppa:opencpu/opencpu-1.4 && \
+  add-apt-repository -y ppa:opencpu/opencpu-1.5 && \
   apt-get update && \
   apt-get install -y opencpu rstudio-server
 
