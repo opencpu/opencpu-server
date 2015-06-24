@@ -43,6 +43,11 @@ RUN \
   rpm -i opencpu-server-*.rpm
 
 RUN \
+  wget http://download2.rstudio.org/rstudio-server-rhel-0.99.448-x86_64.rpm && \
+  yum install --nogpgcheck rstudio-server-rhel-0.99.448-x86_64.rpm && \
+  rm rstudio-server-rhel-0.99.448-x86_64.rpm  
+
+RUN \
   yum remove -y httpd-devel libapreq2-devel protobuf-devel openssl-devel && \
   userdel -r builder
 
@@ -52,4 +57,4 @@ EXPOSE 443
 EXPOSE 8004
 
 # Define default command.
-CMD service httpd restart && tail -F /var/log/opencpu/apache_access.log
+CMD service httpd restart && rstudio-server restart && tail -F /var/log/opencpu/apache_access.log

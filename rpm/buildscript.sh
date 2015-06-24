@@ -8,16 +8,16 @@ sudo yum update -y
 sudo yum upgrade -y
 
 # rpm dependencies
-sudo yum install -y rpm-build make wget tar httpd-devel libapreq2-devel R-devel libcurl-devel protobuf-devel openssl-devel libxml2-devel
+sudo yum install -y rpm-build make wget tar httpd-devel libapreq2-devel R-devel libcurl-devel protobuf-devel openssl-devel libxml2-devel libicu-devel
 
 # setup dirs
 mkdir -p ~/rpmbuild/SOURCES
 mkdir -p ~/rpmbuild/SPECS
 
 # Get the rapache sources
-wget https://github.com/jeffreyhorner/rapache/archive/v1.2.6.tar.gz -O rapache-1.2.6.tar.gz
-tar xzvf rapache-1.2.6.tar.gz rapache-1.2.6/rpm/rapache.spec --strip-components 2
-mv -f rapache-1.2.6.tar.gz ~/rpmbuild/SOURCES/
+wget https://github.com/jeffreyhorner/rapache/archive/v1.2.7.tar.gz -O rapache-1.2.7.tar.gz
+tar xzvf rapache-1.2.7.tar.gz rapache-1.2.7/rpm/rapache.spec --strip-components 2
+mv -f rapache-1.2.7.tar.gz ~/rpmbuild/SOURCES/
 mv -f rapache.spec ~/rpmbuild/SPECS/
 
 # Build rApache
