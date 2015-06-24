@@ -9,7 +9,7 @@ RUN \
 
 RUN \
   wget http://download2.rstudio.org/rstudio-server-rhel-0.99.448-x86_64.rpm && \
-  yum install --nogpgcheck rstudio-server-rhel-0.99.448-x86_64.rpm && \
+  yum install -y --nogpgcheck rstudio-server-rhel-0.99.448-x86_64.rpm && \
   rm rstudio-server-rhel-0.99.448-x86_64.rpm
 
 # Apache ports
