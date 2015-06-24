@@ -6,7 +6,7 @@ RUN \
   useradd -ms /bin/bash builder && \
   apt-get update && \
   apt-get -y dist-upgrade && \
-  apt-get install -y wget make devscripts apache2-prefork-dev apache2-mpm-prefork libapreq2-dev r-base r-base-dev libapparmor-dev libcurl4-openssl-dev libprotobuf-dev libprotoc-dev xvfb xauth xfonts-base curl libssl-dev libicu-devel pkg-config
+  apt-get install -y wget make devscripts apache2-prefork-dev apache2-mpm-prefork libapreq2-dev r-base r-base-dev libapparmor-dev libcurl4-openssl-dev libprotobuf-dev libprotoc-dev xvfb xauth xfonts-base curl libssl-dev libicu-dev pkg-config
 
 USER builder
 
