@@ -43,9 +43,6 @@ RUN \
   rpm -i opencpu-server-*.rpm
 
 RUN \
-  service httpd restart
-
-RUN \
   yum remove -y httpd-devel libapreq2-devel protobuf-devel openssl-devel && \
   userdel -r builder
 
