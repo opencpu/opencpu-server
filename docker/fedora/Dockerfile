@@ -1,11 +1,11 @@
 FROM fedora:22
 
 RUN \
-  cd /etc/yum.repos.d/ && \
   yum update -y && \
   yum upgrade -y && \
-  yum install -y wget  && \ 
-  wget http://download.opensuse.org/repositories/home:jeroenooms:opencpu-1.5/Fedora_22/home:jeroenooms:opencpu-1.5.repo && \ 
+  yum install -y wget  && \
+  cd /etc/yum.repos.d/ && \
+  wget http://download.opensuse.org/repositories/home:jeroenooms:opencpu-1.5/Fedora_22/home:jeroenooms:opencpu-1.5.repo && \
   yum install -y opencpu
 
 RUN \
