@@ -13,6 +13,7 @@ BuildRequires: make
 BuildRequires: openssl-devel
 BuildRequires: libxml2-devel
 BuildRequires: libicu-devel
+BuildRequires: libssh2-devel
 BuildRequires: pkgconfig
 ## BuildRequires: libprotobuf-devel #not availble on SLE11
 BuildRequires: gcc-c++
@@ -51,7 +52,7 @@ The OpenCPU cloud server builds on R and Apache2 (httpd) to expose the OpenCPU H
 ## FIXME: Rcpp has issues with the build service.
 ## AppArmor profiles don't work on Suse for now.
 ## NO_APPARMOR=1 make norcpp
-NO_APPARMOR=1 make
+NO_APPARMOR=1 make library
 
 %install
 # For opencpu-lib:
@@ -79,10 +80,10 @@ touch %{buildroot}/usr/lib/opencpu/emptyfile
 chmod +x /usr/lib/opencpu/scripts/*.sh
 touch /var/log/opencpu/access.log
 touch /var/log/opencpu/error.log
-service apache2 restart || true
+systemctl restart apache2.service|| true
 
 %postun server
-service apache2 restart || true
+systemctl restart apache2.service || true
 
 %files
 %defattr(644,wwwrun,www,755)

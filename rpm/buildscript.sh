@@ -8,7 +8,7 @@ sudo yum update -y
 sudo yum upgrade -y
 
 # rpm dependencies
-sudo yum install -y rpm-build make wget tar httpd-devel libapreq2-devel R-devel libcurl-devel protobuf-devel openssl-devel libxml2-devel libicu-devel
+sudo yum install -y rpm-build make wget tar httpd-devel libapreq2-devel R-devel libcurl-devel protobuf-devel openssl-devel libxml2-devel libicu-devel libssh2-devel
 
 # setup dirs
 mkdir -p ~/rpmbuild/SOURCES
