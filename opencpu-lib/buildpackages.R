@@ -27,4 +27,6 @@ if(is.na(Sys.getenv("NO_APPARMOR", NA))){
 
 #Because of dependencies=TRUE, suggested packages sendmailR, RAppArmor and RProtoBuf are also installed.
 install.packages(c("opencpu", "unixtools"), dependencies=TRUE, type="source", lib=destdir, contriburl=paste0("file://", sourcedir));
-remove.packages("BH", lib = destdir)
+
+# This causes problems if some packages were pre-installed in the root global libarary
+# remove.packages("BH", lib = destdir)
