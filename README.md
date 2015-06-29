@@ -17,7 +17,6 @@ Currently, prebuilt binaries are available for recent versions of:
 
  - [Ubuntu](https://www.opencpu.org/download.html)
  - [Fedora](http://software.opensuse.org/download.html?project=home:jeroenooms:opencpu-1.4&package=opencpu)
- - [SUSE](http://software.opensuse.org/download.html?project=home:jeroenooms:opencpu-1.4&package=opencpu)
 
 ## Building from source
 
