@@ -29,9 +29,12 @@ Requires: R-devel >= 3.0.2
 Requires: make
 Requires: wget
 Requires: unzip
-Requires: libcurl-devel
 Requires: protobuf
-Requires: libxml2
+Requires: libcurl-devel
+Requires: openssl-devel
+Requires: libxml2-devel
+Requires: libicu-devel
+Requires: libssh2-devel
 Autoreq: no
 
 %description lib
