@@ -48,7 +48,7 @@ RUN \
   rm rstudio-server-rhel-0.99.448-x86_64.rpm  
 
 RUN \
-  yum remove -y httpd-devel libapreq2-devel protobuf-devel openssl-devel && \
+  yum remove -y httpd-devel libapreq2-devel && \
   userdel -r builder
 
 # Apache ports
