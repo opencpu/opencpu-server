@@ -15,6 +15,7 @@ library:
 	# Builds the library with R packages.
 	Rscript ./opencpu-lib/buildpackages.R
 	cp ./opencpu-lib/build/opencpu/config/defaults.conf server.conf
+	for f in build/*; do bn=$(basename $f); echo "/usr/lib/opencpu/library/$bn /usr/lib/R/library/$bn" >> opencpu-lib.links; done
 
 versionfix:
 	( cd opencpu-server ; ./versionfix.sh )
