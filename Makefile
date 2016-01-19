@@ -15,7 +15,7 @@ library:
 	# Builds the library with R packages.
 	Rscript ./opencpu-lib/buildpackages.R
 	cp ./opencpu-lib/build/opencpu/config/defaults.conf server.conf
-	for f in opencpu-lib/build/*; do b=$(basename $f); echo "/usr/lib/opencpu/library/$b /usr/lib/R/library/$b" >> debian/opencpu-lib.links; done
+	./opencpu-lib/symlinks.sh
 	cat debian/opencpu-lib.links
 
 versionfix:
