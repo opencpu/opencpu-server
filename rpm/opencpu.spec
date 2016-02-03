@@ -67,7 +67,8 @@ NO_APPARMOR=1 make library
 
 %install
 # For opencpu-lib:
-mkdir -p  %{buildroot}/usr/lib/opencpu/library
+mkdir -p %{buildroot}/usr/lib/opencpu/library
+mkdir -p %{buildroot}%{_libdir}/R/library
 cp -Rf opencpu-lib/build/* %{buildroot}/usr/lib/opencpu/library/
 cp -f opencpu-lib/symlinks/* %{buildroot}%{_libdir}/R/library/
 # For opencpu-server:
