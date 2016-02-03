@@ -66,6 +66,7 @@ NO_APPARMOR=1 make library
 # For opencpu-lib:
 mkdir -p  %{buildroot}/usr/lib/opencpu/library
 cp -Rf opencpu-lib/build/* %{buildroot}/usr/lib/opencpu/library/
+cp -f opencpu-lib/symlinks/* %{buildroot}%{_libdir}/R/library/
 # For opencpu-server:
 sed -i s/www-data/apache/g opencpu-server/cron.d/opencpu
 sed -i s/www-data/apache/g opencpu-server/scripts/cleanocpu.sh
@@ -113,6 +114,7 @@ apachectl restart || true
 
 %files lib
 /usr/lib/opencpu/library
+%{_libdir}/R/library
 
 %files server
 /usr/lib/opencpu/scripts
