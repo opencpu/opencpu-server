@@ -118,7 +118,7 @@ apachectl restart || true
 
 %files lib
 /usr/lib/opencpu/library
-/usr/shareq/R/library
+/usr/share/R/library
 
 %files server
 /usr/lib/opencpu/scripts
