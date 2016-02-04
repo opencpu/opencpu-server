@@ -10,7 +10,7 @@ Summary: The OpenCPU system for embedded scientific computing and reproducible r
 Group: Applications/Internet
 Buildroot: %{_tmppath}/%{name}-buildroot
 URL: http://www.opencpu.org
-BuildRequires: R-devel >= 3.0.2
+BuildRequires: R-devel >= 3.2.0
 BuildRequires: glibc-devel
 BuildRequires: libcurl-devel
 BuildRequires: protobuf-devel
@@ -28,7 +28,7 @@ The OpenCPU system exposes an HTTP API for embedded scientific computing with R.
 %package lib
 Summary: OpenCPU package library.
 Group: Applications/Internet
-Requires: R-devel >= 3.0.2
+Requires: R-devel >= 3.2.0
 Requires: make
 Requires: wget
 Requires: unzip
