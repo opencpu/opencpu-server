@@ -68,7 +68,7 @@ NO_APPARMOR=1 make library
 %install
 # For opencpu-lib:
 mkdir -p %{buildroot}/usr/lib/opencpu/library
-mkdir -p %{buildroot}%{_libdir}/R/library
+mkdir -p %{buildroot}/usr/share/R/library
 cp -Rf opencpu-lib/build/* %{buildroot}/usr/lib/opencpu/library/
 cp -Pf opencpu-lib/symlinks/* %{buildroot}/usr/share/R/library/
 # For opencpu-server:
@@ -118,7 +118,7 @@ apachectl restart || true
 
 %files lib
 /usr/lib/opencpu/library
-/usr/share/R/library
+/usr/shareq/R/library
 
 %files server
 /usr/lib/opencpu/scripts
