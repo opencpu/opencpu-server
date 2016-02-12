@@ -56,7 +56,6 @@ case "$1" in
 
     echo "installing opencpu init script."
     chmod 755 /usr/lib/opencpu/init.d/opencpu
-    ln -sf /usr/lib/opencpu/init.d/opencpu /etc/init.d/opencpu
     update-rc.d opencpu defaults
     service opencpu start
 

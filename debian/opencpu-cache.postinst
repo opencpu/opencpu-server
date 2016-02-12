@@ -10,16 +10,11 @@ case "$1" in
 
     #add opencpu-cache startup script
     chmod 755 /usr/lib/opencpu/init.d/opencpu-cache
-    ln -sf /usr/lib/opencpu/init.d/opencpu-cache /etc/init.d/opencpu-cache
     update-rc.d opencpu-cache defaults
 
     #nginx scripts
     chmod +x /usr/lib/opencpu/scripts/nginx_ensite
     chmod +x /usr/lib/opencpu/scripts/nginx_dissite
-
-    #HTTPS certificates
-    ln -sf /usr/lib/opencpu/certs/ocpu.pem /etc/ssl/certs/ocpu.pem
-    ln -sf /usr/lib/opencpu/certs/opencpu.pem /etc/ssl/certs/opencpu.pem
 
     #start the service
     service opencpu-cache start

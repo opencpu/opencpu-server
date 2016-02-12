@@ -17,8 +17,8 @@ server {
 	port_in_redirect off;
 
 	ssl on;
-	ssl_certificate /etc/ssl/certs/opencpu.pem;
-	ssl_certificate_key /etc/ssl/private/jeroen2014.key;
+	ssl_certificate /etc/ssl/certs/ocpu2016.pem;
+	ssl_certificate_key /etc/ssl/private/ocpu2016.key;
 
 	location / {
 		proxy_pass http://jeroenooms.github.io/opencpu-pages/;
@@ -44,8 +44,8 @@ server {
 	listen 8007;
 	server_name opencpu.org blog.opencpu.org;
 	ssl on;
-	ssl_certificate /etc/ssl/certs/opencpu.pem;
-	ssl_certificate_key /etc/ssl/private/jeroen2014.key;
+	ssl_certificate /etc/ssl/certs/ocpu2016.pem;
+	ssl_certificate_key /etc/ssl/private/ocpu2016.key;
 	rewrite ^ https://www.opencpu.org permanent;
 }
 
@@ -63,6 +63,6 @@ server {
 	return 444 "Invalid opencpu vhost: $host\n";
 	default_type "text/plain";
 	ssl on;
-	ssl_certificate /etc/ssl/certs/opencpu.pem;
-	ssl_certificate_key /etc/ssl/private/jeroen2014.key;
+	ssl_certificate /etc/ssl/certs/ocpu2016.pem;
+	ssl_certificate_key /etc/ssl/private/ocpu2016.key;
 }
