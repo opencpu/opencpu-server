@@ -2,7 +2,7 @@ FROM centos:centos6
 
 # Enable EPEL
 RUN \
-  yum install yum install epel-release
+  yum install epel-release
 
 # Install.
 RUN \
