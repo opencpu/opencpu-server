@@ -2,7 +2,7 @@ FROM centos:centos7
 
 # Enable EPEL
 RUN \
-  su -c 'rpm -Uvh http://download.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm'
+  yum install yum install epel-release
 
 # Install.
 RUN \
@@ -27,9 +27,9 @@ RUN \
 
 RUN \
   cd ~ && \
-  wget https://github.com/jeroenooms/opencpu-server/archive/v1.5.0.tar.gz -O opencpu-server-1.5.0.tar.gz  && \
-  tar xzvf opencpu-server-1.5.0.tar.gz opencpu-server-1.5.0/rpm/opencpu.spec --strip-components 2 && \
-  mv -f opencpu-server-1.5.0.tar.gz ~/rpmbuild/SOURCES/ && \
+  wget https://github.com/jeroenooms/opencpu-server/archive/v1.5.tar.gz -O opencpu-server-1.5.tar.gz  && \
+  tar xzvf opencpu-server-1.5.tar.gz opencpu-server-1.5/rpm/opencpu.spec --strip-components 2 && \
+  mv -f opencpu-server-1.5.tar.gz ~/rpmbuild/SOURCES/ && \
   mv -f opencpu.spec ~/rpmbuild/SPECS/ && \
   rpmbuild -ba ~/rpmbuild/SPECS/opencpu.spec
 
@@ -43,9 +43,9 @@ RUN \
   rpm -i opencpu-server-*.rpm
 
 RUN \
-  wget http://download2.rstudio.org/rstudio-server-rhel-0.99.448-x86_64.rpm && \
-  yum install -y --nogpgcheck rstudio-server-rhel-0.99.448-x86_64.rpm && \
-  rm rstudio-server-rhel-0.99.448-x86_64.rpm  
+  wget https://download2.rstudio.org/rstudio-server-rhel-0.99.891-x86_64.rpm && \
+  yum install --nogpgcheck rstudio-server-rhel-0.99.891-x86_64.rpm && \
+  rm rstudio-server-rhel-0.99.891-x86_64.rpm 
 
 RUN \
   yum remove -y httpd-devel libapreq2-devel && \
