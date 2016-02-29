@@ -1,6 +1,5 @@
 # Important! On REDHAT/CENTOS you need to enable the EPEL repository. This is not required on Fedora!
-# On EL6: sudo su -c 'rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm'
-# On EL7: sudo su -c 'rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm'
+sudo yum install epel-release
 # See also: http://bit.ly/1xVxGlD
 # Or: https://support.rackspace.com/how-to/install-epel-and-additional-repositories-on-centos-and-red-hat/
 
