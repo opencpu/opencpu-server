@@ -9,7 +9,8 @@ RUN \
   useradd -ms /bin/bash builder && \
   yum update -y && \
   yum upgrade -y && \
-  yum install -y rpm-build make wget tar httpd-devel libapreq2-devel R-devel libcurl-devel protobuf-devel openssl-devel libxml2-devel libicu-devel libssh2-devel
+  yum install -y rpm-build make wget tar httpd-devel libapreq2-devel R-devel libcurl-devel protobuf-devel openssl-devel libxml2-devel libicu-devel libssh2-devel && \
+  yum clean all
 
 USER builder
 
@@ -49,7 +50,8 @@ RUN \
 
 RUN \
   yum remove -y httpd-devel libapreq2-devel && \
-  userdel -r builder
+  userdel -r builder && \
+  yum clean all
 
 # Apache ports
 EXPOSE 80
