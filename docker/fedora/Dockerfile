@@ -9,9 +9,9 @@ RUN \
   yum install -y opencpu
 
 RUN \
-  wget https://download2.rstudio.org/rstudio-server-rhel-0.99.891-x86_64.rpm && \
-  yum install -y --nogpgcheck rstudio-server-rhel-0.99.891-x86_64.rpm && \
-  rm rstudio-server-rhel-0.99.891-x86_64.rpm
+  wget https://download2.rstudio.org/rstudio-server-rhel-0.99.896-x86_64.rpm && \
+  yum install -y --nogpgcheck rstudio-server-rhel-0.99.896-x86_64.rpm && \
+  rm rstudio-server-rhel-0.99.896-x86_64.rpm
 
 # Apache ports
 EXPOSE 80
