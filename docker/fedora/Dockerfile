@@ -5,7 +5,7 @@ RUN \
   yum upgrade -y && \
   yum install -y wget  && \
   cd /etc/yum.repos.d/ && \
-  wget http://download.opensuse.org/repositories/home:jeroenooms:opencpu-1.5/Fedora_23/home:jeroenooms:opencpu-1.5.repo && \
+  wget http://download.opensuse.org/repositories/home:jeroenooms:opencpu-1.6/Fedora_23/home:jeroenooms:opencpu-1.6.repo && \
   yum install -y opencpu
 
 RUN \

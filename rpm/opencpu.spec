@@ -1,8 +1,8 @@
 # Github branch name
-%define branch 1.5
+%define branch 1.6
 
 Name: opencpu
-Version: 1.5.5
+Version: 1.6.0
 Release: rpm0
 Source: opencpu-server-%{branch}.tar.gz
 License: Apache2
