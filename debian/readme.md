@@ -1,22 +1,22 @@
 # Building OpenCPU on Debian/Ubuntu
 
-*How to build OpenCPU on Debian (7 or higher) and Ubuntu (12.04 or higher)*
+*How to build OpenCPU on Debian or Ubuntu*
 
-## Installing R 3.0+
+## Update R (optional, but recommended)
 
 Because `r-base` packages included with Debian/Ubuntu are often old, we first add a repository with a recent version of R. On **Ubuntu** we can use Michael Rutter's [launchpad](https://launchpad.net/~marutter/+archive/ubuntu/rrutter?field.series_filter=trusty) repository:
 
 	sudo add-apt-repository -y ppa:marutter/rrutter
 	sudo apt-get update
 
-Alternatively, on Debian **Wheezy** we get packages from CRAN:
+Alternatively, on **Debian** use `r-base` packages from CRAN (see [details](https://cran.rstudio.com/bin/linux/debian/#debian-jessie-stable)). For example on Debian 8.0 ("jessie")
 
 	# Become root
 	sudo -i
 
 	# Add Wheezy CRAN repo for R 3.0+
 	apt-key adv --keyserver keyserver.ubuntu.com --recv-key 381BA480
-	echo "deb http://cran.rstudio.com/bin/linux/debian wheezy-cran3/" > /etc/apt/sources.list.d/cran.list
+	echo "deb http://cran.rstudio.com/bin/linux/debian jessie-cran3/" > /etc/apt/sources.list.d/cran.list
 	apt-get update
 
 	# Quit root
