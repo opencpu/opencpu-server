@@ -16,7 +16,7 @@ The [server manual](http://jeroenooms.github.com/opencpu-manual/opencpu-server.p
 Currently, prebuilt binaries are available for recent versions of:
 
  - [Ubuntu](https://www.opencpu.org/download.html)
- - [Fedora](http://software.opensuse.org/download.html?project=home:jeroenooms:opencpu-1.5&package=opencpu)
+ - [Fedora](http://software.opensuse.org/download.html?project=home:jeroenooms:opencpu-1.6&package=opencpu)
 
 ## Building from source
 
