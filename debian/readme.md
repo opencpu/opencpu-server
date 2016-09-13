@@ -33,6 +33,8 @@ First install dependencies required for building OpenCPU:
 	# Install build dependencies
 	sudo apt-get install -y wget make devscripts apache2-dev apache2 libapreq2-dev r-base r-base-dev libapparmor-dev libcurl4-openssl-dev libprotobuf-dev protobuf-compiler xvfb xauth xfonts-base curl libssl-dev libxml2-dev libicu-dev pkg-config
 
+**UPDATE**: As of 2016 [libapache2-mod-r-base](http://packages.ubuntu.com/xenial/web/libapache2-mod-r-base) is now included with Debian/Ubuntu! On Ubuntu 16.04 / Debian 9 (stretch) or newer, skip this step and continue with building `opencpu-server` below. 
+
 Build rApache (`libapache2-mod-r-base`). Run this **not** as root (use a regular user).
 
 	cd ~
