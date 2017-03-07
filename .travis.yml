@@ -1,8 +1,8 @@
 # Jeroens opencpu CI deb builder
-# Currently doesn't work because Travis is on Ubuntu 12.04 and we need Apache 2.4
 
 language: R
 sudo: required
+dist: trusty
 cache: packages
 
 before_install:
