@@ -1,4 +1,4 @@
-# OpenCPU Cloud Server [![Build Status](https://travis-ci.org/jeroenooms/opencpuserver.svg)](https://travis-ci.org/jeroenooms/opencpu-server)
+# OpenCPU Cloud Server [![Build Status](https://travis-ci.org/jeroenooms/opencpuserver.svg?branch=v1.6)](https://travis-ci.org/jeroenooms/opencpu-server)
 
 This repository contains the sources for the opencpu server (aka cloud server). It consists of the following packages:
 
