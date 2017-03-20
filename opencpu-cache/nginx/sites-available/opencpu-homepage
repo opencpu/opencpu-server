@@ -21,7 +21,7 @@ server {
 	ssl_certificate_key /etc/ssl/private/ocpu2016.key;
 
 	location / {
-		proxy_pass http://jeroenooms.github.io/opencpu-pages/;
+		proxy_pass http://jeroen.github.io/opencpu-pages/;
 		proxy_cache opencpu;
 
 		#force 24h caching for github pages
