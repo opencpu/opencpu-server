@@ -55,6 +55,7 @@ capability sys_tty_config,
 /var/cache/fontconfig/** r,
 /var/lib/tex*/** mrix,
 /var/www/.odbc.ini r,
+/sys/devices/system/cpu/ r,
 
 /{tmp,mnt,tmpfs}/ocpu-www-data/ r,
 /{tmp,mnt,tmpfs}/ocpu-www-data/cran_library/ r,
@@ -71,4 +72,4 @@ capability sys_tty_config,
 
 ## This is the only dir that is writable
 ## No ix or m permission here!
-/{tmp,mnt,tmpfs}/ocpu-temp/** rw,
+/{tmp,mnt,tmpfs}/ocpu-temp/** rwl,
