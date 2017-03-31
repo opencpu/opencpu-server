@@ -26,7 +26,7 @@ Description: Package containing the platform specific R package buids.
 
 Package: opencpu-tex
 Architecture: all
-Recommends: pandoc, texinfo, texlive-base, texlive-latex-base, texlive-generic-recommended, texinfo-doc-nonfree, texlive-latex-recommended, texlive-latex-extra, texlive-fonts-extra, texlive-fonts-recommended
+Recommends: pandoc, texinfo, texlive-base, texlive-latex-base, texlive-generic-recommended, texinfo-doc-nonfree, texlive-latex-recommended, texlive-latex-extra, texlive-fonts-extra, texlive-fonts-recommended, texlive-binaries
 Description: Meta package with tex and pandoc dependencies.
 
 Package: opencpu-full
