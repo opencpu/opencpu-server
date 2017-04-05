@@ -56,6 +56,7 @@ capability sys_tty_config,
 /var/lib/tex*/** mrix,
 /var/www/.odbc.ini r,
 /sys/devices/system/cpu/ r,
+/home/ r,
 
 /{tmp,mnt,tmpfs}/ocpu-www-data/ r,
 /{tmp,mnt,tmpfs}/ocpu-www-data/cran_library/ r,
