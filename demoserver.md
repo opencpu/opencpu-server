@@ -44,15 +44,15 @@ sudo apt-get install opencpu-cache
 Install private SSL key
 
 ```sh
-sudo cp ocpu2016.key /etc/ssl/private/ocpu2016.key 
-sudo chgrp ssl-cert /etc/ssl/private/ocpu2016.key
-sudo chmod 640 /etc/ssl/private/ocpu2016.key
+sudo cp ocpu2017.key /etc/ssl/private/ocpu2017.key 
+sudo chgrp ssl-cert /etc/ssl/private/ocpu2017.key
+sudo chmod 640 /etc/ssl/private/ocpu2017.key
 ```
 
 Edit config files:
 
 
- - Replace cert+key from snakeoil to ocpu2016 in /etc/nginx/sites-enabled/opencpu
+ - Replace cert+key from snakeoil to ocpu2017 in /etc/nginx/sites-enabled/opencpu
  - Modify nginx back-end server ip address in /etc/nginx/conf.d/opencpu.conf
  - Modify rstudio back-end server in /etc/nginx/opencpu.d/rstudio.conf
 

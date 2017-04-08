@@ -1,2 +1,2 @@
 /usr/lib/opencpu/init.d/opencpu-cache /etc/init.d/opencpu-cache
-/usr/lib/opencpu/certs/ocpu2016.pem /etc/ssl/certs/ocpu2016.pem
+/usr/lib/opencpu/certs/ocpu2017.pem /etc/ssl/certs/ocpu2017.pem
