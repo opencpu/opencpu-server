@@ -19,7 +19,7 @@ server {
 
 # HTTPS server
 server {
-	listen 8007;
+	listen 8007 ssl http2;
 	server_name public.opencpu.org;
 
 	# For iptables prerouting
