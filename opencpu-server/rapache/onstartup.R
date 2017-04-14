@@ -23,7 +23,6 @@ try(.Call(parallel:::C_mc_interactive, FALSE))
 options(rapache = TRUE)
 
 #Load suggested packages while they are in .libPaths()
-getNamespace("unixtools")
 getNamespace("sendmailR")
 
 #Check if AppArmor is available
