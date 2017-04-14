@@ -29,8 +29,8 @@ if(is.na(Sys.getenv("NO_APPARMOR", NA))){
 library(methods)
 environment(.libPaths)$.lib.loc = character(0)
 
-#Because of dependencies=TRUE, suggested packages sendmailR, RAppArmor and RProtoBuf are also installed.
-install.packages(c("opencpu", "unixtools"), dependencies=TRUE, type="source", lib=destdir, contriburl=paste0("file://", sourcedir));
+#Because of dependencies=TRUE, suggested packages sendmailR, unix and RProtoBuf are also installed.
+install.packages(c("opencpu", "RAppArmor"), dependencies=TRUE, type="source", lib=destdir, contriburl=paste0("file://", sourcedir));
 
 # This causes problems if some packages were pre-installed in the root global libarary
 # remove.packages("BH", lib = destdir)
