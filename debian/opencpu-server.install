@@ -7,4 +7,3 @@ opencpu-server/scripts/* /usr/lib/opencpu/scripts/
 opencpu-server/rapache/* /usr/lib/opencpu/rapache/
 opencpu-server/conf/* /etc/opencpu/
 server.conf /etc/opencpu/
-README.md /usr/local/lib/opencpu/github_library/
