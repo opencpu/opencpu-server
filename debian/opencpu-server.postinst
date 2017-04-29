@@ -20,6 +20,8 @@ case "$1" in
     chgrp -Rf opencpu /etc/opencpu
     chown -Rf opencpu /usr/lib/opencpu/
     chgrp -Rf opencpu /usr/lib/opencpu/
+    chown -Rf opencpu /usr/local/lib/opencpu/
+    chgrp -Rf opencpu /usr/local/lib/opencpu/
 
     echo "making scripts executable."
     chmod +x /usr/lib/opencpu/scripts/*.sh

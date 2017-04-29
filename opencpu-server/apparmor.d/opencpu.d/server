@@ -15,11 +15,12 @@ capability net_bind_service,
 
 ## These are repo libraries
 /{tmp,mnt,tmpfs}/ocpu-www-data/** w,
-/{tmp,mnt,tmpfs}/ocpu-www-data/cran_library/** w,
-/{tmp,mnt,tmpfs}/ocpu-www-data/bioc_library/** w,
 /{tmp,mnt,tmpfs}/ocpu-www-data/gist_library/** w,
-/{tmp,mnt,tmpfs}/ocpu-www-data/github_library/** w,
 /{tmp,mnt,tmpfs}/ocpu-www-data/tmp_library/** w,
+
+## New location in OpenCPU 2.0
+/usr/local/lib/opencpu/** w,
+/usr/local/lib/opencpu/github_library/** w,
 
 ## Needed to --test-load installed packages
 /{tmp,mnt,tmpfs}/ocpu-temp/ rw,
