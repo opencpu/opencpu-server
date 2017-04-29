@@ -13,6 +13,7 @@ case "$1" in
     touch /var/log/opencpu/access.log
     touch /var/log/opencpu/error.log
 
+    # Note: maybe not needed for each update?
     echo "taking ownership of system directories."
     chown -Rf opencpu /var/log/opencpu
     chgrp -Rf opencpu /var/log/opencpu
@@ -23,8 +24,8 @@ case "$1" in
 
     # TODO: do not hardcode 'www-data'
     mkdir -p /usr/local/lib/opencpu/github_library
-    chown -Rf www-data /usr/local/lib/opencpu/
-    chgrp -Rf www-data /usr/local/lib/opencpu/
+    chown -f www-data /usr/local/lib/opencpu/github_library
+    chgrp -f www-data /usr/local/lib/opencpu/github_library
 
     echo "making scripts executable."
     chmod +x /usr/lib/opencpu/scripts/*.sh
