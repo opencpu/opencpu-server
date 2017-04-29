@@ -127,4 +127,5 @@ apachectl restart || true
 /etc/cron.d
 /etc/httpd/conf.d
 %dir /var/log/opencpu
+%dir /usr/local/lib/opencpu/github_library
 %config(noreplace) /etc/opencpu/*
