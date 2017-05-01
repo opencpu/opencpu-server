@@ -13,13 +13,10 @@ capability net_bind_service,
 # Workaround for g++ ignoring TMPDIR
 /{tmp,mnt,tmpfs}/* rw,
 
-## These are repo libraries
-/{tmp,mnt,tmpfs}/ocpu-www-data/** w,
-/{tmp,mnt,tmpfs}/ocpu-www-data/gist_library/** w,
-/{tmp,mnt,tmpfs}/ocpu-www-data/tmp_library/** w,
+## The temp store holds sessions
+/{tmp,mnt,tmpfs}/ocpu-store/** w,
 
 ## New location in OpenCPU 2.0
-/usr/local/lib/opencpu/** w,
 /usr/local/lib/opencpu/github_library/** w,
 
 ## Needed to --test-load installed packages
