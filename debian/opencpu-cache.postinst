@@ -10,7 +10,13 @@ case "$1" in
 
     #add opencpu-cache startup script
     chmod 755 /usr/lib/opencpu/init.d/opencpu-cache
-    update-rc.d opencpu-cache defaults
+
+    # Ubuntu has systemd but debian has init
+    if [ $(command -v systemctl) ]; then
+      systemctl enable opencpu-cache.service
+    else
+      update-rc.d opencpu-cache defaults
+    fi
 
     #nginx scripts
     chmod +x /usr/lib/opencpu/scripts/nginx_ensite
