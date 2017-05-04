@@ -12,9 +12,6 @@
 # Carry out specific functions when asked to by the system
 case "$1" in
   start)
-  	#just in case nginx isnt started yet
-	service nginx start 2>&1 >/dev/null | grep -i  'error' || true
-
     iptables -A INPUT -p tcp --dport 80 -j ACCEPT
     iptables -A INPUT -p tcp --dport 443 -j ACCEPT
     iptables -A INPUT -p tcp --dport 8006 -j ACCEPT
@@ -33,7 +30,7 @@ case "$1" in
     echo "Disabling caching server..."
 
     /usr/lib/opencpu/scripts/nginx_dissite opencpu 2>&1 >/dev/null | grep -i  'error' || true
-    service nginx restart || true
+    service nginx reload || true
 
     echo "Flushing cache..."
     rm -Rf /tmp/opencpu-cache
