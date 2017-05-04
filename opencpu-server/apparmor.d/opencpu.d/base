@@ -60,8 +60,8 @@ capability sys_tty_config,
 
 ## New location in OpenCPU 2.0
 /usr/local/lib/opencpu/ r,
-/usr/local/lib/opencpu/github_library/ r,
-/usr/local/lib/opencpu/github_library/** kmrix,
+/usr/local/lib/opencpu/apps/ r,
+/usr/local/lib/opencpu/apps/** kmrix,
 
 ## Does not allow listing of the tmp store.
 /{tmp,mnt,tmpfs}/ocpu-store/** kmrix,

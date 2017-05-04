@@ -23,9 +23,9 @@ case "$1" in
     chgrp -Rf opencpu /usr/lib/opencpu/
 
     # TODO: do not hardcode 'www-data'
-    mkdir -p /usr/local/lib/opencpu/github_library
-    chown -f www-data /usr/local/lib/opencpu/github_library
-    chgrp -f www-data /usr/local/lib/opencpu/github_library
+    mkdir -p /usr/local/lib/opencpu/apps
+    chown -f www-data /usr/local/lib/opencpu/apps
+    chgrp -f www-data /usr/local/lib/opencpu/apps
 
     echo "making scripts executable."
     chmod +x /usr/lib/opencpu/scripts/*.sh
