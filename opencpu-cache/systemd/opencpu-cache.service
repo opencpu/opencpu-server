@@ -2,9 +2,12 @@
 Description=OpenCPU Caching Server
 
 [Service]
-ExecStartPre=/etc/init.d/opencpu-cache start
-ExecStop=/etc/init.d/opencpu-cache stop
+Type=oneshot
 RemainAfterExit=yes
+ExecStart=/etc/init.d/opencpu-cache start
+ExecStartPost=/bin/systemctl reload nginx
+ExecStop=/etc/init.d/opencpu-cache stop
+ExecStopPost=/bin/systemctl reload nginx
 
 [Install]
 After=nginx.service

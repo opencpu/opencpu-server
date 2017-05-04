@@ -22,15 +22,12 @@ case "$1" in
     iptables -A OUTPUT -t nat -o lo -p tcp --dport 443 -j REDIRECT --to-ports 8007
 
 	/usr/lib/opencpu/scripts/nginx_ensite opencpu 2>&1 >/dev/null | grep -i  'error' || true
-	service nginx reload || true
-
 	echo "OK"
 	;;
   stop)
     echo "Disabling caching server..."
 
     /usr/lib/opencpu/scripts/nginx_dissite opencpu 2>&1 >/dev/null | grep -i  'error' || true
-    service nginx reload || true
 
     echo "Flushing cache..."
     rm -Rf /tmp/opencpu-cache
