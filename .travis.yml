@@ -24,7 +24,7 @@ install:
   - sudo gdebi --n ../opencpu-server_*.deb  
   - sudo gdebi --n ../opencpu-cache_*.deb
 
-script: sudo service opencpu restart
+script: sudo service apache2 restart
 
 after_failure:
 

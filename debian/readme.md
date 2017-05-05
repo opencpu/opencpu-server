@@ -91,5 +91,5 @@ After rebooting, install the apparmor packages and verify that it is enabled:
 
 Restart OpenCPU and check the log files to confirm that apparmor works:
 
-	sudo service opencpu restart
+	sudo service apache2 restart
     sudo tail /var/log/apache2/error.log -n30

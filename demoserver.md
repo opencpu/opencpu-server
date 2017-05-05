@@ -30,7 +30,7 @@ Listen 8004
 Create or modify `/etc/opencpu/secret.conf` if needed and restart:
 
 ```sh
-sudo service opencpu restart
+sudo service apache2 restart
 ```
 
 ## Nginx server

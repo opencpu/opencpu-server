@@ -5,8 +5,6 @@ set -e
 case "$1" in
   remove | abort-install)
     :
-      update-rc.d -f opencpu remove || true
-
       # Removing OpenCPU User.
       echo "Removing user opencpu..."
       userdel opencpu 2>&1 >/dev/null | grep -i  'error' || true

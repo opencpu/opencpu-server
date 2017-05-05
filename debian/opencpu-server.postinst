@@ -56,14 +56,16 @@ case "$1" in
     a2enmod ssl 2>&1 >/dev/null | grep -i 'error' || true
     a2ensite default-ssl 2>&1 >/dev/null | grep -i 'error' || true
 
+    #enable opencpu site
+    echo "enabling opencpu"
+    a2ensite opencpu 2>&1 >/dev/null | grep -i 'error' || true
+
     #reload apparmor
     echo "reloading apparmor"
     service apparmor reload 2>&1 >/dev/null | grep -i 'error' || true
 
-    echo "installing opencpu init script."
-    chmod 755 /usr/lib/opencpu/init.d/opencpu
-    update-rc.d opencpu defaults
-    service opencpu start
+    echo "restarting apache"
+    service apache2 restart 2>&1 >/dev/null | grep -i 'error' || true
 
     #done
     echo "Installation done."

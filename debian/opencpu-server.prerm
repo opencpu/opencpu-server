@@ -2,7 +2,9 @@
 
 set -e
 
-service opencpu stop || true
+a2dissite opencpu 2>&1 >/dev/null | grep -i 'error' || true
+a2dissite rstudio 2>&1 >/dev/null | grep -i 'error' || true
+service apache2 restart || true
 
 case "$1" in
   remove)
