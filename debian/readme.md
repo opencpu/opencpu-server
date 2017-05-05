@@ -37,12 +37,10 @@ First install dependencies required for building OpenCPU:
 
 **UPDATE**: As of 2016 [libapache2-mod-r-base](http://packages.ubuntu.com/xenial/web/libapache2-mod-r-base) is now included with:
 
- - Debian 9 (stretch) and up
- - Ubuntu 16.04 (Xenial) and up
+ - **Debian 9** (Stretch) and up
+ - **Ubuntu 16.04** (Xenial) and up
 
-On these platforms skip this step and continue with building `opencpu-server` below!
-
-On older versions of Debian/Ubuntu we need to build rApache (`libapache2-mod-r-base`): run this **not** as root (use a regular user).
+On these platforms **skip this step** and proceed with building `opencpu-server` below! On older systems we need to `libapache2-mod-r-base` ourselves: run this **not** as root (use a regular user):
 
 	cd ~
 	wget https://github.com/jeffreyhorner/rapache/archive/v1.2.8.tar.gz
