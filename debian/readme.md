@@ -22,7 +22,7 @@ Alternatively, on **Debian** use `r-base` packages from CRAN (see [details](http
 	# Quit root
 	exit
 
-## Building OpenCPU packages
+## Install Build Dependencies
 
 First install dependencies required for building OpenCPU:
 
@@ -31,11 +31,13 @@ First install dependencies required for building OpenCPU:
 	sudo apt-get dist-upgrade -y
 
 	# Install build dependencies
-	sudo apt-get install -y wget make devscripts apache2-dev apache2 libapreq2-dev r-base r-base-dev libapparmor-dev libcurl4-openssl-dev libprotobuf-dev protobuf-compiler xvfb xauth xfonts-base curl libssl-dev libxml2-dev libicu-dev pkg-config
+	sudo apt-get install -y wget make devscripts apache2-dev apache2 libapreq2-dev r-base r-base-dev libapparmor-dev libcurl4-openssl-dev libprotobuf-dev protobuf-compiler xvfb xauth xfonts-base curl libssl-dev libxml2-dev libicu-dev pkg-config libssh2-1-dev
 
+## Building rApache
 
-Build rApache (`libapache2-mod-r-base`). Run this **not** as root (use a regular user).
 **UPDATE**: As of 2016 [libapache2-mod-r-base](http://packages.ubuntu.com/xenial/web/libapache2-mod-r-base) is now included with Debian/Ubuntu! Therefore if you use Ubuntu 16.04 or Debian 9 (stretch) or newer, please skip this step and continue with building `opencpu-server` below.
+
+To build rApache (`libapache2-mod-r-base`): run this **not** as root (use a regular user).
 
 	cd ~
 	wget https://github.com/jeffreyhorner/rapache/archive/v1.2.8.tar.gz
@@ -43,12 +45,14 @@ Build rApache (`libapache2-mod-r-base`). Run this **not** as root (use a regular
 	cd rapache-1.2.8
 	dpkg-buildpackage -us -uc
 
-Build OpenCPU Cloud Server (`opencpu-server` and `opencpu-cache`). Run this **not** as root.
+## Building OpenCPU
+
+To build OpenCPU Server (`opencpu-server` and `opencpu-cache`): run this **not** as root.
 
 	cd ~
-	wget https://github.com/jeroen/opencpu-server/archive/v1.6.tar.gz
-	tar xzf v1.6.tar.gz
-	cd opencpu-server-1.6
+	wget https://github.com/jeroen/opencpu-server/archive/v2.0.tar.gz
+	tar xzf v2.0.tar.gz
+	cd opencpu-server-2.0
 	dpkg-buildpackage -us -uc
 
 ## Installing OpenCPU server
@@ -56,7 +60,11 @@ Build OpenCPU Cloud Server (`opencpu-server` and `opencpu-cache`). Run this **no
 To install the cloud server, simply install the `deb` packages in the following order:
 
 	cd ~
+
+	# Only if needed, see above
 	sudo dpkg -i libapache2-mod-r-base_*.deb
+
+	# Always needed
 	sudo dpkg -i opencpu-lib_*.deb
 	sudo dpkg -i opencpu-server_*.deb
 
