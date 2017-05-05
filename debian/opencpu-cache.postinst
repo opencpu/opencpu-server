@@ -13,8 +13,8 @@ case "$1" in
 
     # Ubuntu has systemd but debian has init
     update-rc.d opencpu-cache defaults
-    if [ -e "/bin/systemd" ]; then
-      /bin/systemd enable opencpu-cache.service
+    if [ -e "/bin/systemctl" ]; then
+      /bin/systemctl enable opencpu-cache.service
     fi
 
     #nginx scripts
