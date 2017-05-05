@@ -15,8 +15,7 @@ case "$1" in
     if [ $(command -v systemctl) ]; then
       systemctl enable opencpu-cache.service
     else
-      update-rc.d opencpu-cache defaults
-    fi
+    update-rc.d opencpu-cache defaults
 
     #nginx scripts
     chmod +x /usr/lib/opencpu/scripts/nginx_ensite
