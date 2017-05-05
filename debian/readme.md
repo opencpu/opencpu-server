@@ -73,20 +73,13 @@ To install the cloud server, simply install the `deb` packages in the following 
 	sudo dpkg -i opencpu-lib_*.deb
 	sudo dpkg -i opencpu-server_*.deb
 
-## Installing OpenCPU caching server (optional)
+You're done! Test if it works:
 
-The `opencpu-cache` package is a reverse proxy for caching and load balancing with OpenCPU. When installed, it automatically preroutes all incomming traffic on ports 80 and 443 through nginx. Only install this when you expect serious traffic.
+	curl http://localhost/ocpu/info
 
-	# Dependencies
-	sudo apt-get install nginx
+That should print some info about the R session.
 
-	# Package builds
-	cd ~
-	sudo dpkg -i opencpu-cache_*.deb
-
-Note that it is possible to install `opencpu-cache` on another server than `opencpu-server` if you update the nginx back-end config accordingly.
-
-## Enable AppArmor support (optional, **debian only**)
+## Extra: enable AppArmor (**debian only**)
 
 OpenCPU uses AppArmor to enforce advanced security policies. AppArmor support is installed by default on Ubuntu, but in Debian we first need to enable it in the kernel. To do so, edit `/etc/default/grub` and add `security=apparmor` to the `GRUB_CMDLINE_LINUX` line. For example it would read:
 
@@ -106,3 +99,17 @@ Restart OpenCPU and check the log files to confirm that apparmor works:
 
 	sudo service apache2 restart
     sudo tail /var/log/apache2/error.log -n30
+
+## OpenCPU caching server (not recommended)
+
+The `opencpu-cache` package is a reverse proxy for caching and load balancing with OpenCPU. When installed, it automatically preroutes all incomming traffic on ports 80 and 443 through nginx. Only install this when you expect serious traffic.
+
+	# Dependencies
+	sudo apt-get install nginx
+
+	# Package builds
+	cd ~
+	sudo dpkg -i opencpu-cache_*.deb
+
+Note that it is possible to install `opencpu-cache` on another server than `opencpu-server` if you update the nginx back-end config accordingly.
+
