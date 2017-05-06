@@ -1,12 +1,11 @@
 map $http_host $ocpu_repo {
-	cran.ocpu.io cran;
-	bioc.ocpu.io bioc;
+	cran.ocpu.io library;
 	demo.ocpu.io library;
 	tmp.ocpu.io tmp;
 	test.ocpu.io test;
 }
 
-# cran/bioc library
+# CRAN / demo library
 server {
 	listen 8006;
 	include /usr/lib/opencpu/ocpu.io/ocpu-cran.conf;
