@@ -21,7 +21,7 @@ tar xzvf rapache-1.2.7.tar.gz rapache-1.2.7/rpm/rapache.spec --strip-components 
 mv -f rapache-1.2.7.tar.gz ~/rpmbuild/SOURCES/
 mv -f rapache.spec ~/rpmbuild/SPECS/
 
-# Build rApache
+# Builds 'rapache' rpm
 rpmbuild -ba ~/rpmbuild/SPECS/rapache.spec
 
 # Get opencpu sources
@@ -30,7 +30,7 @@ tar xzvf opencpu-server-2.0.tar.gz opencpu-server-2.0/rpm/opencpu.spec --strip-c
 mv -f opencpu-server-2.0.tar.gz ~/rpmbuild/SOURCES/
 mv -f opencpu.spec ~/rpmbuild/SPECS/
 
-# Build OpenCPU
+# Builds 'opencpu-server' and 'opencpu-lib' rpm
 rpmbuild -ba ~/rpmbuild/SPECS/opencpu.spec
 
 # Install OpenCPU

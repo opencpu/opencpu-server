@@ -81,6 +81,7 @@ mkdir -p %{buildroot}/usr/lib/opencpu/rapache
 mkdir -p %{buildroot}/usr/lib/opencpu/selinux
 mkdir -p %{buildroot}/etc/opencpu
 mkdir -p %{buildroot}/var/log/opencpu
+mkdir -p %{buildroot}/usr/local/lib/opencpu/apps
 cp -Rf opencpu-server/sites-available/* %{buildroot}/etc/httpd/conf.d/
 cp -Rf opencpu-server/cron.d/* %{buildroot}/etc/cron.d/
 cp -Rf opencpu-server/scripts/* %{buildroot}/usr/lib/opencpu/scripts/
