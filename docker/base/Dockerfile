@@ -3,6 +3,7 @@ FROM ubuntu:16.04
 
 # Install.
 RUN \
+  export DEBIAN_FRONTEND=noninteractive &&
   apt-get update && \
   apt-get -y dist-upgrade && \
   apt-get install -y software-properties-common && \
