@@ -58,4 +58,4 @@ Docker has its own security model and disables other Linux based security module
 Help and Feedback
 -----------------
 
-I am new to this too, so please share your questions, problems and suggestions on the [mailing list](https://www.opencpu.org/help.html) or [twitter](https://twitter.com/opencpu).
+Problems and suggestions on the [mailing list](https://www.opencpu.org/help.html) or [twitter](https://twitter.com/opencpu).
