@@ -1,5 +1,5 @@
 # Important! On REDHAT/CENTOS you need to enable the EPEL repository. This is not required on Fedora!
-sudo yum install epel-release
+sudo yum install -y epel-release
 # See also: http://bit.ly/1xVxGlD
 # Or: https://support.rackspace.com/how-to/install-epel-and-additional-repositories-on-centos-and-red-hat/
 

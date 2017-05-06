@@ -28,9 +28,9 @@ RUN \
 
 RUN \
   cd ~ && \
-  wget https://github.com/jeroen/opencpu-server/archive/v1.6.tar.gz -O opencpu-server-1.6.tar.gz  && \
-  tar xzvf opencpu-server-1.6.tar.gz opencpu-server-1.6/rpm/opencpu.spec --strip-components 2 && \
-  mv -f opencpu-server-1.6.tar.gz ~/rpmbuild/SOURCES/ && \
+  wget https://github.com/jeroen/opencpu-server/archive/v2.0.tar.gz -O opencpu-server-2.0.tar.gz  && \
+  tar xzvf opencpu-server-2.0.tar.gz opencpu-server-2.0/rpm/opencpu.spec --strip-components 2 && \
+  mv -f opencpu-server-2.0.tar.gz ~/rpmbuild/SOURCES/ && \
   mv -f opencpu.spec ~/rpmbuild/SPECS/ && \
   rpmbuild -ba ~/rpmbuild/SPECS/opencpu.spec
 
@@ -44,9 +44,9 @@ RUN \
   rpm -i opencpu-server-*.rpm
 
 RUN \
-  wget https://download2.rstudio.org/rstudio-server-rhel-0.99.896-x86_64.rpm && \
-  yum install -y --nogpgcheck rstudio-server-rhel-0.99.896-x86_64.rpm && \
-  rm rstudio-server-rhel-0.99.896-x86_64.rpm 
+  wget https://download2.rstudio.org/rstudio-server-rhel-1.0.143-x86_64.rpm && \
+  yum install -y --nogpgcheck rstudio-server-rhel-1.0.143-x86_64.rpm && \
+  rm rstudio-server-rhel-1.0.143-x86_64.rpm
 
 RUN \
   yum remove -y httpd-devel libapreq2-devel && \
