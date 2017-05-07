@@ -3,7 +3,7 @@
 This repository contains the sources for the opencpu server (aka cloud server). It consists of the following packages:
 
  * `opencpu-server` - rApache based opencpu API server
- * `opencpu-cache` - nginx based reverse proxy with caching (debian/ubuntu only)
+ * `opencpu-cache` - nginx based reverse proxy with caching (not required, debian/ubuntu only)
  * `opencpu` - Alias for `opencpu-server`
 
 ## Server manual
@@ -15,7 +15,7 @@ The [server manual](http://jeroen.github.io/opencpu-manual/opencpu-server.pdf) i
 Currently, prebuilt binaries are available for recent versions of:
 
  - [Ubuntu](https://www.opencpu.org/download.html)
- - [Fedora](http://software.opensuse.org/download.html?project=home:jeroenooms:opencpu-1.6&package=opencpu)
+ - [Fedora](http://software.opensuse.org/download.html?project=home:jeroenooms:opencpu-2.0&package=opencpu)
 
 ## Building from source
 
