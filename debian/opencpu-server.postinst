@@ -10,6 +10,9 @@ case "$1" in
     echo "Adding user opencpu..."
     useradd opencpu --system -g www-data -d/tmp -c"OpenCPU Server" || true
 
+    # Legacy fix for OpenCPU 1.0 installations
+    usermod -g www-data opencpu || true
+
     echo "creating log files."
     touch /var/log/opencpu/access.log
     touch /var/log/opencpu/error.log
