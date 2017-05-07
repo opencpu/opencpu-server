@@ -5,4 +5,4 @@ FROM opencpu/base
 RUN \
   apt-get install -y rstudio-server
 
-CMD service apache2 restart && rstudio-server restart && tail -F /var/log/opencpu/apache_access.log
+CMD rstudio-server restart && apachectl -DFOREGROUND
