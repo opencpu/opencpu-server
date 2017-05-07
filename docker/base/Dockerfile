@@ -17,6 +17,10 @@ RUN \
   ln -sf /proc/self/fd/1 /var/log/opencpu/apache_access.log && \
   ln -sf /proc/self/fd/1 /var/log/opencpu/apache_error.log
 
+# Set opencpu password so that we can login
+RUN \
+  echo "opencpu:opencpu" | chpasswd
+
 # Apache ports
 EXPOSE 80
 EXPOSE 443

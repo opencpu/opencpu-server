@@ -1,4 +1,5 @@
 #!/bin/sh
+# TODO: do not hardcode 'www-data'
 
 set -e
 
@@ -7,7 +8,7 @@ case "$1" in
     :
     # Adding OpenCPU User.
     echo "Adding user opencpu..."
-    useradd opencpu --system -U -d/tmp -c"OpenCPU Server" || true
+    useradd opencpu --system -g www-data -d/tmp -c"OpenCPU Server" || true
 
     echo "creating log files."
     touch /var/log/opencpu/access.log
@@ -22,10 +23,11 @@ case "$1" in
     chown -Rf opencpu /usr/lib/opencpu/
     chgrp -Rf opencpu /usr/lib/opencpu/
 
-    # TODO: do not hardcode 'www-data'
+    # Set writable for both apache as well as admin user 'opencpu'
     mkdir -p /usr/local/lib/opencpu/apps
-    chown -f www-data /usr/local/lib/opencpu/apps
+    chown -f opencpu /usr/local/lib/opencpu/apps
     chgrp -f www-data /usr/local/lib/opencpu/apps
+    chmod g+s /usr/local/lib/opencpu/apps
 
     echo "making scripts executable."
     chmod +x /usr/lib/opencpu/scripts/*.sh
