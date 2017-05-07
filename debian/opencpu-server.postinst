@@ -17,11 +17,11 @@ case "$1" in
     # Note: maybe not needed for each update?
     echo "taking ownership of system directories."
     chown -Rf opencpu /var/log/opencpu
-    chgrp -Rf opencpu /var/log/opencpu
+    chgrp -Rf www-data /var/log/opencpu
     chown -Rf opencpu /etc/opencpu
-    chgrp -Rf opencpu /etc/opencpu
+    chgrp -Rf www-data /etc/opencpu
     chown -Rf opencpu /usr/lib/opencpu/
-    chgrp -Rf opencpu /usr/lib/opencpu/
+    chgrp -Rf www-data /usr/lib/opencpu/
 
     # Set writable for both apache as well as admin user 'opencpu'
     mkdir -p /usr/local/lib/opencpu/apps
