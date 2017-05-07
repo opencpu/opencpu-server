@@ -12,6 +12,7 @@ Recommends: mail-transport-agent, language-pack-en-base, apparmor, apparmor-util
 Description: The OpenCPU cloud server based on rApache.
 Provides: opencpu
 Replaces: opencpu
+Conflicts: r-cran-opencpu
 
 Package: opencpu-cache
 Architecture: all

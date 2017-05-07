@@ -18,16 +18,19 @@ case "$1" in
     echo "taking ownership of system directories."
     chown -Rf opencpu /var/log/opencpu
     chgrp -Rf www-data /var/log/opencpu
-    chown -Rf opencpu /etc/opencpu
-    chgrp -Rf www-data /etc/opencpu
-    chown -Rf opencpu /usr/lib/opencpu/
-    chgrp -Rf www-data /usr/lib/opencpu/
+
+    # Commented out: these should only be writable by apt/root?
+    #chown -Rf opencpu /etc/opencpu
+    #chgrp -Rf www-data /etc/opencpu
+    #chown -Rf opencpu /usr/lib/opencpu
+    #chgrp -Rf www-data /usr/lib/opencpu
 
     # Set writable for both apache as well as admin user 'opencpu'
     mkdir -p /usr/local/lib/opencpu/apps
     chown -f opencpu /usr/local/lib/opencpu/apps
     chgrp -f www-data /usr/local/lib/opencpu/apps
     chmod g+s /usr/local/lib/opencpu/apps
+    setfacl -d -m group:www-data:rwx /usr/local/lib/opencpu/apps
 
     echo "making scripts executable."
     chmod +x /usr/lib/opencpu/scripts/*.sh
