@@ -5,4 +5,11 @@ FROM opencpu/base
 RUN \
   apt-get install -y rstudio-server
 
-CMD rstudio-server restart && apachectl -DFOREGROUND
+ RUN \
+  useradd rstudio && \
+  echo "rstudio:rstudio" | chpasswd  && \
+  mkdir /home/rstudio  && \
+  chown rstudio:rstudio /home/rstudio  && \
+  addgroup rstudio staff \
+
+CMD /usr/lib/rstudio-server/bin/rserver && apachectl -DFOREGROUND

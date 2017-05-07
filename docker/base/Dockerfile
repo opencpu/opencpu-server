@@ -10,12 +10,12 @@ RUN \
   apt-get update && \
   apt-get install -y language-pack-en-base opencpu-server --no-install-recommends
 
-# Prints apache logs to stdout/stderr
+# Prints apache logs to stdout
 RUN \
+  ln -sf /proc/self/fd/1 /var/log/apache2/access.log && \
   ln -sf /proc/self/fd/1 /var/log/apache2/error.log && \
-  ln -sf /proc/self/fd/2 /var/log/apache2/access.log && \
   ln -sf /proc/self/fd/1 /var/log/opencpu/apache_access.log && \
-  ln -sf /proc/self/fd/2 /var/log/opencpu/apache_error.log
+  ln -sf /proc/self/fd/1 /var/log/opencpu/apache_error.log
 
 # Apache ports
 EXPOSE 80
