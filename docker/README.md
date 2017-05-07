@@ -23,7 +23,7 @@ Alternatively, to start in background as a daemon:
 
 Alternatively, to start with an interactive shell:
 
-    docker run -t -i -p 80:80 -p 8004:8004 opencpu/base sh -c 'service apache2 restart && /bin/bash'
+    docker run -t -i -p 80:80 -p 8004:8004 opencpu/base sh -c 'apachectl restart && /bin/bash'
 
 OpenCPU and RStudio
 -------------------

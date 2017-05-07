@@ -59,4 +59,4 @@ EXPOSE 443
 EXPOSE 8004
 
 # Define default command.
-CMD service httpd restart && rstudio-server start && tail -F /var/log/opencpu/apache_access.log
+CMD /usr/lib/rstudio-server/bin/rserver && apachectl -DFOREGROUND
