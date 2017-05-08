@@ -36,8 +36,7 @@ case "$1" in
     mkdir -p /usr/local/lib/opencpu/apps
     chown -f opencpu /usr/local/lib/opencpu/apps
     chgrp -f www-data /usr/local/lib/opencpu/apps
-    chmod g+s /usr/local/lib/opencpu/apps
-    setfacl -d -m group:www-data:rwx /usr/local/lib/opencpu/apps
+    chmod g+ws /usr/local/lib/opencpu/apps
 
     echo "making scripts executable."
     chmod +x /usr/lib/opencpu/scripts/*.sh
