@@ -28,9 +28,9 @@ RUN \
   dpkg -i /home/builder/opencpu-server_*.deb
 
 RUN \
-  apt-get install gdebi-core git sudo && \
-  wget https://download2.rstudio.org/rstudio-server-1.0.143-amd64.deb && \
-  gdebi rstudio-server-1.0.143-amd64.deb
+  apt-get install -y gdebi-core git sudo && \
+  wget --quiet https://download2.rstudio.org/rstudio-server-1.0.143-amd64.deb && \
+  gdebi --non-interactive rstudio-server-1.0.143-amd64.deb
 
 # Prints apache logs to stdout
 RUN \
