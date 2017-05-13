@@ -11,7 +11,7 @@ case "$1" in
 
     # The --system flags disables interactive login. We want to use that for rstudio now.
     # The user will still be disabled for login until it gets a passwd
-    useradd opencpu -g www-data -M -d/home/opencpu -c"OpenCPU Server" || true
+    useradd opencpu -g www-data -N -m -d/home/opencpu -c"OpenCPU Server" || true
     mkdir -p /usr/local/lib/opencpu/site-library
     chown opencpu /usr/local/lib/opencpu/site-library
     echo "R_LIBS_USER='/usr/local/lib/opencpu/site-library'" > /home/opencpu/.Renviron
