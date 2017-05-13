@@ -48,9 +48,6 @@ case "$1" in
     echo "Making scripts executable..."
     chmod +x /usr/lib/opencpu/scripts/*.sh
 
-    #remove cron files from older versions
-    rm -f /etc/cron.d/opencpu-* || true
-
     #In Apache 2.4 we need to make sure mpm_prefork is enabled
     if command -v a2query >/dev/null 2>&1; then
       if a2query -q -m mpm_event; then
@@ -87,6 +84,12 @@ case "$1" in
 
     #done
     echo "Installation done!"
+
+    #remove opencpu 1.0 remenants
+    rm -f /etc/cron.d/opencpu-* || true
+    systemctl disable opencpu || true
+    update-rc.d -f opencpu remove || true
+
     ;;
   abort-upgrade | abort-remove | abort-deconfigure)
     :

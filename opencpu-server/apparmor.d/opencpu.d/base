@@ -62,6 +62,8 @@ capability sys_tty_config,
 /usr/local/lib/opencpu/ r,
 /usr/local/lib/opencpu/apps/ r,
 /usr/local/lib/opencpu/apps/** kmrix,
+/usr/local/lib/opencpu/site-library/ r,
+/usr/local/lib/opencpu/site-library/** kmrix,
 
 ## Does not allow listing of the tmp store.
 /{tmp,mnt,tmpfs}/ocpu-store/** kmrix,
