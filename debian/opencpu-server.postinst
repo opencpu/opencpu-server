@@ -7,28 +7,31 @@ case "$1" in
   configure)
     :
     # Adding OpenCPU User.
-    echo "Adding user opencpu..."
+    echo "Adding opencpu user account"
 
     # The --system flags disables interactive login. We want to use that for rstudio now.
     # The user will still be disabled for login until it gets a passwd
     useradd opencpu -g www-data -N -m -d/home/opencpu -c"OpenCPU Server" || true
+    # useradd opencpu --system -g www-data -d/tmp -c"OpenCPU Server" || true
+
+    # Legacy fixes for OpenCPU 1.0 installations
+    usermod -g www-data opencpu || true
+    mkdir -p /home/opencpu || true
+    chown opencpu /home/opencpu || true
+
+    # Create opencpu site-library
     mkdir -p /usr/local/lib/opencpu/site-library
     chown opencpu /usr/local/lib/opencpu/site-library
     echo "R_LIBS_USER='/usr/local/lib/opencpu/site-library'" > /home/opencpu/.Renviron
 
-    # useradd opencpu --system -g www-data -d/tmp -c"OpenCPU Server" || true
-
-    # Legacy fix for OpenCPU 1.0 installations
-    usermod -g www-data opencpu || true
-
-    echo "creating log files."
+    echo "Creating log files..."
     touch /var/log/opencpu/access.log
     touch /var/log/opencpu/error.log
 
     # Note: maybe not needed for each update?
-    echo "taking ownership of system directories."
-    chown -Rf opencpu /var/log/opencpu
-    chgrp -Rf www-data /var/log/opencpu
+    echo "Taking ownership of system directories..."
+    chown -f opencpu /var/log/opencpu/*
+    chgrp -f www-data /var/log/opencpu/*
 
     # Commented out: these should only be writable by apt/root?
     #chown -Rf opencpu /etc/opencpu
@@ -42,7 +45,7 @@ case "$1" in
     chgrp -f www-data /usr/local/lib/opencpu/apps
     chmod g+ws /usr/local/lib/opencpu/apps
 
-    echo "making scripts executable."
+    echo "Making scripts executable..."
     chmod +x /usr/lib/opencpu/scripts/*.sh
 
     #remove cron files from older versions
@@ -72,18 +75,18 @@ case "$1" in
     a2ensite default-ssl 2>&1 >/dev/null | grep -i 'error' || true
 
     #enable opencpu site
-    echo "enabling opencpu"
+    echo "Enabling opencpu in apache..."
     a2ensite opencpu 2>&1 >/dev/null | grep -i 'error' || true
 
     #reload apparmor
-    echo "reloading apparmor"
+    echo "Reloading apparmor..."
     service apparmor reload 2>&1 >/dev/null | grep -i 'error' || true
 
-    echo "restarting apache"
+    echo "Restarting apache..."
     service apache2 restart 2>&1 >/dev/null | grep -i 'error' || true
 
     #done
-    echo "Installation done."
+    echo "Installation done!"
     ;;
   abort-upgrade | abort-remove | abort-deconfigure)
     :

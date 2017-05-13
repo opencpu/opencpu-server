@@ -6,8 +6,8 @@ case "$1" in
   remove | abort-install)
     :
       # Removing OpenCPU User.
-      echo "Removing user opencpu..."
-      userdel opencpu 2>&1 >/dev/null | grep -i  'error' || true
+      echo "Removing user opencpu and home library..."
+      userdel -r opencpu 2>&1 >/dev/null | grep -i  'error' || true
 
       #restart Apache.
       service apache2 restart 2>&1 >/dev/null | grep -i  'error' || true
