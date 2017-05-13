@@ -11,7 +11,7 @@ case "$1" in
 
     # The --system flags disables interactive login. We want to use that for rstudio now.
     # The user will still be disabled for login until it gets a passwd
-    useradd opencpu -g www-data -M -d/tmp -c"OpenCPU Server" || true
+    useradd opencpu -g www-data -M -d/usr/local/lib/opencpu -c"OpenCPU Server" || true
     # useradd opencpu --system -g www-data -d/tmp -c"OpenCPU Server" || true
 
     # Legacy fix for OpenCPU 1.0 installations
