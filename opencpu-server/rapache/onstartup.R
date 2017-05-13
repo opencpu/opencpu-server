@@ -3,23 +3,12 @@
 if(file.exists("/etc/opencpu/Renviron")) readRenviron("/etc/opencpu/Renviron")
 if(file.exists("/etc/opencpu/Rprofile")) source("/etc/opencpu/Rprofile")
 
-# Load the 'unix' package
-ocpu_syslib <- '/usr/lib/opencpu/library'
-.libPaths(ocpu_syslib)
+# Load the opencpu package libraries
+.libPaths(c('/usr/lib/opencpu/library', '/usr/local/lib/opencpu/site-library'))
 
 #Load suggested packages while they are in .libPaths()
 getNamespace("unix")
 getNamespace("sendmailR")
-
-# Add the 'opencpu' (requires unix from the syslib)
-tryCatch({
-  ocpu_homelib <- gsub("^~", unix::user_info('opencpu')$dir, Sys.getenv("R_LIBS_USER"))
-  .libPaths(c(ocpu_syslib, ocpu_homelib))
-  rm(ocpu_homelib)
-}, error = function(e){
-  cat("No 'opencpu' system user")
-})
-rm(ocpu_syslib)
 
 #Default locale in apache is "C"
 if(grepl("UTF-?8", Sys.getlocale("LC_CTYPE"))){
