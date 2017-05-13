@@ -23,7 +23,7 @@ RUN \
 USER root
 
 RUN \
-  apt-get install language-pack-en-base libapache2-mod-r-base && \
+  apt-get install -y language-pack-en-base libapache2-mod-r-base && \
   dpkg -i /home/builder/opencpu-lib_*.deb && \
   dpkg -i /home/builder/opencpu-server_*.deb
 
