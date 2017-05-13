@@ -15,7 +15,7 @@ USER builder
 
 RUN \
   cd ~ && \
-  wget https://github.com/jeroen/opencpu-server/archive/v2.0.tar.gz && \
+  wget https://github.com/opencpu/opencpu-server/archive/v2.0.tar.gz && \
   tar xzf v2.0.tar.gz && \
   cd opencpu-server-2.0 && \
   dpkg-buildpackage -us -uc

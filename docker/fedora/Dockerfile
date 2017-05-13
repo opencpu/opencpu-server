@@ -24,7 +24,7 @@ RUN \
 
 RUN \
   cd ~ && \
-  wget https://github.com/jeroen/opencpu-server/archive/v2.0.tar.gz -O opencpu-server-2.0.tar.gz  && \
+  wget https://github.com/opencpu/opencpu-server/archive/v2.0.tar.gz -O opencpu-server-2.0.tar.gz  && \
   tar xzvf opencpu-server-2.0.tar.gz opencpu-server-2.0/rpm/opencpu.spec --strip-components 2 && \
   mv -f opencpu-server-2.0.tar.gz ~/rpmbuild/SOURCES/ && \
   mv -f opencpu.spec ~/rpmbuild/SPECS/ && \

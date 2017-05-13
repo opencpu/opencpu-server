@@ -1,4 +1,4 @@
-# OpenCPU Cloud Server [![Build Status](https://travis-ci.org/jeroen/opencpu-server.svg)](https://travis-ci.org/jeroen/opencpu-server)
+# OpenCPU Cloud Server [![Build Status](https://travis-ci.org/opencpu/opencpu-server.svg)](https://travis-ci.org/opencpu/opencpu-server)
 
 This repository contains the sources for the opencpu server (aka cloud server). It consists of the following packages:
 
@@ -26,5 +26,5 @@ OpenCPU can be build on all major Linux distributions. However only on Ubuntu it
 
 ## Issues and questions
 
-Please post problems or suggestions on the [issues page](https://github.com/jeroen/opencpu/issues). For questions see the [FAQ and mailing list](https://www.opencpu.org/help.html).
+Please post problems or suggestions on the [issues page](https://github.com/opencpu/opencpu/issues). For questions see the [FAQ and mailing list](https://www.opencpu.org/help.html).
 
