@@ -1,5 +1,5 @@
-opencpu (1.9990-xenial4) xenial; urgency=low
+opencpu (2.0.0-xenial0) xenial; urgency=low
 
   * Debian package with OpenCPU software. See www.opencpu.org
 
- -- Jeroen Ooms <jeroen@opencpu.org>  Wed, 1 Jul 2015 18:00:00 -0800
+ -- Jeroen Ooms <jeroen@opencpu.org>  Sun, 14 May 2017 12:00:00 +0100
