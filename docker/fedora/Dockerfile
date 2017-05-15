@@ -46,7 +46,6 @@ RUN \
 
 RUN \
   yum remove -y httpd-devel libapreq2-devel && \
-  userdel -r builder && \
   yum clean all
 
 # Apache ports
