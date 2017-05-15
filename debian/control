@@ -16,7 +16,7 @@ Conflicts: r-cran-opencpu
 
 Package: opencpu-cache
 Architecture: all
-Depends: ssl-cert, nginx
+Depends: ssl-cert, nginx (>= 1.12)
 Description: The OpenCPU cache server and load balancer based on nginx.
 
 Package: opencpu-lib
