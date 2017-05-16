@@ -36,8 +36,13 @@ RUN \
 USER root
 
 RUN \
+  cp -Rf /home/builder/rpmbuild/RPMS ~/ && \
+  cp -Rf /home/builder/rpmbuild/SRPMS ~/ && \
+  userdel -r builder
+
+RUN \
   yum install -y MTA mod_ssl /usr/sbin/semanage && \
-  cd /home/builder/rpmbuild/RPMS/x86_64/ && \
+  cd ~/RPMS/x86_64/ && \
   rpm -i rapache-*.rpm && \
   rpm -i opencpu-lib-*.rpm && \
   rpm -i opencpu-server-*.rpm

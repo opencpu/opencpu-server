@@ -63,7 +63,6 @@ The OpenCPU cloud server builds on R and Apache2 (httpd) to expose the OpenCPU H
 %setup -n opencpu-server-%{branch}
 
 %build
-%define debug_package %{nil}
 NO_APPARMOR=1 make library
 
 %install
