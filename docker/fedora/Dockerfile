@@ -5,7 +5,7 @@ RUN \
   useradd -ms /bin/bash builder && \
   yum update -y && \
   yum upgrade -y && \
-  yum install -y rpm-build make wget tar httpd-devel libapreq2-devel R-devel libcurl-devel protobuf-devel openssl-devel libxml2-devel libicu-devel libssh2-devel && \
+  yum install -y rpm-build make wget tar httpd-devel libapreq2-devel R-devel libcurl-devel protobuf-devel openssl-devel libxml2-devel libicu-devel libssh2-devel createrepo && \
   yum clean all
 
 USER builder
@@ -29,6 +29,9 @@ RUN \
   mv -f opencpu-server-2.0.tar.gz ~/rpmbuild/SOURCES/ && \
   mv -f opencpu.spec ~/rpmbuild/SPECS/ && \
   rpmbuild -ba ~/rpmbuild/SPECS/opencpu.spec
+
+RUN \
+  createrepo ~/rpmbuild/RPMS/x86_64/
 
 USER root
 
