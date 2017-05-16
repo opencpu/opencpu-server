@@ -4,7 +4,7 @@
 
 server {
 	listen 8006;
-	server_name public.opencpu.org;
+	server_name cloud.opencpu.org public.opencpu.org;
 
 	# For iptables prerouting
 	port_in_redirect off;
@@ -20,7 +20,7 @@ server {
 # HTTPS server
 server {
 	listen 8007 ssl http2;
-	server_name public.opencpu.org;
+	server_name cloud.opencpu.org public.opencpu.org;
 
 	# For iptables prerouting
 	port_in_redirect off;
