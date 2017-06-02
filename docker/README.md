@@ -3,32 +3,25 @@ OpenCPU on Docker
 
 This directory contains dockerfiles based on various platforms. Containers are automatically published at [dockerhub](https://hub.docker.com/u/opencpu/).
 
-
 How to use
 ----------
 
-Docker version 1.0 or higher is required on the host. The containers expose 3 ports: either 80 or 8004 can be used for HTTP, and port 443 can be used for HTTPS. Depending in which ports are mapped (via the `-p` flag), you can access:
+Docker version 1.0 or higher is required on the host. The containers expose 3 ports: either 80 or 8004 can be used for HTTP, and port 443 can be used for HTTPS. Depending on which ports are mapped (via the `-p` flag), you can access:
 
     http://localhost/ocpu/
     http://localhost:8004/ocpu/
-    https://localhost/ocpu/
 
 The examples below assume that we use the [opencpu/base](https://registry.hub.docker.com/u/opencpu/base/) container. To start as the server as an executable
 
     docker run -t -p 80:80 -p 8004:8004 opencpu/base
 
-Alternatively, to start in background as a daemon:
+To start in background as a daemon add the `-d` flag.
 
-    docker run -t -d -p 80:80 -p 8004:8004 opencpu/base
-
-Alternatively, to start with an interactive shell:
-
-    docker run -t -i -p 80:80 -p 8004:8004 opencpu/base sh -c 'apachectl restart && /bin/bash'
 
 OpenCPU and RStudio
 -------------------
 
-The [opencpu/rstudio](https://registry.hub.docker.com/u/opencpu/rstudio/) container runs an installation with both `opencpu` and `rstudio-server`. For example:
+The [opencpu/rstudio](https://registry.hub.docker.com/u/opencpu/rstudio/) container runs an installation with both `opencpu-server` and `rstudio-server`. For example:
 
     docker run -t -p 80:80 -p 8004:8004 opencpu/rstudio
 
@@ -39,7 +32,28 @@ Apache is automatically setup to proxy the `/rstudio/` path to the rstudio serve
     http://localhost:8004/ocpu/
     http://localhost:8004/rstudio/
 
-It seems like rstudio server currelty needs a restart (`rstudio-server restart`) after initiating the container.
+Now login to rstudio with username *opencpu* and passwd: *opencpu*.
+
+Get a root shell
+----------------
+
+To connect to a running container (e.g. for installing system libraries) use `docker exec` to get a root shell:
+
+    # Get the Container ID of your machine
+    docker ps 
+
+    # Starts a root shell
+    docker exec -i -t [container-id] /bin/bash
+
+If you name (tag) your container you can simply use it's name instead of container id:
+
+
+    # This starts a new container on port 80
+    docker run --name mybox -t -p 80:80 opencpu/rstudio
+
+    # In another window, start a root bash
+    docker exec -i -t mybox /bin/bash
+
 
 Portmapping
 -----------
