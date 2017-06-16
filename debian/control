@@ -7,7 +7,7 @@ Standards-Version: 3.9.4
 
 Package: opencpu-server
 Architecture: all
-Depends: apache2, libapache2-mod-r-base (>= 1.2.5), opencpu-lib (= ${source:Version}), ssl-cert
+Depends: apache2, libapache2-mod-r-base (>= 1.2.5), opencpu-lib (= ${source:Version}), ssl-cert, locales
 Recommends: mail-transport-agent, language-pack-en-base, apparmor, apparmor-utils
 Description: The OpenCPU cloud server based on rApache.
 Provides: opencpu
