@@ -9,6 +9,9 @@ case "$1" in
     # Adding OpenCPU User.
     echo "Adding opencpu user account"
 
+    # On Debian we need to generate locales manually
+    localedef -i en_US -f UTF-8 en_US.UTF-8 || true
+
     # The --system flags disables interactive login. We want to use that for rstudio now.
     # The user will still be disabled for login until it gets a passwd
     useradd opencpu -g www-data -N -m -d/home/opencpu -c"OpenCPU Server" || true
