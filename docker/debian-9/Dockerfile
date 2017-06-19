@@ -29,9 +29,9 @@ RUN \
 
 RUN \
   apt-get install -y gdebi-core git sudo && \
-  wget --quiet https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-server-1.1.271-amd64.deb && \
-  gdebi --non-interactive rstudio-server-1.1.271-amd64.deb && \
-  rm -f rstudio-server-1.1.271-amd64.deb
+  wget --quiet https://s3.amazonaws.com/rstudio-ide-build/server/xenial/amd64/rstudio-server-1.1.276-amd64.deb && \
+  gdebi --non-interactive rstudio-server-1.1.276-amd64.deb && \
+  rm -f rstudio-server-1.1.276-amd64.deb
 
 # Prints apache logs to stdout
 RUN \
