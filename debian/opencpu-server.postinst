@@ -90,7 +90,7 @@ case "$1" in
 
     #remove opencpu 1.0 remenants
     rm -f /etc/cron.d/opencpu-* || true
-    systemctl disable opencpu || true
+    systemctl disable opencpu 2>&1 >/dev/null || true
     update-rc.d -f opencpu remove || true
 
     ;;
