@@ -25,4 +25,4 @@ environment(.libPaths)$.lib.loc = character(0)
 install.packages("opencpu", dependencies=TRUE, type="source", lib=destdir, contriburl=paste0("file://", sourcedir))
 
 # This causes problems if some packages were pre-installed in the root global libarary
-# remove.packages("BH", lib = destdir)
+remove.packages("BH", lib = destdir)
