@@ -17,6 +17,8 @@ capability sys_tty_config,
 
 /bin/* rix,
 /dev/tty rw,
+/etc/default/ r,
+/etc/default/* r,
 /etc/mailcap r,
 /etc/ld.so.conf r,
 /etc/ld.so.conf.d r,
