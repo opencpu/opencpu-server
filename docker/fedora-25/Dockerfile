@@ -30,7 +30,7 @@ RUN \
   tar xzvf opencpu-server-${BRANCH}.tar.gz opencpu-server-${BRANCH}/rpm/opencpu.spec --strip-components 2 && \
   mv -f opencpu-server-${BRANCH}.tar.gz ~/rpmbuild/SOURCES/ && \
   mv -f opencpu.spec ~/rpmbuild/SPECS/ && \
-  rpmbuild -ba ~/rpmbuild/SPECS/opencpu.spec
+  rpmbuild -ba ~/rpmbuild/SPECS/opencpu.spec --define "branch ${BRANCH}"
 
 RUN \
   createrepo ~/rpmbuild/RPMS/x86_64/

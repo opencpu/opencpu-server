@@ -1,5 +1,5 @@
-# Github branch name
-%define branch 2.0
+# Github ref, default to 2.0 branch
+%{!?branch: %define branch 2.0}
 
 Name: opencpu
 Version: 2.0.2
