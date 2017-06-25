@@ -1,6 +1,8 @@
 # Use builds from launchpad
 FROM ubuntu:16.04
 
+ENV BRANCH 2.0.2
+
 # Install.
 RUN \
   apt-get update && \
@@ -18,9 +20,9 @@ USER builder
 
 RUN \
   cd ~ && \
-  wget https://github.com/opencpu/opencpu-server/archive/v2.0.tar.gz && \
-  tar xzf v2.0.tar.gz && \
-  cd opencpu-server-2.0 && \
+  wget https://github.com/opencpu/opencpu-server/archive/v${BRANCH}.tar.gz && \
+  tar xzf v${BRANCH}.tar.gz && \
+  cd opencpu-server-${BRANCH} && \
   dpkg-buildpackage -us -uc
 
 USER root
