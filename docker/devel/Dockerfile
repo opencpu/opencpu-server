@@ -1,6 +1,8 @@
 # Use builds from launchpad
 FROM ubuntu:16.04
 
+ENV OPENCPU_BRANCH master
+
 # Install.
 RUN \
   apt-get update && \
@@ -18,9 +20,9 @@ USER builder
 
 RUN \
   cd ~ && \
-  wget https://github.com/opencpu/opencpu-server/archive/master.tar.gz && \
-  tar xzf master.tar.gz && \
-  cd opencpu-server-master && \
+  wget https://github.com/opencpu/opencpu-server/archive/${OPENCPU_BRANCH}.tar.gz && \
+  tar xzf ${OPENCPU_BRANCH}.tar.gz && \
+  cd opencpu-server-${OPENCPU_BRANCH} && \
   dpkg-buildpackage -us -uc
 
 USER root
