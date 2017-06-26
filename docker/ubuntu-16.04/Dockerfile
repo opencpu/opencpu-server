@@ -1,7 +1,6 @@
-# Use builds from launchpad
 FROM ubuntu:16.04
 
-ENV BRANCH 2.0.2
+ENV BRANCH 2.0.3
 
 # Install.
 RUN \

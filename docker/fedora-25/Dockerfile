@@ -1,6 +1,6 @@
-FROM fedora:latest
+FROM fedora:25
 
-ENV BRANCH 2.0.2
+ENV BRANCH 2.0.3
 
 # Install.
 RUN \

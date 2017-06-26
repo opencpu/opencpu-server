@@ -1,6 +1,6 @@
 FROM centos:centos7
 
-ENV BRANCH 2.0.2
+ENV BRANCH 2.0.3
 
 # Enable EPEL
 RUN \
