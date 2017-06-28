@@ -8,7 +8,7 @@ This repository contains the sources for the opencpu server (aka cloud server). 
 
 ## Server manual
 
-The [server manual](http://jeroen.github.io/server-manual/opencpu-server.pdf) is the primary reference for installing and managing the OpenCPU server.
+The [server manual](http://opencpu.github.io/server-manual/opencpu-server.pdf) is the primary reference for installing and managing the OpenCPU server.
 
 ## Prebuilt binaries
 
