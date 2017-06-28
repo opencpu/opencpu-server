@@ -8,6 +8,7 @@ capability sys_tty_config,
 ## In newest version of AppArmor we can use @{PROC}/@{pid}/ instead
 @{PROC}/[0-9]*/attr/current r,
 @{PROC}/[0-9]*/loginuid r,
+@{PROC}/@{pid}/** r,
 
 @{HOME}/ r,
 @{HOME}/R/ r,
@@ -66,8 +67,8 @@ capability sys_tty_config,
 
 # java stuff
 /tmp/hsperfdata_www-data/ rw,
-/tmp/hsperfdata_www-data/** rwmix,
-/tmp/.java* rw,
+/tmp/hsperfdata_www-data/* rw,
+/tmp/* rw,
 /proc/loadavg r,
 
 ## New location in OpenCPU 2.0
