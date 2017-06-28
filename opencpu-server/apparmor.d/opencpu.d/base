@@ -64,6 +64,12 @@ capability sys_tty_config,
 /sys/devices/system/cpu/ r,
 /home/ r,
 
+# java stuff
+/tmp/hsperfdata_www-data/ rw,
+/tmp/hsperfdata_www-data/** rwmix,
+/tmp/.java* rw,
+/proc/loadavg r,
+
 ## New location in OpenCPU 2.0
 /usr/local/lib/opencpu/ r,
 /usr/local/lib/opencpu/apps/ r,
