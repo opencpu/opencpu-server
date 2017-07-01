@@ -52,13 +52,14 @@ if(identical(sys::aa_config()$con, "unconfined")){
 
 #Warm up graphics device
 options(bitmapType = "cairo")
-svg("/dev/null", width = 11.69, height = 8.27)
+pdf("/dev/null", width = 11.69, height = 8.27)
 plot(1:10)
 dev.off()
 
-#Warm up RNG, JSON
-invisible(openssl::rand_bytes(1000))
-invisible(jsonlite::toJSON(iris))
+# Warm up evaluate
+for(i in 1:5){
+  invisible(evaluate::evaluate('jsonlite::toJSON(openssl::rand_num(1000))'))
+}
 
 # Run user script
 if(file.exists("/etc/opencpu/Rprofile"))
