@@ -1,14 +1,15 @@
 # Use builds from launchpad
 FROM ubuntu:16.04
 
-# Install.
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN \
   apt-get update && \
   apt-get -y dist-upgrade && \
   apt-get install -y software-properties-common && \
   add-apt-repository -y ppa:opencpu/opencpu-2.0 && \
   apt-get update && \
-  apt-get install -y language-pack-en-base opencpu-server --no-install-recommends
+  apt-get install -y opencpu-server
 
 # Prints apache logs to stdout
 RUN \
