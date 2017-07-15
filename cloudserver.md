@@ -172,3 +172,12 @@ sudo ln -s /usr/lib/jvm/default-java/jre/lib/amd64/server/libjvm.so /usr/lib/
 
 That should allow for loading the `rJava` package. But there is more. The JVM has a [memory allocation bug](https://stackoverflow.com/questions/19910468/java-and-virtual-memory-ulimit/31431714#31431714) which require you set `rlimit.as` in `/etc/opencpu/server.conf` far boven the required amount of memory.
 
+## Make TensorFlow work
+
+See [here](https://www.tensorflow.org/install/install_linux). I ran this as root:
+
+```
+sudo apt-get install python-pip python-dev python-virtualenv 
+sudo pip install --upgrade tensorflow  
+```
+
