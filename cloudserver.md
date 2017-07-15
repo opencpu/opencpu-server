@@ -138,7 +138,7 @@ Here are some results:
       libgeos-dev libgmp-dev libgsl-dev libpng-dev libproj-dev libprotobuf-dev librsvg2-dev libsecret-1-dev 
       libudunits2-dev libxft-dev libmagick++-dev libxml2-dev libmariadb-client-lgpl-dev libnetcdf-dev unixodbc-dev
       libgl1-mesa-dev libopenmpi-dev libssl-dev libpango1.0-dev libpq-dev protobuf-compiler libprotoc-dev 
-      libsasl2-dev libv8-3.14-dev libsodium-dev libwebp-dev zlib1g-dev
+      libsasl2-dev libv8-3.14-dev libsodium-dev libwebp-dev zlib1g-dev libxslt1-dev
       
 To preinstall useful packages on cloud server
 
@@ -178,6 +178,6 @@ See [here](https://www.tensorflow.org/install/install_linux). I ran this as root
 
 ```
 sudo apt-get install python-pip python-dev python-virtualenv 
-sudo pip install --upgrade tensorflow  
+sudo pip install --upgrade tensorflow h5py
 ```
 
