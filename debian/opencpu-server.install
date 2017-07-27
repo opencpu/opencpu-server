@@ -1,5 +1,6 @@
 opencpu-server/sites-available/* /etc/apache2/sites-available/
 opencpu-server/cron.d/* /etc/cron.d/
+opencpu-server/ld.so.conf.d/* /etc/ld.so.conf.d/
 opencpu-server/apparmor.d/* /etc/apparmor.d/
 opencpu-server/scripts/* /usr/lib/opencpu/scripts/
 opencpu-server/rapache/* /usr/lib/opencpu/rapache/
