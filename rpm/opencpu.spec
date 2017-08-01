@@ -76,6 +76,7 @@ sed -i s/www-data/apache/g opencpu-server/cron.d/opencpu
 sed -i s/www-data/apache/g opencpu-server/scripts/cleanocpu.sh
 mkdir -p %{buildroot}/etc/httpd/conf.d
 mkdir -p %{buildroot}/etc/cron.d
+mkdir -p %{buildroot}/etc/ld.so.conf.d
 mkdir -p %{buildroot}/usr/lib/opencpu/scripts
 mkdir -p %{buildroot}/usr/lib/opencpu/rapache
 mkdir -p %{buildroot}/usr/lib/opencpu/selinux
@@ -88,6 +89,7 @@ cp -Rf opencpu-server/scripts/* %{buildroot}/usr/lib/opencpu/scripts/
 cp -Rf opencpu-server/rapache/* %{buildroot}/usr/lib/opencpu/rapache/
 cp -Rf opencpu-server/selinux/* %{buildroot}/usr/lib/opencpu/selinux/
 cp -Rf opencpu-server/conf/* %{buildroot}/etc/opencpu/
+cp -Rf opencpu-server/ld.so.conf.d/* %{buildroot}/etc/ld.so.conf.d/
 cp -Rf server.conf %{buildroot}/etc/opencpu/
 
 %post server
@@ -127,6 +129,7 @@ apachectl restart || true
 /usr/lib/opencpu/selinux
 /etc/cron.d
 /etc/httpd/conf.d
+/etc/ld.so.conf.d
 %dir /var/log/opencpu
 %dir /usr/local/lib/opencpu/apps
 %config(noreplace) /etc/opencpu/*
