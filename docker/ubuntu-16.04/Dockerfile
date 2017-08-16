@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-ENV BRANCH 2.0.3
+ENV BRANCH 2.0.4
 
 # Install.
 RUN \
