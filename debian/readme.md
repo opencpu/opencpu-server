@@ -43,9 +43,9 @@ First install dependencies required for building OpenCPU:
 On these platforms **skip this step** and proceed with building `opencpu-server` below! On older systems we need to `libapache2-mod-r-base` ourselves: run this **not** as root (use a regular user):
 
 	cd ~
-	wget https://github.com/jeffreyhorner/rapache/archive/v1.2.8.tar.gz
-	tar xzf v1.2.8.tar.gz
-	cd rapache-1.2.8
+	wget https://github.com/jeffreyhorner/rapache/archive/v1.2.9.tar.gz
+	tar xzf v1.2.9.tar.gz
+	cd rapache-1.2.9
 	dpkg-buildpackage -us -uc
 
 ## Building OpenCPU
