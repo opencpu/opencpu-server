@@ -2,4 +2,4 @@
 ## This file is read *after* R is initialized.
 ## Variables in /etc/R/environ are read *before* R is initialized.
 # Example:
-# FOO=BAR
+# GITHUB_PAT=aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d
