@@ -12,10 +12,12 @@ The [server manual](http://opencpu.github.io/server-manual/opencpu-server.pdf) i
 
 ## Prebuilt binaries
 
-Currently, prebuilt binaries are available for recent versions of:
+Installation repositories are available for recent versions of:
 
  - [Ubuntu](https://www.opencpu.org/download.html)
  - [Fedora](http://software.opensuse.org/download.html?project=home:jeroenooms:opencpu-2.0&package=opencpu)
+
+For other systems (e.g. Debian, CentOS) the installers are available from the [archive](https://archive.opencpu.org/) server.
 
 ## Building from source
 
