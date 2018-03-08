@@ -52,7 +52,8 @@ RUN \
 RUN \
   wget https://download2.rstudio.org/rstudio-server-rhel-1.1.419-x86_64.rpm && \
   yum install -y --nogpgcheck rstudio-server-rhel-1.1.419-x86_64.rpm && \
-  rm rstudio-server-rhel-1.1.419-x86_64.rpm
+  rm rstudio-server-rhel-1.1.419-x86_64.rpm && \
+  echo "server-app-armor-enabled=0" >> /etc/rstudio/rserver.conf
 
 RUN \
   yum remove -y httpd-devel libapreq2-devel && \

@@ -30,9 +30,10 @@ RUN \
 
 RUN \
   apt-get install -y gdebi-core git sudo && \
-  wget --quiet https://download2.rstudio.org/rstudio-server-stretch-1.1.419-amd64.deb && \
-  gdebi --non-interactive rstudio-server-stretch-1.1.419-amd64.deb && \
-  rm -f rstudio-server-stretch-1.1.419-amd64.deb
+  wget --quiet https://download2.rstudio.org/rstudio-server-stretch-1.1.423-amd64.deb && \
+  gdebi --non-interactive rstudio-server-stretch-1.1.423-amd64.deb && \
+  rm -f rstudio-server-stretch-1.1.423-amd64.deb && \
+  echo "server-app-armor-enabled=0" >> /etc/rstudio/rserver.conf
 
 # Prints apache logs to stdout
 RUN \
