@@ -21,7 +21,7 @@ For other systems (e.g. Debian, CentOS) the installers are available from the [a
 
 ## Building from source
 
-OpenCPU can be build on all major Linux distributions. However only on Ubuntu it comes standard with security policies enabled.
+OpenCPU can be built on all major Linux distributions. However only on Ubuntu it comes standard with security policies enabled.
 
  - `deb` package (Debian, Ubuntu): see [debian/readme.md](debian#readme)
  - `rpm` package (Fedora, CentOS, SUSE): see [rpm/readme.md](rpm#readme)
