@@ -21,8 +21,8 @@ Description: The OpenCPU cache server and load balancer based on nginx.
 
 Package: opencpu-lib
 Architecture: any
-Depends: r-base (>= 3.2.1), libc6, libcurl3, libssl-dev, libicu-dev
-Recommends: libprotobuf-dev, r-base-dev, libssl-dev, libcurl4-openssl-dev, libxml2-dev, libssh2-1-dev
+Depends: r-base (>= 3.2.1), libc6, libcurl4-openssl-dev, libssl-dev, libicu-dev
+Recommends: libprotobuf-dev, r-base-dev, libssl-dev, libxml2-dev, libssh2-1-dev
 Description: Package containing the platform specific R package buids.
 
 Package: opencpu-tex
