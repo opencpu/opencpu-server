@@ -1,6 +1,6 @@
 # Jeroens opencpu CI deb builder
 
-language: R
+language: generic
 sudo: required
 dist: trusty
 cache: packages
@@ -8,6 +8,7 @@ cache: packages
 addons:
   apt:
     sources:
+    - sourceline: 'ppa:marutter/rrutter'      
     - sourceline: 'ppa:opencpu/rapache'
     - sourceline: 'ppa:nginx/stable'
     packages:
