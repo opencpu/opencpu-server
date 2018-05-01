@@ -28,4 +28,4 @@ EXPOSE 443
 EXPOSE 8004
 
 # Start non-daemonized webserver
-CMD apachectl -DFOREGROUND
+CMD service cron start && apachectl -DFOREGROUND

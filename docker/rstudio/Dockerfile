@@ -8,4 +8,4 @@ RUN \
 # Workaround for rstudio apparmor bug
 RUN echo "server-app-armor-enabled=0" >> /etc/rstudio/rserver.conf
 
-CMD /usr/lib/rstudio-server/bin/rserver && apachectl -DFOREGROUND
+CMD service cron start && /usr/lib/rstudio-server/bin/rserver && apachectl -DFOREGROUND
