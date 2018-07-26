@@ -1,4 +1,4 @@
-opencpu (2.0.7-xenial7) xenial; urgency=low
+opencpu (2.0.8-bionic0) bionic; urgency=low
 
   * Debian package with OpenCPU software. See www.opencpu.org
 
