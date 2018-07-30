@@ -1,5 +1,5 @@
 # Use builds from launchpad
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -7,7 +7,7 @@ RUN \
   apt-get update && \
   apt-get -y dist-upgrade && \
   apt-get install -y software-properties-common && \
-  add-apt-repository -y ppa:opencpu/opencpu-2.0 && \
+  add-apt-repository -y ppa:opencpu/opencpu-2.1 && \
   apt-get update && \
   apt-get install -y opencpu-server
 
