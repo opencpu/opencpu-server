@@ -2,6 +2,8 @@ FROM ubuntu:18.04
 
 ENV BRANCH 2.0.8
 
+ENV DEBIAN_FRONTEND noninteractive
+
 # Install.
 RUN \
   apt-get update && \
