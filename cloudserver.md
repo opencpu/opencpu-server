@@ -54,6 +54,10 @@ And then run `sudo service postfix restart`
 
 ## Copy apps from old server
 
+When upgrading R it may be easier to __reinstall all apps__ using [this script](https://gist.github.com/jeroen/6dd61b356290527b6eea2dde527060d6).
+
+When using the same version of R, we can just copy the installed files:
+
     sudo -i
     cd /usr/local/lib/opencpu
     rsync -avz -e ssh jeroen@dev.opencpu.org:/usr/local/lib/opencpu/apps .
