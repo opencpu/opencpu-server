@@ -134,10 +134,10 @@ Get common system requirements from rhub:
 Here are some results:
 
     sudo apt-get install pandoc pandoc-citeproc \
-      libapparmor-dev libatk1.0-dev libcairo2-dev libfftw3-dev libhiredis-dev libcurl4-openssl-dev libgdal-dev 
-      libgeos-dev libgmp-dev libgsl-dev libpng-dev libproj-dev libprotobuf-dev librsvg2-dev libsecret-1-dev 
-      libudunits2-dev libxft-dev libmagick++-dev libxml2-dev libmariadb-client-lgpl-dev libnetcdf-dev unixodbc-dev
-      libgl1-mesa-dev libopenmpi-dev libssl-dev libpango1.0-dev libpq-dev protobuf-compiler libprotoc-dev 
+      libapparmor-dev libatk1.0-dev libcairo2-dev libfftw3-dev libhiredis-dev libcurl4-openssl-dev libgdal-dev \
+      libgeos-dev libgmp-dev libgsl-dev libpng-dev libproj-dev libprotobuf-dev librsvg2-dev libsecret-1-dev \
+      libudunits2-dev libxft-dev libmagick++-dev libxml2-dev libmariadb-client-lgpl-dev libnetcdf-dev unixodbc-dev \
+      libgl1-mesa-dev libopenmpi-dev libssl-dev libpango1.0-dev libpq-dev protobuf-compiler libprotoc-dev \
       libsasl2-dev libv8-3.14-dev libsodium-dev libwebp-dev zlib1g-dev libxslt1-dev
       
 To preinstall useful packages on cloud server
@@ -146,7 +146,7 @@ To preinstall useful packages on cloud server
     sudo apt-get update
     sudo apt-get install r-cran-tidyverse
 
-Use [this script](https://git.io/vQCP3) to find and install the most popular `r-cran` packages.
+To find and install the most popular `r-cran` packages, use [this script](https://git.io/fNp0R) (by revdep) or [this script](https://git.io/vQCP3) (by downloads).
     
 Alternatively to find out popular packages use the [CRANlog API](https://github.com/metacran/cranlogs.app#top-downloaded-packages-topperiodcount)
 
