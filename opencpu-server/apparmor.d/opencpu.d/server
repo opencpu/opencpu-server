@@ -17,6 +17,7 @@ capability net_bind_service,
 /{tmp,mnt,tmpfs}/ocpu-store/** w,
 
 ## New location in OpenCPU 2.0
+/usr/local/lib/opencpu/apps/ rw,
 /usr/local/lib/opencpu/apps/** w,
 
 ## Needed to --test-load installed packages
