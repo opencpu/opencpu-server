@@ -93,6 +93,9 @@ case "$1" in
     systemctl disable opencpu 2>/dev/null || true
     update-rc.d -f opencpu remove || true
 
+    #enable ocpucleanup.timer in systemd
+    systemctl daemon-reload || true
+    systemctl start cleanocpu.timer || true
     ;;
   abort-upgrade | abort-remove | abort-deconfigure)
     :

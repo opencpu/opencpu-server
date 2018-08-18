@@ -4,5 +4,6 @@ opencpu-server/ld.so.conf.d/* /etc/ld.so.conf.d/
 opencpu-server/apparmor.d/* /etc/apparmor.d/
 opencpu-server/scripts/* /usr/lib/opencpu/scripts/
 opencpu-server/rapache/* /usr/lib/opencpu/rapache/
+opencpu-server/systemd/* /lib/systemd/system/
 opencpu-server/conf/* /etc/opencpu/
 server.conf /etc/opencpu/
