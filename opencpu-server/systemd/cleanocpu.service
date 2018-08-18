@@ -1,8 +1,8 @@
 [Unit]
 Description=Cleanup OpenCPU Temp Files
+JoinsNamespaceOf=apache2.service
 
 [Service]
 Type=oneshot
 PrivateTmp=true
-JoinsNamespaceOf=apache2.service
 ExecStart=/usr/lib/opencpu/scripts/cleanocpu.sh
