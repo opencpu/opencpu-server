@@ -74,17 +74,20 @@ cp -Pf opencpu-lib/symlinks/* %{buildroot}/usr/share/R/library/
 # For opencpu-server:
 sed -i s/www-data/apache/g opencpu-server/cron.d/opencpu
 sed -i s/www-data/apache/g opencpu-server/scripts/cleanocpu.sh
+sed -i s/apache2/httpd/g opencpu-server/systemd/cleanocpu.service
 mkdir -p %{buildroot}/etc/httpd/conf.d
 mkdir -p %{buildroot}/etc/cron.d
 mkdir -p %{buildroot}/etc/ld.so.conf.d
 mkdir -p %{buildroot}/usr/lib/opencpu/scripts
 mkdir -p %{buildroot}/usr/lib/opencpu/rapache
 mkdir -p %{buildroot}/usr/lib/opencpu/selinux
+mkdir -p %{buildroot}/lib/systemd/system
 mkdir -p %{buildroot}/etc/opencpu
 mkdir -p %{buildroot}/var/log/opencpu
 mkdir -p %{buildroot}/usr/local/lib/opencpu/apps
 cp -Rf opencpu-server/sites-available/* %{buildroot}/etc/httpd/conf.d/
 cp -Rf opencpu-server/cron.d/* %{buildroot}/etc/cron.d/
+cp -Rf opencpu-server/systemd/* %{buildroot}/lib/systemd/system/
 cp -Rf opencpu-server/scripts/* %{buildroot}/usr/lib/opencpu/scripts/
 cp -Rf opencpu-server/rapache/* %{buildroot}/usr/lib/opencpu/rapache/
 cp -Rf opencpu-server/selinux/* %{buildroot}/usr/lib/opencpu/selinux/
@@ -105,6 +108,8 @@ if [ "$1" = 1 ] && [ "$SELINUX_ENABLED" ]; then
   semodule_package -o opencpu.pp -m opencpu.mod
   semodule -i opencpu.pp
 fi
+systemctl daemon-reload || true
+systemctl start cleanocpu.timer || true
 apachectl restart || true
 
 %postun server
@@ -114,6 +119,7 @@ if [ "$1" = 0 ] ; then
   rm -Rf /var/log/opencpu
   semanage port -d -t http_port_t -p tcp 8004 || true
   semodule -r opencpu || true
+  systemctl daemon-reload || true
 fi
 apachectl restart || true
 
@@ -124,6 +130,7 @@ apachectl restart || true
 /usr/share/R/library
 
 %files server
+/lib/systemd/system
 /usr/lib/opencpu/scripts
 /usr/lib/opencpu/rapache
 /usr/lib/opencpu/selinux
