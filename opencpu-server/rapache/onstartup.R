@@ -37,11 +37,10 @@ getNamespace("opencpu")
 getNamespace("sendmailR")
 
 # Reset first. Then append opencpu libs at the end.
+assignInNamespace('.Library', c('/usr/lib/opencpu/library', base::.Library, 'base')
+assignInNamespace('.Library.site', c('/usr/local/lib/opencpu/site-library', base::.Library.site, 'base')
 .libPaths(.Library.site)
-assign(".lib.loc", envir=environment(.libPaths), c(.libPaths(),
-  '/usr/local/lib/opencpu/site-library', '/usr/lib/opencpu/library'))
 
-#Try to disable interactivity
 #try(.Call(parallel:::C_mc_interactive, FALSE))
 sys:::set_interactive(FALSE)
 
