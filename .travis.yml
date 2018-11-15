@@ -2,8 +2,14 @@
 
 language: generic
 sudo: required
-dist: trusty
 cache: packages
+
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+    - os: linux
+      dist: xenial
 
 addons:
   apt:
