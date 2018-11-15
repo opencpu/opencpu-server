@@ -29,11 +29,17 @@ if(!grepl("UTF-?8", Sys.getlocale("LC_CTYPE"))){
 cat("Using locale:", Sys.getlocale("LC_CTYPE"), "\n")
 
 # Load the opencpu package libraries
-.libPaths(c('/usr/lib/opencpu/library', '/usr/local/lib/opencpu/site-library'))
+.libPaths('/usr/lib/opencpu/library')
 
 #Load suggested packages while they are in .libPaths()
 getNamespace("unix")
+getNamespace("opencpu")
 getNamespace("sendmailR")
+
+# Reset first. Then append opencpu libs at the end.
+.libPaths(.Library.site)
+assign(".lib.loc", envir=environment(.libPaths), c(.libPaths(),
+  '/usr/local/lib/opencpu/site-library', '/usr/lib/opencpu/library'))
 
 #Try to disable interactivity
 #try(.Call(parallel:::C_mc_interactive, FALSE))
