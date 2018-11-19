@@ -31,16 +31,6 @@ cat("Using locale:", Sys.getlocale("LC_CTYPE"), "\n")
 # Load the opencpu package libraries
 .libPaths('/usr/lib/opencpu/library')
 
-#Load suggested packages while they are in .libPaths()
-getNamespace("unix")
-getNamespace("opencpu")
-getNamespace("sendmailR")
-
-# Reset first. Then append opencpu libs at the end.
-assignInNamespace('.Library', c('/usr/lib/opencpu/library', base::.Library, 'base')
-assignInNamespace('.Library.site', c('/usr/local/lib/opencpu/site-library', base::.Library.site, 'base')
-.libPaths(.Library.site)
-
 #try(.Call(parallel:::C_mc_interactive, FALSE))
 sys:::set_interactive(FALSE)
 
@@ -54,6 +44,16 @@ if(identical(sys::aa_config()$con, "unconfined")){
 } else {
   cat("AppArmor not available. Running OpenCPU without security profile but with rlimits.\n")
 }
+
+#Load opencpu AFTER setting options apparmor and rapache and BEFORE changing libpaths
+getNamespace("unix")
+getNamespace("opencpu")
+getNamespace("sendmailR")
+
+# Reset first. Then append opencpu libs at the end.
+assign('.Library', c('/usr/lib/opencpu/library', base::.Library), environment(.libPaths))
+assign('.Library.site', c('/usr/local/lib/opencpu/site-library', base::.Library.site), environment(.libPaths))
+.libPaths(.Library.site)
 
 #Warm up graphics device
 options(bitmapType = "cairo")
