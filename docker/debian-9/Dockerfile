@@ -1,6 +1,6 @@
 FROM debian:9
 
-ENV BRANCH 2.0.8
+ENV BRANCH 2.1.0
 
 # Install.
 RUN \

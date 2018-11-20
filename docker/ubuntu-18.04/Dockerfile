@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-ENV BRANCH 2.0.8
+ENV BRANCH 2.1.0
 
 ENV DEBIAN_FRONTEND noninteractive
 
