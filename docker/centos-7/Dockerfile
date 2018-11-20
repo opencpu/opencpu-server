@@ -54,9 +54,9 @@ RUN \
   rpm -i opencpu-server-*.rpm
 
 RUN \
-  wget https://download2.rstudio.org/rstudio-server-rhel-1.1.456-x86_64.rpm && \
-  yum install -y --nogpgcheck rstudio-server-rhel-1.1.456-x86_64.rpm && \
-  rm rstudio-server-rhel-1.1.456-x86_64.rpm && \
+  wget https://download2.rstudio.org/rstudio-server-rhel-1.1.463-x86_64.rpm && \
+  yum install -y --nogpgcheck rstudio-server-rhel-1.1.463-x86_64.rpm && \
+  rm rstudio-server-rhel-1.1.463-x86_64.rpm && \
   echo "server-app-armor-enabled=0" >> /etc/rstudio/rserver.conf
 
 RUN \
