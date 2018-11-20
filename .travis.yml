@@ -18,6 +18,7 @@ addons:
     - sourceline: 'ppa:opencpu/rapache'
     - sourceline: 'ppa:nginx/stable'
     packages:
+    - curl
     - devscripts
     - equivs
     - gdebi-core
@@ -31,8 +32,10 @@ install:
   - sudo gdebi --n ../opencpu-lib_*.deb
   - sudo gdebi --n ../opencpu-server_*.deb  
   - sudo gdebi --n ../opencpu-cache_*.deb
+  - sudo apt-get remove -y opencpu-cache
 
-script: sudo service apache2 restart
+script:
+  - curl http://localhost/ocpu/info
 
 after_failure:
 
