@@ -53,7 +53,7 @@ getNamespace("sendmailR")
 # Reset first. Then append opencpu libs at the end.
 assign('.Library', c('/usr/lib/opencpu/library', base::.Library), environment(.libPaths))
 assign('.Library.site', c('/usr/local/lib/opencpu/site-library', base::.Library.site), environment(.libPaths))
-.libPaths(.Library.site)
+.libPaths("")
 
 #Warm up graphics device
 options(bitmapType = "cairo")

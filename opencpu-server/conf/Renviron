@@ -3,3 +3,6 @@
 ## Variables in /etc/R/environ are read *before* R is initialized.
 # Example:
 # GITHUB_PAT=aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d
+
+# This makes that install_github() does not use curl/pkgbuild
+# R_REMOTES_STANDALONE=true
