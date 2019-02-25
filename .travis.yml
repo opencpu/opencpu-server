@@ -35,9 +35,10 @@ install:
   - sudo apt-get remove -y opencpu-cache
 
 script:
-  - curl http://localhost/ocpu/info
+  - curl -m5 http://localhost/ocpu/info
 
-after_failure:
+after_script:
+  cat /var/log/apache2/error.log
 
 notifications:
   email:
