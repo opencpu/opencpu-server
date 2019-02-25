@@ -32,13 +32,13 @@ cat("Using locale:", Sys.getlocale("LC_CTYPE"), "\n")
 .libPaths('/usr/lib/opencpu/library')
 
 #try(.Call(parallel:::C_mc_interactive, FALSE))
-sys:::set_interactive(FALSE)
+unix:::set_interactive(FALSE)
 
 #We use this later
 options(rapache = TRUE)
 
 #Check if AppArmor is available
-if(identical(sys::aa_config()$con, "unconfined")){
+if(identical(unix::aa_config()$con, "unconfined")){
   options(apparmor = TRUE)
   cat("AppArmor available! Running OpenCPU with security profile and rlimits.\n")
 } else {
