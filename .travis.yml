@@ -38,7 +38,7 @@ script:
   - curl -m5 http://localhost/ocpu/info
 
 after_script:
-  cat /var/log/apache2/error.log
+  sudo cat /var/log/apache2/error.log
 
 notifications:
   email:
