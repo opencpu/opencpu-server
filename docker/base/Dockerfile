@@ -3,13 +3,16 @@ FROM ubuntu:18.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
+# Install and 'hold' opencpu-server so that the docker image can be tagged
 RUN \
   apt-get update && \
   apt-get -y dist-upgrade && \
   apt-get install -y software-properties-common && \
   add-apt-repository -y ppa:opencpu/opencpu-2.1 && \
   apt-get update && \
-  apt-get install -y opencpu-server
+  apt-get install -y opencpu-server && \
+  apt-mark hold opencpu-server
+
 
 # Prints apache logs to stdout
 RUN \
