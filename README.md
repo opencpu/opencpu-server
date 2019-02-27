@@ -14,14 +14,14 @@ The [server manual](http://opencpu.github.io/server-manual/opencpu-server.pdf) i
 
 Installation repositories are available for recent versions of:
 
- - [Ubuntu](https://www.opencpu.org/download.html)
+ - [Debian/CentOS/SuSE/Ubuntu](https://www.opencpu.org/download.html)
  - [Fedora](http://software.opensuse.org/download.html?project=home:jeroenooms:opencpu-2.0&package=opencpu)
 
 For other systems (e.g. Debian, CentOS) the installers are available from the [archive](https://archive.opencpu.org/) server.
 
 ## Building from source
 
-OpenCPU can be build on all major Linux distributions. However only on Ubuntu it comes standard with security policies enabled.
+OpenCPU can be built on all major Linux distributions. Only the package for Ubuntu comes with the security policies enabled. 
 
  - `deb` package (Debian, Ubuntu): see [debian/readme.md](debian#readme)
  - `rpm` package (Fedora, CentOS, SUSE): see [rpm/readme.md](rpm#readme)
