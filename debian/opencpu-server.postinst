@@ -94,8 +94,10 @@ case "$1" in
     update-rc.d -f opencpu remove || true
 
     #enable ocpucleanup.timer in systemd
-    systemctl daemon-reload || true
-    systemctl start cleanocpu.timer || true
+    if [ -e "/bin/systemctl" ]; then
+      systemctl daemon-reload || true
+      systemctl start cleanocpu.timer || true
+    fi
     ;;
   abort-upgrade | abort-remove | abort-deconfigure)
     :
