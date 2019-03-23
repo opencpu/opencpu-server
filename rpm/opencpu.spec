@@ -108,8 +108,10 @@ if [ "$1" = 1 ] && [ "$SELINUX_ENABLED" ]; then
   semodule_package -o opencpu.pp -m opencpu.mod
   semodule -i opencpu.pp
 fi
-systemctl daemon-reload || true
-systemctl start cleanocpu.timer || true
+if [ -e "/bin/systemctl" ]; then
+  systemctl daemon-reload || true
+  systemctl start cleanocpu.timer || true
+fi
 apachectl restart || true
 
 %postun server
@@ -119,7 +121,9 @@ if [ "$1" = 0 ] ; then
   rm -Rf /var/log/opencpu
   semanage port -d -t http_port_t -p tcp 8004 || true
   semodule -r opencpu || true
-  systemctl daemon-reload || true
+  if [ -e "/bin/systemctl" ]; then
+    systemctl daemon-reload || true
+  fi
 fi
 apachectl restart || true
 
