@@ -21,7 +21,7 @@ New linode server with Ubuntu 16.04. To enable apparmor, change kernel to `GRUB2
 Now reboot. Then login as jeroen 
 
     sudo apt-get install byobu software-properties-common
-    sudo add-apt-repository ppa:opencpu/opencpu-2.0 && sudo apt-get update
+    sudo add-apt-repository ppa:opencpu/opencpu-2.1 && sudo apt-get update
     sudo apt-get install opencpu-full
     
     # test it

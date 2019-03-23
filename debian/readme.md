@@ -31,31 +31,16 @@ First install dependencies required for building OpenCPU:
 	sudo apt-get dist-upgrade -y
 
 	# Install build dependencies
-	sudo apt-get install -y wget make devscripts apache2-dev apache2 libapreq2-dev r-base r-base-dev libapparmor-dev libcurl4-openssl-dev libprotobuf-dev protobuf-compiler xvfb xauth xfonts-base curl libssl-dev libxml2-dev libicu-dev pkg-config libssh2-1-dev
-
-## Building rApache
-
-**UPDATE**: As of 2016 [libapache2-mod-r-base](http://packages.ubuntu.com/xenial/web/libapache2-mod-r-base) is now included with:
-
- - **Debian 9** (Stretch) and up
- - **Ubuntu 16.04** (Xenial) and up
-
-On these platforms **skip this step** and proceed with building `opencpu-server` below! On older systems we need to `libapache2-mod-r-base` ourselves: run this **not** as root (use a regular user):
-
-	cd ~
-	wget https://github.com/jeffreyhorner/rapache/archive/v1.2.9.tar.gz
-	tar xzf v1.2.9.tar.gz
-	cd rapache-1.2.9
-	dpkg-buildpackage -us -uc
+	sudo apt-get install -y wget make devscripts r-base r-base-dev libapparmor-dev libcurl4-openssl-dev libprotobuf-dev protobuf-compiler xvfb xauth xfonts-base curl libssl-dev libxml2-dev libicu-dev pkg-config libssh2-1-dev
 
 ## Building OpenCPU
 
 To build OpenCPU Server (`opencpu-server` and `opencpu-cache`): run this **not** as root.
 
 	cd ~
-	wget https://github.com/opencpu/opencpu-server/archive/v2.0.tar.gz
-	tar xzf v2.0.tar.gz
-	cd opencpu-server-2.0
+	wget https://github.com/opencpu/opencpu-server/archive/v2.1.tar.gz
+	tar xzf v2.1.tar.gz
+	cd opencpu-server-2.1
 	dpkg-buildpackage -us -uc
 
 ## Installing OpenCPU server
