@@ -1,6 +1,6 @@
-FROM fedora:28
+FROM fedora:30
 
-ENV BRANCH 2.1.1
+ENV BRANCH 2.1
 
 # Install.
 RUN \

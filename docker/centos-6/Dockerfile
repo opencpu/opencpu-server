@@ -1,6 +1,6 @@
 FROM centos:centos6
 
-ENV BRANCH 2.1.1
+ENV BRANCH 2.1
 
 # Enable EPEL
 RUN \
