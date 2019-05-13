@@ -35,9 +35,9 @@ RUN \
 
 RUN \
   apt-get install -y gdebi-core git sudo && \
-  wget --quiet https://download2.rstudio.org/rstudio-server-1.1.463-amd64.deb && \
-  gdebi --non-interactive rstudio-server-1.1.463-amd64.deb && \
-  rm -f rstudio-server-1.1.463-amd64.deb && \
+  wget --quiet https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.2.1335-amd64.deb && \
+  gdebi --non-interactive rstudio-server-1.2.1335-amd64.deb && \
+  rm -f rstudio-server-1.2.1335-amd64.deb && \
   echo "server-app-armor-enabled=0" >> /etc/rstudio/rserver.conf
 
 # Prints apache logs to stdout
