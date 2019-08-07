@@ -48,7 +48,6 @@ if(identical(unix::aa_config()$con, "unconfined")){
 #Load opencpu AFTER setting options apparmor and rapache and BEFORE changing libpaths
 getNamespace("unix")
 getNamespace("opencpu")
-getNamespace("sendmailR")
 
 # Reset first. Then append opencpu libs at the end.
 assign('.Library', c('/usr/lib/opencpu/library', base::.Library), environment(.libPaths))
