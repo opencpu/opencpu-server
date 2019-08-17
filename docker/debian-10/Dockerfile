@@ -22,7 +22,7 @@ RUN \
   wget https://github.com/opencpu/opencpu-server/archive/v${BRANCH}.tar.gz && \
   tar xzf v${BRANCH}.tar.gz && \
   cd opencpu-server-${BRANCH} && \
-  sed -i 's/xenial/buster/g' "debian/changelog" && \
+  sed -i 's/bionic/buster/g' debian/changelog && \
   dpkg-buildpackage -us -uc
 
 USER root
