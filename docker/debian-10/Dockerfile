@@ -1,6 +1,7 @@
 FROM debian:10
 
 ENV BRANCH 2.1
+ENV RSTUDIO 1.2.5001
 
 RUN \
   apt-get update && \
@@ -34,9 +35,9 @@ RUN \
 
 RUN \
   apt-get install -y gdebi-core git sudo && \
-  wget --quiet https://download2.rstudio.org/server/debian9/x86_64/rstudio-server-1.2.1335-amd64.deb && \
-  gdebi --non-interactive rstudio-server-1.2.1335-amd64.deb && \
-  rm -f rstudio-server-1.2.1335-amd64.deb && \
+  wget --quiet https://download2.rstudio.org/server/debian9/x86_64/rstudio-server-${RSTUDIO}-amd64.deb && \
+  gdebi --non-interactive rstudio-server-${RSTUDIO}-amd64.deb && \
+  rm -f rstudio-server-${RSTUDIO}-amd64.deb && \
   echo "server-app-armor-enabled=0" >> /etc/rstudio/rserver.conf
 
 # Prints apache logs to stdout

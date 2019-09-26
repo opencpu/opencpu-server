@@ -6,10 +6,8 @@ cache: packages
 
 matrix:
   include:
-    - os: linux
-      dist: trusty
-    - os: linux
-      dist: xenial
+    - dist: xenial
+    - dist: bionic
 
 addons:
   apt:
