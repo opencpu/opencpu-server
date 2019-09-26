@@ -6,67 +6,79 @@
 
 Because `r-base` packages included with Debian/Ubuntu are often old, we first add a repository with a recent version of R. On **Ubuntu** we can use Michael Rutter's [launchpad](https://launchpad.net/~marutter/+archive/ubuntu/rrutter?field.series_filter=trusty) repository:
 
-	sudo add-apt-repository -y ppa:marutter/rrutter
-	sudo apt-get update
+```sh
+sudo add-apt-repository -y ppa:marutter/rrutter
+sudo apt-get update
+```
 
 Alternatively, on **Debian** use `r-base` packages from CRAN (see [details](https://cran.r-project.org/bin/linux/debian/#debian-buster-stable)). For example on Debian 10.0 ("buster")
 
-	# Become root
-	sudo -i
+```sh
+# Become root
+sudo -i
 
-	# Add Wheezy CRAN repo for R 3.0+
-	apt-key adv --keyserver keyserver.ubuntu.com --recv-key 381BA480
-	echo "deb http://cran.rstudio.com/bin/linux/debian buster-cran35/" > /etc/apt/sources.list.d/cran.list
-	apt-get update
+# Add Wheezy CRAN repo for R 3.0+
+apt-key adv --keyserver keyserver.ubuntu.com --recv-key 381BA480
+echo "deb http://cran.rstudio.com/bin/linux/debian buster-cran35/" > /etc/apt/sources.list.d/cran.list
+apt-get update
 
-	# Quit root
-	exit
+# Quit root
+exit
+```
 
 ## Build OpenCPU Server from Source
 
 First make sure your system is up-to-date: dependencies required for building OpenCPU:
 
-	# Update system
-	sudo apt-get update
-	sudo apt-get dist-upgrade -y
+```sh
+sudo apt-get update
+sudo apt-get dist-upgrade -y
+```
 
-Download the opencpu sources from Github:
+Download the opencpu-server sources from Github:
 
-	cd ~
-	wget https://github.com/opencpu/opencpu-server/archive/v2.1.tar.gz
-	tar xzf v2.1.tar.gz
-	cd opencpu-server-2.1
+```sh
+cd ~
+wget https://github.com/opencpu/opencpu-server/archive/v2.1.tar.gz
+tar xzf v2.1.tar.gz
+cd opencpu-server-2.1
+```
 
-Install build dependencies from without source dir (requires root):
+Install build dependencies from within `opencpu-server` source dir (requires root):
 
-	sudo mk-build-deps -i
+```sh
+sudo mk-build-deps -i
+```
 
-Finally to build OpenCPU Server (`opencpu-server` and `opencpu-cache`): run this as **not root** user:
+Finally to build OpenCPU Server packages (`opencpu-server` and `opencpu-cache`): run this as **not root** user:
 
-	dpkg-buildpackage -us -uc
+```sh
+dpkg-buildpackage -us -uc
+```
 
 ## Installing OpenCPU server
 
 To install the cloud server, simply install the `deb` packages in the following order:
 
-	cd ~
-
-	# Only if needed, see above
-	sudo dpkg -i libapache2-mod-r-base_*.deb
-
-	# Always needed
-	sudo dpkg -i opencpu-lib_*.deb
-	sudo dpkg -i opencpu-server_*.deb
+	
+```sh
+cd ~
+sudo apt-get install libapache-mod-r-base
+sudo dpkg -i opencpu-lib_*.deb
+sudo dpkg -i opencpu-server_*.deb
+```
 
 You're done! Test if it works:
 
-	curl http://localhost/ocpu/info
+```sh
+curl http://localhost/ocpu/info
+```
 
-That should print some info about the R session.
+This should print some info about the R session.
 
-## Extra: enable AppArmor (**debian only**)
+## Extra: enable AppArmor on older Debians
 
-__Update: If you are using Ubuntu or Debian 10 "Buster" or newer, AppArmor is enabled by default so you can skip this step.__
+__Update: If you are using Ubuntu or Debian 10 or newer, AppArmor is enabled by default so you can skip this section.__
 
 OpenCPU uses AppArmor to enforce advanced security policies. AppArmor support is installed by default on Ubuntu, but in Debian we first need to enable it in the kernel. To do so, edit `/etc/default/grub` and add `security=apparmor` to the `GRUB_CMDLINE_LINUX` line. For example it would read:
 
