@@ -13,7 +13,6 @@ addons:
   apt:
     sources:
     - sourceline: 'ppa:marutter/rrutter3.5'
-    - sourceline: 'ppa:opencpu/rapache'
     - sourceline: 'ppa:nginx/stable'
     packages:
     - curl
