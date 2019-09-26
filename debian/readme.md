@@ -9,38 +9,40 @@ Because `r-base` packages included with Debian/Ubuntu are often old, we first ad
 	sudo add-apt-repository -y ppa:marutter/rrutter
 	sudo apt-get update
 
-Alternatively, on **Debian** use `r-base` packages from CRAN (see [details](https://cran.rstudio.com/bin/linux/debian/#debian-jessie-stable)). For example on Debian 8.0 ("jessie")
+Alternatively, on **Debian** use `r-base` packages from CRAN (see [details](https://cran.r-project.org/bin/linux/debian/#debian-buster-stable)). For example on Debian 10.0 ("buster")
 
 	# Become root
 	sudo -i
 
 	# Add Wheezy CRAN repo for R 3.0+
 	apt-key adv --keyserver keyserver.ubuntu.com --recv-key 381BA480
-	echo "deb http://cran.rstudio.com/bin/linux/debian jessie-cran3/" > /etc/apt/sources.list.d/cran.list
+	echo "deb http://cran.rstudio.com/bin/linux/debian buster-cran35/" > /etc/apt/sources.list.d/cran.list
 	apt-get update
 
 	# Quit root
 	exit
 
-## Install Build Dependencies
+## Build OpenCPU Server from Source
 
-First install dependencies required for building OpenCPU:
+First make sure your system is up-to-date: dependencies required for building OpenCPU:
 
 	# Update system
 	sudo apt-get update
 	sudo apt-get dist-upgrade -y
 
-	# Install build dependencies
-	sudo apt-get install -y wget make devscripts r-base r-base-dev libapparmor-dev libcurl4-openssl-dev libprotobuf-dev protobuf-compiler xvfb xauth xfonts-base curl libssl-dev libxml2-dev libicu-dev pkg-config libssh2-1-dev
-
-## Building OpenCPU
-
-To build OpenCPU Server (`opencpu-server` and `opencpu-cache`): run this **not** as root.
+Download the opencpu sources from Github:
 
 	cd ~
 	wget https://github.com/opencpu/opencpu-server/archive/v2.1.tar.gz
 	tar xzf v2.1.tar.gz
 	cd opencpu-server-2.1
+
+Install build dependencies from without source dir (requires root):
+
+	sudo mk-build-deps -i
+
+Finally to build OpenCPU Server (`opencpu-server` and `opencpu-cache`): run this as **not root** user:
+
 	dpkg-buildpackage -us -uc
 
 ## Installing OpenCPU server
@@ -63,6 +65,8 @@ You're done! Test if it works:
 That should print some info about the R session.
 
 ## Extra: enable AppArmor (**debian only**)
+
+__Update: If you are using Ubuntu or Debian 10 "Buster" or newer, AppArmor is enabled by default so you can skip this step.__
 
 OpenCPU uses AppArmor to enforce advanced security policies. AppArmor support is installed by default on Ubuntu, but in Debian we first need to enable it in the kernel. To do so, edit `/etc/default/grub` and add `security=apparmor` to the `GRUB_CMDLINE_LINUX` line. For example it would read:
 

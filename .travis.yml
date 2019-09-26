@@ -18,15 +18,15 @@ matrix:
           - equivs
           - gdebi-core
     - dist: bionic
-        addons:
-          apt:
-            sources:
-            - sourceline: 'ppa:marutter/rrutter3.5'
-            packages:
-            - curl
-            - devscripts
-            - equivs
-            - gdebi-core
+      addons:
+        apt:
+          sources:
+          - sourceline: 'ppa:marutter/rrutter3.5'
+          packages:
+          - curl
+          - devscripts
+          - equivs
+          - gdebi-core
 
 before_install:
   - sudo mk-build-deps -i
