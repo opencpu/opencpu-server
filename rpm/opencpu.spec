@@ -17,7 +17,6 @@ BuildRequires: protobuf-devel
 BuildRequires: openssl-devel
 BuildRequires: libxml2-devel
 BuildRequires: libicu-devel
-BuildRequires: libssh2-devel
 BuildRequires: pkgconfig
 BuildRequires: make
 Requires: opencpu-server
@@ -37,7 +36,6 @@ Requires: libcurl-devel
 Requires: openssl-devel
 Requires: libxml2-devel
 Requires: libicu-devel
-Requires: libssh2-devel
 Autoreq: no
 
 %description lib
