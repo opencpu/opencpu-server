@@ -23,7 +23,7 @@ RUN \
 
 RUN \
   cd ~ && \
-  wget https://github.com/jeffreyhorner/rapache/archive/v1.2.9.tar.gz -O rapache-1.2.9.tar.gz && \
+  wget --quiet https://github.com/jeffreyhorner/rapache/archive/v1.2.9.tar.gz -O rapache-1.2.9.tar.gz && \
   tar xzvf rapache-1.2.9.tar.gz rapache-1.2.9/rpm/rapache.spec --strip-components 2 && \
   mv -f rapache-1.2.9.tar.gz ~/rpmbuild/SOURCES/ && \
   mv -f rapache.spec ~/rpmbuild/SPECS/ && \
@@ -31,7 +31,7 @@ RUN \
 
 RUN \
   cd ~ && \
-  wget https://github.com/opencpu/opencpu-server/archive/v${BRANCH}.tar.gz -O opencpu-server-${BRANCH}.tar.gz  && \
+  wget --quiet https://github.com/opencpu/opencpu-server/archive/v${BRANCH}.tar.gz -O opencpu-server-${BRANCH}.tar.gz  && \
   tar xzvf opencpu-server-${BRANCH}.tar.gz opencpu-server-${BRANCH}/rpm/opencpu.spec --strip-components 2 && \
   mv -f opencpu-server-${BRANCH}.tar.gz ~/rpmbuild/SOURCES/ && \
   mv -f opencpu.spec ~/rpmbuild/SPECS/ && \

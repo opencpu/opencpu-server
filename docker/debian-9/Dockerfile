@@ -20,7 +20,7 @@ USER builder
 
 RUN \
   cd ~ && \
-  wget https://github.com/opencpu/opencpu-server/archive/v${BRANCH}.tar.gz && \
+  wget --quiet https://github.com/opencpu/opencpu-server/archive/v${BRANCH}.tar.gz && \
   tar xzf v${BRANCH}.tar.gz && \
   cd opencpu-server-${BRANCH} && \
   sed -i 's/bionic/stretch/g' debian/changelog && \

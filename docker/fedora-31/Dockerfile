@@ -1,4 +1,4 @@
-FROM fedora:30
+FROM fedora:31
 
 ENV BRANCH 2.1
 ENV RSTUDIO 1.2.5001

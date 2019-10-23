@@ -1,14 +1,21 @@
-FROM fedora:29
+FROM centos:centos8
 
 ENV BRANCH 2.1
 ENV RSTUDIO 1.2.5001
+
+# Enable EPEL
+RUN \
+  yum upgrade -y && \
+  yum install -y 'dnf-command(config-manager)' && \
+  yum install -y epel-release && \
+  yum config-manager --enable PowerTools epel-testing 
 
 # Install.
 RUN \
   useradd -ms /bin/bash builder && \
   yum update -y && \
   yum upgrade -y && \
-  yum install -y rpm-build make wget tar httpd-devel libapreq2-devel R-devel libcurl-devel protobuf-devel openssl-devel libxml2-devel libicu-devel libssh2-devel createrepo && \
+  yum install -y rpm-build make wget tar httpd-devel libapreq2-devel R-devel libcurl-devel protobuf-devel openssl-devel libxml2-devel libicu-devel createrepo && \
   yum clean all
 
 USER builder
@@ -19,7 +26,7 @@ RUN \
 
 RUN \
   cd ~ && \
-  wget https://github.com/jeffreyhorner/rapache/archive/v1.2.9.tar.gz -O rapache-1.2.9.tar.gz && \
+  wget --quiet https://github.com/jeffreyhorner/rapache/archive/v1.2.9.tar.gz -O rapache-1.2.9.tar.gz && \
   tar xzvf rapache-1.2.9.tar.gz rapache-1.2.9/rpm/rapache.spec --strip-components 2 && \
   mv -f rapache-1.2.9.tar.gz ~/rpmbuild/SOURCES/ && \
   mv -f rapache.spec ~/rpmbuild/SPECS/ && \
@@ -27,11 +34,11 @@ RUN \
 
 RUN \
   cd ~ && \
-  wget https://github.com/opencpu/opencpu-server/archive/v${BRANCH}.tar.gz -O opencpu-server-${BRANCH}.tar.gz  && \
-  tar xzvf opencpu-server-${BRANCH}.tar.gz opencpu-server-${BRANCH}/rpm/opencpu.spec --strip-components 2 && \
-  mv -f opencpu-server-${BRANCH}.tar.gz ~/rpmbuild/SOURCES/ && \
+  wget --quiet https://github.com/opencpu/opencpu-server/archive/master.tar.gz -O opencpu-server-master.tar.gz  && \
+  tar xzvf opencpu-server-master.tar.gz opencpu-server-master/rpm/opencpu.spec --strip-components 2 && \
+  mv -f opencpu-server-master.tar.gz ~/rpmbuild/SOURCES/ && \
   mv -f opencpu.spec ~/rpmbuild/SPECS/ && \
-  rpmbuild -ba ~/rpmbuild/SPECS/opencpu.spec --define "branch ${BRANCH}"
+  rpmbuild -ba ~/rpmbuild/SPECS/opencpu.spec --define "branch master"
 
 RUN \
   createrepo ~/rpmbuild/RPMS/x86_64/
