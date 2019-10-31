@@ -67,4 +67,4 @@ EXPOSE 443
 EXPOSE 8004
 
 # Define default command.
-CMD /usr/lib/rstudio-server/bin/rserver && apachectl -DFOREGROUND
+CMD /usr/lib/rstudio-server/bin/rserver && httpd -k start -DFOREGROUND
