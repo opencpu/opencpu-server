@@ -45,6 +45,7 @@ RUN \
 
 RUN \
   yum install -y MTA mod_ssl /usr/sbin/semanage && \
+  /usr/libexec/httpd-ssl-gencerts && \
   cd ~/RPMS/x86_64/ && \
   rpm -i rapache-*.rpm && \
   rpm -i opencpu-lib-*.rpm && \
