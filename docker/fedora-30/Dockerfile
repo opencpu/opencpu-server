@@ -1,7 +1,7 @@
 FROM fedora:30
 
 ENV BRANCH 2.1
-ENV RSTUDIO 1.2.5001
+ENV RSTUDIO 1.2.5033
 
 # Install.
 RUN \
