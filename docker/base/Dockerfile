@@ -23,6 +23,7 @@ RUN \
 
 # Set opencpu password so that we can login
 RUN \
+  sed -i 's/nproc": 100/nproc": 500/' /etc/opencpu/server.conf && \
   echo "opencpu:opencpu" | chpasswd
 
 # Apache ports
