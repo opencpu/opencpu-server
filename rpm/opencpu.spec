@@ -2,7 +2,7 @@
 %{!?branch: %define branch 2.1}
 
 Name: opencpu
-Version: 2.1.5
+Version: 2.1.6
 Release: rpm1
 Source: opencpu-server-%{branch}.tar.gz
 License: Apache2
