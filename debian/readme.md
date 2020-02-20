@@ -2,12 +2,12 @@
 
 *How to build OpenCPU on Debian or Ubuntu*
 
-## Update R (optional, but recommended)
+## Prepare: update R (optional, but recommended)
 
 Because `r-base` packages included with Debian/Ubuntu are often old, we first add a repository with a recent version of R. On **Ubuntu** we can use Michael Rutter's [launchpad](https://launchpad.net/~marutter/+archive/ubuntu/rrutter?field.series_filter=trusty) repository:
 
 ```sh
-sudo add-apt-repository -y ppa:marutter/rrutter
+sudo add-apt-repository -y ppa:marutter/rrutter3.5
 sudo apt-get update
 ```
 
@@ -76,29 +76,6 @@ curl http://localhost/ocpu/info
 
 This should print some info about the R session.
 
-## Extra: enable AppArmor on older Debians
-
-__Update: If you are using Ubuntu or Debian 10 or newer, AppArmor is enabled by default so you can skip this section.__
-
-OpenCPU uses AppArmor to enforce advanced security policies. AppArmor support is installed by default on Ubuntu, but in Debian we first need to enable it in the kernel. To do so, edit `/etc/default/grub` and add `security=apparmor` to the `GRUB_CMDLINE_LINUX` line. For example it would read:
-
-	GRUB_CMDLINE_LINUX="security=apparmor"
-
-Update the grub config and reboot:
-
-	sudo update-grub
-	sudo reboot
-
-After rebooting, install the apparmor packages and verify that it is enabled:
-
-	sudo apt-get install apparmor-utils
-	sudo aa-status
-
-Restart OpenCPU and check the log files to confirm that apparmor works:
-
-	sudo service apache2 restart
-    sudo tail /var/log/apache2/error.log -n30
-
 ## OpenCPU caching server (not recommended)
 
 The `opencpu-cache` package is a reverse proxy for caching and load balancing with OpenCPU. When installed, it automatically preroutes all incomming traffic on ports 80 and 443 through nginx. Only install this when you expect serious traffic.
@@ -111,4 +88,3 @@ The `opencpu-cache` package is a reverse proxy for caching and load balancing wi
 	sudo dpkg -i opencpu-cache_*.deb
 
 Note that it is possible to install `opencpu-cache` on another server than `opencpu-server` if you update the nginx back-end config accordingly.
-
