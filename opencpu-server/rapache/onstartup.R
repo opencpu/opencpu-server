@@ -38,7 +38,9 @@ unix:::set_interactive(FALSE)
 options(rapache = TRUE)
 
 #Check if AppArmor is available
-if(identical(unix::aa_config()$con, "unconfined")){
+if(nchar(Sys.getenv("OCPU_DISABLE_APPARMOR"))){
+  cat("AppArmor has been disabled!\n")
+} else if(identical(unix::aa_config()$con, "unconfined")){
   options(apparmor = TRUE)
   cat("AppArmor available! Running OpenCPU with security profile and rlimits.\n")
 } else {
