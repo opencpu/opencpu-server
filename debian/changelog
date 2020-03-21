@@ -1,5 +1,5 @@
-opencpu (2.1.6-bionic0) bionic; urgency=low
+opencpu (2.1.6-bionic2) bionic; urgency=low
 
   * Debian package with OpenCPU software. See www.opencpu.org
 
- -- Jeroen Ooms <jeroen@opencpu.org>  Tue, 20 Nov 2018 12:00:00 +0100
+ -- Jeroen Ooms <jeroen@opencpu.org>  Sun, 22 March 2020 12:00:00 +0100
