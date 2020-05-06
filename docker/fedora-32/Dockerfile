@@ -1,18 +1,14 @@
-FROM centos:centos7
+FROM fedora:32
 
 ENV BRANCH 2.1
 ENV RSTUDIO 1.2.5042
-
-# Enable EPEL
-RUN \
-  yum install -y epel-release
 
 # Install.
 RUN \
   useradd -ms /bin/bash builder && \
   yum update -y && \
   yum upgrade -y && \
-  yum install -y rpm-build make wget tar httpd-devel libapreq2-devel R-devel libcurl-devel protobuf-devel openssl-devel libxml2-devel libicu-devel libssh2-devel cairo-devel createrepo && \
+  yum install -y rpm-build make wget tar httpd-devel libapreq2-devel R-devel libcurl-devel protobuf-devel openssl-devel libxml2-devel libicu-devel cairo-devel createrepo && \
   yum clean all
 
 USER builder
@@ -49,13 +45,14 @@ RUN \
 
 RUN \
   yum install -y MTA mod_ssl /usr/sbin/semanage && \
+  /usr/libexec/httpd-ssl-gencerts && \
   cd ~/RPMS/x86_64/ && \
   rpm -i rapache-*.rpm && \
   rpm -i opencpu-lib-*.rpm && \
   rpm -i opencpu-server-*.rpm
 
 RUN \
-  wget --quiet https://download2.rstudio.org/server/centos6/x86_64/rstudio-server-rhel-${RSTUDIO}-x86_64.rpm && \
+  wget --quiet https://download2.rstudio.org/server/fedora28/x86_64/rstudio-server-rhel-${RSTUDIO}-x86_64.rpm && \
   yum install -y --nogpgcheck rstudio-server-rhel-${RSTUDIO}-x86_64.rpm && \
   rm rstudio-server-rhel-${RSTUDIO}-x86_64.rpm && \
   echo "server-app-armor-enabled=0" >> /etc/rstudio/rserver.conf
@@ -70,4 +67,4 @@ EXPOSE 443
 EXPOSE 8004
 
 # Define default command.
-CMD /usr/lib/rstudio-server/bin/rserver && apachectl -DFOREGROUND
+CMD /usr/lib/rstudio-server/bin/rserver && httpd -k start -DFOREGROUND

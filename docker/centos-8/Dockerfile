@@ -1,7 +1,7 @@
 FROM centos:centos8
 
 ENV BRANCH 2.1
-ENV RSTUDIO 1.2.5033
+ENV RSTUDIO 1.2.5042
 
 # Enable EPEL
 RUN \
