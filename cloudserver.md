@@ -21,8 +21,8 @@ New linode server with Ubuntu 16.04. To enable apparmor, change kernel to `GRUB2
 Now reboot. Then login as jeroen 
 
     sudo apt-get install byobu software-properties-common
-    sudo add-apt-repository ppa:opencpu/opencpu-2.1 && sudo apt-get update
-    sudo apt-get install opencpu-full
+    sudo add-apt-repository ppa:opencpu/opencpu-2.2 && sudo apt-get update
+    sudo apt-get install opencpu-server
     
     # test it
     curl http://localhost/ocpu/info
@@ -127,38 +127,13 @@ Update DNS records for:
 
 In Linode control panel under 'Remote access' you can set the 'Reverse DNS'.
 
-## Preinstall packages
+## Enable RSPM
 
-Get common system requirements from rhub:
+Edit `/etc/opencpu/Rprofile` and add:
 
-    git clone https://github.com/r-hub/sysreqsdb
-    cd sysreqsdb/sysreqs
-    R -e lapply(list.files(), function(x) {jsonlite::fromJSON(x)[[1]]$platforms$DEB})
+    options(repos = c(CRAN = "https://packagemanager.rstudio.com/all/__linux__/focal/latest"))
+    options(HTTPUserAgent = sprintf("R/%s R (%s)", getRversion(), paste(getRversion(), R.version$platform, R.version$arch, R.version$os)))
 
-Here are some results:
-
-    sudo apt-get install pandoc pandoc-citeproc \
-      libapparmor-dev libatk1.0-dev libcairo2-dev libfftw3-dev libhiredis-dev libcurl4-openssl-dev libgdal-dev \
-      libgeos-dev libgmp-dev libgsl-dev libpng-dev libproj-dev libprotobuf-dev librsvg2-dev libsecret-1-dev \
-      libudunits2-dev libxft-dev libmagick++-dev libxml2-dev libmariadb-client-lgpl-dev libnetcdf-dev unixodbc-dev \
-      libgl1-mesa-dev libopenmpi-dev libssl-dev libpango1.0-dev libpq-dev protobuf-compiler libprotoc-dev \
-      libsasl2-dev libv8-3.14-dev libsodium-dev libwebp-dev zlib1g-dev libxslt1-dev
-      
-To preinstall useful packages on cloud server
-
-    sudo add-apt-repository ppa:marutter/c2d4u
-    sudo apt-get update
-    sudo apt-get install r-cran-tidyverse
-
-To find and install the most popular `r-cran` packages, use [this script](https://git.io/fNp0R) (by revdep) or [this script](https://git.io/vQCP3) (by downloads).
-    
-Alternatively to find out popular packages use the [CRANlog API](https://github.com/metacran/cranlogs.app#top-downloaded-packages-topperiodcount)
-
-```r
-req <- fromJSON('https://cranlogs.r-pkg.org/top/last-month/100')
-paste(tolower(paste0("r-cran-", req$downloads$package)), collapse = " ")
-```
-  
 ## Making Java Work
 
 Arggh, Java. I think we always jdk:
@@ -181,7 +156,7 @@ That should allow for loading the `rJava` package. But there is more. The JVM ha
 See [here](https://www.tensorflow.org/install/install_linux). I ran this as root:
 
 ```
-sudo apt-get install python-pip python-dev python-virtualenv 
-sudo pip install --upgrade tensorflow h5py
+sudo apt-get install python3-pip python3-dev python3-virtualenv 
+sudo pip3 install --upgrade tensorflow h5py
 ```
 

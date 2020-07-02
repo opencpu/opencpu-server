@@ -1,7 +1,7 @@
 FROM centos:centos8
 
-ENV BRANCH 2.1
-ENV RSTUDIO 1.2.5042
+ENV BRANCH 2.2
+ENV RSTUDIO 1.3.959
 
 # Enable EPEL
 RUN \
@@ -59,7 +59,7 @@ RUN \
   rpm -i opencpu-server-*.rpm
 
 RUN \
-  wget --quiet https://download2.rstudio.org/server/fedora28/x86_64/rstudio-server-rhel-${RSTUDIO}-x86_64.rpm && \
+  wget --quiet https://download2.rstudio.org/server/centos8/x86_64/rstudio-server-rhel-${RSTUDIO}-x86_64.rpm && \
   yum install -y --nogpgcheck rstudio-server-rhel-${RSTUDIO}-x86_64.rpm && \
   rm rstudio-server-rhel-${RSTUDIO}-x86_64.rpm && \
   echo "server-app-armor-enabled=0" >> /etc/rstudio/rserver.conf
