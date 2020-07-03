@@ -10,15 +10,14 @@ server {
 
 # Main homepage
 server {
-	listen 8007;
+	listen 8007 ssl;
 	server_name www.opencpu.org;
 
 	# For iptables prerouting
 	port_in_redirect off;
 
-	ssl on;
-	ssl_certificate /etc/ssl/certs/ocpu2017.pem;
-	ssl_certificate_key /etc/ssl/private/ocpu2017.key;
+	ssl_certificate /etc/letsencrypt/live/ocpu.io/fullchain.pem;
+	ssl_certificate_key /etc/letsencrypt/live/ocpu.io/privkey.pem;
 
 	location / {
 		proxy_pass http://jeroen.github.io/opencpu-pages/;
@@ -41,11 +40,10 @@ server {
 }
 
 server {
-	listen 8007;
+	listen 8007 ssl;
 	server_name opencpu.org blog.opencpu.org;
-	ssl on;
-	ssl_certificate /etc/ssl/certs/ocpu2017.pem;
-	ssl_certificate_key /etc/ssl/private/ocpu2017.key;
+	ssl_certificate /etc/letsencrypt/live/ocpu.io/fullchain.pem;
+	ssl_certificate_key /etc/letsencrypt/live/ocpu.io/privkey.pem;
 	rewrite ^ https://www.opencpu.org permanent;
 }
 
@@ -58,11 +56,10 @@ server {
 }
 
 server {
-	listen 8007 default_server;
+	listen 8007 ssl default_server;
 	server_name "";
 	return 444 "Invalid opencpu vhost: $host\n";
 	default_type "text/plain";
-	ssl on;
-	ssl_certificate /etc/ssl/certs/ocpu2017.pem;
-	ssl_certificate_key /etc/ssl/private/ocpu2017.key;
+	ssl_certificate /etc/letsencrypt/live/ocpu.io/fullchain.pem;
+	ssl_certificate_key /etc/letsencrypt/live/ocpu.io/privkey.pem;
 }

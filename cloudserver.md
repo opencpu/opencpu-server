@@ -93,8 +93,8 @@ Configure the back-end server ip address:
 Install the SSL private key:
 
     # Copy the private key
-    sudo cp ocpu2017.key /etc/ssl/private/ocpu2017.key
-    sudo chmod 600 /etc/ssl/private/ocpu2017.key
+    sudo cp ocpu2017.key /etc/letsencrypt/live/ocpu.io/privkey.pem
+    sudo chmod 600 /etc/letsencrypt/live/ocpu.io/privkey.pem
     
 Enable the ocpu.io site
 
