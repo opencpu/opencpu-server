@@ -63,7 +63,6 @@ To install the cloud server, simply install the `deb` packages in the following 
 	
 ```sh
 cd ~
-sudo apt-get install libapache-mod-r-base
 sudo dpkg -i opencpu-lib_*.deb
 sudo dpkg -i opencpu-server_*.deb
 ```
