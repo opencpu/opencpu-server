@@ -64,23 +64,20 @@ When using the same version of R, we can just copy the installed files:
 
 ## Setup nginx cache server
 
-New linode, same steps:
+New server. Run: 
 
+    sudo add-apt-repository ppa:opencpu/opencpu-dev 
     sudo apt-get update
-    sudo apt-get dist-upgrade
-
-    # Add user (interactive)
-    sudo adduser jeroen
-    sudo visudo
-    
-    # Change hostname
-    sudo echo "dev1.opencpu.org" > /etc/hostname
-
-Now reboot. Then login as jeroen 
-
-    sudo apt-get install byobu software-properties-common
-    sudo add-apt-repository ppa:opencpu/opencpu-dev && sudo apt-get update
     sudo apt-get install opencpu-cache
+
+Setup HTTPS
+
+    sudo apt-get install certbot
+    sudo certbot certonly --manual -d *.ocpu.io -d *.opencpu.org
+
+And follow the steps. To auto-renew, add a sudo (root) crontab:
+
+    0 0 1 * * /usr/bin/certbot renew
     
 Configure the back-end server ip address:
 
@@ -88,14 +85,8 @@ Configure the back-end server ip address:
     sudo vi /etc/nginx/conf.d/opencpu.conf
     
     # Also set rstudio back-end server
-    sudo vi /etc/nginx/conf.d/rstudio.conf
+    sudo vi /etc/nginx/opencpu.d/rstudio.conf
 
-Install the SSL private key:
-
-    # Copy the private key
-    sudo cp ocpu2017.key /etc/letsencrypt/live/ocpu.io/privkey.pem
-    sudo chmod 600 /etc/letsencrypt/live/ocpu.io/privkey.pem
-    
 Enable the ocpu.io site
 
     sudo ln -s /usr/lib/opencpu/ocpu.io/ocpu-io /etc/nginx/sites-available/ocpu-io
@@ -112,7 +103,7 @@ And restart
     
 Optionally you can limit connections of the backend from only nginx
 
-    sudo vi /etc/apache2/sites-enabled/opencpu.conf
+    sudo vi /etc/apache2/sites-enabled/opencpu
     
 Insert the IP address where it says `require local`, e.g. `require ip 123.123.123.123`. 
 Also make sure to close port 80.
