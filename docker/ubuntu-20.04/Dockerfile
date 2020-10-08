@@ -10,6 +10,7 @@ RUN \
   apt-get update && \
   apt-get -y dist-upgrade && \
   apt-get install -y software-properties-common && \
+  add-apt-repository -y ppa:opencpu/opencpu-2.2 && \
   apt-get update && \
   apt-get install -y wget make devscripts apache2-dev apache2 libapreq2-dev r-base r-base-dev libapparmor-dev libcurl4-openssl-dev libprotobuf-dev protobuf-compiler libcairo2-dev xvfb xauth xfonts-base curl libssl-dev libxml2-dev libicu-dev pkg-config libssh2-1-dev locales apt-utils && \
   useradd -ms /bin/bash builder
