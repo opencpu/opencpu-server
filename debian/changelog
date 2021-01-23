@@ -1,4 +1,4 @@
-opencpu (2.2.1-bionic1) bionic; urgency=low
+opencpu (2.2.2-focal1) focal; urgency=low
 
   * Debian package with OpenCPU software. See www.opencpu.org
 
