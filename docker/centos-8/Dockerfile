@@ -1,14 +1,13 @@
 FROM centos:centos8
 
 ENV BRANCH 2.2
-ENV RSTUDIO 1.3.959
+ENV RSTUDIO 1.4.1103
 
 # Enable EPEL
 RUN \
   yum upgrade -y && \
-  yum install -y 'dnf-command(config-manager)' && \
-  yum install -y epel-release && \
-  yum config-manager --enable PowerTools epel-testing 
+  yum install -y dnf-plugins-core epel-release && \
+  yum config-manager --set-enabled powertools epel-testing 
 
 # Install.
 RUN \
