@@ -1,0 +1,47 @@
+on:
+  push:
+  pull_request:
+
+name: Build and test
+
+jobs:
+  Build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ['ubuntu-18.04', 'ubuntu-20.04']
+
+    runs-on: ${{ matrix.os }}
+    name: ${{ matrix.os }}
+
+    steps:
+      - name: Prepare system
+        run: |
+          sudo apt-get update
+          sudo add-apt-repository -y "ppa:marutter/rrutter4.0"
+          sudo apt-get install -y curl devscripts equivs gdebi-core
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install build dependencies
+        run: |
+          sudo mk-build-deps -i
+
+      - name: Build
+        run: |
+          echo "DEBUILD_TGZ_CHECK=no" >> ~/.devscripts
+          debuild -us -uc
+
+      - name: Test installing
+        run: |
+          sudo gdebi --n ../opencpu-lib_*.deb
+          sudo gdebi --n ../opencpu-server_*.deb  
+          sudo gdebi --n ../opencpu-cache_*.deb
+          sudo apt-get remove -y opencpu-cache
+
+      - name: Test server
+        run: curl -m5 http://localhost/ocpu/info
+
+      - name: Print server logs
+        run: sudo cat /var/log/apache2/error.log
