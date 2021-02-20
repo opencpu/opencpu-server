@@ -3,7 +3,7 @@
 
 Name: opencpu
 Version: 2.2.2
-Release: 1
+Release: 2
 Source: opencpu-server-%{branch}.tar.gz
 License: Apache2
 Summary: The OpenCPU system for embedded scientific computing and reproducible research.
@@ -17,7 +17,6 @@ BuildRequires: protobuf-devel
 BuildRequires: openssl-devel
 BuildRequires: libxml2-devel
 BuildRequires: libicu-devel
-BuildRequires: cairo-devel
 BuildRequires: pkgconfig
 BuildRequires: make
 Requires: opencpu-server
