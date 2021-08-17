@@ -1,8 +1,10 @@
-FROM ubuntu:18.04
+# syntax=docker/dockerfile:1
+ARG BRANCH=2.2
+ARG RSTUDIO=1.4.1717
 
-ENV BRANCH 2.2
-ENV RSTUDIO 1.4.1717
-
+# Build image
+FROM ubuntu:18.04 AS builder
+ARG BRANCH
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install.
@@ -27,15 +29,22 @@ RUN \
   cd opencpu-server-${BRANCH} && \
   dpkg-buildpackage -us -uc
 
+FROM ubuntu:20.04
 USER root
+ARG RSTUDIO
+ENV DEBIAN_FRONTEND noninteractive
+WORKDIR /root/
+COPY --from=builder /home/builder/opencpu*deb ./
 
 RUN \
-  apt-get install -y libapache2-mod-r-base && \
-  dpkg -i /home/builder/opencpu-lib_*.deb && \
-  dpkg -i /home/builder/opencpu-server_*.deb
+  apt-get update && \
+  apt-get -y dist-upgrade && \
+  apt-get install -y software-properties-common gdebi-core git wget sudo && \
+  add-apt-repository -y ppa:opencpu/opencpu-2.2 && \
+  gdebi --non-interactive opencpu-lib_*.deb && \
+  gdebi --non-interactive opencpu-server_*.deb
 
 RUN \
-  apt-get install -y gdebi-core git sudo && \
   wget --quiet https://download2.rstudio.org/server/bionic/amd64/rstudio-server-${RSTUDIO}-amd64.deb && \
   gdebi --non-interactive rstudio-server-${RSTUDIO}-amd64.deb && \
   rm -f rstudio-server-${RSTUDIO}-amd64.deb && \
