@@ -25,9 +25,9 @@ mv -f rapache.spec ~/rpmbuild/SPECS/
 rpmbuild -ba ~/rpmbuild/SPECS/rapache.spec
 
 # Get opencpu sources
-wget https://github.com/opencpu/opencpu-server/archive/v2.2.tar.gz -O opencpu-server-2.2.tar.gz
-tar xzvf opencpu-server-2.2.tar.gz opencpu-server-2.2/rpm/opencpu.spec --strip-components 2
-mv -f opencpu-server-2.2.tar.gz ~/rpmbuild/SOURCES/
+wget https://github.com/opencpu/opencpu-server/archive/master.tar.gz -O opencpu-server-master.tar.gz
+tar xzvf opencpu-server-master.tar.gz opencpu-server-master/rpm/opencpu.spec --strip-components 2
+mv -f opencpu-server-master.tar.gz ~/rpmbuild/SOURCES/
 mv -f opencpu.spec ~/rpmbuild/SPECS/
 
 # Builds 'opencpu-server' and 'opencpu-lib' rpm

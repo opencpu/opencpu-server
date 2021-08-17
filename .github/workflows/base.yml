@@ -1,4 +1,4 @@
-name: Build distro images
+name: Build base image
 
 on:
   workflow_dispatch:
@@ -9,10 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ 'centos-7', 'centos-8', 'debian-11', 'fedora-34', 'ubuntu-18.04', 'ubuntu-20.04' ]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -40,16 +36,32 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push
-        id: docker_build
+      - name: Build opencpu/base
         uses: docker/build-push-action@v2
         with:
-          context: docker/${{ matrix.os }}
-          build-args: |
-            BRANCH=${{ steps.vars.outputs.tag }}
-            RSTUDIO=1.4.1717
+          context: docker/base
           push: true
           tags: |
-            opencpu/${{matrix.os}}:latest
-            opencpu/${{matrix.os}}:${{ steps.vars.outputs.tag }}
-            ghcr.io/${{github.repository}}/${{matrix.os}}:latest
+            opencpu/base:latest
+            opencpu/base:${{ steps.vars.outputs.tag }}
+            ghcr.io/${{github.repository}}/base:latest
+
+      - name: Build opencpu/rstudio
+        uses: docker/build-push-action@v2
+        with:
+          context: docker/rstudio
+          push: true
+          tags: |
+            opencpu/rstudio:latest
+            opencpu/rstudio:${{ steps.vars.outputs.tag }}
+            ghcr.io/${{github.repository}}/rstudio:latest
+
+      - name: Build opencpu/apps
+        uses: docker/build-push-action@v2
+        with:
+          context: docker/apps
+          push: true
+          tags: |
+            opencpu/apps:latest
+            opencpu/apps:${{ steps.vars.outputs.tag }}
+            ghcr.io/${{github.repository}}/apps:latest

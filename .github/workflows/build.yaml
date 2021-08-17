@@ -1,8 +1,10 @@
 on:
   push:
-  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
 
-name: Build and test
+name: Test build from branch
 
 jobs:
   Build:

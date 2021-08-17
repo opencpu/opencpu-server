@@ -1,7 +1,7 @@
 FROM debian:11
 
-ENV BRANCH 2.2
-ENV RSTUDIO 1.4.1717
+ARG BRANCH=master
+ARG RSTUDIO=1.4.1717
 
 RUN \
   apt-get update && \
@@ -16,10 +16,10 @@ USER builder
 
 RUN \
   cd ~ && \
-  wget --quiet https://github.com/opencpu/opencpu-server/archive/v${BRANCH}.tar.gz && \
-  tar xzf v${BRANCH}.tar.gz && \
-  cd opencpu-server-${BRANCH} && \
-  sed -i 's/bionic/buster/g' debian/changelog && \
+  wget --quiet https://github.com/opencpu/opencpu-server/archive/${BRANCH}.tar.gz && \
+  tar xzf ${BRANCH}.tar.gz && rm ${BRANCH}.tar.gz && \
+  cd opencpu-server-* && \
+  sed -i 's/focal/bullseye/g' debian/changelog && \
   dpkg-buildpackage -us -uc
 
 USER root

@@ -1,7 +1,7 @@
 FROM fedora:34
 
-ENV BRANCH 2.2
-ENV RSTUDIO 1.4.1717
+ARG BRANCH=master
+ARG RSTUDIO=1.4.1717
 
 # Install.
 RUN \
@@ -27,11 +27,12 @@ RUN \
 
 RUN \
   cd ~ && \
-  wget --quiet https://github.com/opencpu/opencpu-server/archive/v${BRANCH}.tar.gz -O opencpu-server-${BRANCH}.tar.gz  && \
-  tar xzvf opencpu-server-${BRANCH}.tar.gz opencpu-server-${BRANCH}/rpm/opencpu.spec --strip-components 2 && \
-  mv -f opencpu-server-${BRANCH}.tar.gz ~/rpmbuild/SOURCES/ && \
+  VERSION=${BRANCH/v/} && \
+  wget --quiet https://github.com/opencpu/opencpu-server/archive/${BRANCH}.tar.gz -O opencpu-server-${VERSION}.tar.gz  && \
+  tar xzvf opencpu-server-${VERSION}.tar.gz opencpu-server-${VERSION}/rpm/opencpu.spec --strip-components 2 && \
+  mv -f opencpu-server-${VERSION}.tar.gz ~/rpmbuild/SOURCES/ && \
   mv -f opencpu.spec ~/rpmbuild/SPECS/ && \
-  rpmbuild -ba ~/rpmbuild/SPECS/opencpu.spec --define "branch ${BRANCH}"
+  rpmbuild -ba ~/rpmbuild/SPECS/opencpu.spec --define "branch ${VERSION}"
 
 RUN \
   createrepo ~/rpmbuild/RPMS/x86_64/

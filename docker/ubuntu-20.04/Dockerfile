@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-ARG BRANCH=2.2
+ARG BRANCH=master
 ARG RSTUDIO=1.4.1717
 
 # Build image
@@ -24,9 +24,9 @@ USER builder
 
 RUN \
   cd ~ && \
-  wget --quiet https://github.com/opencpu/opencpu-server/archive/v${BRANCH}.tar.gz && \
-  tar xzf v${BRANCH}.tar.gz && \
-  cd opencpu-server-${BRANCH} && \
+  wget --quiet https://github.com/opencpu/opencpu-server/archive/${BRANCH}.tar.gz && \
+  tar xzf ${BRANCH}.tar.gz && rm ${BRANCH}.tar.gz && \
+  cd opencpu-server-* && \
   dpkg-buildpackage -us -uc
 
 FROM ubuntu:20.04

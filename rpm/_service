@@ -2,13 +2,13 @@
   <service name="download_url">
     <param name="host">github.com</param>
     <param name="protocol">https</param>
-    <param name="path">/opencpu/opencpu-server/archive/v2.0.tar.gz</param>
+    <param name="path">/opencpu/opencpu-server/archive/master.tar.gz</param>
     <param name="filename">opencpu-server-2.0.tar.gz</param>
   </service>
   <service name="download_url">
     <param name="host">raw.githubusercontent.com</param>
     <param name="protocol">https</param>
-    <param name="path">/opencpu/opencpu-server/v2.0/rpm/opencpu.spec</param>
+    <param name="path">/opencpu/opencpu-server/master/rpm/opencpu.spec</param>
     <param name="filename">opencpu.spec</param>
   </service>
 </services>

@@ -1,7 +1,7 @@
 FROM centos:centos8
 
-ENV BRANCH 2.2
-ENV RSTUDIO 1.4.1717
+ARG BRANCH=master
+ARG RSTUDIO=1.4.1717
 
 # Enable EPEL
 RUN \
@@ -33,11 +33,12 @@ RUN \
 
 RUN \
   cd ~ && \
-  wget --quiet https://github.com/opencpu/opencpu-server/archive/master.tar.gz -O opencpu-server-master.tar.gz  && \
-  tar xzvf opencpu-server-master.tar.gz opencpu-server-master/rpm/opencpu.spec --strip-components 2 && \
-  mv -f opencpu-server-master.tar.gz ~/rpmbuild/SOURCES/ && \
+  VERSION=${BRANCH/v/} && \
+  wget --quiet https://github.com/opencpu/opencpu-server/archive/${BRANCH}.tar.gz -O opencpu-server-${VERSION}.tar.gz  && \
+  tar xzvf opencpu-server-${VERSION}.tar.gz opencpu-server-${VERSION}/rpm/opencpu.spec --strip-components 2 && \
+  mv -f opencpu-server-${VERSION}.tar.gz ~/rpmbuild/SOURCES/ && \
   mv -f opencpu.spec ~/rpmbuild/SPECS/ && \
-  rpmbuild -ba ~/rpmbuild/SPECS/opencpu.spec --define "branch master"
+  rpmbuild -ba ~/rpmbuild/SPECS/opencpu.spec --define "branch ${VERSION}"
 
 RUN \
   createrepo ~/rpmbuild/RPMS/x86_64/
