@@ -3,7 +3,7 @@
     <param name="host">github.com</param>
     <param name="protocol">https</param>
     <param name="path">/opencpu/opencpu-server/archive/master.tar.gz</param>
-    <param name="filename">opencpu-server-2.0.tar.gz</param>
+    <param name="filename">opencpu-server-master.tar.gz</param>
   </service>
   <service name="download_url">
     <param name="host">raw.githubusercontent.com</param>
