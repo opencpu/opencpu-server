@@ -1,13 +1,9 @@
-FROM debian:10
+FROM debian:11
 
 ENV BRANCH 2.2
 ENV RSTUDIO 1.4.1717
 
 RUN \
-  apt-get update && \
-  apt-get install -y gpg && \
-  apt-key adv --keyserver keys.gnupg.net --recv-key 'E19F5F87128899B192B1A2C2AD5F960A256A04AF' && \
-  echo "deb http://cloud.r-project.org/bin/linux/debian buster-cran35/" > /etc/apt/sources.list.d/cran.list && \
   apt-get update && \
   apt-get -y dist-upgrade && \
   apt-get install -y wget make devscripts apache2-dev apache2 libapreq2-dev r-base r-base-dev libapparmor-dev libcurl4-openssl-dev libprotobuf-dev protobuf-compiler libcairo2-dev xvfb xauth xfonts-base curl libssl-dev libxml2-dev libicu-dev pkg-config libssh2-1-dev locales apt-utils && \
