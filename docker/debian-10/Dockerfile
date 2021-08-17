@@ -1,7 +1,7 @@
 FROM debian:10
 
 ENV BRANCH 2.2
-ENV RSTUDIO 1.4.1103
+ENV RSTUDIO 1.4.1717
 
 RUN \
   apt-get update && \
