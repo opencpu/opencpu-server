@@ -29,7 +29,7 @@ RUN \
   cd opencpu-server-* && \
   dpkg-buildpackage -us -uc
 
-FROM ubuntu:20.04
+FROM ubuntu:18.04
 USER root
 ARG RSTUDIO
 ENV DEBIAN_FRONTEND noninteractive
