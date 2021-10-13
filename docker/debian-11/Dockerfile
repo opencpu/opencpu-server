@@ -25,7 +25,7 @@ RUN \
 USER root
 
 RUN \
-  apt-get install -y libapache2-mod-r-base && \
+  apt-get install -y libapache2-mod-r-base cron && \
   dpkg -i /home/builder/opencpu-lib_*.deb && \
   dpkg -i /home/builder/opencpu-server_*.deb
 
@@ -53,4 +53,4 @@ EXPOSE 443
 EXPOSE 8004
 
 # Start non-daemonized webserver
-CMD /usr/lib/rstudio-server/bin/rserver && apachectl -DFOREGROUND
+CMD service cron start && /usr/lib/rstudio-server/bin/rserver && apachectl -DFOREGROUND

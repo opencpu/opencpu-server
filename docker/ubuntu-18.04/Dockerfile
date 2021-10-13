@@ -18,7 +18,7 @@ RUN \
   useradd -ms /bin/bash builder
 
 # Different from debian
-RUN apt-get install -y language-pack-en-base
+RUN apt-get install -y language-pack-en-base cron
 
 USER builder
 
@@ -67,4 +67,4 @@ EXPOSE 443
 EXPOSE 8004
 
 # Start non-daemonized webserver
-CMD /usr/lib/rstudio-server/bin/rserver && apachectl -DFOREGROUND
+CMD service cron start && /usr/lib/rstudio-server/bin/rserver && apachectl -DFOREGROUND
