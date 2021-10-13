@@ -3,6 +3,9 @@ on:
     branches:
       - master
   workflow_dispatch:
+    inputs:
+      update:
+        description: 'Update the R package library'
 
 name: Test build from branch
 
@@ -25,6 +28,10 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Update package library
+        if: ${{ github.event.inputs.update }}
+        run: (cd opencpu-lib; rm *.tar.gz; Rscript downloaddeps.R)
 
       - name: Install build dependencies
         run: |
