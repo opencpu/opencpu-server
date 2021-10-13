@@ -18,7 +18,7 @@ RUN \
   useradd -ms /bin/bash builder
 
 # Different from debian
-RUN apt-get install -y language-pack-en-base cron
+RUN apt-get install -y language-pack-en-base
 
 USER builder
 
@@ -39,7 +39,7 @@ COPY --from=builder /home/builder/opencpu*deb ./
 RUN \
   apt-get update && \
   apt-get -y dist-upgrade && \
-  apt-get install -y software-properties-common gdebi-core git wget sudo && \
+  apt-get install -y software-properties-common gdebi-core git wget sudo cron && \
   add-apt-repository -y ppa:opencpu/opencpu-2.2 && \
   gdebi --non-interactive opencpu-lib_*.deb && \
   gdebi --non-interactive opencpu-server_*.deb
