@@ -1,0 +1,21 @@
+#!/bin/bash
+set -e
+
+# Setup postfix if not done yet
+if [ -f "/etc/postfix/sasl_passwd" ] && [ ! -f "/etc/postfix/sasl_passwd.db" ]; then
+  echo "Configuring postfix..."
+  postmap /etc/postfix/sasl_passwd
+  chmod 0600 /etc/postfix/sasl_passwd /etc/postfix/sasl_passwd.db
+  echo "relayhost = smtp.mailgun.org" >> /etc/postfix/main.cf
+  echo "smtp_sasl_auth_enable = yes" >> /etc/postfix/main.cf
+  echo "smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd" >> /etc/postfix/main.cf
+  echo "smtp_sasl_security_options = noanonymous" >> /etc/postfix/main.cf
+fi
+
+# Start background services
+service postfix start
+service cron start 
+/usr/lib/rstudio-server/bin/rserver
+
+# Start OpenCPU in foreground (blocking)
+apachectl -DFOREGROUND

@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN \
   apt-get update && \
   add-apt-repository -y ppa:opencpu/opencpu-2.2 && \
-  apt-get install -y opencpu-server rstudio-server
+  apt-get install -y opencpu-server rstudio-server postfix libsasl2-modules
 
 RUN \
   ln -sf /proc/self/fd/1 /var/log/apache2/access.log && \
@@ -16,4 +16,6 @@ RUN \
 # Workaround for rstudio apparmor bug
 RUN echo "server-app-armor-enabled=0" >> /etc/rstudio/rserver.conf
 
-CMD service cron start && /usr/lib/rstudio-server/bin/rserver && apachectl -DFOREGROUND
+COPY startup /startup
+
+ENTRYPOINT ["/startup"]
