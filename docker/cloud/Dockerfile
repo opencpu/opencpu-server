@@ -13,4 +13,7 @@ RUN \
   ln -sf /proc/self/fd/1 /var/log/opencpu/apache_access.log && \
   ln -sf /proc/self/fd/1 /var/log/opencpu/apache_error.log
 
+# Workaround for rstudio apparmor bug
+RUN echo "server-app-armor-enabled=0" >> /etc/rstudio/rserver.conf
+
 CMD service cron start && /usr/lib/rstudio-server/bin/rserver && apachectl -DFOREGROUND

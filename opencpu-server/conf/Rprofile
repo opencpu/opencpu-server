@@ -3,3 +3,4 @@
 #
 # options(width=65, digits=5)
 # options(show.signif.stars=FALSE)
+source(file.path(R.home(), 'etc', 'Rprofile.site'))
