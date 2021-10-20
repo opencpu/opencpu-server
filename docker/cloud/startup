@@ -2,14 +2,11 @@
 set -e
 
 # Setup postfix if not done yet
-if [ -f "/etc/postfix/sasl_passwd" ] && [ ! -f "/etc/postfix/sasl_passwd.db" ]; then
+if [ -f "/mailgun.txt" ] && [ ! -f "/etc/postfix/setupok" ]; then
   echo "Configuring postfix..."
-  postmap /etc/postfix/sasl_passwd
-  chmod 0600 /etc/postfix/sasl_passwd /etc/postfix/sasl_passwd.db
-  echo "relayhost = smtp.mailgun.org" >> /etc/postfix/main.cf
-  echo "smtp_sasl_auth_enable = yes" >> /etc/postfix/main.cf
-  echo "smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd" >> /etc/postfix/main.cf
-  echo "smtp_sasl_security_options = noanonymous" >> /etc/postfix/main.cf
+  touch "/etc/postfix/setupok"
+  sed -i '/^relayhost/d' /etc/postfix/main.cf
+  cat /mailgun.txt >> /etc/postfix/main.cf
 fi
 
 # Start background services
