@@ -1,1 +1,1 @@
-*/10 * * * * www-data /usr/lib/opencpu/scripts/cleanocpu.sh
+*/10 * * * * root /usr/lib/opencpu/scripts/cleanocpu.sh
