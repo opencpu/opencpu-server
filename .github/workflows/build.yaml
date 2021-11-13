@@ -7,7 +7,7 @@ on:
       update:
         description: 'Update the R package library'
 
-name: Test build from branch
+name: Build and update package library
 
 jobs:
   Build:
