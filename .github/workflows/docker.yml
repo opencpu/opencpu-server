@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ 'centos-7', 'centos-8', 'debian-11', 'fedora-34', 'ubuntu-18.04', 'ubuntu-20.04' ]
+        os: [ 'centos-7', 'centos-8', 'debian-11', 'fedora-34', 'ubuntu-18.04', 'ubuntu-20.04', 'rocky-8' ]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
