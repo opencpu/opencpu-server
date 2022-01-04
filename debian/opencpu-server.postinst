@@ -97,6 +97,7 @@ case "$1" in
     if [ -e "/bin/systemctl" ]; then
       systemctl daemon-reload || true
       systemctl start cleanocpu.timer || true
+      systemctl restart systemd-tmpfiles-clean || true
     fi
     ;;
   abort-upgrade | abort-remove | abort-deconfigure)
