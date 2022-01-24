@@ -1,7 +1,7 @@
 FROM centos:centos7
 
 ARG BRANCH=master
-ARG RSTUDIO=1.4.1717
+ARG RSTUDIO=2021.09.2-382
 
 # Enable EPEL
 RUN \
