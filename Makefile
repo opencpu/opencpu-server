@@ -13,9 +13,11 @@ delrcpp:
 
 library:
 	# Builds the library with R packages.
-	sudo sed -i.bak 's/-g//g' /etc/R/Makeconf
+	#sudo sed -i.bak 's/-g//g' /etc/R/Makeconf
+	mkdir -p ~/.R
+	grep '^C.*FLAGS =' /etc/R/Makeconf | sed 's/-g//g' > ~/.R/Makevars
 	Rscript ./opencpu-lib/buildpackages.R
-	sudo mv -f /etc/R/Makeconf.bak /etc/R/Makeconf
+	rm -f ~/.R/Makeconf
 	cp ./opencpu-lib/build/opencpu/config/defaults.conf server.conf
 	./opencpu-lib/symlinks.sh
 	cat debian/opencpu-lib.links
