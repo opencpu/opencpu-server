@@ -53,8 +53,13 @@ jobs:
           sudo gdebi --n ../opencpu-cache_*.deb
           sudo apt-get remove -y opencpu-cache
 
-      - name: Test server
-        run: curl -m5 http://localhost/ocpu/info
+      - name: Test server is up
+        run: curl -m5 --fail http://localhost/ocpu/info
+
+      - name: Test output formats
+        run: |
+          curl -m5 --fail http://localhost/ocpu/library/MASS/data/cats/ndjson
+          curl -m5 --fail http://localhost/ocpu/library/MASS/data/cats/arrowipc
 
       - name: Print server logs
         run: sudo cat /var/log/apache2/error.log

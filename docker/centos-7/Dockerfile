@@ -12,7 +12,7 @@ RUN \
   useradd -ms /bin/bash builder && \
   yum update -y && \
   yum upgrade -y && \
-  yum install -y rpm-build make wget tar httpd-devel libapreq2-devel R-devel libcurl-devel protobuf-devel openssl-devel libxml2-devel libicu-devel libssh2-devel cairo-devel createrepo && \
+  yum install -y rpm-build make wget tar httpd-devel libapreq2-devel R-devel libcurl-devel protobuf-devel openssl-devel libxml2-devel libicu-devel libssh2-devel cairo-devel createrepo cmake && \
   yum clean all
 
 USER builder
