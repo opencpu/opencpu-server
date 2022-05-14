@@ -1,7 +1,0 @@
-#! /bin/sh
-
-set -e
-
-service opencpu-cache stop || true
-
-exit 0

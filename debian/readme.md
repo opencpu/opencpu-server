@@ -50,7 +50,7 @@ Install build dependencies from within `opencpu-server` source dir (requires roo
 sudo mk-build-deps -i
 ```
 
-Finally to build OpenCPU Server packages (`opencpu-server` and `opencpu-cache`): run this as **not root** user:
+Finally to build OpenCPU Server package (`opencpu-server`): run this as **not root** user:
 
 ```sh
 dpkg-buildpackage -us -uc
@@ -74,16 +74,3 @@ curl http://localhost/ocpu/info
 ```
 
 This should print some info about the R session.
-
-## OpenCPU caching server (not recommended)
-
-The `opencpu-cache` package is a reverse proxy for caching and load balancing with OpenCPU. When installed, it automatically preroutes all incomming traffic on ports 80 and 443 through nginx. Only install this when you expect serious traffic.
-
-	# Dependencies
-	sudo apt-get install nginx
-
-	# Package builds
-	cd ~
-	sudo dpkg -i opencpu-cache_*.deb
-
-Note that it is possible to install `opencpu-cache` on another server than `opencpu-server` if you update the nginx back-end config accordingly.

@@ -49,9 +49,7 @@ jobs:
       - name: Test installing
         run: |
           sudo gdebi --n ../opencpu-lib_*.deb
-          sudo gdebi --n ../opencpu-server_*.deb  
-          sudo gdebi --n ../opencpu-cache_*.deb
-          sudo apt-get remove -y opencpu-cache
+          sudo gdebi --n ../opencpu-server_*.deb
 
       - name: Test server is up
         run: curl -m5 --fail http://localhost/ocpu/info
