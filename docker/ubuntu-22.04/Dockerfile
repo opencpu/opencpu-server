@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 ARG BRANCH=master
-ARG RSTUDIO=2021.09.2-382
+ARG RSTUDIO=2022.06.0-daily+408
 
 # Build image
 FROM ubuntu:22.04 AS builder
@@ -45,7 +45,8 @@ RUN \
   gdebi --non-interactive opencpu-server_*.deb
 
 RUN \
-  wget --quiet https://download2.rstudio.org/server/bionic/amd64/rstudio-server-${RSTUDIO}-amd64.deb && \
+#  wget --quiet https://download2.rstudio.org/server/jammy/amd64/rstudio-server-${RSTUDIO}-amd64.deb && \
+  wget --quiet https://s3.amazonaws.com/rstudio-ide-build/server/jammy/amd64/rstudio-server-${RSTUDIO}-daily-408-amd64.deb && \
   gdebi --non-interactive rstudio-server-${RSTUDIO}-amd64.deb && \
   rm -f rstudio-server-${RSTUDIO}-amd64.deb && \
   echo "server-app-armor-enabled=0" >> /etc/rstudio/rserver.conf

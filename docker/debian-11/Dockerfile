@@ -1,7 +1,7 @@
 FROM debian:11
 
 ARG BRANCH=master
-ARG RSTUDIO=2021.09.2-382
+ARG RSTUDIO=2022.02.2-485
 
 RUN \
   apt-get update && \
