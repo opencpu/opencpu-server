@@ -8,6 +8,10 @@ if(!grepl("UTF-?8", Sys.getenv("LANG"))){
   }
 }
 
+# As of R-4.2 this is needed for R_LIBS_USER
+if(file.exists("/etc/R/Renviron.site"))
+  readRenviron("/etc/R/Renviron.site")
+
 # Possibly override 'LANG' by user
 if(file.exists("/etc/opencpu/Renviron"))
   readRenviron("/etc/opencpu/Renviron")
@@ -53,7 +57,7 @@ getNamespace("opencpu")
 
 # Reset first. Then append opencpu libs at the end.
 assign('.Library', c('/usr/lib/opencpu/library', base::.Library), environment(.libPaths))
-assign('.Library.site', c('/usr/local/lib/opencpu/site-library', base::.Library.site), environment(.libPaths))
+assign('.Library.site', unique(c('/usr/local/lib/opencpu/site-library', '/usr/local/lib/R/site-library', base::.Library.site)), environment(.libPaths))
 .libPaths("")
 
 #Warm up graphics device
