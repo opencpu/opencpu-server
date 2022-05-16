@@ -6,3 +6,6 @@ export DH_VERBOSE=1
 
 %:
 	dh  $@
+
+override_dh_strip:
+	echo "Skipping dh_strip"
