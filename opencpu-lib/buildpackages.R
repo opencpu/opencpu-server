@@ -22,6 +22,7 @@ environment(.libPaths)$.lib.loc = character(0)
 
 #Because of dependencies=TRUE, suggested packages sendmailR, unix and RProtoBuf are also installed.
 Sys.setenv(FORCE_APPARMOR=1)
+Sys.setenv(ARROW_R_DEV=TRUE)
 install.packages("opencpu", dependencies=TRUE, type="source", lib=destdir, contriburl=paste0("file://", sourcedir))
 
 # This causes problems if some packages were pre-installed in the root global libarary
