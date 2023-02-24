@@ -8,6 +8,10 @@ RUN \
   apt-get install -y opencpu-server rstudio-server postfix libsasl2-modules
 
 RUN \
+  echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections && \
+  apt-get install -y ttf-mscorefonts-installer
+
+RUN \
   ln -sf /proc/self/fd/1 /var/log/apache2/access.log && \
   ln -sf /proc/self/fd/1 /var/log/apache2/error.log && \
   ln -sf /proc/self/fd/1 /var/log/opencpu/apache_access.log && \
