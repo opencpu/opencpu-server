@@ -1,7 +1,7 @@
 FROM centos:centos8
 
 ARG BRANCH=master
-ARG RSTUDIO=2022.02.2-485
+ARG RSTUDIO=2022.12.0-353
 
 # Enable EPEL
 RUN \
