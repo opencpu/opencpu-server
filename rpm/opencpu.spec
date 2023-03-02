@@ -2,8 +2,8 @@
 %{!?branch: %define branch master}
 
 Name: opencpu
-Version: 2.2.8
-Release: 7
+Version: 2.2.9
+Release: 1
 Source: opencpu-server-%{branch}.tar.gz
 License: Apache2
 Summary: The OpenCPU system for embedded scientific computing and reproducible research.
