@@ -1,4 +1,4 @@
-# OpenCPU Cloud Server [![Build Status](https://travis-ci.org/opencpu/opencpu-server.svg)](https://travis-ci.org/opencpu/opencpu-server)
+# OpenCPU Cloud Server
 
 This repository contains the sources for the opencpu server (aka cloud server). It consists of the following packages:
 
