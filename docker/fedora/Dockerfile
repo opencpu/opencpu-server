@@ -1,14 +1,14 @@
 FROM fedora:latest
 
 ARG BRANCH=master
-ARG RSTUDIO=2022.12.0-353
+ARG RSTUDIO=2023.03.1-446
 
 # Install.
 RUN \
   useradd -ms /bin/bash builder && \
   yum update -y && \
   yum upgrade -y && \
-  yum install -y rpm-build make wget tar httpd-devel libapreq2-devel R-devel libcurl-devel protobuf-devel openssl-devel libxml2-devel libicu-devel cairo-devel createrepo cmake && \
+  yum install -y rpm-build make wget tar httpd httpd-devel libapreq2-devel R-devel libcurl-devel protobuf-devel openssl-devel libxml2-devel libicu-devel cairo-devel createrepo cmake && \
   yum clean all
 
 USER builder
@@ -53,7 +53,7 @@ RUN \
   rpm -i opencpu-server-*.rpm
 
 RUN \
-  wget --quiet https://download2.rstudio.org/server/centos8/x86_64/rstudio-server-rhel-${RSTUDIO}-x86_64.rpm && \
+  wget --quiet https://download2.rstudio.org/server/rhel9/x86_64/rstudio-server-rhel-${RSTUDIO}-x86_64.rpm && \
   yum install -y --nogpgcheck rstudio-server-rhel-${RSTUDIO}-x86_64.rpm && \
   rm rstudio-server-rhel-${RSTUDIO}-x86_64.rpm && \
   echo "server-app-armor-enabled=0" >> /etc/rstudio/rserver.conf

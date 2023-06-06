@@ -47,7 +47,6 @@ jobs:
           context: docker/${{ matrix.os }}
           build-args: |
             BRANCH=${{ steps.vars.outputs.tag }}
-            RSTUDIO=2021.09.2-382
           push: true
           tags: |
             opencpu/${{matrix.os}}:latest
