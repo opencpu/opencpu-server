@@ -5,6 +5,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN \
   apt-get update && \
   add-apt-repository -y ppa:opencpu/opencpu-2.2 && \
+  apt-get upgrade -y && \
   apt-get install -y opencpu-server rstudio-server postfix libsasl2-modules
 
 RUN \
