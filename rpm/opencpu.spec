@@ -2,7 +2,7 @@
 %{!?branch: %define branch master}
 
 Name: opencpu
-Version: 2.2.9
+Version: 2.2.11
 Release: 3
 Source: opencpu-server-%{branch}.tar.gz
 License: Apache2
