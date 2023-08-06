@@ -3,7 +3,7 @@
 
 Name: opencpu
 Version: 2.2.11
-Release: 3
+Release: 1
 Source: opencpu-server-%{branch}.tar.gz
 License: Apache2
 Summary: The OpenCPU system for embedded scientific computing and reproducible research.
