@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 ARG BRANCH=master
-ARG RSTUDIO=2023.03.1-446
+ARG RSTUDIO=2023.06.2-561
 
 # Build image
 FROM ubuntu:20.04 AS builder
