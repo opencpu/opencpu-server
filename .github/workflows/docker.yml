@@ -15,11 +15,11 @@ jobs:
         os: [ 'centos-7', 'rocky-8', 'debian-11', 'debian-12', 'fedora', 'ubuntu-20.04', 'ubuntu-22.04']
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Parse tag from ref
         id: vars
-        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+        run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
