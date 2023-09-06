@@ -63,7 +63,7 @@ jobs:
         run: sudo cat /var/log/apache2/error.log
 
       - name: Commit R package library updates
-        if: ${{ github.event.inputs.update && contains(matrix.os, 'ubuntu-20.04') }}
+        if: ${{ github.event.inputs.update && contains(matrix.os, 'ubuntu-22.04') }}
         run: |
           git config --global user.name 'Jeroen Ooms'
           git config --global user.email 'jeroenooms@gmail.com'
