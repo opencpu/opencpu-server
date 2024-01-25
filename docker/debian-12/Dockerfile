@@ -9,7 +9,7 @@ RUN sed 's|bookworm-updates|bookworm-updates bookworm-backports|' -i /etc/apt/so
 RUN \
   apt-get update && \
   apt-get -y dist-upgrade && \
-  apt-get install -y wget make devscripts apache2-dev apache2 libapreq2-dev r-base r-base-dev libapparmor-dev libcurl4-openssl-dev libprotobuf-dev protobuf-compiler libcairo2-dev xvfb xauth xfonts-base curl libssl-dev libxml2-dev libicu-dev pkg-config libssh2-1-dev locales apt-utils cmake && \
+  apt-get install -y wget make devscripts apache2-dev apache2 libapreq2-dev r-base r-base-dev libapparmor-dev libfontconfig-dev libcurl4-openssl-dev libprotobuf-dev protobuf-compiler libcairo2-dev xvfb xauth xfonts-base curl libssl-dev libxml2-dev libicu-dev pkg-config libssh2-1-dev locales apt-utils cmake && \
   useradd -ms /bin/bash builder
 
 # Note: this is different from Ubuntu (c.f. 'language-pack-en-base')
