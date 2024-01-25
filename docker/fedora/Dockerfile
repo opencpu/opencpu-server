@@ -1,7 +1,7 @@
 FROM fedora:latest
 
 ARG BRANCH=master
-ARG RSTUDIO=2023.06.2-561
+ARG RSTUDIO=2023.12.0-369
 
 # Install.
 RUN \
