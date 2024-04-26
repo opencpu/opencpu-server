@@ -1,4 +1,4 @@
-opencpu (2.2.11-jammy3) jammy; urgency=low
+opencpu (2.2.12-jammy0) jammy; urgency=low
 
   * Debian package with OpenCPU software. See www.opencpu.org
 
