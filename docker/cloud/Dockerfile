@@ -7,8 +7,8 @@ RUN \
   add-apt-repository -y ppa:opencpu/opencpu-2.2 && \
   apt-get upgrade -y && \
   apt-get install -y opencpu-server postfix libsasl2-modules gdebi-core &&\
-  wget https://download2.rstudio.org/server/jammy/amd64/rstudio-server-2024.04.0-735-amd64.deb &&\
-  gdebi rstudio-server-2024.04.0-735-amd64.deb &&\
+  wget --quiet https://download2.rstudio.org/server/jammy/amd64/rstudio-server-2024.04.0-735-amd64.deb &&\
+  gdebi --non-interactive rstudio-server-2024.04.0-735-amd64.deb &&\
   rm rstudio-server-2024.04.0-735-amd64.deb
 
 RUN \
