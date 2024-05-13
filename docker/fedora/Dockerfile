@@ -6,10 +6,10 @@ ARG RSTUDIO=2024.04.0-735
 # Install.
 RUN \
   useradd -ms /bin/bash builder && \
-  yum update -y && \
-  yum upgrade -y && \
-  yum install -y rpm-build make wget tar httpd httpd-devel libapreq2-devel R-devel libcurl-devel protobuf-devel openssl-devel libxml2-devel libicu-devel cairo-devel createrepo cmake && \
-  yum clean all
+  dnf update -y && \
+  dnf upgrade -y && \
+  dnf install -y rpm-build make wget tar httpd httpd-devel libapreq2-devel R-devel libcurl-devel protobuf-devel openssl-devel libxml2-devel libicu-devel cairo-devel createrepo cmake && \
+  dnf clean all
 
 USER builder
 
@@ -45,7 +45,7 @@ RUN \
   userdel -r builder
 
 RUN \
-  yum install -y MTA mod_ssl /usr/sbin/semanage && \
+  dnf install -y MTA mod_ssl /usr/sbin/semanage && \
   /usr/libexec/httpd-ssl-gencerts && \
   cd ~/RPMS/x86_64/ && \
   rpm -i rapache-*.rpm && \
@@ -54,13 +54,13 @@ RUN \
 
 RUN \
   wget --quiet https://download2.rstudio.org/server/rhel9/x86_64/rstudio-server-rhel-${RSTUDIO}-x86_64.rpm && \
-  yum install -y --nogpgcheck rstudio-server-rhel-${RSTUDIO}-x86_64.rpm && \
+  dnf install -y --nogpgcheck rstudio-server-rhel-${RSTUDIO}-x86_64.rpm && \
   rm rstudio-server-rhel-${RSTUDIO}-x86_64.rpm && \
   echo "server-app-armor-enabled=0" >> /etc/rstudio/rserver.conf
 
 RUN \
-  yum remove -y httpd-devel libapreq2-devel && \
-  yum clean all
+  dnf remove -y httpd-devel libapreq2-devel && \
+  dnf clean all
 
 # Apache ports
 EXPOSE 80
