@@ -1,4 +1,4 @@
-options(repos = 'https://cran.r-project.org')
+options(opencpu="https://opencpu.r-universe.dev", repos = 'https://cran.r-project.org')
 deps <- tools::package_dependencies('opencpu', which = 'most')$opencpu
 deps <- deps[!deps %in% c('sendmailR', 'R.rsp')]
 deps <- c(deps, 'svglite', 'arrow')
