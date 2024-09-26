@@ -39,9 +39,9 @@ Download the opencpu-server sources from Github:
 
 ```sh
 cd ~
-wget https://github.com/opencpu/opencpu-server/archive/v2.2.tar.gz
-tar xzf v2.2.tar.gz
-cd opencpu-server-2.2
+wget https://github.com/opencpu/opencpu-server/archive/master.tar.gz
+tar xzf master.tar.gz
+cd opencpu-server-master
 ```
 
 Install build dependencies from within `opencpu-server` source dir (requires root):

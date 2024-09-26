@@ -1,9 +1,6 @@
 # OpenCPU Cloud Server
 
-This repository contains the sources for the opencpu server (aka cloud server). It consists of the following packages:
-
- * `opencpu-server` - rApache based opencpu API server
- * `opencpu` - Alias for `opencpu-server`
+This repository contains the sources for the `opencpu-server` package, aka cloud server.
 
 ## Server manual
 
@@ -11,12 +8,10 @@ The [server manual](http://opencpu.github.io/server-manual/opencpu-server.pdf) i
 
 ## Prebuilt binaries
 
-Installation repositories are available for recent versions of:
+Installation repositories are available for recent versions of Ubuntu at https://www.opencpu.org/download.html
 
- - [Ubuntu](https://www.opencpu.org/download.html)
- - [Fedora](http://software.opensuse.org/download.html?project=home:jeroenooms:opencpu-2.2&package=opencpu)
 
-For other systems (e.g. Debian, CentOS) the installers are available from the [archive](https://archive.opencpu.org/) server.
+For other systems (e.g. Debian, CentOS) the installers are available from the docker images.
 
 ## Building from source
 
