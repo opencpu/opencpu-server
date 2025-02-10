@@ -37,7 +37,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build opencpu/base
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           platforms: linux/amd64,linux/arm64
           context: docker/base
@@ -48,7 +48,7 @@ jobs:
             ghcr.io/${{github.repository}}/base:latest
 
       - name: Build opencpu/rstudio
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           platforms: linux/amd64 #rstudio does not support arm64
           context: docker/rstudio
@@ -59,7 +59,7 @@ jobs:
             ghcr.io/${{github.repository}}/rstudio:latest
 
       - name: Build opencpu/apps
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           platforms: linux/amd64,linux/arm64
           context: docker/apps

@@ -1,7 +1,7 @@
 FROM debian:11
 
 ARG BRANCH=master
-ARG RSTUDIO=2024.04.0-735
+ARG RSTUDIO=2024.12.0-467
 
 RUN \
   apt-get update && \
@@ -30,9 +30,9 @@ RUN \
   dpkg -i /home/builder/opencpu-server_*.deb
 
 RUN \
-  apt-get install -y gdebi-core git sudo && \
+  apt-get install -y git sudo && \
   wget --quiet https://download2.rstudio.org/server/focal/amd64/rstudio-server-${RSTUDIO}-amd64.deb && \
-  gdebi --non-interactive rstudio-server-${RSTUDIO}-amd64.deb && \
+  apt install --reinstall -y -o=Dpkg::Use-Pty=0 -o=Apt::Cmd::Disable-Script-Warning=1 ./rstudio-server-${RSTUDIO}-amd64.deb && \
   rm -f rstudio-server-${RSTUDIO}-amd64.deb && \
   echo "server-app-armor-enabled=0" >> /etc/rstudio/rserver.conf
 
