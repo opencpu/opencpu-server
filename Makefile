@@ -1,5 +1,5 @@
 # Workaround for ubuntu-18
-MAKEFLAGS = -j1
+MAKEFLAGS = -j3
 
 library:
 	# Builds the library with R packages.
