@@ -3,9 +3,22 @@ FROM centos:centos7
 ARG BRANCH=master
 ARG RSTUDIO=2023.12.0-369
 
-# Enable EPEL
+# Enable Vault and install EPEL
 RUN \
-  yum install -y epel-release
+  sed -i.bak 's@^mirrorlist@#mirrorlist@g' /etc/yum.repos.d/*.repo &&\
+  sed -i.bak 's@#.*baseurl=http://mirror.centos.org@baseurl=http://vault.centos.org@g' /etc/yum.repos.d/*.repo &&\
+  yum update -y &&\
+  yum install -y epel-release centos-release-scl &&\
+  sed -i.bak 's@^mirrorlist@#mirrorlist@g' /etc/yum.repos.d/*.repo &&\
+  sed -i.bak 's@#.*baseurl=http://mirror.centos.org@baseurl=http://vault.centos.org@g' /etc/yum.repos.d/*.repo &&\
+  yum install -y devtoolset-8 &&\
+  rm -f /etc/yum.repos.d/*.bak
+
+RUN \
+  curl -fsSOL https://cdn.rstudio.com/r/centos-7/pkgs/R-4.5.0-1-1.x86_64.rpm &&\
+  yum install -y R-4.5.0-1-1.x86_64.rpm
+
+ENV PATH="/opt/rh/devtoolset-8/root/usr/bin/:/opt/R/4.5.0/bin:${PATH}"
 
 # Install.
 RUN \
@@ -15,6 +28,7 @@ RUN \
   yum install -y rpm-build make wget tar httpd-devel libapreq2-devel R-devel libcurl-devel protobuf-devel openssl-devel libxml2-devel libicu-devel libssh2-devel cairo-devel createrepo cmake && \
   yum clean all
 
+
 USER builder
 
 RUN \
@@ -23,9 +37,9 @@ RUN \
 
 RUN \
   cd ~ && \
-  wget --quiet https://github.com/jeffreyhorner/rapache/archive/v1.2.9.tar.gz -O rapache-1.2.9.tar.gz && \
-  tar xzvf rapache-1.2.9.tar.gz rapache-1.2.9/rpm/rapache.spec --strip-components 2 && \
-  mv -f rapache-1.2.9.tar.gz ~/rpmbuild/SOURCES/ && \
+  wget --quiet https://github.com/jeffreyhorner/rapache/archive/v1.2.11.tar.gz -O v1.2.11.tar.gz && \
+  tar xzvf v1.2.11.tar.gz '*/rpm/rapache.spec' --strip-components 2 && \
+  mv -f v1.2.11.tar.gz ~/rpmbuild/SOURCES/ && \
   mv -f rapache.spec ~/rpmbuild/SPECS/ && \
   rpmbuild -ba ~/rpmbuild/SPECS/rapache.spec
 

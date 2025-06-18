@@ -1,4 +1,4 @@
-# Workaround for ubuntu-18
+# Parallel make does not work on Centos-7 /ubuntu-18
 MAKEFLAGS = -j3
 
 library:
