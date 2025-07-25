@@ -4,6 +4,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN \
   apt-get update && \
+  apt-get install -y software-properties-common &&\
   add-apt-repository -y ppa:opencpu/opencpu-2.2 && \
   apt-get upgrade -y && \
   apt-get install -y opencpu-server postfix libsasl2-modules &&\
