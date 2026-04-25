@@ -2,7 +2,7 @@
 FROM debian:testing
 
 ARG BRANCH=master
-ARG RSTUDIO=2024.12.1-563
+ARG RSTUDIO=2026.04.0-526
 
 RUN \
   apt-get update && \

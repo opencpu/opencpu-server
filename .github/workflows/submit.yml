@@ -12,7 +12,7 @@ jobs:
       - name: Prepare system
         run: |
           sudo apt-get update
-          sudo add-apt-repository -y "ppa:marutter/rrutter4.0"
+          sudo add-apt-repository -y "ppa:opencpu/opencpu-2.2"
           sudo apt-get install -y git gnupg curl devscripts equivs gdebi-core
           mkdir -p ~/.gnupg
           echo "default-cache-ttl 46000" >> ~/.gnupg/gpg-agent.conf
@@ -25,7 +25,7 @@ jobs:
           GPG_KEY: ${{ secrets.GPG_KEY }}
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Install build dependencies
         run: |
@@ -36,7 +36,7 @@ jobs:
           export GPG_TTY=$(tty)
           echo "DEBUILD_TGZ_CHECK=no" >> ~/.devscripts
           debuild -S -i -I -p"gpg --batch --yes --passphrase $GPG_PASS --pinentry-mode loopback"
-          sed -i.bak 's|noble|jammy|g' debian/changelog
+          sed -i.bak 's|resolute|noble|g' debian/changelog
           debuild -S -i -I -p"gpg --batch --yes --passphrase $GPG_PASS --pinentry-mode loopback"
         env:
           GPG_PASS: ${{ secrets.GPG_PASS }}

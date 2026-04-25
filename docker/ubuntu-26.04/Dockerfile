@@ -1,9 +1,9 @@
 # syntax=docker/dockerfile:1
 ARG BRANCH=master
-ARG RSTUDIO=2024.12.1-563
+ARG RSTUDIO=2026.04.0-526
 
 # Build image
-FROM ubuntu:20.04 AS builder
+FROM ubuntu:26.04 AS builder
 ARG BRANCH
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -14,7 +14,7 @@ RUN \
   apt-get install -y software-properties-common && \
   add-apt-repository -y ppa:opencpu/opencpu-2.2 && \
   apt-get update && \
-  apt-get install -y wget make devscripts apache2-dev apache2 libapreq2-dev r-base r-base-dev libapparmor-dev libcurl4-openssl-dev libprotobuf-dev protobuf-compiler libcairo2-dev xvfb xauth xfonts-base curl libssl-dev libxml2-dev libicu-dev pkg-config libssh2-1-dev locales apt-utils cmake && \
+  apt-get install -y wget make devscripts apache2-dev apache2 libapreq2-dev r-base r-base-dev libapparmor-dev libcurl4-openssl-dev libprotobuf-dev protobuf-compiler libcairo2-dev libfontconfig-dev xvfb xauth xfonts-base curl libssl-dev libxml2-dev libicu-dev pkg-config libssh2-1-dev locales apt-utils cmake && \
   useradd -ms /bin/bash builder
 
 # Different from debian
@@ -29,7 +29,7 @@ RUN \
   cd opencpu-server-* && \
   dpkg-buildpackage -us -uc
 
-FROM ubuntu:20.04
+FROM ubuntu:26.04
 USER root
 ARG RSTUDIO
 ENV DEBIAN_FRONTEND noninteractive
@@ -45,7 +45,7 @@ RUN \
   apt install --reinstall -y -o=Dpkg::Use-Pty=0 -o=Apt::Cmd::Disable-Script-Warning=1 ./opencpu-server_*.deb
 
 RUN \
-  wget --quiet https://download2.rstudio.org/server/focal/amd64/rstudio-server-${RSTUDIO}-amd64.deb && \
+  wget --quiet https://download2.rstudio.org/server/jammy/amd64/rstudio-server-${RSTUDIO}-amd64.deb && \
   apt install --reinstall -y -o=Dpkg::Use-Pty=0 -o=Apt::Cmd::Disable-Script-Warning=1 ./rstudio-server-${RSTUDIO}-amd64.deb && \
   rm -f rstudio-server-${RSTUDIO}-amd64.deb && \
   echo "server-app-armor-enabled=0" >> /etc/rstudio/rserver.conf
