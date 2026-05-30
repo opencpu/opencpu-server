@@ -2,7 +2,7 @@ Source: opencpu
 Section: gnu-r
 Priority: optional
 Maintainer: Jeroen Ooms <jeroen@berkeley.edu>
-Build-Depends: r-base-core (>= 3.5.1), r-base-dev (>= 3.5.1), r-cran-codetools, r-cran-lattice, libicu-dev, libprotobuf-dev, protobuf-compiler, apache2-dev, libapparmor-dev, libcurl4-openssl-dev, libfontconfig-dev, libssl-dev, libxml2-dev, libssh2-1-dev, xvfb, xauth, xfonts-base, debhelper (>> 4.1.0), pkg-config, cmake
+Build-Depends: r-base-core (>= 3.5.1), r-base-dev (>= 3.5.1), r-cran-codetools, r-cran-lattice, libicu-dev, libprotobuf-dev, protobuf-compiler, apache2-dev, libapparmor-dev, libcurl4-openssl-dev, libfontconfig-dev, libharfbuzz-dev, libfribidi-dev, libssl-dev, libxml2-dev, libssh2-1-dev, xvfb, xauth, xfonts-base, debhelper (>> 4.1.0), pkg-config, cmake
 Standards-Version: 3.9.4
 
 Package: opencpu-server
@@ -17,7 +17,7 @@ Conflicts: r-cran-opencpu
 Package: opencpu-lib
 Architecture: any
 Depends: r-base (>= 3.5.1), libc6, libssl-dev, libicu-dev
-Recommends: libprotobuf-dev, r-base-dev, libssl-dev, libxml2-dev, libssh2-1-dev
+Recommends: libprotobuf-dev, r-base-dev, libssl-dev, libxml2-dev, libssh2-1-dev, libharfbuzz-dev, libfribidi-dev
 Description: Package containing the platform specific R package buids.
 
 Package: opencpu-tex
