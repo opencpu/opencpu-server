@@ -1,8 +1,8 @@
 # TODO: update to debian:13 once released
-FROM debian:testing
+FROM debian:13
 
 ARG BRANCH=master
-ARG RSTUDIO=2026.04.0-526
+ARG RSTUDIO=2026.05.0-218
 
 RUN \
   apt-get update && \
