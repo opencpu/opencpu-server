@@ -25,9 +25,9 @@ RUN \
 
 RUN \
   cd ~ && \
-  wget --quiet https://github.com/jeffreyhorner/rapache/archive/v1.2.11.tar.gz -O v1.2.11.tar.gz && \
-  tar xzvf v1.2.11.tar.gz '*/rpm/rapache.spec' --strip-components 2 && \
-  mv -f v1.2.11.tar.gz ~/rpmbuild/SOURCES/ && \
+  wget --quiet https://github.com/jeffreyhorner/rapache/archive/v1.2.12.tar.gz -O v1.2.12.tar.gz && \
+  tar xzvf v1.2.12.tar.gz '*/rpm/rapache.spec' --strip-components 2 && \
+  mv -f v1.2.12.tar.gz ~/rpmbuild/SOURCES/ && \
   mv -f rapache.spec ~/rpmbuild/SPECS/ && \
   rpmbuild -ba ~/rpmbuild/SPECS/rapache.spec
 
