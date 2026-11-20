@@ -1,7 +1,7 @@
 FROM rockylinux/rockylinux:8
 
 ARG BRANCH=master
-ARG RSTUDIO=2026.05.0-218
+ARG RSTUDIO=2026.11.0-203
 
 # Enable EPEL
 RUN \

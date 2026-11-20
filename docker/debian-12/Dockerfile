@@ -1,7 +1,7 @@
 FROM debian:12
 
 ARG BRANCH=master
-ARG RSTUDIO=2026.05.0-218
+ARG RSTUDIO=2026.11.0-203
 
 # On Debian-12, libapache2-mod-r-base and libapreq are only available in backports :(
 RUN sed 's|bookworm-updates|bookworm-updates bookworm-backports|' -i /etc/apt/sources.list.d/debian.sources
