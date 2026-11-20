@@ -1,4 +1,4 @@
-FROM ghcr.io/r-devel/rcheckserver/ubuntu
+FROM ghcr.io/r-universe-org/base-image
 
 ENV DEBIAN_FRONTEND noninteractive
 
