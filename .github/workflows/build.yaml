@@ -25,6 +25,9 @@ jobs:
         run: |
           sudo apt-get update
           sudo add-apt-repository -y "ppa:opencpu/opencpu-2.2"
+          # Ubuntu 26.04 runners use amd64v3 indexes, which on launchpad only contain arch:all packages
+          sudo sed -i '/^URIs:.*opencpu/a Architectures: amd64' /etc/apt/sources.list.d/*opencpu*.sources
+          sudo apt-get update
           sudo apt-get install -y git curl devscripts equivs gdebi-core r-base
 
       - name: Checkout
