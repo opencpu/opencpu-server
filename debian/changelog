@@ -1,4 +1,4 @@
-opencpu (2.2.15-resolute0) resolute; urgency=low
+opencpu (2.2.15-resolute2) resolute; urgency=low
 
   * Debian package with OpenCPU software <https://www.opencpu.org>.
 
